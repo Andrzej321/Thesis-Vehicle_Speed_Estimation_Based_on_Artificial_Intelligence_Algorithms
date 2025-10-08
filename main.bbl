@@ -1,0 +1,515 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global/global}
+    \entry{engine_speed}{online}{}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{title}{How to calculate wheel and vehicle speed from engine speed}
+      \field{urlday}{5}
+      \field{urlmonth}{5}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://x-engineer.org/calculate-wheel-vehicle-speed-engine-speed/
+      \endverb
+      \verb{url}
+      \verb https://x-engineer.org/calculate-wheel-vehicle-speed-engine-speed/
+      \endverb
+    \endentry
+    \entry{Josip_Belusic}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=8d9206e77ebaf386902e019a93978573}{%
+           family={Encyclopaedia\bibnamedelima Britannica},
+           familyi={E\bibinitperiod\bibinitdelim B\bibinitperiod},
+           given={The\bibnamedelima Editors},
+           giveni={T\bibinitperiod\bibinitdelim E\bibinitperiod},
+           prefix={of},
+           prefixi={o\bibinitperiod}}}%
+      }
+      \strng{namehash}{8d9206e77ebaf386902e019a93978573}
+      \strng{fullhash}{8d9206e77ebaf386902e019a93978573}
+      \strng{fullhashraw}{8d9206e77ebaf386902e019a93978573}
+      \strng{bibnamehash}{8d9206e77ebaf386902e019a93978573}
+      \strng{authorbibnamehash}{8d9206e77ebaf386902e019a93978573}
+      \strng{authornamehash}{8d9206e77ebaf386902e019a93978573}
+      \strng{authorfullhash}{8d9206e77ebaf386902e019a93978573}
+      \strng{authorfullhashraw}{8d9206e77ebaf386902e019a93978573}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{speedometer}
+      \field{urlday}{7}
+      \field{urlmonth}{5}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.britannica.com/technology/speedometer
+      \endverb
+      \verb{url}
+      \verb https://www.britannica.com/technology/speedometer
+      \endverb
+    \endentry
+    \entry{speedometer}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=dbe6d9f98cd129a4856753f0f1129244}{%
+           family={Woodford},
+           familyi={W\bibinitperiod},
+           given={Chris},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{dbe6d9f98cd129a4856753f0f1129244}
+      \strng{fullhash}{dbe6d9f98cd129a4856753f0f1129244}
+      \strng{fullhashraw}{dbe6d9f98cd129a4856753f0f1129244}
+      \strng{bibnamehash}{dbe6d9f98cd129a4856753f0f1129244}
+      \strng{authorbibnamehash}{dbe6d9f98cd129a4856753f0f1129244}
+      \strng{authornamehash}{dbe6d9f98cd129a4856753f0f1129244}
+      \strng{authorfullhash}{dbe6d9f98cd129a4856753f0f1129244}
+      \strng{authorfullhashraw}{dbe6d9f98cd129a4856753f0f1129244}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Speedometers}
+      \field{urlday}{5}
+      \field{urlmonth}{5}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.explainthatstuff.com/how-speedometer-works.html
+      \endverb
+      \verb{url}
+      \verb https://www.explainthatstuff.com/how-speedometer-works.html
+      \endverb
+    \endentry
+    \entry{speedometer_patent_Otto}{patent}{}{}
+      \name{author}{1}{}{%
+        {{hash=853f9ad7a9e0f7ede88a2311374a36ab}{%
+           family={Schulze},
+           familyi={S\bibinitperiod},
+           given={Otto},
+           giveni={O\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Germany}%
+      }
+      \strng{namehash}{853f9ad7a9e0f7ede88a2311374a36ab}
+      \strng{fullhash}{853f9ad7a9e0f7ede88a2311374a36ab}
+      \strng{fullhashraw}{853f9ad7a9e0f7ede88a2311374a36ab}
+      \strng{bibnamehash}{853f9ad7a9e0f7ede88a2311374a36ab}
+      \strng{authorbibnamehash}{853f9ad7a9e0f7ede88a2311374a36ab}
+      \strng{authornamehash}{853f9ad7a9e0f7ede88a2311374a36ab}
+      \strng{authorfullhash}{853f9ad7a9e0f7ede88a2311374a36ab}
+      \strng{authorfullhashraw}{853f9ad7a9e0f7ede88a2311374a36ab}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{20}
+      \field{month}{5}
+      \field{number}{GB000190322622A}
+      \field{title}{Improvements in Speed Indicators}
+      \field{type}{patent}
+      \field{year}{1903}
+      \field{dateera}{ce}
+    \endentry
+    \entry{speedometer_patent_Joseph}{patent}{}{}
+      \name{author}{1}{}{%
+        {{hash=a3e817b14c2e74e36461909ea7706a13}{%
+           family={Jones},
+           familyi={J\bibinitperiod},
+           given={Joseph\bibnamedelima W},
+           giveni={J\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {United States}%
+      }
+      \strng{namehash}{a3e817b14c2e74e36461909ea7706a13}
+      \strng{fullhash}{a3e817b14c2e74e36461909ea7706a13}
+      \strng{fullhashraw}{a3e817b14c2e74e36461909ea7706a13}
+      \strng{bibnamehash}{a3e817b14c2e74e36461909ea7706a13}
+      \strng{authorbibnamehash}{a3e817b14c2e74e36461909ea7706a13}
+      \strng{authornamehash}{a3e817b14c2e74e36461909ea7706a13}
+      \strng{authorfullhash}{a3e817b14c2e74e36461909ea7706a13}
+      \strng{authorfullhashraw}{a3e817b14c2e74e36461909ea7706a13}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{26}
+      \field{month}{7}
+      \field{number}{US765841A}
+      \field{title}{Speedometer}
+      \field{type}{patent}
+      \field{year}{1904}
+      \field{dateera}{ce}
+    \endentry
+    \entry{wheel_speed_sensors}{online}{}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{title}{Wheel Speed Sensors – More than just ABS}
+      \field{urlday}{7}
+      \field{urlmonth}{5}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://premierautotrade.com.au/news/wheel-speed-sensors%E2%80%93more-than-just-abs.php
+      \endverb
+      \verb{url}
+      \verb https://premierautotrade.com.au/news/wheel-speed-sensors%E2%80%93more-than-just-abs.php
+      \endverb
+    \endentry
+    \entry{GNSS}{online}{}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{title}{What is GNSS}
+      \field{urlday}{7}
+      \field{urlmonth}{5}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.euspa.europa.eu/eu-space-programme/galileo/what-gnss
+      \endverb
+      \verb{url}
+      \verb https://www.euspa.europa.eu/eu-space-programme/galileo/what-gnss
+      \endverb
+    \endentry
+    \entry{gps-satellites-trilateration}{online}{}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{title}{GPS satellites - trilateration}
+      \field{urlday}{8}
+      \field{urlmonth}{5}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://openclipart.org/detail/191659/gps-satellites-trilateration
+      \endverb
+      \verb{url}
+      \verb https://openclipart.org/detail/191659/gps-satellites-trilateration
+      \endverb
+    \endentry
+    \entry{ECEF_coordinate_sys}{online}{}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{title}{Math frames}
+      \field{urlday}{8}
+      \field{urlmonth}{5}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.vectornav.com/resources/inertial-navigation-primer/math-fundamentals/math-refframes
+      \endverb
+      \verb{url}
+      \verb https://www.vectornav.com/resources/inertial-navigation-primer/math-fundamentals/math-refframes
+      \endverb
+    \endentry
+    \entry{lit_simple_veh_speed}{inproceedings}{}{}
+      \name{author}{3}{}{%
+        {{hash=7c8666023f12784a9c0ed10aef50643f}{%
+           family={Song},
+           familyi={S\bibinitperiod},
+           given={Chul\bibnamedelima Ki},
+           giveni={C\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=94d70acd3f31e94a92786a5a5967b4e0}{%
+           family={Uchanski},
+           familyi={U\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=9590fb463667c7aced5e65a2bb1906c8}{%
+           family={Hedrick},
+           familyi={H\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{ec17665b725d0fe367f4597abd11e17c}
+      \strng{fullhash}{ec17665b725d0fe367f4597abd11e17c}
+      \strng{fullhashraw}{ec17665b725d0fe367f4597abd11e17c}
+      \strng{bibnamehash}{ec17665b725d0fe367f4597abd11e17c}
+      \strng{authorbibnamehash}{ec17665b725d0fe367f4597abd11e17c}
+      \strng{authornamehash}{ec17665b725d0fe367f4597abd11e17c}
+      \strng{authorfullhash}{ec17665b725d0fe367f4597abd11e17c}
+      \strng{authorfullhashraw}{ec17665b725d0fe367f4597abd11e17c}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{07}
+      \field{title}{Vehicle Speed Estimation Using Accelerometer and Wheel Speed Measurements}
+      \field{year}{2002}
+      \verb{doi}
+      \verb 10.4271/2002-01-2229
+      \endverb
+    \endentry
+    \entry{lit_for_Kalman_fuzzy}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=9772be0cb54714bc8bde22b7aa11c9ee}{%
+           family={Uwe\bibnamedelima Kiencke},
+           familyi={U\bibinitperiod\bibinitdelim K\bibinitperiod},
+           given={Lars\bibnamedelima Nielsen},
+           giveni={L\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Berlin, Heidelberg}%
+      }
+      \strng{namehash}{9772be0cb54714bc8bde22b7aa11c9ee}
+      \strng{fullhash}{9772be0cb54714bc8bde22b7aa11c9ee}
+      \strng{fullhashraw}{9772be0cb54714bc8bde22b7aa11c9ee}
+      \strng{bibnamehash}{9772be0cb54714bc8bde22b7aa11c9ee}
+      \strng{authorbibnamehash}{9772be0cb54714bc8bde22b7aa11c9ee}
+      \strng{authornamehash}{9772be0cb54714bc8bde22b7aa11c9ee}
+      \strng{authorfullhash}{9772be0cb54714bc8bde22b7aa11c9ee}
+      \strng{authorfullhashraw}{9772be0cb54714bc8bde22b7aa11c9ee}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Automotive Control Systems: For Engine, Driveline, and Vehicle}
+      \field{year}{2005}
+    \endentry
+    \entry{lit_model_based_est}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=2ecf4cb287ec4697f932400fcf9ccf7b}{%
+           family={Reina},
+           familyi={R\bibinitperiod},
+           given={Giulio},
+           giveni={G\bibinitperiod}}}%
+        {{hash=6bee429a2b0aec3081cf32ad5cf1bd57}{%
+           family={Paiano},
+           familyi={P\bibinitperiod},
+           given={Matilde},
+           giveni={M\bibinitperiod}}}%
+        {{hash=9462f94225da04ef7dd197df102b0cd2}{%
+           family={Blanco-Claraco},
+           familyi={B\bibinithyphendelim C\bibinitperiod},
+           given={Jose-Luis},
+           giveni={J\bibinithyphendelim L\bibinitperiod}}}%
+      }
+      \strng{namehash}{ca8dc06569eef37723954bff8b618f0b}
+      \strng{fullhash}{ca8dc06569eef37723954bff8b618f0b}
+      \strng{fullhashraw}{ca8dc06569eef37723954bff8b618f0b}
+      \strng{bibnamehash}{ca8dc06569eef37723954bff8b618f0b}
+      \strng{authorbibnamehash}{ca8dc06569eef37723954bff8b618f0b}
+      \strng{authornamehash}{ca8dc06569eef37723954bff8b618f0b}
+      \strng{authorfullhash}{ca8dc06569eef37723954bff8b618f0b}
+      \strng{authorfullhashraw}{ca8dc06569eef37723954bff8b618f0b}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0888-3270}
+      \field{journaltitle}{Mechanical Systems and Signal Processing}
+      \field{note}{Signal Processing and Control challenges for Smart Vehicles}
+      \field{title}{Vehicle parameter estimation using a model-based estimator}
+      \field{volume}{87}
+      \field{year}{2017}
+      \field{pages}{227\bibrangedash 241}
+      \range{pages}{15}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.ymssp.2016.06.038
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0888327016302205
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0888327016302205
+      \endverb
+    \endentry
+    \entry{GNSS_velocity_estimation}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=8c01cb351c3944b700e9cfcd2c9e94d5}{%
+           family={Ji},
+           familyi={J\bibinitperiod},
+           given={Li},
+           giveni={L\bibinitperiod}}}%
+        {{hash=0f0b97cab3974013de27e1fe6607eefa}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Rui},
+           giveni={R\bibinitperiod}}}%
+        {{hash=770e7c711019da51108553899d1b9825}{%
+           family={Cheng},
+           familyi={C\bibinitperiod},
+           given={Qi},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=78824cd5485f73bd2037e1bf445ae995}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Junhui},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{20a7b2b285c3f51bccc3956ee972ffb1}
+      \strng{fullhash}{3cf0b1612aef442b0edecdbcdd7611f4}
+      \strng{fullhashraw}{3cf0b1612aef442b0edecdbcdd7611f4}
+      \strng{bibnamehash}{20a7b2b285c3f51bccc3956ee972ffb1}
+      \strng{authorbibnamehash}{20a7b2b285c3f51bccc3956ee972ffb1}
+      \strng{authornamehash}{20a7b2b285c3f51bccc3956ee972ffb1}
+      \strng{authorfullhash}{3cf0b1612aef442b0edecdbcdd7611f4}
+      \strng{authorfullhashraw}{3cf0b1612aef442b0edecdbcdd7611f4}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Satellite Navigation}
+      \field{title}{Evaluation of the performance of GNSS-based velocity estimation algorithms}
+      \field{year}{2022}
+    \endentry
+    \entry{lit_deep_dynamics}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=c04f6b448028ab460a6a7b1dc1c09435}{%
+           family={Chrosniak},
+           familyi={C\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=616c212940142bebe765b33b13cb4db3}{%
+           family={Ning},
+           familyi={N\bibinitperiod},
+           given={Jingyun},
+           giveni={J\bibinitperiod}}}%
+        {{hash=31460f8f0ff9f0bfd9610ae6dee8abf3}{%
+           family={Behl},
+           familyi={B\bibinitperiod},
+           given={Madhur},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {Institute of Electrical}%
+        {Electronics Engineers (IEEE)}%
+      }
+      \strng{namehash}{e66caae546e2ea329990b58371e79c86}
+      \strng{fullhash}{e66caae546e2ea329990b58371e79c86}
+      \strng{fullhashraw}{e66caae546e2ea329990b58371e79c86}
+      \strng{bibnamehash}{e66caae546e2ea329990b58371e79c86}
+      \strng{authorbibnamehash}{e66caae546e2ea329990b58371e79c86}
+      \strng{authornamehash}{e66caae546e2ea329990b58371e79c86}
+      \strng{authorfullhash}{e66caae546e2ea329990b58371e79c86}
+      \strng{authorfullhashraw}{e66caae546e2ea329990b58371e79c86}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2377-3774}
+      \field{journaltitle}{IEEE Robotics and Automation Letters}
+      \field{month}{6}
+      \field{number}{6}
+      \field{title}{Deep Dynamics: Vehicle Dynamics Modeling With a Physics-Constrained Neural Network for Autonomous Racing}
+      \field{volume}{9}
+      \field{year}{2024}
+      \field{pages}{5292\bibrangedash 5297}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/lra.2024.3388847
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1109/LRA.2024.3388847
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1109/LRA.2024.3388847
+      \endverb
+    \endentry
+    \entry{lit_ai_physiscs_embedded_neural_network}{misc}{}{}
+      \name{author}{3}{}{%
+        {{hash=676309c13536afcf23f2fc2e856ca8f3}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Taekyung},
+           giveni={T\bibinitperiod}}}%
+        {{hash=ac5d1f224907dff781b44fd37e6828d1}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Hojin},
+           giveni={H\bibinitperiod}}}%
+        {{hash=d4093bc156c0d223fab3c13b7bf86464}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Wonsuk},
+           giveni={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{a7e05c6bbfb9134ba7477dc59ee4d590}
+      \strng{fullhash}{a7e05c6bbfb9134ba7477dc59ee4d590}
+      \strng{fullhashraw}{a7e05c6bbfb9134ba7477dc59ee4d590}
+      \strng{bibnamehash}{a7e05c6bbfb9134ba7477dc59ee4d590}
+      \strng{authorbibnamehash}{a7e05c6bbfb9134ba7477dc59ee4d590}
+      \strng{authornamehash}{a7e05c6bbfb9134ba7477dc59ee4d590}
+      \strng{authorfullhash}{a7e05c6bbfb9134ba7477dc59ee4d590}
+      \strng{authorfullhashraw}{a7e05c6bbfb9134ba7477dc59ee4d590}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.RO}
+      \field{eprinttype}{arXiv}
+      \field{title}{Physics Embedded Neural Network Vehicle Model and Applications in Risk-Aware Autonomous Driving Using Latent Features}
+      \field{year}{2022}
+      \verb{eprint}
+      \verb 2207.07920
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2207.07920
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2207.07920
+      \endverb
+    \endentry
+    \entry{lit_trans_lstm}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=3637aee274364db9c412fffc90eb55f5}{%
+           family={Shi},
+           familyi={S\bibinitperiod},
+           given={Zhuangwei},
+           giveni={Z\bibinitperiod}}}%
+      }
+      \strng{namehash}{3637aee274364db9c412fffc90eb55f5}
+      \strng{fullhash}{3637aee274364db9c412fffc90eb55f5}
+      \strng{fullhashraw}{3637aee274364db9c412fffc90eb55f5}
+      \strng{bibnamehash}{3637aee274364db9c412fffc90eb55f5}
+      \strng{authorbibnamehash}{3637aee274364db9c412fffc90eb55f5}
+      \strng{authornamehash}{3637aee274364db9c412fffc90eb55f5}
+      \strng{authorfullhash}{3637aee274364db9c412fffc90eb55f5}
+      \strng{authorfullhashraw}{3637aee274364db9c412fffc90eb55f5}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{CoRR}
+      \field{title}{Incorporating Transformer and {LSTM} to Kalman Filter with {EM} algorithm for state estimation}
+      \field{volume}{abs/2105.00250}
+      \field{year}{2021}
+      \verb{eprint}
+      \verb 2105.00250
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2105.00250
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2105.00250
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
