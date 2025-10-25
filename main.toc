@@ -1,0 +1,39 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{Introduction}{2}{chapter*.2}%
+\contentsline {chapter}{\numberline {1}Vehicle speed}{3}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Defining Vehicle Speed}{3}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Measurements for determining vehicle speed}{5}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Engine speed}{5}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Wheel speed}{6}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}Inertial Measurement Unit}{7}{subsection.1.2.3}%
+\contentsline {subsection}{\numberline {1.2.4}Global Navigation Satellite System}{8}{subsection.1.2.4}%
+\contentsline {section}{\numberline {1.3}Estimating vehicle speed}{9}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Accelerometer and speedometer}{9}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}Kalman filter}{10}{subsection.1.3.2}%
+\contentsline {subsection}{\numberline {1.3.3}Fuzzy logic}{11}{subsection.1.3.3}%
+\contentsline {subsection}{\numberline {1.3.4}GNSS}{12}{subsection.1.3.4}%
+\contentsline {subsection}{\numberline {1.3.5}Artificial Intelligence}{13}{subsection.1.3.5}%
+\contentsline {section}{\numberline {1.4}Conclusions}{15}{section.1.4}%
+\contentsline {chapter}{\numberline {2}Development environment}{16}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Available sensor data}{16}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Ways to use AI to estimate vehicle speed}{18}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Direct estimation}{18}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Combination of existing estimators with AI model}{19}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Advantages and disadvantages of AI application}{20}{subsection.2.2.3}%
+\contentsline {chapter}{\numberline {3}Direct estimation}{21}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Recurrent Neural Network - RNN}{21}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Theoretical background}{21}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Implementing a RNN}{23}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Results}{24}{subsection.3.1.3}%
+\contentsline {section}{\numberline {3.2}Long Short-Term Memory - LSTM}{29}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Theoretical background}{29}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Implementation}{30}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}Gated Recurrent Unit - GRU}{30}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Theoretical background}{30}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Implementation}{30}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3.4}Temporal Convolutional Networks - TCN}{30}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Theoretical background}{30}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Implementation}{30}{subsection.3.4.2}%
+\contentsline {section}{\numberline {3.5}Transformer}{30}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Theoretical background}{30}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Implementation}{30}{subsection.3.5.2}%
