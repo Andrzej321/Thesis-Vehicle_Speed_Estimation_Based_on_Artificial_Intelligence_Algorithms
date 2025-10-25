@@ -196,6 +196,40 @@ The results can be seen on figures below.
 
 It can be seen on the figures that the estimated values for are still not that accurate when replaying the whole simulation. In the beginning, before the number of inputs reach the sequence length, there is a large error due to the missing information as RNNs are trained to estimate based on a sequence. In addition a smoothening algorithm would also improve the quality of the estimation as it is relatively noisy. To further improve the estimator, lateral speed values can be added as an additional output however his will need more resources for training and a larger model to comprehend the new output.  
 
-\section{Scope of further development}
 
-The method that was described above is just the first AI model that can be used. The further development will touch on longitudinal and lateral vehicle speed estimation with LSTM, GRU, Transformers and Temporal convolutional network. In addition, a wider range of test cases will be implemented for training purposes to cover more driving scenarios. To finish it off, some hybrid methods will also be expanded to see and compared with the direct AI estimators. 
+\section{Long Short-Term Memory - LSTM}
+
+\subsection{Theoretical background}
+
+LSTM networks build on the structure of the RNN-s and introduce additional modifications to improve the performance in long term dependencies when handling sequential data. The main difference between the two structures are the introduction of memory cells and a series of so called gating mehanisms. The output of the LSTM unit is determined not only by the current input and the previous hidden state, as it was with the conventional RNN-s, but also by the newly introduced cell state that carries information across the time steps. The overall structure of the LSTM unit can be seen on figure \ref{fig:lstm_unit}.
+
+\FloatBarrier
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/lstm_unit.pdf}
+    \caption{LSTM cell with the gating mechanisms}
+    \label{fig:lstm_unit}
+\end{figure}
+\FloatBarrier
+
+The  gating mechanism consists of 3 separate gates (as seen on figure \ref{fig:lstm_unit}): 1. Forget gate ($f_t$), 2. Input gate ($i_t$), 3. Output gate ($o_t$). 
+
+\subsection{Implementation}
+
+\section{Gated Recurrent Unit - GRU}
+
+\subsection{Theoretical background}
+
+\subsection{Implementation}
+
+\section{Temporal Convolutional Networks - TCN}
+
+\subsection{Theoretical background}
+
+\subsection{Implementation}
+
+\section{Transformer}
+
+\subsection{Theoretical background}
+
+\subsection{Implementation}
