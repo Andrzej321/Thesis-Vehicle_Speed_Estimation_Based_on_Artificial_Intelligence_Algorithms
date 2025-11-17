@@ -19,6 +19,8 @@ Contrary with regular feedforward neural networks where the output is determined
 
 The fundamental building blocks of a RNN are the recurrent units (RU). These units hold an inner state that connect the in- and outputs. The inner states maintain information about previous inputs in a sequence. To understand how does the network's architecture function, let it be unfolded in time. This can be seen on figure \ref{fig:unfolded_RNN}.
 
+!!NEED TO BE UPDATED WITH NEW FIGURE!!
+
 \FloatBarrier
 \begin{figure}[h]
     \centering
@@ -196,23 +198,90 @@ The results can be seen on figures below.
 
 It can be seen on the figures that the estimated values for are still not that accurate when replaying the whole simulation. In the beginning, before the number of inputs reach the sequence length, there is a large error due to the missing information as RNNs are trained to estimate based on a sequence. In addition a smoothening algorithm would also improve the quality of the estimation as it is relatively noisy. To further improve the estimator, lateral speed values can be added as an additional output however his will need more resources for training and a larger model to comprehend the new output.  
 
-
 \section{Long Short-Term Memory - LSTM}
 
 \subsection{Theoretical background}
 
-LSTM networks build on the structure of the RNN-s and introduce additional modifications to improve the performance in long term dependencies when handling sequential data. The main difference between the two structures are the introduction of memory cells and a series of so called gating mehanisms. The output of the LSTM unit is determined not only by the current input and the previous hidden state, as it was with the conventional RNN-s, but also by the newly introduced cell state that carries information across the time steps. The overall structure of the LSTM unit can be seen on figure \ref{fig:lstm_unit}.
+LSTM networks build on the structure of the RNN-s but introduce additional modifications to improve the performance in long term dependencies when handling sequential data. The main difference between the two structures are the introduction of memory cells and a series of so called gating mehanisms. The output of the LSTM unit is determined not only by the current input and the previous hidden state, as it was with the conventional RNN-s, but also by the newly introduced cell state that carries information across the time steps. The structure of an LSTM network unfolded in time can be seen on figure \ref{fig:lstm_sequence}, where $x_t$ is the input vector, $h_t$ is the hidden state vector, $C_t$ is the cell state vector and $y_t$ is the output vector at time step $t$.
 
 \FloatBarrier
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/lstm_unit.pdf}
-    \caption{LSTM cell with the gating mechanisms}
+    \includegraphics[width=1\textwidth]{images/lstm_sequence.pdf}
+    \caption{LSTM sequence unfolded in time}
+    \label{fig:lstm_sequence}
+\end{figure}
+\FloatBarrier
+
+The dimensions of the previously mentioned vectors are the following:
+\begin{itemize}
+    \item Input vector: $x_t \in \mathbb{R}^{d_x}$, where $d_x$ is the size of the input vector.
+    \item Hidden state: $h_t \in \mathbb{R}^{d_h}$, where $d_h$ is the number of hidden units in the LSTM layer.
+    \item Cell state: $C_t \in \mathbb{R}^{d_h}$, that has the same dimension as the hidden state vector.
+    \item Output vector: $y_t \in \mathbb{R}^{d_y}$, where $d_y$ is the size of the output vector.
+\end{itemize}
+I want to note here that I have not included the dimension of the batch size $B$ for simplicity. Here I only consider the inputs to be a single sequence, as it will be when using the netowork for estimating the vehicle speed. When considering trainging with batches of sequences, the dimensions would be: $x_t \in \mathbb{R}^{B \times d_x}$, $h_t \in \mathbb{R}^{B \times d_h}$, $C_t \in \mathbb{R}^{B \times d_h}$, $y_t \in \mathbb{R}^{B \times d_y}$.
+
+The white-box represetation of the LSTM cell can be seen on figure \ref{fig:lstm_unit}, where the weight matrices and the bias vectors are also presented. The dimensions of these vectors are the following:
+\begin{itemize}
+    \item Weight matrices for the input vector:  $W_{xf}, W_{xi}, W_{xc}, W_{xo} \in \mathbb{R}^{d_x \times d_h}$
+    \item Weight matrices for the state vectors: $W_{hf}, W_{hi}, W_{hc}, W_{ho}, W_{hy} \in \mathbb{R}^{d_x \times d_h}$
+    \item Bias vectors for the operation: $b_f, b_i, b_c, b_o, b_y \in \mathbb{R}^{d_h}$
+\end{itemize}
+
+\FloatBarrier
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{images/lstm_unit.pdf}
+    \caption{LSTM unit with the gating mechanisms}
     \label{fig:lstm_unit}
 \end{figure}
 \FloatBarrier
 
-The  gating mechanism consists of 3 separate gates (as seen on figure \ref{fig:lstm_unit}): 1. Forget gate ($f_t$), 2. Input gate ($i_t$), 3. Output gate ($o_t$). 
+Throughout the LSTM cell the so called gates control the outputs, that are namely the forget gate ($f_t$), input gate ($i_t$) and the output gate ($o_t$). These are mainly functions that use either sigmoid or tanh activation functions. Furthermore the cell contains operations to determine the candidate cell state ($\tilde C_t$), the new cell state ($C_t$), the new hidden state ($h_t$) and the output ($y_t$). All the gates and operations can be described with the following equations:
+
+\begin{enumerate}
+    \item Forget gate \ref{eq:lstm_forget_gate}: The goal of the forget gate is to determine what information from the previous cell state ($C_{t-1}$) shall be kept and what shall be discarded. This is done by using a sigmoid activation function that outputs values between 0 and 1, where 0 means "completely forget" and 1 means "completely keep".
+    \begin{equation}
+        f_t = \sigma(W_{xf} \cdot x_t + W_{hf} \cdot h_{t-1} + b_f)
+        \label{eq:lstm_forget_gate}
+    \end{equation}
+    \item Input gate \ref{eq:lstm_input_gate}: The input gate determines what new information shall be added to the cell state. Similar to the forget gate, it uses a sigmoid activation function to decide which values to update.
+    \begin{equation}
+        i_t = \sigma(W_{xi} \cdot x_t + W_{hi} \cdot h_{t-1} + b_i)
+        \label{eq:lstm_input_gate}
+    \end{equation}
+    \item Candidate cell state \ref{eq:lstm_can_cell_state}: This operation creates a vector of new candidate values ($\tilde C_t$) that could be added to the cell state. It uses a tanh activation function to ensure the values are between -1 and 1.
+    \begin{equation}
+        \tilde C_t = \tanh(W_{xc} \cdot x_t + W_{hc} \cdot h_{t-1} + b_c)
+        \label{eq:lstm_can_cell_state}
+    \end{equation}
+    \item New cell state \ref{eq:lstm_new_cell_state}: The new cell state ($C_t$) is computed by combining the previous cell state ($C_{t-1}$) modified by the forget gate and the candidate cell state ($\tilde C_t$) scaled by the input gate. ($\odot$ denotes element-wise multiplication).
+    \begin{equation}
+        C_t = f_t \odot C_{t-1} + i_t \odot \tilde C_t
+        \label{eq:lstm_new_cell_state}
+    \end{equation}
+    \item Output gate \ref{eq:lstm_output_gate}: The output gate determines what part of the cell state will be output as the new hidden state. It uses a sigmoid activation function to decide which parts of the cell state to output.
+    \begin{equation}
+        o_t = \sigma(W_{xo} \cdot x_t + W_{ho} \cdot h_{t-1} + b_o)
+        \label{eq:lstm_output_gate}
+    \end{equation}
+    \item New hidden state \ref{eq:lstm_new_hidden_state}: The new hidden state ($h_t$) is computed by applying the output gate to the tanh of the new cell state.
+    \begin{equation}
+        h_t = o_t \odot \tanh(C_t)
+        \label{eq:lstm_new_hidden_state}
+    \end{equation}
+    \item Output \ref{eq:lstm_output}: The output vector ($y_t$) is determined from the new hidden state using a linear transformation followed by an activation function (depending on the task).
+    \begin{equation}
+        y_t = W_{hy} \cdot h_t + b_y
+        \label{eq:lstm_output}
+    \end{equation}
+\end{enumerate}
+
+After defining the structural elements of the LSTM cell, the training process can be discussed. The objective of the training sequence is to optimize the weight matrices and the bias vectors to minimize the defined loss function over a dedicated training dataset, just as at the RNN-s.  
+
+The question still arises why is this structure better at handling long term dependencies than the conventional RNN-s?
+The answer lies in the constant error carousel (CEC) property of the LSTM cell.
 
 \subsection{Implementation}
 

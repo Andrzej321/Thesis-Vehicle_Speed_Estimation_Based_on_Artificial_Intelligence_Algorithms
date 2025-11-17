@@ -27,13 +27,13 @@
 \contentsline {subsection}{\numberline {3.1.3}Results}{24}{subsection.3.1.3}%
 \contentsline {section}{\numberline {3.2}Long Short-Term Memory - LSTM}{29}{section.3.2}%
 \contentsline {subsection}{\numberline {3.2.1}Theoretical background}{29}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Implementation}{30}{subsection.3.2.2}%
-\contentsline {section}{\numberline {3.3}Gated Recurrent Unit - GRU}{30}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Theoretical background}{30}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Implementation}{30}{subsection.3.3.2}%
-\contentsline {section}{\numberline {3.4}Temporal Convolutional Networks - TCN}{30}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Theoretical background}{30}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Implementation}{30}{subsection.3.4.2}%
-\contentsline {section}{\numberline {3.5}Transformer}{30}{section.3.5}%
-\contentsline {subsection}{\numberline {3.5.1}Theoretical background}{30}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {3.5.2}Implementation}{30}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.2.2}Implementation}{32}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}Gated Recurrent Unit - GRU}{32}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Theoretical background}{32}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Implementation}{32}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3.4}Temporal Convolutional Networks - TCN}{32}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Theoretical background}{32}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Implementation}{32}{subsection.3.4.2}%
+\contentsline {section}{\numberline {3.5}Transformer}{32}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Theoretical background}{32}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Implementation}{32}{subsection.3.5.2}%
