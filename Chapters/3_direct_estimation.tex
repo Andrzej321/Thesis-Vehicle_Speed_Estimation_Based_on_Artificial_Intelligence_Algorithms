@@ -1,10 +1,12 @@
-\chapter{Direct estimation}
+\chapter{Direct estimation with AI algorithms}
 
 In this chapter the steps of developing the chosen AI models for estimating vehicle speeds will be discussed. First, the simple recurrent neural network (RNN) will be presented. This will be followed by two more specific RNN models: long short-term memory (LSTM) and gated recurrent unit (GRU). All of these models will be trained and tuned to directly estimate the longitudinal and lateral speeds of the vehicle from the previously discussed CAN signals.
 
 \section{Recurrent Neural Network - RNN}
 
-\subsection{Theoretical background}
+\subsection{Simple RNN}
+
+\subsubsection{Theoretical background}
 
 Contrary with regular feedforward neural networks where the output is determined only by the current values of the inputs, the RNN is designed in a way that after each step the information is fed back to the network. This way the output will be dependent on the previous inputs as well and the model will have a memory like property giving the possibility of handling temporal data.
 
@@ -77,7 +79,7 @@ To determine the weights and biases of the network backpropagation through time 
 
 Common issues when applying RNNs are exploding and vanishing gradients during the backward pass. Both of these refer to the magnitude of the calculated gradients: $\left\Vert \frac{\partial L}{\partial W} \right\Vert$. Exploding gradient problem stems from the gradient being too high which is a consequence of the learning rate being to big. On the other hand vanishing gradient refers to a gradient being near zero, which leads to slow learning. 
 
-\subsection{Implementing a RNN}
+\subsubsection{Implementation}
 
 When implementing a RNN architecture for a specific application, there are some general hyperparameters to determine. These parameters can be found in table \ref{tab:rnn_hyperparams}.
 
@@ -118,7 +120,7 @@ Prediction horizon         & How many future steps the network is trained to pre
 \label{tab:rnn_hyperparams}
 \end{table}
 
-\subsection{Results}
+\subsubsection{Results}
 
 The used data that was created from 4 simulations that covered 4 basic driving situations. These are: accelerate until a certain longitudinal acceleration (auax-drv), brake until a certain longitudinal acceleration (buax-brk), steer until a certain lateral acceleration (suay) and sine wave like steering (sin-steer). This way a range of driving situations can be covered. To create more datasets, random values were used within a certain range for the same simulations types. 
 
@@ -198,11 +200,11 @@ The results can be seen on figures below.
 
 It can be seen on the figures that the estimated values for are still not that accurate when replaying the whole simulation. In the beginning, before the number of inputs reach the sequence length, there is a large error due to the missing information as RNNs are trained to estimate based on a sequence. In addition a smoothening algorithm would also improve the quality of the estimation as it is relatively noisy. To further improve the estimator, lateral speed values can be added as an additional output however his will need more resources for training and a larger model to comprehend the new output.  
 
-\section{Long Short-Term Memory - LSTM}
+\subsection{Long Short-Term Memory - LSTM}
 
-\subsection{Theoretical background}
+\subsubsection{Theoretical background}
 
-LSTM networks build on the structure of the RNN-s but introduce additional modifications to improve the performance in long term dependencies when handling sequential data. The main difference between the two structures are the introduction of memory cells and a series of so called gating mehanisms. The output of the LSTM unit is determined not only by the current input and the previous hidden state, as it was with the conventional RNN-s, but also by the newly introduced cell state that carries information across the time steps. The structure of an LSTM network unfolded in time can be seen on figure \ref{fig:lstm_sequence}, where $x_t$ is the input vector, $h_t$ is the hidden state vector, $C_t$ is the cell state vector and $y_t$ is the output vector at time step $t$.
+The Long Short-Term Memory (LSTM) networks build on the structure of the RNN-s but introduce additional modifications to improve the performance in long term dependencies when handling sequential data. The main difference between the two structures are the introduction of memory cells and a series of so called gating mehanisms. The output of the LSTM unit is determined not only by the current input and the previous hidden state, as it was with the conventional RNN-s, but also by the newly introduced cell state that carries information across the time steps. The structure of an LSTM network unfolded in time can be seen on figure \ref{fig:lstm_sequence}, where $x_t$ is the input vector, $h_t$ is the hidden state vector, $C_t$ is the cell state vector and $y_t$ is the output vector at time step $t$.
 
 \FloatBarrier
 \begin{figure}[h]
@@ -225,8 +227,9 @@ I want to note here that I have not included the dimension of the batch size $B$
 The white-box represetation of the LSTM cell can be seen on figure \ref{fig:lstm_unit}, where the weight matrices and the bias vectors are also presented. The dimensions of these vectors are the following:
 \begin{itemize}
     \item Weight matrices for the input vector:  $W_{xf}, W_{xi}, W_{xc}, W_{xo} \in \mathbb{R}^{d_x \times d_h}$
-    \item Weight matrices for the state vectors: $W_{hf}, W_{hi}, W_{hc}, W_{ho}, W_{hy} \in \mathbb{R}^{d_x \times d_h}$
-    \item Bias vectors for the operation: $b_f, b_i, b_c, b_o, b_y \in \mathbb{R}^{d_h}$
+    \item Weight matrices for the state vectors: $W_{hf}, W_{hi}, W_{hc}, W_{ho} \in \mathbb{R}^{d_h \times d_h}$
+    \item Weight matrix for the output vector: $W_{hy} \in \mathbb{R}^{d_h \times d_y}$
+    \item Bias vectors for the operation: $b_f, b_i, b_c, b_o \in \mathbb{R}^{d_h}, b_y \in \mathbb{R}^{d_y}$
 \end{itemize}
 
 \FloatBarrier
@@ -278,18 +281,90 @@ Throughout the LSTM cell the so called gates control the outputs, that are namel
     \end{equation}
 \end{enumerate}
 
-After defining the structural elements of the LSTM cell, the training process can be discussed. The objective of the training sequence is to optimize the weight matrices and the bias vectors to minimize the defined loss function over a dedicated training dataset, just as at the RNN-s.  
+After defining the computational steps withing an LSTM cell, that are also the steps of the forward pass, the training process can be discussed. The objective of the training sequence is to optimize the weight matrices and the bias vectors to minimize the defined loss ($\mathcal{L}$) over a dedicated training dataset, just as at the RNN-s. The steps of the backpropagation through time (BPTT) for LSTM networks are the following:
 
-The question still arises why is this structure better at handling long term dependencies than the conventional RNN-s?
-The answer lies in the constant error carousel (CEC) property of the LSTM cell.
 
-\subsection{Implementation}
+The question still arises why is this LSTM structure better at handling long term dependencies than the conventional RNN-s? The answer lies in the constant error carousel (CEC) property of the LSTM cell.
 
-\section{Gated Recurrent Unit - GRU}
+When multiple layers are stacked on top of each other to create a deep LSTM network...TO BE CONTINUED
 
-\subsection{Theoretical background}
+\subsubsection{Implementation}
 
-\subsection{Implementation}
+\subsection{Gated Recurrent Unit - GRU}
+
+\subsubsection{Theoretical background}
+
+The Gated Recurrent Unit (GRU) network also builds on the structure of the original RNN-s but introduces a simplified architecture compared to the LSTM network. The GRU uses similar gating mechanisms to control the flow of the input and the state information, but omits the separate cell state, therefore making it a lighter alternative. The structure of a GRU network unfolded in time can be seen on figure \ref{fig:gru_sequence}, where $x_t$ is the input vector, $h_t$ is the hidden state vector and $y_t$ is the output vector at time step $t$.
+
+\FloatBarrier
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{images/gru_sequence.pdf}
+    \caption{GRU sequence unfolded in time}
+    \label{fig:gru_sequence}
+\end{figure}
+\FloatBarrier
+
+The dimensions of the previously mentioned vectors are the following:
+\begin{itemize}
+    \item Input vector: $x_t \in \mathbb{R}^{d_x}$, where $d_x$ is the size of the input vector.
+    \item Hidden state: $h_t \in \mathbb{R}^{d_h}$, where $d_h$ is the number of hidden units in the GRU layer.
+    \item Output vector: $y_t \in \mathbb{R}^{d_y}$, where $d_y$ is the size of the output vector. 
+\end{itemize}
+Batch size $B$ is not included here for simplicity the same way as before, but when considering training with batches of sequences, the dimensions would be: $x_t \in \mathbb{R}^{B \times d_x}$, $h_t \in \mathbb{R}^{B \times d_h}$, $y_t \in \mathbb{R}^{B \times d_y}$.
+
+The same way as with the LSTM cell, the white-box representation of the GRU cell can be seen on figure \ref{fig:gru_unit}, where the weight matrices and the bias vectors are also presented. The dimensions of these vectors are the following:
+\begin{itemize}
+    \item Weight matrices for the input vector:  $W_{xr}, W_{xz}, W_{xh} \in \mathbb{R}^{d_x \times d_h}$
+    \item Weight matrices for the state vectors: $W_{hr}, W_{hz}, W_{hh} \in \mathbb{R}^{d_h \times d_h}$
+    \item Weight matrix for the output vector: $W_{hy} \in \mathbb{R}^{d_h \times d_y}$
+    \item Bias vectors for the operation: $b_r, b_z, b_h, b_y \in \mathbb{R}^{d_h}, b_y \in \mathbb{R}^{d_y}$
+\end{itemize}
+
+\FloatBarrier
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{images/gru_unit.pdf}
+    \caption{GRU unit with the gating mechanisms}
+    \label{fig:gru_unit}
+\end{figure}
+\FloatBarrier
+
+The gates that are within the GRU cell are the reset gate ($r_t$) and the update gate ($z_t$). These are mainly functions that use either sigmoid or tanh activation functions. Furthermore the cell contains operations to determine the candidate hidden state ($\tilde h_t$), the new hidden state ($h_t$) and the output ($y_t$). All the gates and operations can be described with the following equations:
+
+\begin{enumerate}
+    \item Reset gate \ref{eq:gru_reset_gate}: The reset gate determines how much of the previous hidden state ($h_{t-1}$) shall be forgotten when calculating the candidate hidden state.
+    \begin{equation}
+        r_t = \sigma(W_{xr} \cdot x_t + W_{hr} \cdot h_{t-1} + b_r)
+        \label{eq:gru_reset_gate}
+    \end{equation}
+    \item Update gate \ref{eq:gru_update_gate}: The update gate decides how much of the previous hidden state shall be carried forward to the new hidden state.
+    \begin{equation}
+        z_t = \sigma(W_{xz} \cdot x_t + W_{hz} \cdot h_{t-1} + b_z)
+        \label{eq:gru_update_gate}
+    \end{equation}
+    \item Candidate hidden state \ref{eq:gru_can_hidden_state}: This operation creates a vector of new candidate values ($\tilde h_t$) that could be added to the hidden state. It uses a tanh activation function to ensure the values are between -1 and 1.
+    \begin{equation}
+        \tilde h_t = \tanh(W_{xh} \cdot x_t + W_{hh} \cdot (r_t \odot h_{t-1}) + b_h)
+        \label{eq:gru_can_hidden_state}
+    \end{equation}
+    \item New hidden state \ref{eq:gru_new_hidden_state}: The new hidden state ($h_t$) is computed by combining the previous hidden state ($h_{t-1}$) scaled by the update gate and the candidate hidden state ($\tilde h_t$) scaled by one minus the update gate.
+    \begin{equation}
+        h_t = (1 - z_t) \odot h_{t-1} + z_t \odot \tilde h_t
+        \label{eq:gru_new_hidden_state}
+    \end{equation}
+    \item Output \ref{eq:gru_output}: The output vector ($y_t$) is determined from the new hidden state and the bias vector ($b_y$).
+    \begin{equation}
+        y_t = W_{hy} \cdot h_t + b_y
+        \label{eq:gru_output}
+    \end{equation}
+\end{enumerate}
+
+The training process of the GRU network is similar to that of the LSTM network, involving (BPTT) to optimize the weight matrices and bias vectors to minimize the defined loss ($\mathcal{L}$) over a dedicated training dataset.
+
+
+
+\subsubsection{Implementation}
 
 \section{Temporal Convolutional Networks - TCN}
 
