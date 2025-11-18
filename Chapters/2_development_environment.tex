@@ -8,12 +8,12 @@ A modern vehicle is equipped with multiple ECU-s, numerous sensors and actuators
 \begin{table}[ht]
 \centering
 \begin{tabular}{|c|c|c|}
-\hline
+\hline 
 \textbf{Sensor Type} & \textbf{Variables} & \textbf{Unit of Measurement} \\
-\hline
+\hline \hline
 Wheel speed sensor & $\omega_{FR}, \omega_{FL}, \omega_{RR}, \omega_{RL}$ & [$^\circ$/s] \\
 \hline
-Wheel torque sensor & $M_{FR}, M_{FL}, M_{RR}, M_{RL}$ & [Nm] \\
+Drive torque sensor & $M_{FR}, M_{FL}, M_{RR}, M_{RL}$ & [Nm] \\
 \hline
 Acceleration from IMU & $a_x$, $a_y$, $a_z$ & [m/s$^2$] \\
 \hline
@@ -23,13 +23,12 @@ Brake pressure sensor & $P_{FR}, P_{FL}, P_{RR}, P_{RL}$ & [bar] \\
 \hline
 Road wheel angles & $\delta_{FR}, \delta_{FL}, \delta_{RR}, \delta_{RL}$ & [$^\circ$] \\
 \hline
-Steering wheel angle & $\varphi$ & [$^\circ$] \\
-\hline
 \end{tabular}
 \caption{Overview of sensor types, variables, and units}
 \label{tab:sensor_table}
 \end{table}
 
+!! itt ki kell majd javítani azt, hogy nem külön külön vannak a kerekek kormányzási szögei, hanem csak az első és hátsó tengelyé van megadva !!
 
 GNSS receivers can be also considered as precise sensors that are available during the development phase but not on the vehicles from the production line in order to keep the wider availability. Therefore the calculated longitudinal and lateral speeds from the GNSS measurements will only serve for reference, validation, testing and training purposes. The mentioned sensor units can be seen on figure \ref{fig:sensors}. 
 

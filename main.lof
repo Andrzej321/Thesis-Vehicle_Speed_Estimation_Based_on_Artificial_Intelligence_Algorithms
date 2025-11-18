@@ -18,12 +18,10 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Feedforward nn (left) compared to recurrent nn (right)}}{22}{figure.caption.19}%
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Unfolding the architecture of a RNN in time}}{22}{figure.caption.20}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Testing speed estimation with a buay-brk validation dataset}}{26}{figure.caption.22}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Testing speed estimation with a suay validation dataset}}{27}{figure.caption.23}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Testing speed estimation with a sin-steer validation dataset}}{28}{figure.caption.24}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Testing speed estimation with a auax-drv validation dataset}}{29}{figure.caption.25}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces LSTM sequence unfolded in time}}{30}{figure.caption.26}%
-\contentsline {figure}{\numberline {3.8}{\ignorespaces LSTM unit with the gating mechanisms}}{31}{figure.caption.27}%
-\contentsline {figure}{\numberline {3.9}{\ignorespaces GRU sequence unfolded in time}}{33}{figure.caption.28}%
-\contentsline {figure}{\numberline {3.10}{\ignorespaces GRU unit with the gating mechanisms}}{34}{figure.caption.29}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Recurrent Unit in the RNN}}{23}{figure.caption.21}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces 2-layer RNN architecture}}{25}{figure.caption.22}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces LSTM sequence unfolded in time}}{28}{figure.caption.25}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces LSTM unit with the gating mechanisms}}{29}{figure.caption.26}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces GRU sequence unfolded in time}}{31}{figure.caption.27}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces GRU unit with the gating mechanisms}}{32}{figure.caption.28}%
 \addvspace {10\p@ }

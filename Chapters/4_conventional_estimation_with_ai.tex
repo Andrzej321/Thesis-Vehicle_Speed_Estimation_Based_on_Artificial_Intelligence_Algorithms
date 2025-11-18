@@ -1,4 +1,4 @@
-\chapter{AI aided conventional estimation}
+\chapter{AI aided estimation}
 
 In the previous chapter the direct estimation of vehicle speeds with different AI models was discussed. In this chapter the focus will be shifted towards combining conventional estimation methods with AI algorithms to improve the overall performance of the estimator. First a simple wheel speed based vehicle speed estimation method will be presented. Then a model based estimator will be discussed that utilizes the linear tire model to estimate the vehicle speed from the tire forces. Furthermore an Extended Kalman Filter (EKF) based estimator will be developed that fuses the previously derived model based estimator as the state transition function and the wheel speed based estimator as the measurement function. Finally, the best performing AI models from the previous chapter will be combined with the EKF based estimator to improve its performance.
 
@@ -11,3 +11,81 @@ In the previous chapter the direct estimation of vehicle speeds with different A
 \subsection{Conventional EKF}
 
 \subsection{AI aided EKF}
+
+\chapter*{Appendix}
+\addcontentsline{toc}{chapter}{Appendix}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        \textbf{Model ID} & \textbf{Type} & \textbf{Input ID} & \textbf{Hidden size} & \textbf{Sequence length} & \textbf{Layers} \\
+        \hline \hline
+        153.1 & RNN & 2 & 50 & 64 & 1 \\ \hline
+        153.2 & RNN & 1 & 50 & 64 & 1 \\ \hline
+        154.1 & RNN & 2 & 100 & 64 & 1 \\ \hline
+        154.2 & RNN & 1 & 100 & 64 & 1 \\ \hline
+        155.1 & RNN & 2 & 150 & 64 & 1 \\ \hline
+        155.2 & RNN & 1 & 150 & 64 & 1 \\ \hline
+        156.1 & RNN & 2 & 200 & 64 & 1 \\ \hline
+        156.2 & RNN & 1 & 200 & 64 & 1 \\ \hline
+        157.1 & RNN & 2 & 50 & 96 & 1 \\ \hline
+        157.2 & RNN & 1 & 50 & 96 & 1 \\ \hline
+        158.1 & RNN & 2 & 100 & 96 & 1 \\ \hline
+        158.2 & RNN & 1 & 100 & 96 & 1 \\ \hline
+        159.1 & RNN & 2 & 150 & 96 & 1 \\ \hline
+        159.2 & RNN & 1 & 150 & 96 & 1 \\ \hline
+        160.1 & RNN & 2 & 200 & 96 & 1 \\ \hline
+        160.2 & RNN & 1 & 200 & 96 & 1 \\ \hline
+        161.1 & RNN & 2 & 50 & 128 & 1 \\ \hline
+        161.2 & RNN & 1 & 50 & 128 & 1 \\ \hline
+        162.1 & RNN & 2 & 100 & 128 & 1 \\ \hline
+        162.2 & RNN & 1 & 100 & 128 & 1 \\ \hline
+        163.1 & RNN & 2 & 150 & 128 & 1 \\ \hline
+        163.2 & RNN & 1 & 150 & 128 & 1 \\ \hline
+        164.1 & RNN & 2 & 200 & 128 & 1 \\ \hline
+        164.2 & RNN & 1 & 200 & 128 & 1 \\ \hline
+        165.1 & RNN & 2 & 50 & 192 & 1 \\ \hline
+        165.2 & RNN & 1 & 50 & 192 & 1 \\ \hline
+        166.1 & RNN & 2 & 100 & 192 & 1 \\ \hline
+        166.2 & RNN & 1 & 100 & 192 & 1 \\ \hline
+        167.1 & RNN & 2 & 150 & 192 & 1 \\ \hline
+        167.2 & RNN & 1 & 150 & 192 & 1 \\ \hline
+        168.1 & RNN & 2 & 200 & 192 & 1 \\ \hline
+        168.2 & RNN & 1 & 200 & 192 & 1 \\ \hline
+        169.1 & RNN & 2 & 50 & 64 & 2 \\ \hline
+        169.2 & RNN & 1 & 50 & 64 & 2 \\ \hline
+        170.1 & RNN & 2 & 100 & 64 & 2 \\ \hline
+        170.2 & RNN & 1 & 100 & 64 & 2 \\ \hline
+        171.1 & RNN & 2 & 150 & 64 & 2 \\ \hline
+        171.2 & RNN & 1 & 150 & 64 & 2 \\ \hline
+        172.1 & RNN & 2 & 200 & 64 & 2 \\ \hline
+        172.2 & RNN & 1 & 200 & 64 & 2 \\ \hline
+        173.1 & RNN & 2 & 50 & 96 & 2 \\ \hline
+        173.2 & RNN & 1 & 50 & 96 & 2 \\ \hline
+        174.1 & RNN & 2 & 100 & 96 & 2 \\ \hline
+        174.2 & RNN & 1 & 100 & 96 & 2 \\ \hline
+        175.1 & RNN & 2 & 150 & 96 & 2 \\ \hline
+        175.2 & RNN & 1 & 150 & 96 & 2 \\ \hline
+        176.1 & RNN & 2 & 200 & 96 & 2 \\ \hline
+        176.2 & RNN & 1 & 200 & 96 & 2 \\ \hline
+        177.1 & RNN & 2 & 50 & 128 & 2 \\ \hline
+        177.2 & RNN & 1 & 50 & 128 & 2 \\ \hline
+        178.1 & RNN & 2 & 100 & 128 & 2 \\ \hline
+        178.2 & RNN & 1 & 100 & 128 & 2 \\ \hline
+        179.1 & RNN & 2 & 150 & 128 & 2 \\ \hline
+        179.2 & RNN & 1 & 150 & 128 & 2 \\ \hline
+        180.1 & RNN & 2 & 200 & 128 & 2 \\ \hline
+        180.2 & RNN & 1 & 200 & 128 & 2 \\ \hline
+        181.1 & RNN & 2 & 50 & 192 & 2 \\ \hline
+        181.2 & RNN & 1 & 50 & 192 & 2 \\ \hline
+        182.1 & RNN & 2 & 100 & 192 & 2 \\ \hline
+        182.2 & RNN & 1 & 100 & 192 & 2 \\ \hline
+        183.1 & RNN & 2 & 150 & 192 & 2 \\ \hline
+        183.2 & RNN & 1 & 150 & 192 & 2 \\ \hline
+        184.1 & RNN & 2 & 200 & 192 & 2 \\ \hline
+        184.2 & RNN & 1 & 200 & 192 & 2 \\ \hline
+    \end{tabular}
+    \caption{Hyperparameter ranges for RNN architecture search}
+    \label{tab:rnn_created_models_it_1}
+\end{table}
