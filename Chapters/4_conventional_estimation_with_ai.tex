@@ -1,91 +1,153 @@
 \chapter{AI aided estimation}
 
-In the previous chapter the direct estimation of vehicle speeds with different AI models was discussed. In this chapter the focus will be shifted towards combining conventional estimation methods with AI algorithms to improve the overall performance of the estimator. First a simple wheel speed based vehicle speed estimation method will be presented. Then a model based estimator will be discussed that utilizes the linear tire model to estimate the vehicle speed from the tire forces. Furthermore an Extended Kalman Filter (EKF) based estimator will be developed that fuses the previously derived model based estimator as the state transition function and the wheel speed based estimator as the measurement function. Finally, the best performing AI models from the previous chapter will be combined with the EKF based estimator to improve its performance.
+In the previous chapter the direct estimation of the vehicle speed with different AI models was discussed. In this chapter the focus will be shifted towards combining conventional estimation methods with AI algorithms to improve the overall performance of the estimator. First a simple wheel speed based vehicle speed estimation method will be presented. Then a model based estimator will be discussed that utilizes the linear tire model to estimate the vehicle speed from the tire forces. Furthermore an Extended Kalman Filter (EKF) based estimator will be developed that fuses the previously derived model based estimator as the state transition function and the wheel speed based estimator as the measurement function. Finally, the best performing AI models from the previous chapter will be combined with the EKF based estimator to improve its performance.
 
-\section{Simple wheel speed based estimation}
+An important notice is that all the newly presented estimation methods are based on the simplification that the vehicle is a 2D rigid body moving on a flat surface. Therefore the vertical dynamics of the vehicle are neglected and the roll and pitch anlges are considered to be zero. 
 
-\section{Model based estimation using linear tire model}
+\section{Best wheel based speed estimation}
+\label{sec:best_wheel_estimator}
+
+\subsubsection{Governing equations}
+
+The best wheel based speed estimation method is a simple yet effective approach to estimate the vehicle speed using the rotational speeds of the individual wheels. The main idea behind it is to calculate the vehicle speed from the rotational speeds of the wheels, transform these speeds into the Center of Gravity (CoG) of the vehicle and then take the best estimate from the four wheels. 
+
+The best estimate is determined based on the vehicle's longitudinal acceleration. If the vehicle is accelerating ($a_x > 0$), the wheel with the minimum angular velocity is chosen as the best estimate, as it is less likely to be affected by wheel slip. WIth the same approach, if the vehicle is decelerating ($a_x <0$), the wheel with the maximum angular velocity is selected, as it is less likely to be affected by braking slip.
+
+The sensor measurements needed for this estimation method are the four wheel speeds ($\omega^{FL}$, $\omega^{FR}$, $\omega^{RL}$, $\omega^{RR}$), the longitudinal acceleration ($a_x$) of the vehicle, the yaw rate ($\omega_z$) of the vehicle and the road wheel angles ($\delta^{FL}$, $\delta^{FR}$, $\delta^{RL}$, $\delta^{RR}$). These are all available from the vehicle's Inertial Measurement Unit (IMU) and wheel speed sensors. Furthermore the vehicle's geometric parameters such as the effective wheel radius ($R$) and the positional vectors pointing from the COG to the wheels ($r^{FL}$, $r^{FR}$, $r^{RL}$, $r^{RR}$) are also required. 
+
+The calculation steps of the described estimator are the following. Calculation of the velocity at each wheel ($v_x^i$) from the wheel speeds ($\omega^i$) 
+\begin{equation}
+    v_{w,x}^{i} = w_{i} \cdot R,
+\end{equation}
+where $i \in \{FR, FL, RR, RL\}$. This way the longitudinal velocity at each wheel is obtained,
+\begin{equation}
+    v_{w}^{i} = [v_{w,x}^{i}, 0, 0]^T.
+\end{equation}
+Here it needs to mentioned that this is just an approximation, as the lateral velocity component at the wheel is neglected. The next step is to express the determined wheel velocity vectors in the frame that is aligned with the frame of the body but is centered at the wheels. This is done by applying a rotation matrix ($T_{\delta_i}$) based on the road wheel angles ($\delta^i$) of the respective wheels. The rotation matrix is the can be written as
+\begin{equation}
+    T_{\delta^i} = \begin{bmatrix}
+    \cos(\delta^i) & -\sin(\delta^i) & 0 \\
+    \sin(\delta^i) & \cos(\delta^i) & 0 \\
+    0 & 0 & 1
+    \end{bmatrix}.
+    \label{eq:rotation_matrix}
+\end{equation}
+After rotating the wheel velocities to the appropriate frame, the velocity at the CoG of the vehicle can be calculated by using the yaw rate ($\omega = [0,0,\omega_z]^T$) of the vehicle and the positional vectors pointing from the COG to the wheels ($r_i$). The velocity at the CoG can be calculated as
+\begin{equation}
+    v_{cog}^{i} = T_{\delta^i} \cdot v_{w}^{i} + \omega \times r^i,
+\end{equation}
+where $v_{cog}^{i}$ are the velocity vectors at the CoG calculated from the four different wheels. After calculating the CoG velocities from each wheel, the best estimate can be selected based on the longitudinal acceleration ($a_x$) of the vehicle. The final vehicle speed estimate ($v_{est}$) can be written as
+\begin{equation}
+    v_{est} = 
+    \begin{cases} 
+      \min(v_{cog}^{FR}, v_{cog}^{FL}, v_{cog}^{RR}, v_{cog}^{RL}) & \text{if } a_x \geq 0 \\
+      \max(v_{cog}^{FR}, v_{cog}^{FL}, v_{cog}^{RR}, v_{cog}^{RL}) & \text{if } a_x < 0 \\
+   \end{cases}.
+\end{equation}
+
+\subsubsection{Implementation and results}
+
+\section{Model based speed estimation}
+\label{sec:model_based_estimator}
+
+\subsubsection{Governing equations}
+
+In this section the intention is to create a function that can determine the vehicle speeds time derivatives based on the available sensore measurements and the vehicle parameters. The developed model based estimator will be later used as the state transition function in the EKF based estimator.
+\begin{equation}
+    \dot{x} = f(x, u),
+\end{equation}
+where $x = [v_x, v_y, \omega_z]^T$ is the chosen state vector containing the longitudinal speed, the lateral speed and the yaw rate of the vehicle. The input vector is defined as:
+\begin{equation}
+    u = [\omega^i, \delta^i, m, I_z, c_{lon}^j, c_{lat}^j, R, r^i, dt, \epsilon]^T,
+\end{equation}
+where $\omega^i$ are the four wheel speeds, $\delta^i$ are the four road wheel angles, $m$ is the mass of the vehicle, $I_z$ is the yaw moment of inertia of the vehicle, $c_{lon}^j$ and $c_{lat}^j$ are the longitudinal and lateral tire stiffness coefficients for the front and rear wheels, $R$ is the effective wheel radius, $r^i$ are the positional vectors pointing from the COG to the wheels, $dt$ is the sampling time and $\epsilon$ is a small constatn that will be used at the longitudinal slip calculation. The indices $i \in \{FR, FL, RR, RL\}$ and $j \in \{F, R\}$.
+
+The first step of the state transition function is to determine the velocity vectors at each wheel ($v_w^i$). For velocity at each wheel needs to be calulated. This can be done the same way as in the previous section:
+\begin{equation}
+    v_{w}^{i} = T_{\delta^i} \cdot (v_{cog} - \omega \times r^i),
+\end{equation}
+where $v_{cog} = [v_x, v_y, 0]^T$ , $\omega = [0,0,\omega_z]^T$, $T_{\delta^i}$ is the rotation matrix based on the road wheel angles ($\delta^i$) of the respective wheels (same as in equation \ref{eq:rotation_matrix}). 
+The next step is to calculate the longitudinal slip ratios ($\kappa^i$) and lateral side slip angles ($\alpha^i$) at each wheel. The slip ratio can be calculated as
+\begin{equation}
+    \kappa^i = \frac{\omega^i \cdot R - v_{w,x}^i}{\max(|v_{w,x}^i|, \epsilon)},
+\end{equation}
+where $\epsilon$ is a small constant to avoid division by zero. The slip angle at each wheel can be determined as
+\begin{equation}
+    \alpha^i = \arctan\left(\frac{-v_{w,y}^i}{\max(|v_{w,x}^i|, \epsilon)}\right).
+\end{equation}
+From here the tire forces at each wheel will be determined using the linear tire model. The longitudinal tire forces ($F_{x}^i$) can be calculated as
+\begin{equation}
+    F_{x}^i = c_{lon}^j \cdot \kappa^i,
+\end{equation}
+where $j \in \{F, R\}$ depending on whether the wheel is a front or rear wheel. The lateral tire forces ($F_{y}^i$) can be determined as
+\begin{equation}
+    F_{y}^i = c_{lat}^j \cdot \alpha^i.
+\end{equation}
+With this the tire force vectors at each wheel can be expressed as
+\begin{equation}
+    F_{tire}^i = [F_{x}^i, F_{y}^i, 0]^T.
+\end{equation}
+After determining the tire forces at each wheel, the total force acting on the vehicle can be calculated by transforming the tire forces to the vehicle's body frame and summing them up:
+\begin{equation}
+    F_{total} = \sum_{i} T_{-\delta^i}^T \cdot F_{tire}^i,  
+\end{equation}
+From the transformed tire forces at the wheels the total moment acting on the vehicle around the vertical axis can be calculated as
+\begin{equation}
+    M_z = \sum_{i} (r^i \times (T_{-\delta^i}^T \cdot F_{tire}^i))_z.
+\end{equation}
+With the knowledge of the total force and moment acting on the vehicle, the time derivatives of the state variables can be calculated as
+\begin{align}
+    \dot{v}_x &= \frac{F_{total,x}}{m} + \omega_z \cdot v_y, \\
+    \dot{v}_y &= \frac{F_{total,y}}{m} - \omega_z \cdot v_x, \\
+    \dot{\omega}_z &= \frac{M_z}{I_z}.
+\end{align}
+
+In order to use the described state transition function in a discrete time domain, an integration step is needed to obtain the state variables at the next time step. This can be done with a forward Euler method. The integrations step can be written as
+\begin{equation}
+    x[k] = x[k-1] + f(x[k-1], u[k-1]) \cdot dt.
+\end{equation}
+
+\subsubsection{Implementation and results}
 
 \section{Extended Kalman Filter based estimation}
 
-\subsection{Conventional EKF}
+\subsection{EKF theory}
 
-\subsection{AI aided EKF}
+The Extended Kalman Filter (EKF) is an extension of the original Kalman Filter (KF) that is designed to handle non-linear systems. While the standard KF assumes that both the state transition and measurement functions are linear, the EKF allows for non-linear functions by linearizing them around the current estimate. However the non-linear state transition and measurement functions need to be differentiable. The two functions can be expressed as:
+\begin{align}
+    x[k] &= f(x[k-1], u[k-1]) + w[k-1], \\
+    z[k] &= h(x[k]) + v[k],
+\end{align}
+where $x[k]$ is the state vector at time step $k$, $u[k-1]$ is the input vector at time step $k-1$, $z[k]$ is the measurement vector at time step $k$, $f$ is the non-linear state transition function, $h$ is the non-linear measurement function, $w[k-1]$ is the process noise and $v[k]$ is the measurement noise. Both noise terms are assumed to be zero-mean Gaussian with known covariance matrices $Q$ and $R$ respectively.
 
-\chapter*{Appendix}
-\addcontentsline{toc}{chapter}{Appendix}
+The EKF algorithm consists of two main steps: prediction and update. In the prediction step, the state predicted state estimate ($\hat{x}_{k|k-1}$) and the error covariance ($P_{k|k-1}$) are calculated using the non-linear state transition function:
+\begin{align}
+    \hat{x}_{k|k-1} &= f(\hat{x}_{k-1|k-1}, u_{k-1}), \\
+    P_{k|k-1} &= F_{k-1} P_{k-1|k-1} F_{k-1}^T + Q,
+\end{align}
+where $F_{k-1}$ is the Jacobian of the state transition function evaluated at the previous state estimate:
+\begin{equation}
+    F_{k-1} = \left. \frac{\partial f}{\partial x} \right|_{x=\hat{x}_{k-1|k-1}, u=u_{k-1}}.
+\end{equation}
+In the update step, the Kalman gain ($K_k$), the updated state estimate ($\hat{x}_{k|k}$) and the updated error covariance ($P_{k|k}$) are calculated using the non-linear measurement function:
+\begin{align}
+    K_k &= P_{k|k-1} H_k^T (H_k P_{k|k-1} H_k^T + R)^{-1}, \\
+    \hat{x}_{k|k} &= \hat{x}_{k|k-1} + K_k (z_k - h(\hat{x}_{k|k-1})), \\
+    P_{k|k} &= (I - K_k H_k) P_{k|k-1},
+\end{align}
+where $H_k$ is the Jacobian of the measurement function evaluated at the predicted state estimate:
+\begin{equation}
+    H_k = \left. \frac{\partial h}{\partial x} \right|_{x=\hat{x}_{k|k-1}}.
+\end{equation}
 
-\begin{table}[h]
-    \centering
-    \begin{tabular}{|c|c|c|c|c|c|}
-        \hline
-        \textbf{Model ID} & \textbf{Type} & \textbf{Input ID} & \textbf{Hidden size} & \textbf{Sequence length} & \textbf{Layers} \\
-        \hline \hline
-        153.1 & RNN & 2 & 50 & 64 & 1 \\ \hline
-        153.2 & RNN & 1 & 50 & 64 & 1 \\ \hline
-        154.1 & RNN & 2 & 100 & 64 & 1 \\ \hline
-        154.2 & RNN & 1 & 100 & 64 & 1 \\ \hline
-        155.1 & RNN & 2 & 150 & 64 & 1 \\ \hline
-        155.2 & RNN & 1 & 150 & 64 & 1 \\ \hline
-        156.1 & RNN & 2 & 200 & 64 & 1 \\ \hline
-        156.2 & RNN & 1 & 200 & 64 & 1 \\ \hline
-        157.1 & RNN & 2 & 50 & 96 & 1 \\ \hline
-        157.2 & RNN & 1 & 50 & 96 & 1 \\ \hline
-        158.1 & RNN & 2 & 100 & 96 & 1 \\ \hline
-        158.2 & RNN & 1 & 100 & 96 & 1 \\ \hline
-        159.1 & RNN & 2 & 150 & 96 & 1 \\ \hline
-        159.2 & RNN & 1 & 150 & 96 & 1 \\ \hline
-        160.1 & RNN & 2 & 200 & 96 & 1 \\ \hline
-        160.2 & RNN & 1 & 200 & 96 & 1 \\ \hline
-        161.1 & RNN & 2 & 50 & 128 & 1 \\ \hline
-        161.2 & RNN & 1 & 50 & 128 & 1 \\ \hline
-        162.1 & RNN & 2 & 100 & 128 & 1 \\ \hline
-        162.2 & RNN & 1 & 100 & 128 & 1 \\ \hline
-        163.1 & RNN & 2 & 150 & 128 & 1 \\ \hline
-        163.2 & RNN & 1 & 150 & 128 & 1 \\ \hline
-        164.1 & RNN & 2 & 200 & 128 & 1 \\ \hline
-        164.2 & RNN & 1 & 200 & 128 & 1 \\ \hline
-        165.1 & RNN & 2 & 50 & 192 & 1 \\ \hline
-        165.2 & RNN & 1 & 50 & 192 & 1 \\ \hline
-        166.1 & RNN & 2 & 100 & 192 & 1 \\ \hline
-        166.2 & RNN & 1 & 100 & 192 & 1 \\ \hline
-        167.1 & RNN & 2 & 150 & 192 & 1 \\ \hline
-        167.2 & RNN & 1 & 150 & 192 & 1 \\ \hline
-        168.1 & RNN & 2 & 200 & 192 & 1 \\ \hline
-        168.2 & RNN & 1 & 200 & 192 & 1 \\ \hline
-        169.1 & RNN & 2 & 50 & 64 & 2 \\ \hline
-        169.2 & RNN & 1 & 50 & 64 & 2 \\ \hline
-        170.1 & RNN & 2 & 100 & 64 & 2 \\ \hline
-        170.2 & RNN & 1 & 100 & 64 & 2 \\ \hline
-        171.1 & RNN & 2 & 150 & 64 & 2 \\ \hline
-        171.2 & RNN & 1 & 150 & 64 & 2 \\ \hline
-        172.1 & RNN & 2 & 200 & 64 & 2 \\ \hline
-        172.2 & RNN & 1 & 200 & 64 & 2 \\ \hline
-        173.1 & RNN & 2 & 50 & 96 & 2 \\ \hline
-        173.2 & RNN & 1 & 50 & 96 & 2 \\ \hline
-        174.1 & RNN & 2 & 100 & 96 & 2 \\ \hline
-        174.2 & RNN & 1 & 100 & 96 & 2 \\ \hline
-        175.1 & RNN & 2 & 150 & 96 & 2 \\ \hline
-        175.2 & RNN & 1 & 150 & 96 & 2 \\ \hline
-        176.1 & RNN & 2 & 200 & 96 & 2 \\ \hline
-        176.2 & RNN & 1 & 200 & 96 & 2 \\ \hline
-        177.1 & RNN & 2 & 50 & 128 & 2 \\ \hline
-        177.2 & RNN & 1 & 50 & 128 & 2 \\ \hline
-        178.1 & RNN & 2 & 100 & 128 & 2 \\ \hline
-        178.2 & RNN & 1 & 100 & 128 & 2 \\ \hline
-        179.1 & RNN & 2 & 150 & 128 & 2 \\ \hline
-        179.2 & RNN & 1 & 150 & 128 & 2 \\ \hline
-        180.1 & RNN & 2 & 200 & 128 & 2 \\ \hline
-        180.2 & RNN & 1 & 200 & 128 & 2 \\ \hline
-        181.1 & RNN & 2 & 50 & 192 & 2 \\ \hline
-        181.2 & RNN & 1 & 50 & 192 & 2 \\ \hline
-        182.1 & RNN & 2 & 100 & 192 & 2 \\ \hline
-        182.2 & RNN & 1 & 100 & 192 & 2 \\ \hline
-        183.1 & RNN & 2 & 150 & 192 & 2 \\ \hline
-        183.2 & RNN & 1 & 150 & 192 & 2 \\ \hline
-        184.1 & RNN & 2 & 200 & 192 & 2 \\ \hline
-        184.2 & RNN & 1 & 200 & 192 & 2 \\ \hline
-    \end{tabular}
-    \caption{Hyperparameter ranges for RNN architecture search}
-    \label{tab:rnn_created_models_it_1}
-\end{table}
+\subsection{EKF implementation}
+
+As mentioned in the prevous section, there are two main components that need to be defined in order to implement the EKF based estimator: the state transition function and the measurement function. The state transition function will be the previously developed model in section \ref{sec:model_based_estimator}, that calculates the vehicle speed derivatives based on the vehicle model and the sensor measurements. The measurement function will be first the best wheel based speed estimator presented in section \ref{sec:best_wheel_estimator}, that provides an estimate of the vehicle speed based on the wheel speeds. Later the best performing AI based direct vehicle speed estimator from section \ref{sec:ai_summary} will be used as the measurement function. 
+
+\subsubsection{EKF with best wheel based speed estimation}
+
+
+
+\subsubsection{EKF with AI based speed estimation}
+
+\section{Real-time application}

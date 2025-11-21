@@ -2,9 +2,11 @@
 
 In this chapter the environment of the development will be described, where the structure of the vehicle and its sensors, and the requirements of the estimator will be discussed.
 
+!! ezt pontosítani kell !!
+
 \section{Available sensor data}
 
-A modern vehicle is equipped with multiple ECU-s, numerous sensors and actuators that support and enhance driving quality. When considering vehicle motion control applications the mostly used and available sensors are the following:
+A modern vehicle is equipped with multiple ECU-s, numerous sensors and actuators that support and enhance driving quality. When considering vehicle motion control applications the available sensors are the following:
 \begin{table}[ht]
 \centering
 \begin{tabular}{|c|c|c|}
@@ -28,9 +30,10 @@ Road wheel angles & $\delta_{FR}, \delta_{FL}, \delta_{RR}, \delta_{RL}$ & [$^\c
 \label{tab:sensor_table}
 \end{table}
 
-!! itt ki kell majd javítani azt, hogy nem külön külön vannak a kerekek kormányzási szögei, hanem csak az első és hátsó tengelyé van megadva !!
+It is important to note here that a the road wheels on one axle assign the same angle during normal driving conditions. Therefore the a road wheel angles ($\delta_{FR}, \delta_{FL}, \delta_{RR}, \delta_{RL}$) will be simplified to a two distinct values, where the front wheels will have the same angle ($\delta_{FR} =  \delta_{FM}$ and $\delta_{FL} = \delta_{FM}$) and the rear wheels will have the same angle ($\delta_{RR} =  \delta_{RM}$ and $\delta_{RL} = \delta_{RM}$). From this point the front and rear wheel angles will be represented as $\text{rwa}_{FM}$ and $\text{rwa}_{FM}$ respectively.
 
 GNSS receivers can be also considered as precise sensors that are available during the development phase but not on the vehicles from the production line in order to keep the wider availability. Therefore the calculated longitudinal and lateral speeds from the GNSS measurements will only serve for reference, validation, testing and training purposes. The mentioned sensor units can be seen on figure \ref{fig:sensors}. 
+
 
 \FloatBarrier
 \begin{figure}[ht]
@@ -49,7 +52,7 @@ The structure of the available sensor on the CAN bus data that was used in the f
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
-\textbf{time} & $a_x$ & $\omega_{FR}$ & $\omega_{FL}$ & $\omega_{RR}$ & $\omega_{RL}$ & $M_{FR}$ & $M_{FL}$ & $M_{RR}$ & $M_{RL}$ &  $a_y$ & $a_z$ & $\dot\alpha$ & $\dot\beta$ & $\dot\gamma$ & ...\\ \hline
+\textbf{time} & $a_x$ & $\omega_{FR}$ & $\omega_{FL}$ & $\omega_{RR}$ & $\omega_{RL}$ & $M_{FR}$ & $M_{FL}$ & $M_{RR}$ & $M_{RL}$ &  $a_y$ & $a_z$ & $\dot\alpha$ & $\dot\beta$ & $\dot\gamma$ & ...\\ \hline \hline
 $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & ...\\ \hline
 6.220&0.2819&31.3643&31.3791&31.5755&31.5894&0&0&19.087&19.087&0&0&0&0&0.2329&...\\ \hline
 6.222&0.2819&31.3643&31.3791&31.5755&31.5894&0&0&19.087&19.087&0&0&0&0&0.2349&...\\ \hline
@@ -66,6 +69,19 @@ $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\v
 \label{tab:data_structure}
 \end{table}
 \FloatBarrier
+
+\section{Acquiring measurement data for development and testing}
+\label{sec:measurement_data}
+
+It is important to note that all the measurement data that was used during the development and testing phase of the estimators were recorded from a real vehicle. The vehicle used for the measurements was a luxury sedan. Apart from using the vehicle's built in sensors, two high precision GNNS receivers were installed on the roof of the vehicle to provide a reference speed, that can be used for validation and training purposes. 
+
+The measurement data was recorded in multiple test cases, where different driving scenarios were covered. The scenarios included basic maneuvers that were the following: accelerating until a target longitudinal acceleration is reached, decelerating until a target longitudinal acceleration is reached, steering until a target lateral acceleration is reached and a sine wave-like steering where the steering wheel is turned left and right continuously. These maneuvers were tested at different speeds to cover a wide range of operation. In addition the first two maneuvers can be split into two subgroups based on a change in a parameter that influenced the vehicle dynamics. With this in mind the test cases can be groupped into 6 different categories. 
+
+All together 43 measurements were recorded, where each measurement file contains a specified maneuver  with a duration between 15 and 25 [$s$]. The sampling time of the recorded data is 2 [$ms$] but was downsampled to 10 [$ms$] during the development phase as the GNSS receiver only provided speed values with this sampling time. 
+
+In order to be able to train, validate and test the developed estimators, the recorded measurement data was split into three different sets. The training set contains 31 measeurement files, the validation set and the test set contain 6-6 measurement files. The splitting was done in a way that all the different maneuvers are represented in each set.
+
+Besides the sensor data from the vehicle and the high precision GNSS receivers, the speed estimates from the vehicle's built in ECU were also recorded. These speed values will also serve as a reference for the performance of the developed estimators.
 
 \section{Ways to use AI to estimate vehicle speed}
 

@@ -4,6 +4,12 @@ In this chapter the chosen AI models that are suitable for vehicle speed estimat
 
 \section{General development}
 
+Throughout this chapter different AI models will be presented for a sequence modeling task, that is estimating the vehicle speed from a time series of sensor measurements. The main goal is to find a a function that maps the input sensor data sequence to the desired vehicle speed value as accurately as possible. 
+\begin{equation}
+    \hat{y}_t = f(x_{t-n}, x_{t-n+1}, ..., x_{t}),
+\end{equation}
+where $\hat{y}_t$ is the estimated vehicle speed at time step $t$, $x_{t-n}, x_{t-n+1}, ..., x_{t}$ are the input sensor measurements from time step $t-n$ to $t$, and $f$ is the function approximated by the AI model.
+
 The development of the different AI models for direct vehicle speed estimation will follow a similar structure in order to be able to compare the results and performance of the different architectures.
 
 Initially, the train, validation and test datasets are the identical for all training sequences to ensure the comparibility of the architectures.
@@ -149,9 +155,7 @@ The initial values for the mentioned hyperparameters can be seen in table in \re
     \label{tab:rnn_hyperparameters}
 \end{table}
 
-First, the effect of the number of inputs was examined with the intent of reducing the complexity of the model. The available sensor measurements at each time step can be found in table \ref{tab:sensor_table}. When considering all the available sensor measurements the input vector has a dimension of 23. However, the number of inputs can be reduced to a subset of all the available values when considering only the most relevant ones. Table \ref{tab:reduced_sensor_table} contains the subset of the inputs that was used. In the table x marks the inputs that were used and - marks the ones that were omitted.
-
-The hidden size, the number of layers and the sequence length were varied and a permutation of the possible values was tested. The trained models can be seen in table \ref{tab:rnn_created_models_it_1} in the appendix.
+First, the effect of the number of inputs was examined with the intent of reducing the complexity of the model. The available sensor measurements at each time step can be found in table \ref{tab:sensor_table}. When considering all the available sensor measurements the input vector has a dimension of 23. However, the number of inputs can be reduced to a subset of all the available values when considering only the most relevant ones. Table \ref{tab:reduced_sensor_table} contains the subset of the inputs that was used. Within the table x marks the inputs that were used and - marks the ones that were omitted in the subset.
 
 \FloatBarrier
 \begin{table}[h]
@@ -202,7 +206,7 @@ The hidden size, the number of layers and the sequence length were varied and a 
         \hline
         Road wheel angle - $rwa_{FM}$ & x & x & - \\
         \hline
-        Road wheel angle - $rwa_{FL}$ & x & - & - \\
+        Road wheel angle - $rwa_{FL}$ & x & - & Rear wheel steering was switched off during the measurement \\
         \hline
     \end{tabular}
     \caption{The set of sensor measurements used as inputs}
@@ -210,7 +214,7 @@ The hidden size, the number of layers and the sequence length were varied and a 
 \end{table}
 \FloatBarrier
 
-
+The hidden sizes, the number of layers and the sequence lengths were varied and a permutation of the possible values was tested. The trained models can be seen in table \ref{tab:rnn_created_models_it_1} in the appendix.
 
 \subsection{Long Short-Term Memory - LSTM}
 
@@ -300,7 +304,7 @@ The question still arises why is this LSTM structure better at handling long ter
 
 When multiple layers are stacked on top of each other to create a deep LSTM network...TO BE CONTINUED
 
-\subsubsection{Implementation}
+\subsubsection{Implementation and results}
 
 \subsection{Gated Recurrent Unit - GRU}
 
@@ -374,18 +378,148 @@ The gates that are within the GRU cell are the reset gate ($r_t$) and the update
 
 The training process of the GRU network is similar to that of the LSTM network, involving (BPTT) to optimize the weight matrices and bias vectors to minimize the defined loss ($\mathcal{L}$) over a dedicated training dataset.
 
-
-
-\subsubsection{Implementation}
+\subsubsection{Implementation and results}
 
 \section{Temporal Convolutional Networks - TCN}
 
-\subsection{Theoretical background}
+\subsubsection{Theoretical background}
 
-\subsection{Implementation}
+The Temporal Convolutional Network (TCN) is a type of convolutional neural network (CNN) that is specifically designed for handling sequential data. Unlike RNN-s and their variants, TCN-s utilize convolutional layers to capture temporal dependencies in the data. The key features of TCN-s include causal convolutions, dilated convolutions, and residual connections. 
+
+The TCN produces the output sequence that has the same length as the input sequence. This is due to using a 1D fully convolutional network (FCN) architecture, meaning that each hidden layer is the same length as the input sequence. This property is fulfilled by using zero-padding at the beginning of the input sequence.
+
+Causal convolutions ensure that the output at time step $y_t$ is only dependent on the inputs from time steps $t$ and earlier. Dilated convolutions allow the network to have a larger receptive field without increasing the number of parameters significantly. This is achieved by introducing gaps between the filter elements, enabling the network to capture long-term dependencies more effectively. The dilated causal convolutions, i.e the base of the TCN, can be seen on figure \ref{fig:tcn_dilated_conv}, where the dilation factor $d$ determines the spacing between the filter elements and the kernel size $k$ defines the size of the filter. 
+
+\FloatBarrier
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/tcn_dilated_conv.pdf}
+    \caption{Dilated causal convolution}
+    \label{fig:tcn_dilated_conv}
+\end{figure}
+\FloatBarrier
+
+The dimensions of the vectors are the following:
+\begin{itemize}
+    \item Input vector at time step $t$: $x_t \in \mathbb{R}^{d_x}$, where $d_x$ is the channel size of the input vector. Channel size refers to the number of features in the input vector at each time step.
+    \item Output vector at time step $t$: $y_t \in \mathbb{R}^{d_y}$, where $d_y$ is the chanel size of the output vector.
+    \item Sequence length: $L$, the total number of time steps in the input sequence.
+    \item Input tensor: $X_t = [x_0, x_1, ..., x_t]^T \in \mathbb{R}^{L \times d_x}$
+    \item Output tensor: $Y_t = [y_0, y_1, ..., y_t]^T \in \mathbb{R}^{L \times d_y}$
+\end{itemize}
+
+Based on the dilation and the kernel size between two layers, the equation for determining the output can the formulated as (if there are no hidden layers):
+\begin{equation}
+    y_t = \sum_{i=0}^{k-1} w_i \cdot x_{t - d \cdot i} + b,
+\end{equation}
+where $y_t$ is the output vector at time step $t$, $w_i$ are the weights of the filter, $b$ is the bias term, $k$ is the kernel size, and $d$ is the dilation factor between the two layers.
+
+The full equation considering the input and output tensors between two layers can be formulated as:
+\begin{equation}
+    Y_{j, t} = \sum_{i=1}^{d_x} \sum_{m=0}^{k-1} W_{j, i, m} \cdot X_{i, t - d \cdot m} + b_j,
+\end{equation}
+where $Y_{j, t}$ is the $j$th vector element of the output tensor at time step $t$, $W_{i, j, m}$ contains the weights of the filter connecting input channel $i$ to output channel $j$ at position $m$ (in the kernel), and $b_j$ is the bias term for output channel $j$. Iterating this equation all the vector elements of tensor $Y$ can be determined based on the elements of the input tensor $X$. 
+
+This can be generalized for two arbitrary layers that are connected through a 1D dilated causal convolution as:
+\begin{equation}
+    H^{(l)}_{j, t} = \sum_{i=1}^{d_h^{(l-1)}} \sum_{m=0}^{k-1} W^{(l)}_{j, i, m} \cdot H^{(l-1)}_{i, t - d^{(l)} \cdot m} + b^{(l)}_j = \text{Conv1D}(H^{(l-1)}),
+\end{equation}
+where $H^{(l)}_{j,t}$ is the $j$th vector element in time step $t$ of the output tensor of layer $l$, $d_h^{(l-1)}$ is the number of channels in the tensor of layer $l-1$, $W^{(l)}_{j,i,m}$ contains the weights of the filter connecting input channel $i$ to output channel $j$ at position $m$ and $b^{(l)}_j$ is the $j$th bias for layer $l$.
+
+After each convolutional layer, a non-linear activation function is applied (e.g., ReLU or tanh) to introduce non-linearity into the model. Moreover, a dropout and a normalization layer is often added after the activation function to prevent overfitting by randomly setting a fraction of the input units to zero during training. Finally a residual connection is added to the output of the convolutional block. Here it is inportant to ensure that the input and the output have the same dimensions to ensure the element-wise addition. These steps can be summarized as:
+\begin{equation}
+    H^{(l)} = \text{Dropout}(\text{Activation}(\text{Conv1D}(H^{(l-1)}))) + \text{Conv1x1}(H^{(l-1)})
+\end{equation}
+
+These steps build up a single TCN residual block that can be seen on figure \ref{fig:tcn_residual_block}. By stacking multiple such blocks on top of each other, a deep TCN architecture can be created that is capable of capturing complex temporal dependencies in the input data. 
+
+\FloatBarrier
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth]{images/tcn_residual_block.pdf}
+    \caption{TCN residual block with two dilated causal convolutional layers}
+    \label{fig:tcn_residual_block}
+\end{figure}
+\FloatBarrier
+
+!! COULD TALK ABOUT THE RECEPTIVE FIELD HERE !!
+
+During the training process, the objective is the same as with the RNN models - to optimize the weight matrices and bias vectors to minimize the defined loss ($\mathcal{L}$) over a dedicated training dataset. The training is porformed just as with a FNN, using backpropagation to calculate the gradients of the loss with respect to the weights and biases, and updating them using an optimizer such as Adam or SGD.
+
+\subsubsection{Implementation and results}
 
 \section{Transformer}
 
-\subsection{Theoretical background}
+\subsubsection{Theoretical background}
 
-\subsection{Implementation}
+The Transformer architecture is a deep learning model that has revolutionized the field of natural language processing (NLP) and has also found applications in other sequential data tasks. Unlike traditional RNN-s and TCN-s where the models rely on recurrence or convolution, the transformer relies entirely on self-attention mechanisms to capture dependencies in the input data, allowing for parallel processing of sequences and improved handling of long-range dependencies. An other important aspect of the transformer architecture is that it does not take the sequence data in a step-by-step manner, but rather processes the entire sequence at once, making it different from the previously discussed models.
+
+The general architecture of the transformer model can be divided into two main components: the encoder and the decoder. The encoder is responsible for processing the input sequence and generating a set of continuous representations, while the decoder takes these representations and generates the output sequence. However, for tasks such as vehicle speed estimation, only the encoder part is enough, as there is no need to generate a sequence output.
+
+The steps of the transformer encoder can be seen on \ref{fig:transformer_encoder_block} and summarized as follows:
+\begin{enumerate}
+    \item The input sequence is 
+    \item Input embedding: The input sequence $X \in \mathbb{R}^{L \times d_x}$ at time step $t$, where $L$ is the sequence length and $d_x$ is the size of the input vector, is first converted into a continuous representation using an embedding layer. This layer maps each input to a high-dimensional vector space $d_m$. 
+    \begin{equation}
+        E_t = \text{Embedding}(X_t) = W_e \cdot X_t + b_e,
+    \end{equation}
+    where $E_t\in \mathbb{R}^{L \times d_m}$ is the embedded input vector at time step $t$, $W_e \in \mathbb{R}^{d_m}$ is the embedding weight matrix, and $b_e \in \mathbb{R}^{d_m}$ is the bias term. 
+    \item Positional encoding: Since the transformer architecture does not rely on the order of the sequence, positional encodings are added to the embedded input vectors to provide information about the position of each element in the sequence. This can be done using sinusoidal functions or learned positional embeddings. The original transformer paper \cite{Vaswani2017AttentionIA} proposes the following sinusoidal positional encoding:
+    \begin{equation}
+        \text{PE}_{(pos, 2i)} = \sin\left(\frac{pos}{10000^{2i/d_m}}\right),
+    \end{equation}
+    \begin{equation}
+        \text{PE}_{(pos, 2i+1)} = \cos\left(\frac{pos}{10000^{2i/d_m}}\right),
+    \end{equation}
+    where $pos$ is the position in the sequence and $i$ is the dimension index. After the positional encodings are calculated, they are added to the embedded input vectors:
+    \begin{equation}
+        X'_t = E_t + PE,
+    \end{equation}
+    where $X'_t$ is the input embedded vector with added positional encodings.
+    \item Multi-head self-attention: This mechanism allows the model to focus on different parts of the input sequence simultaneously. The input is transformed into three matrices: queries ($Q$), keys ($K$), and values ($V$) using learned weight matrices ($W_Q$, $W_K$ and $W_V$). The attention scores are calculated using the following equation:
+    \begin{equation}
+        \text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V,
+    \end{equation}
+    where $d_k$ is the dimension of the key vectors. The term multi-head attention implies that the process is repeated multiple times (heads) with different learned weight matrices, allowing the model to capture various aspects of the input sequence. The outputs of each head are then concatenated and transformed using another learned weight matrix ($W_O$):
+    \begin{equation}
+        \text{head}_i = \text{Attention}(X_t'W_{Q_i}, X_t'W_{K_i}, X_t'W_{V_i}),
+    \end{equation}
+    \begin{equation}
+        \text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \text{head}_2, ..., \text{head}_h)W_O,
+    \end{equation}
+    where $h$ is the number of attention heads.
+    \item Add and Normalization: After the multi-head self-attention layer, a residual connection is added that is followed by layer normalization. This helps in stabilizing the training process and allows for better gradient flow. 
+    \begin{equation}
+        X_{attn} = \text{LayerNorm}(X'_t + \text{MultiHead}(X'_t)),
+    \end{equation}
+    where $X_{attn} \in \mathbb{R}^{L \times d_m}$ is the output of the multi-head self-attention layer at time step $t$.
+    \item Feed-forward neural network: After the multi-head self-attention layer, a position-wise feed-forward neural network (FFN) is applied to each position in the sequence independently. This FFN consists of two linear transformations with an activation function (eg. ReLU):
+    \begin{equation}
+        \text{FFN}(X_{attn}) = W_2\text{act}(W_1X_{attn} + b_1) + b_2,
+    \end{equation}
+    where $W_1 \in \mathbb{R}^{d_m \times d_{ff}}$, $W_2 \in \mathbb{R}^{d_{ff} \times d_m}$ are the weight matrices, and $b_1 \in \mathbb{R}^{d_{ff}}$, $b_2 \in \mathbb{R}^{d_m}$ are the bias terms. $d_{ff}$ is the dimension of the feed-forward layer.
+    \item Add and Normalization: Similar to the previous step, a residual connection is added followed by layer normalization after the feed-forward neural network.
+    \begin{equation}
+        Y_{t} = \text{LayerNorm}(X_{attn} + \text{FFN}(X_{attn})),
+    \end{equation}
+    where $Y_t \in \mathbb{R}^{L \times d_m}$ is the output of the transformer encoder at time step $t$.
+    \item Regression head: Finally, a regression head is added on top of the transformer encoder to map the output representations to the desired output size ie. the vehicle speed. This can be done using a simple feed-forward layer:
+    \begin{equation}
+        \hat{y}_t = W_{out} \cdot Y_t + b_{out},  
+    \end{equation}
+    where $\hat{y}_t \in \mathbb{R}^{L \times d_y}$ is the predicted output vector at time step $t$, $W_{out} \in \mathbb{R}^{d_m \times d_y}$ is the output weight matrix, and $b_{out} \in \mathbb{R}^{d_y}$ is the bias term. From here the last element of the output vector can be taken as the estimated vehicle speed at the current time step.
+\end{enumerate}
+
+\FloatBarrier
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/transformer_encoder_block.pdf}
+    \caption{a) Transfomer encoder block with regression head b) Multi-head self-attention mechanism}
+    \label{fig:transformer_encoder_block}
+\end{figure}
+\FloatBarrier
+
+\subsubsection{Implementation and results}
+
+\section{Summary and comparison of the sequential models}
+\label{sec:ai_summary}
