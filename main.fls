@@ -208,6 +208,9 @@ INPUT Chapters\4_conventional_estimation_with_ai.aux
 INPUT .\Chapters\5_real_time_implementation.aux
 INPUT .\Chapters\5_real_time_implementation.aux
 INPUT Chapters\5_real_time_implementation.aux
+INPUT .\Chapters\6_summary.aux
+INPUT .\Chapters\6_summary.aux
+INPUT Chapters\6_summary.aux
 INPUT .\Chapter\appendix.aux
 INPUT .\Chapter\appendix.aux
 INPUT Chapter\appendix.aux
@@ -445,6 +448,7 @@ INPUT .\images\rnn_2layers.pdf
 INPUT .\images\rnn_2layers.pdf
 INPUT .\images\rnn_2layers.pdf
 INPUT .\images\rnn_2layers.pdf
+INPUT C:\Users\andrzej.skrodzki\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ectt1200.tfm
 INPUT .\images\lstm_sequence.pdf
 INPUT .\images\lstm_sequence.pdf
 INPUT .\images\lstm_sequence.pdf
@@ -494,9 +498,13 @@ INPUT .\Chapters\4_conventional_estimation_with_ai.tex
 INPUT .\Chapters\4_conventional_estimation_with_ai.tex
 INPUT Chapters\4_conventional_estimation_with_ai.tex
 OUTPUT Chapters\5_real_time_implementation.aux
+INPUT .\Chapters\6_summary.tex
+INPUT .\Chapters\6_summary.tex
+OUTPUT Chapters\6_summary.aux
+INPUT .\Chapters\6_summary.tex
+INPUT .\Chapters\6_summary.tex
+INPUT Chapters\6_summary.tex
 OUTPUT Chapter\appendix.aux
-INPUT C:\Users\andrzej.skrodzki\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\eccc1200.tfm
-INPUT C:\Users\andrzej.skrodzki\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ectt1200.tfm
 INPUT .\main.lof
 INPUT .\main.lof
 INPUT main.lof
@@ -521,6 +529,9 @@ INPUT Chapters\4_conventional_estimation_with_ai.aux
 INPUT .\Chapters\5_real_time_implementation.aux
 INPUT .\Chapters\5_real_time_implementation.aux
 INPUT Chapters\5_real_time_implementation.aux
+INPUT .\Chapters\6_summary.aux
+INPUT .\Chapters\6_summary.aux
+INPUT Chapters\6_summary.aux
 INPUT .\Chapter\appendix.aux
 INPUT .\Chapter\appendix.aux
 INPUT Chapter\appendix.aux
@@ -530,8 +541,6 @@ INPUT main.run.xml
 OUTPUT main.run.xml
 INPUT C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1200.pk
 INPUT C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1200.pk
-INPUT C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\eccc1200.pk
-INPUT C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\eccc1200.pk
 INPUT C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\tcrm1200.pk
 INPUT C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\tcrm1200.pk
 INPUT C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1728.pk

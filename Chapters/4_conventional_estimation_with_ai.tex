@@ -47,6 +47,25 @@ where $v_{cog}^{i}$ are the velocity vectors at the CoG calculated from the four
 
 \subsubsection{Implementation and results}
 
+The best wheel based speed estimator was implemented in MATLAB Simulink envionment. The function that realizes the described calculation can be found at \path{Conventional_estimators/Best_wheel_based_speed_estimator.m}. The estimator was tested on the same test dataset as the AI based direct estimators from the previous chapter. The results of the evaluation can be seen in table \ref{tab:best_wheel_estimator_results}. 
+
+The parameters of the vehicle that were used for the estimation are the following: effective wheel radius $R$, positional vectors from COG to wheels: $r^{FL}$, $r^{FR}$, $r^{RL}$, $r^{RR}$. The values of the parameters can be found in table \ref{tab:model_based_params}.
+
+\FloatBarrier
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        \textbf{RMSE [$\frac{km}{h}$]} & \textbf{MAE [$\frac{km}{h}$]} & \textbf{AMaxE [$\frac{km}{h}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
+        \hline \hline
+        TBD & TBD & TBD & TBD & TBD \\
+        \hline
+    \end{tabular}
+    \caption{Performance metrics of the best wheel based speed estimator on the test dataset}
+    \label{tab:best_wheel_estimator_results}
+\end{table}
+\FloatBarrier  
+
 \section{Model based speed estimation}
 \label{sec:model_based_estimator}
 
@@ -108,6 +127,49 @@ In order to use the described state transition function in a discrete time domai
 \end{equation}
 
 \subsubsection{Implementation and results}
+
+The model based speed estimator was also implemented in MATLAB Simulink envionment. The function that realizes the described calculation can be found at \path{Conventional_estimators/Model_based_speed_estimator.m}. The estimator was tested on the same test dataset and the results of the evaluation can be seen in table \ref{tab:model_based_estimator_results}.
+
+The model parameters that were used for the estimation can be seen in table \ref{tab:model_based_params}.
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|c|}
+        \hline
+        \textbf{Parameter} & \textbf{Value} \\
+        \hline \hline
+        Vehicle mass ($m$) & 3020 [$kg$] \\ \hline
+        Yaw moment of inertia ($I_z$) & 7145 [$kg m^2$] \\ \hline
+        Front longitudinal tire stiffness ($c_{lon}^F$) & 180000 [$N$] \\ \hline
+        Rear longitudinal tire stiffness ($c_{lon}^R$) & 200000 [$N$] \\ \hline
+        Front lateral tire stiffness ($c_{lat}^F$) & 140000 [$N$] \\ \hline
+        Rear lateral tire stiffness ($c_{lat}^R$) & 150000 [$N$] \\ \hline
+        Effective wheel radius ($R$) & 0.3615 [m] \\ \hline
+        Positional vector to front left wheel ($r^{FL}$) & $[1.675, 0.831, 0]^T$ [m] \\ \hline
+        Positional vector to front right wheel ($r^{FR}$) & $[1.675, -0.831, 0]^T$ [m] \\ \hline
+        Positional vector to rear left wheel ($r^{RL}$) & $[-1.540, 0.842, 0]^T$ [m] \\ \hline
+        Positional vector to rear right wheel ($r^{RR}$) & $[-1.540, -0.842, 0]^T$ [m] \\ \hline
+        Small constant for slip calculation ($\epsilon$) & 1 \\
+        \hline
+    \end{tabular}
+    \caption{Model parameters used for the model based speed estimator}
+    \label{tab:model_based_params}
+\end{table}
+
+\FloatBarrier
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        \textbf{RMSE [$\frac{km}{h}$]} & \textbf{MAE [$\frac{km}{h}$]} & \textbf{AMaxE [$\frac{km}{h}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
+        \hline \hline
+        TBD & TBD & TBD & TBD & TBD \\
+        \hline
+    \end{tabular}
+    \caption{Performance metrics of the model based speed estimator on the test dataset}
+    \label{tab:model_based_estimator_results}
+\end{table}
+\FloatBarrier
+
 
 \section{Extended Kalman Filter based estimation}
 

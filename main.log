@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.8)  21 NOV 2025 15:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.8)  22 NOV 2025 23:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -637,7 +637,7 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'english'.
- (main.aux (Chapters/1_introduction.aux) (Chapters/2_development_environment.aux) (Chapters/3_direct_estimation.aux) (Chapters/4_conventional_estimation_with_ai.aux) (Chapters/5_real_time_implementation.aux) (Chapter/appendix.aux))
+ (main.aux (Chapters/1_introduction.aux) (Chapters/2_development_environment.aux) (Chapters/3_direct_estimation.aux) (Chapters/4_conventional_estimation_with_ai.aux) (Chapters/5_real_time_implementation.aux) (Chapters/6_summary.aux) (Chapter/appendix.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
@@ -745,7 +745,7 @@ Package gensymb Warning: Not defining \micro.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-<images/BMElogo.png, id=163, 397.485pt x 127.47626pt>
+<images/BMElogo.png, id=167, 397.485pt x 127.47626pt>
 File: images/BMElogo.png Graphic file (type png)
 <use images/BMElogo.png>
 Package pdftex.def Info: images/BMElogo.png  used on input line 41.
@@ -796,7 +796,7 @@ Chapter 1.
 [2
 
 ]
-<images/vehicle_speed.pdf, id=245, 375.4025pt x 264.99pt>
+<images/vehicle_speed.pdf, id=250, 375.4025pt x 264.99pt>
 File: images/vehicle_speed.pdf Graphic file (type pdf)
 <use images/vehicle_speed.pdf>
 Package pdftex.def Info: images/vehicle_speed.pdf  used on input line 43.
@@ -804,111 +804,271 @@ Package pdftex.def Info: images/vehicle_speed.pdf  used on input line 43.
 
 
 [3 <./images/vehicle_speed.pdf>]
-<images/Vehicle-longitudinal-powertrain-diagram-speed-calculation.png, id=269, 1145.27875pt x 484.81125pt>
+
+LaTeX Warning: Citation 'engine_speed' on page 4 undefined on input line 56.
+
+<images/Vehicle-longitudinal-powertrain-diagram-speed-calculation.png, id=273, 1145.27875pt x 484.81125pt>
 File: images/Vehicle-longitudinal-powertrain-diagram-speed-calculation.png Graphic file (type png)
 <use images/Vehicle-longitudinal-powertrain-diagram-speed-calculation.png>
 Package pdftex.def Info: images/Vehicle-longitudinal-powertrain-diagram-speed-calculation.png  used on input line 60.
 (pdftex.def)             Requested size: 409.71692pt x 173.43706pt.
 
+LaTeX Warning: Citation 'engine_speed' on page 4 undefined on input line 61.
+
+
+LaTeX Warning: Citation 'engine_speed' on page 4 undefined on input line 61.
+
+
+LaTeX Warning: Citation 'Josip_Belusic' on page 4 undefined on input line 75.
+
+
+LaTeX Warning: Citation 'speedometer' on page 4 undefined on input line 75.
+
+
+LaTeX Warning: Citation 'speedometer_patent_Otto' on page 4 undefined on input line 75.
+
+
+LaTeX Warning: Citation 'speedometer_patent_Joseph' on page 4 undefined on input line 75.
+
+
 
 [4 <./images/Vehicle-longitudinal-powertrain-diagram-speed-calculation.png (PNG copy)>]
-<images/speedometer_patent.png, id=284, 496.10344pt x 467.49657pt>
+<images/speedometer_patent.png, id=281, 496.10344pt x 467.49657pt>
 File: images/speedometer_patent.png Graphic file (type png)
 <use images/speedometer_patent.png>
 Package pdftex.def Info: images/speedometer_patent.png  used on input line 79.
 (pdftex.def)             Requested size: 273.14923pt x 257.4021pt.
 
 
+LaTeX Warning: Citation 'speedometer_patent_Joseph' on page 5 undefined on input line 80.
+
+
+LaTeX Warning: Citation 'speedometer_patent_Joseph' on page 5 undefined on input line 80.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 80--80
+[]\T1/cmr/m/n/12 Figure 1.3: |Speedome-ter patented by Joseph W Jones in 1904
+ []
+
+
+
 [5 <./images/speedometer_patent.png>]
-<images/passive_wheel_speed_sensor.png, id=299, 307.1475pt x 328.22626pt>
+
+LaTeX Warning: Citation 'wheel_speed_sensors' on page 6 undefined on input line 86.
+
+<images/passive_wheel_speed_sensor.png, id=289, 307.1475pt x 328.22626pt>
 File: images/passive_wheel_speed_sensor.png Graphic file (type png)
 <use images/passive_wheel_speed_sensor.png>
 Package pdftex.def Info: images/passive_wheel_speed_sensor.png  used on input line 92.
 (pdftex.def)             Requested size: 204.85846pt x 218.9188pt.
-<images/active_wheel_speed_sensor.png, id=300, 307.1475pt x 333.245pt>
+<images/active_wheel_speed_sensor.png, id=290, 307.1475pt x 333.245pt>
 File: images/active_wheel_speed_sensor.png Graphic file (type png)
 <use images/active_wheel_speed_sensor.png>
 Package pdftex.def Info: images/active_wheel_speed_sensor.png  used on input line 97.
 (pdftex.def)             Requested size: 204.85846pt x 222.26616pt.
 
+LaTeX Warning: Citation 'wheel_speed_sensors' on page 6 undefined on input line 100.
+
+
+LaTeX Warning: Citation 'wheel_speed_sensors' on page 6 undefined on input line 100.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--100
+[]\T1/cmr/m/n/12 Figure 1.4: |Pas-sive (left) and ac-tive (right) wheel speed sen-sors from
+ []
+
+
 
 [6 <./images/passive_wheel_speed_sensor.png> <./images/active_wheel_speed_sensor.png>]
-<images/trilateration.pdf, id=310, 390.45876pt x 412.54124pt>
+
+LaTeX Warning: Citation 'GNSS' on page 7 undefined on input line 129.
+
+<images/trilateration.pdf, id=296, 390.45876pt x 412.54124pt>
 File: images/trilateration.pdf Graphic file (type pdf)
 <use images/trilateration.pdf>
 Package pdftex.def Info: images/trilateration.pdf  used on input line 153.
 (pdftex.def)             Requested size: 204.85846pt x 216.44261pt.
-<images/ecef.jpg, id=311, 995.1579pt x 948.4233pt>
+<images/ecef.jpg, id=297, 995.1579pt x 948.4233pt>
 File: images/ecef.jpg Graphic file (type jpg)
 <use images/ecef.jpg>
 Package pdftex.def Info: images/ecef.jpg  used on input line 158.
 (pdftex.def)             Requested size: 204.85846pt x 195.23845pt.
 
+LaTeX Warning: Citation 'gps-satellites-trilateration' on page 7 undefined on input line 161.
+
+
+LaTeX Warning: Citation 'ECEF_coordinate_sys' on page 7 undefined on input line 161.
+
+
+LaTeX Warning: Citation 'gps-satellites-trilateration' on page 7 undefined on input line 161.
+
+
+LaTeX Warning: Citation 'ECEF_coordinate_sys' on page 7 undefined on input line 161.
+
+
 
 [7]
 
+LaTeX Warning: Citation 'lit_simple_veh_speed' on page 8 undefined on input line 174.
+
+
+Overfull \hbox (55.06587pt too wide) in paragraph at lines 174--175
+[]\T1/cmr/m/n/12 Another sim-ple al-go-rithm for ve-hi-cle speed es-ti-ma-tion is pre-sented in [[]].
+ []
+
+
+
 [8 <./images/trilateration.pdf> <./images/ecef.jpg>]
-<images/simple_estimator.png, id=374, 825.83531pt x 642.90187pt>
+<images/simple_estimator.png, id=351, 825.83531pt x 642.90187pt>
 File: images/simple_estimator.png Graphic file (type png)
 <use images/simple_estimator.png>
 Package pdftex.def Info: images/simple_estimator.png  used on input line 183.
 (pdftex.def)             Requested size: 273.14923pt x 212.63895pt.
-<images/kalman_filter.png, id=378, 1044.15094pt x 324.46219pt>
+
+
+LaTeX Warning: Citation 'lit_simple_veh_speed' on page 9 undefined on input line 184.
+
+
+LaTeX Warning: Citation 'lit_simple_veh_speed' on page 9 undefined on input line 184.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 184--184
+[]\T1/cmr/m/n/12 Figure 1.6: |Sim-ple al-go-rithm for es-ti-mat-ing ve-hi-cle speed form
+ []
+
+
+LaTeX Warning: Citation 'lit_for_Kalman_fuzzy' on page 9 undefined on input line 203.
+
+
+
+[9 <./images/simple_estimator.png>]
+<images/kalman_filter.png, id=360, 1044.15094pt x 324.46219pt>
 File: images/kalman_filter.png Graphic file (type png)
 <use images/kalman_filter.png>
 Package pdftex.def Info: images/kalman_filter.png  used on input line 207.
 (pdftex.def)             Requested size: 273.14923pt x 84.878pt.
 
 
-[9 <./images/simple_estimator.png>]
-<images/Extended Kalman Filter Estimator (vehicle model).pdf, id=392, 444.66125pt x 306.14375pt>
+LaTeX Warning: Citation 'lit_for_Kalman_fuzzy' on page 10 undefined on input line 208.
+
+
+LaTeX Warning: Citation 'lit_for_Kalman_fuzzy' on page 10 undefined on input line 208.
+
+
+LaTeX Warning: Citation 'lit_model_based_est' on page 10 undefined on input line 213.
+
+<images/Extended Kalman Filter Estimator (vehicle model).pdf, id=362, 444.66125pt x 306.14375pt>
 File: images/Extended Kalman Filter Estimator (vehicle model).pdf Graphic file (type pdf)
 <use images/Extended Kalman Filter Estimator (vehicle model).pdf>
 Package pdftex.def Info: images/Extended Kalman Filter Estimator (vehicle model).pdf  used on input line 217.
 (pdftex.def)             Requested size: 364.19667pt x 250.7452pt.
 
+LaTeX Warning: Citation 'lit_model_based_est' on page 10 undefined on input line 218.
+
+
+LaTeX Warning: Citation 'lit_model_based_est' on page 10 undefined on input line 218.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 218--218
+[]\T1/cmr/m/n/12 Figure 1.8: |Ex-tended Kalman fil-ter for ve-hi-cle speed es-ti-ma-tion from
+ []
+
+
+LaTeX Warning: Citation 'lit_for_Kalman_fuzzy' on page 10 undefined on input line 224.
+
+
+Overfull \hbox (65.93222pt too wide) in paragraph at lines 224--225
+\T1/cmr/m/n/12 heuris-tic ap-proach to han-dle un-cer-tainty and im-pre-ci-sion of the sen-sors. In [[]]
+ []
+
+
 
 [10 <./images/kalman_filter.png> <./images/Extended Kalman Filter Estimator (vehicle model).pdf>]
-<images/fuzzy_logic.png, id=447, 791.20593pt x 630.10406pt>
+<images/fuzzy_logic.png, id=413, 791.20593pt x 630.10406pt>
 File: images/fuzzy_logic.png Graphic file (type png)
 <use images/fuzzy_logic.png>
 Package pdftex.def Info: images/fuzzy_logic.png  used on input line 234.
 (pdftex.def)             Requested size: 364.19667pt x 290.04367pt.
 
 
+LaTeX Warning: Citation 'lit_for_Kalman_fuzzy' on page 11 undefined on input line 235.
+
+
+LaTeX Warning: Citation 'lit_for_Kalman_fuzzy' on page 11 undefined on input line 235.
+
+
+LaTeX Warning: Citation 'GNSS_velocity_estimation' on page 11 undefined on input line 241.
+
+
+
 [11 <./images/fuzzy_logic.png>]
-<images/deep_dynamics.png, id=461, 1140.51094pt x 639.89063pt>
+
+LaTeX Warning: Citation 'lit_deep_dynamics' on page 12 undefined on input line 262.
+
+
+
+[12]
+<images/deep_dynamics.png, id=428, 1140.51094pt x 639.89063pt>
 File: images/deep_dynamics.png Graphic file (type png)
 <use images/deep_dynamics.png>
 Package pdftex.def Info: images/deep_dynamics.png  used on input line 266.
 (pdftex.def)             Requested size: 364.19667pt x 204.3298pt.
 
 
-[12]
-<images/physiscs_embedded_neural_network.png, id=472, 1110.39844pt x 527.72156pt>
+LaTeX Warning: Citation 'lit_deep_dynamics' on page 13 undefined on input line 267.
+
+
+LaTeX Warning: Citation 'lit_deep_dynamics' on page 13 undefined on input line 267.
+
+
+LaTeX Warning: Citation 'lit_ai_physiscs_embedded_neural_network' on page 13 undefined on input line 271.
+
+
+Overfull \hbox (31.21613pt too wide) in paragraph at lines 271--272
+[]\T1/cmr/m/n/12 A sim-i-lar ap-proach was in-ves-ti-gated in [[]]
+ []
+
+<images/physiscs_embedded_neural_network.png, id=429, 1110.39844pt x 527.72156pt>
 File: images/physiscs_embedded_neural_network.png Graphic file (type png)
 <use images/physiscs_embedded_neural_network.png>
 Package pdftex.def Info: images/physiscs_embedded_neural_network.png  used on input line 275.
 (pdftex.def)             Requested size: 364.19667pt x 173.08574pt.
-<images/Transformer Encoder.png, id=477, 756.57657pt x 56.46094pt>
+
+LaTeX Warning: Citation 'lit_ai_physiscs_embedded_neural_network' on page 13 undefined on input line 276.
+
+
+LaTeX Warning: Citation 'lit_ai_physiscs_embedded_neural_network' on page 13 undefined on input line 276.
+
+
+Underfull \hbox (badness 7522) in paragraph at lines 276--276
+[]\T1/cmr/m/n/12 Figure 1.11: |Physics em-bed-ded neu-ral net-work for state es-ti-ma-tion from
+ []
+
+
+LaTeX Warning: Citation 'lit_trans_lstm' on page 13 undefined on input line 281.
+
+
+
+[13 <./images/deep_dynamics.png> <./images/physiscs_embedded_neural_network.png>]
+<images/Transformer Encoder.png, id=439, 756.57657pt x 56.46094pt>
 File: images/Transformer Encoder.png Graphic file (type png)
 <use images/Transformer Encoder.png>
 Package pdftex.def Info: images/Transformer Encoder.png  used on input line 285.
 (pdftex.def)             Requested size: 455.24411pt x 33.9733pt.
 
 
-[13 <./images/deep_dynamics.png> <./images/physiscs_embedded_neural_network.png>])
+LaTeX Warning: Citation 'lit_trans_lstm' on page 14 undefined on input line 286.
+
+
+LaTeX Warning: Citation 'lit_trans_lstm' on page 14 undefined on input line 286.
+
+)
 
 [14 <./images/Transformer Encoder.png>]
 \openout2 = `Chapters/2_development_environment.aux'.
 
  (Chapters/2_development_environment.tex
 Chapter 2.
-<images/sensors.pdf, id=497, 524.96124pt x 358.33875pt>
-File: images/sensors.pdf Graphic file (type pdf)
-<use images/sensors.pdf>
-Package pdftex.def Info: images/sensors.pdf  used on input line 41.
-(pdftex.def)             Requested size: 455.24411pt x 310.76253pt.
 
 
 [15
@@ -917,19 +1077,25 @@ Package pdftex.def Info: images/sensors.pdf  used on input line 41.
 
 
 ]
+<images/sensors.pdf, id=452, 524.96124pt x 358.33875pt>
+File: images/sensors.pdf Graphic file (type pdf)
+<use images/sensors.pdf>
+Package pdftex.def Info: images/sensors.pdf  used on input line 42.
+(pdftex.def)             Requested size: 455.24411pt x 310.76253pt.
+
 
 [16 <./images/sensors.pdf>]
-Overfull \hbox (2.98114pt too wide) in paragraph at lines 82--83
+Overfull \hbox (2.98114pt too wide) in paragraph at lines 83--84
 \T1/cmr/m/n/12 mea-sure-ment data was split into three dif-fer-ent sets. The train-ing set con-tains 31 measeure-
  []
 
 
 
 [17]
-<images/Vehicle speed estimator.pdf, id=539, 828.09375pt x 338.26375pt>
+<images/Vehicle speed estimator.pdf, id=487, 828.09375pt x 338.26375pt>
 File: images/Vehicle speed estimator.pdf Graphic file (type pdf)
 <use images/Vehicle speed estimator.pdf>
-Package pdftex.def Info: images/Vehicle speed estimator.pdf  used on input line 101.
+Package pdftex.def Info: images/Vehicle speed estimator.pdf  used on input line 102.
 (pdftex.def)             Requested size: 455.24411pt x 185.96304pt.
 
 
@@ -950,12 +1116,12 @@ Chapter 3.
 
 
 ]
-<images/feedforward vs recurrent.pdf, id=707, 556.0775pt x 238.8925pt>
+<images/feedforward vs recurrent.pdf, id=657, 556.0775pt x 238.8925pt>
 File: images/feedforward vs recurrent.pdf Graphic file (type pdf)
 <use images/feedforward vs recurrent.pdf>
 Package pdftex.def Info: images/feedforward vs recurrent.pdf  used on input line 35.
 (pdftex.def)             Requested size: 273.14923pt x 117.34631pt.
-<images/rnn_sequence.pdf, id=709, 1903.11pt x 624.17192pt>
+<images/rnn_sequence.pdf, id=659, 1903.11pt x 624.17192pt>
 File: images/rnn_sequence.pdf Graphic file (type pdf)
 <use images/rnn_sequence.pdf>
 Package pdftex.def Info: images/rnn_sequence.pdf  used on input line 46.
@@ -967,7 +1133,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 [22 <./images/feedforward vs recurrent.pdf>]
-<images/rnn_unit.pdf, id=804, 1090.0725pt x 634.62094pt>
+<images/rnn_unit.pdf, id=754, 1090.0725pt x 634.62094pt>
 File: images/rnn_unit.pdf Graphic file (type pdf)
 <use images/rnn_unit.pdf>
 Package pdftex.def Info: images/rnn_unit.pdf  used on input line 64.
@@ -977,7 +1143,7 @@ Package pdftex.def Info: images/rnn_unit.pdf  used on input line 64.
 [23 <./images/rnn_sequence.pdf> <./images/rnn_unit.pdf>]
 
 [24]
-<images/rnn_2layers.pdf, id=888, 560.0925pt x 738.59943pt>
+<images/rnn_2layers.pdf, id=838, 560.0925pt x 738.59943pt>
 File: images/rnn_2layers.pdf Graphic file (type pdf)
 <use images/rnn_2layers.pdf>
 Package pdftex.def Info: images/rnn_2layers.pdf  used on input line 132.
@@ -989,7 +1155,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 [25]
-Overfull \hbox (2.76826pt too wide) in paragraph at lines 165--214
+Overfull \hbox (2.76826pt too wide) in paragraph at lines 163--212
  [][] 
  []
 
@@ -1001,72 +1167,119 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [26 <./images/rnn_2layers.pdf>]
 
 [27]
-<images/lstm_sequence.pdf, id=915, 1903.11pt x 624.17192pt>
-File: images/lstm_sequence.pdf Graphic file (type pdf)
-<use images/lstm_sequence.pdf>
-Package pdftex.def Info: images/lstm_sequence.pdf  used on input line 228.
-(pdftex.def)             Requested size: 455.24411pt x 149.30907pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 
 
 [28
 
- <./images/lstm_sequence.pdf>]
-<images/lstm_unit.pdf, id=926, 1601.26233pt x 869.40807pt>
-File: images/lstm_unit.pdf Graphic file (type pdf)
-<use images/lstm_unit.pdf>
-Package pdftex.def Info: images/lstm_unit.pdf  used on input line 254.
-(pdftex.def)             Requested size: 455.24411pt x 247.17363pt.
+]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-[29 <./images/lstm_unit.pdf>]
 
-[30]
-<images/gru_sequence.pdf, id=959, 1903.11pt x 624.17192pt>
-File: images/gru_sequence.pdf Graphic file (type pdf)
-<use images/gru_sequence.pdf>
-Package pdftex.def Info: images/gru_sequence.pdf  used on input line 318.
+[29]
+<images/lstm_sequence.pdf, id=884, 1903.11pt x 624.17192pt>
+File: images/lstm_sequence.pdf Graphic file (type pdf)
+<use images/lstm_sequence.pdf>
+Package pdftex.def Info: images/lstm_sequence.pdf  used on input line 345.
 (pdftex.def)             Requested size: 455.24411pt x 149.30907pt.
 
 
-[31 <./images/gru_sequence.pdf>]
-<images/gru_unit.pdf, id=969, 1745.07967pt x 922.88791pt>
-File: images/gru_unit.pdf Graphic file (type pdf)
-<use images/gru_unit.pdf>
-Package pdftex.def Info: images/gru_unit.pdf  used on input line 343.
-(pdftex.def)             Requested size: 455.24411pt x 240.74788pt.
+[30 <./images/lstm_sequence.pdf>]
+<images/lstm_unit.pdf, id=893, 1601.26233pt x 869.40807pt>
+File: images/lstm_unit.pdf Graphic file (type pdf)
+<use images/lstm_unit.pdf>
+Package pdftex.def Info: images/lstm_unit.pdf  used on input line 371.
+(pdftex.def)             Requested size: 455.24411pt x 247.17363pt.
 
 
-[32 <./images/gru_unit.pdf>]
-<images/tcn_dilated_conv.pdf, id=988, 1157.04266pt x 581.2917pt>
-File: images/tcn_dilated_conv.pdf Graphic file (type pdf)
-<use images/tcn_dilated_conv.pdf>
-Package pdftex.def Info: images/tcn_dilated_conv.pdf  used on input line 396.
-(pdftex.def)             Requested size: 409.71692pt x 205.83224pt.
+[31 <./images/lstm_unit.pdf>]
 
+[32]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
 [33]
+<images/gru_sequence.pdf, id=939, 1903.11pt x 624.17192pt>
+File: images/gru_sequence.pdf Graphic file (type pdf)
+<use images/gru_sequence.pdf>
+Package pdftex.def Info: images/gru_sequence.pdf  used on input line 523.
+(pdftex.def)             Requested size: 455.24411pt x 149.30907pt.
 
-[34 <./images/tcn_dilated_conv.pdf>]
-<images/tcn_residual_block.pdf, id=1008, 579.60541pt x 669.22017pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
+[34]
+<images/gru_unit.pdf, id=948, 1745.07967pt x 922.88791pt>
+File: images/gru_unit.pdf Graphic file (type pdf)
+<use images/gru_unit.pdf>
+Package pdftex.def Info: images/gru_unit.pdf  used on input line 548.
+(pdftex.def)             Requested size: 455.24411pt x 240.74788pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
+[35 <./images/gru_sequence.pdf>]
+
+[36 <./images/gru_unit.pdf>]
+Overfull \hbox (9.7257pt too wide) in paragraph at lines 590--591
+\T1/cmr/m/n/12 The code us-ing for train-ing and val-i-dat-ing can be found at $\T1/cmtt/m/n/12 AI _ training / 3 _ code / training _
+ []
+
+
+
+[37]
+
+[38]
+<images/tcn_dilated_conv.pdf, id=995, 1157.04266pt x 581.2917pt>
+File: images/tcn_dilated_conv.pdf Graphic file (type pdf)
+<use images/tcn_dilated_conv.pdf>
+Package pdftex.def Info: images/tcn_dilated_conv.pdf  used on input line 693.
+(pdftex.def)             Requested size: 409.71692pt x 205.83224pt.
+
+
+[39 <./images/tcn_dilated_conv.pdf>]
+<images/tcn_residual_block.pdf, id=1005, 579.60541pt x 669.22017pt>
 File: images/tcn_residual_block.pdf Graphic file (type pdf)
 <use images/tcn_residual_block.pdf>
-Package pdftex.def Info: images/tcn_residual_block.pdf  used on input line 439.
+Package pdftex.def Info: images/tcn_residual_block.pdf  used on input line 736.
 (pdftex.def)             Requested size: 182.09486pt x 210.24384pt.
 
 
-[35 <./images/tcn_residual_block.pdf>]
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-[36]
 
-[37]
-<images/transformer_encoder_block.pdf, id=1044, 1300.86pt x 871.8171pt>
+
+[40]
+
+[41 <./images/tcn_residual_block.pdf>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
+[42]
+
+LaTeX Warning: Citation 'Vaswani2017AttentionIA' on page 43 undefined on input line 892.
+
+
+
+[43]
+
+[44]
+<images/transformer_encoder_block.pdf, id=1058, 1300.86pt x 871.8171pt>
 File: images/transformer_encoder_block.pdf Graphic file (type pdf)
 <use images/transformer_encoder_block.pdf>
-Package pdftex.def Info: images/transformer_encoder_block.pdf  used on input line 516.
+Package pdftex.def Info: images/transformer_encoder_block.pdf  used on input line 941.
 (pdftex.def)             Requested size: 318.66948pt x 213.5638pt.
 
 
@@ -1074,53 +1287,58 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[38])
+[45]
 
-[39 <./images/transformer_encoder_block.pdf>]
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
+[46 <./images/transformer_encoder_block.pdf>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
+[47]
+
+LaTeX Warning: Reference `tab:sequential_models_comparison' on page 48 undefined on input line 1077.
+
+)
+
+[48]
 \openout2 = `Chapters/4_conventional_estimation_with_ai.aux'.
 
  (Chapters/4_conventional_estimation_with_ai.tex
 Chapter 4.
 
 
-[40
+[49
 
 
 
 
 ]
 
-[41]
+[50]
 
-[42]
+[51]
 
-[43]
+[52]
 
-[44])
+[53]
 
-[45]
+[54])
+
+[55]
 \openout2 = `Chapters/5_real_time_implementation.aux'.
 
 
 No file Chapters/5_real_time_implementation.tex.
-\openout2 = `Chapter/appendix.aux'.
+\openout2 = `Chapters/6_summary.aux'.
 
-No file Chapter/appendix.tex.
+(Chapters/6_summary.tex)
 
-Overfull \hbox (21.56143pt too wide) in paragraph at lines 82--82
-[]\T1/cmr/m/n/12 The Ed-i-tors of En-cy-clopae-dia Bri-tan-nica. \T1/cmr/m/it/12 speedome-ter\T1/cmr/m/n/12 . \T1/cmr/m/sc/12 url\T1/cmr/m/n/12 : []$\T1/cmtt/m/n/12 https : / / www . britannica .
- []
-
-
-Overfull \hbox (17.38272pt too wide) in paragraph at lines 82--82
-[]\T1/cmr/m/it/12 Math frames\T1/cmr/m/n/12 . \T1/cmr/m/sc/12 url\T1/cmr/m/n/12 : []$\T1/cmtt/m/n/12 https : / / www . vectornav . com / resources / inertial -[] navigation -[]
- []
-
-
-
-[46
-
-
+[56
 
 
 
@@ -1130,7 +1348,40 @@ Overfull \hbox (17.38272pt too wide) in paragraph at lines 82--82
 
 ]
 
-[47] (main.lof
+[57]
+\openout2 = `Chapter/appendix.aux'.
+
+
+No file Chapter/appendix.tex.
+
+LaTeX Warning: Empty bibliography on input line 83.
+
+(main.lof
+Overfull \hbox (39.27556pt too wide) in paragraph at lines 5--5
+ [][] [][]\T1/cmr/m/n/12 Speedometer patented by Joseph W Jones in 1904 [[]][] []  
+ []
+
+
+Overfull \hbox (29.40834pt too wide) in paragraph at lines 6--6
+ [][] [][]\T1/cmr/m/n/12 Passive (left) and ac-tive (right) wheel speed sen-sors from [[]][] []  
+ []
+
+
+Overfull \hbox (6.44589pt too wide) in paragraph at lines 8--8
+ [][] [][]\T1/cmr/m/n/12 Simple al-go-rithm for es-ti-mat-ing ve-hi-cle speed form [[]][] []  
+ []
+
+
+Overfull \hbox (32.659pt too wide) in paragraph at lines 10--10
+ [][] [][]\T1/cmr/m/n/12 Extended Kalman fil-ter for ve-hi-cle speed es-ti-ma-tion from [[]][] []  
+ []
+
+
+Overfull \hbox (180.76305pt too wide) in paragraph at lines 13--13
+ [][] [][]\T1/cmr/m/n/12 Physics em-bed-ded neu-ral net-work for state es-ti-ma-tion from [[]][] []  
+ []
+
+
 Overfull \hbox (10.19926pt too wide) in paragraph at lines 29--29
  [][] [][]\T1/cmr/m/n/12 a) Trans-fomer en-coder block with re-gres-sion head b) Multi-head self-attention 
  []
@@ -1141,59 +1392,75 @@ Overfull \hbox (10.19926pt too wide) in paragraph at lines 29--29
 
 
 
-[48
+[58
 
-] (main.lot)
+
+
+
+
+
+] (main.lot
+
+[59
+
+])
 \tf@lot=\write8
 \openout8 = `main.lot'.
 
 
 
-[49
-
-]
+[60]
 Appendix A.
 
 
-[50
+[61
 
 ]
 Appendix B.
 
-LaTeX Warning: Float too large for page by 293.0155pt on input line 164.
+LaTeX Warning: Float too large for page by 293.0155pt on input line 166.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[51
+[62
 
 ]
 
-[52] (main.aux (Chapters/1_introduction.aux) (Chapters/2_development_environment.aux) (Chapters/3_direct_estimation.aux) (Chapters/4_conventional_estimation_with_ai.aux) (Chapters/5_real_time_implementation.aux) (Chapter/appendix.aux))
+[63] (main.aux (Chapters/1_introduction.aux) (Chapters/2_development_environment.aux) (Chapters/3_direct_estimation.aux) (Chapters/4_conventional_estimation_with_ai.aux) (Chapters/5_real_time_implementation.aux) (Chapters/6_summary.aux) (Chapter/appendix.aux))
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 4C158CBA8C7D7E8712F59A962CF6DDEB;7401.
+(rerunfilecheck)             Checksum: 89C505777934FEF05014EE2767AE74FD;7482.
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                main
+(biblatex)                and rerun LaTeX afterwards.
+
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22864 strings out of 468130
- 412135 string characters out of 5425309
- 1289470 words of memory out of 5000000
- 50909 multiletter control sequences out of 15000+600000
- 647059 words of font info for 85 fonts, out of 8000000 for 9000
+ 22850 strings out of 468130
+ 410573 string characters out of 5425309
+ 1293430 words of memory out of 5000000
+ 50868 multiletter control sequences out of 15000+600000
+ 646384 words of font info for 84 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 67i,13n,77p,1482b,2955s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\eccc1200.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2074.pk><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (55 pages, 5456598 bytes).
+ 67i,13n,77p,1532b,2916s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2074.pk><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (66 pages, 5475448 bytes).
 PDF statistics:
- 1771 PDF objects out of 2073 (max. 8388607)
- 251 named destinations out of 1000 (max. 500000)
- 461 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1774 PDF objects out of 2073 (max. 8388607)
+ 272 named destinations out of 1000 (max. 500000)
+ 469 words of extra memory for PDF output out of 10000 (max. 10000000)
 

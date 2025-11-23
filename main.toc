@@ -17,41 +17,42 @@
 \contentsline {chapter}{\numberline {2}Development environment}{15}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Available sensor data}{15}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Acquiring measurement data for development and testing}{17}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Ways to use AI to estimate vehicle speed}{17}{section.2.3}%
+\contentsline {section}{\numberline {2.3}Ways to use AI to estimate vehicle speed}{18}{section.2.3}%
 \contentsline {subsection}{\numberline {2.3.1}Direct estimation}{18}{subsection.2.3.1}%
 \contentsline {subsection}{\numberline {2.3.2}Combination of existing estimators with AI model}{19}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Advantages and disadvantages of AI application}{19}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.3}Advantages and disadvantages of AI application}{20}{subsection.2.3.3}%
 \contentsline {chapter}{\numberline {3}Direct estimation with AI algorithms}{21}{chapter.3}%
 \contentsline {section}{\numberline {3.1}General development}{21}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Recurrent Neural Network - RNN}{22}{section.3.2}%
 \contentsline {subsection}{\numberline {3.2.1}Simple RNN}{22}{subsection.3.2.1}%
 \contentsline {subsubsection}{Theoretical background}{22}{subsection.3.2.1}%
 \contentsline {subsubsection}{Implementation and results}{25}{equation.3.7}%
-\contentsline {subsection}{\numberline {3.2.2}Long Short-Term Memory - LSTM}{28}{subsection.3.2.2}%
-\contentsline {subsubsection}{Theoretical background}{28}{subsection.3.2.2}%
-\contentsline {subsubsection}{Implementation and results}{31}{equation.3.14}%
-\contentsline {subsection}{\numberline {3.2.3}Gated Recurrent Unit - GRU}{31}{subsection.3.2.3}%
-\contentsline {subsubsection}{Theoretical background}{31}{subsection.3.2.3}%
-\contentsline {subsubsection}{Implementation and results}{33}{equation.3.19}%
-\contentsline {section}{\numberline {3.3}Temporal Convolutional Networks - TCN}{33}{section.3.3}%
-\contentsline {subsubsection}{Theoretical background}{33}{section.3.3}%
-\contentsline {subsubsection}{Implementation and results}{36}{figure.caption.30}%
-\contentsline {section}{\numberline {3.4}Transformer}{36}{section.3.4}%
-\contentsline {subsubsection}{Theoretical background}{36}{section.3.4}%
-\contentsline {subsubsection}{Implementation and results}{39}{figure.caption.31}%
-\contentsline {section}{\numberline {3.5}Summary and comparison of the sequential models}{39}{section.3.5}%
-\contentsline {chapter}{\numberline {4}AI aided estimation}{40}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Best wheel based speed estimation}{40}{section.4.1}%
-\contentsline {subsubsection}{Governing equations}{40}{section.4.1}%
-\contentsline {subsubsection}{Implementation and results}{42}{equation.4.5}%
-\contentsline {section}{\numberline {4.2}Model based speed estimation}{42}{section.4.2}%
-\contentsline {subsubsection}{Governing equations}{42}{section.4.2}%
-\contentsline {subsubsection}{Implementation and results}{44}{equation.4.19}%
-\contentsline {section}{\numberline {4.3}Extended Kalman Filter based estimation}{44}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}EKF theory}{44}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}EKF implementation}{45}{subsection.4.3.2}%
-\contentsline {subsubsection}{EKF with best wheel based speed estimation}{45}{subsection.4.3.2}%
-\contentsline {subsubsection}{EKF with AI based speed estimation}{45}{subsection.4.3.2}%
-\contentsline {section}{\numberline {4.4}Real-time application}{45}{section.4.4}%
-\contentsline {chapter}{\numberline {A}Appendix Title}{50}{appendix.A}%
-\contentsline {chapter}{\numberline {B}Appendix Title}{51}{appendix.B}%
+\contentsline {subsection}{\numberline {3.2.2}Long Short-Term Memory - LSTM}{30}{subsection.3.2.2}%
+\contentsline {subsubsection}{Theoretical background}{30}{subsection.3.2.2}%
+\contentsline {subsubsection}{Implementation and results}{33}{equation.3.15}%
+\contentsline {subsection}{\numberline {3.2.3}Gated Recurrent Unit - GRU}{34}{subsection.3.2.3}%
+\contentsline {subsubsection}{Theoretical background}{34}{subsection.3.2.3}%
+\contentsline {subsubsection}{Implementation and results}{37}{equation.3.20}%
+\contentsline {section}{\numberline {3.3}Temporal Convolutional Networks - TCN}{38}{section.3.3}%
+\contentsline {subsubsection}{Theoretical background}{38}{section.3.3}%
+\contentsline {subsubsection}{Implementation and results}{41}{figure.caption.43}%
+\contentsline {section}{\numberline {3.4}Transformer}{43}{section.3.4}%
+\contentsline {subsubsection}{Theoretical background}{43}{section.3.4}%
+\contentsline {subsubsection}{Implementation and results}{46}{figure.caption.49}%
+\contentsline {section}{\numberline {3.5}Summary and comparison of the sequential models}{48}{section.3.5}%
+\contentsline {chapter}{\numberline {4}AI aided estimation}{49}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Best wheel based speed estimation}{49}{section.4.1}%
+\contentsline {subsubsection}{Governing equations}{49}{section.4.1}%
+\contentsline {subsubsection}{Implementation and results}{51}{equation.4.5}%
+\contentsline {section}{\numberline {4.2}Model based speed estimation}{51}{section.4.2}%
+\contentsline {subsubsection}{Governing equations}{51}{section.4.2}%
+\contentsline {subsubsection}{Implementation and results}{53}{equation.4.19}%
+\contentsline {section}{\numberline {4.3}Extended Kalman Filter based estimation}{54}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}EKF theory}{54}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}EKF implementation}{55}{subsection.4.3.2}%
+\contentsline {subsubsection}{EKF with best wheel based speed estimation}{55}{subsection.4.3.2}%
+\contentsline {subsubsection}{EKF with AI based speed estimation}{55}{subsection.4.3.2}%
+\contentsline {section}{\numberline {4.4}Real-time application}{55}{section.4.4}%
+\contentsline {chapter}{Summary}{56}{chapter*.58}%
+\contentsline {chapter}{\numberline {A}Appendix Title}{61}{appendix.A}%
+\contentsline {chapter}{\numberline {B}Appendix Title}{62}{appendix.B}%

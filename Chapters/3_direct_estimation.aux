@@ -20,52 +20,98 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces 2-layer RNN architecture}}{26}{figure.caption.22}\protected@file@percent }
 \newlabel{fig:rnn_2layer}{{3.4}{26}{2-layer RNN architecture}{figure.caption.22}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Hyperparameter ranges for RNN architecture search}}{26}{table.caption.23}\protected@file@percent }
-\newlabel{tab:rnn_hyperparameters}{{3.1}{26}{Hyperparameter ranges for RNN architecture search}{table.caption.23}{}}
+\newlabel{tab:rnn_hyperparams_1}{{3.1}{26}{Hyperparameter ranges for RNN architecture search}{table.caption.23}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces The set of sensor measurements used as inputs}}{27}{table.caption.24}\protected@file@percent }
 \newlabel{tab:reduced_sensor_table}{{3.2}{27}{The set of sensor measurements used as inputs}{table.caption.24}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Long Short-Term Memory - LSTM}{28}{subsection.3.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Theoretical background}{28}{subsection.3.2.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces LSTM sequence unfolded in time}}{28}{figure.caption.25}\protected@file@percent }
-\newlabel{fig:lstm_sequence}{{3.5}{28}{LSTM sequence unfolded in time}{figure.caption.25}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces LSTM unit with the gating mechanisms}}{29}{figure.caption.26}\protected@file@percent }
-\newlabel{fig:lstm_unit}{{3.6}{29}{LSTM unit with the gating mechanisms}{figure.caption.26}{}}
-\newlabel{eq:lstm_forget_gate}{{3.8}{29}{Theoretical background}{equation.3.8}{}}
-\newlabel{eq:lstm_input_gate}{{3.9}{30}{Theoretical background}{equation.3.9}{}}
-\newlabel{eq:lstm_can_cell_state}{{3.10}{30}{Theoretical background}{equation.3.10}{}}
-\newlabel{eq:lstm_new_cell_state}{{3.11}{30}{Theoretical background}{equation.3.11}{}}
-\newlabel{eq:lstm_output_gate}{{3.12}{30}{Theoretical background}{equation.3.12}{}}
-\newlabel{eq:lstm_new_hidden_state}{{3.13}{30}{Theoretical background}{equation.3.13}{}}
-\newlabel{eq:lstm_output}{{3.14}{30}{Theoretical background}{equation.3.14}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Implementation and results}{31}{equation.3.14}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Gated Recurrent Unit - GRU}{31}{subsection.3.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Theoretical background}{31}{subsection.3.2.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces GRU sequence unfolded in time}}{31}{figure.caption.27}\protected@file@percent }
-\newlabel{fig:gru_sequence}{{3.7}{31}{GRU sequence unfolded in time}{figure.caption.27}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces GRU unit with the gating mechanisms}}{32}{figure.caption.28}\protected@file@percent }
-\newlabel{fig:gru_unit}{{3.8}{32}{GRU unit with the gating mechanisms}{figure.caption.28}{}}
-\newlabel{eq:gru_reset_gate}{{3.15}{32}{Theoretical background}{equation.3.15}{}}
-\newlabel{eq:gru_update_gate}{{3.16}{32}{Theoretical background}{equation.3.16}{}}
-\newlabel{eq:gru_can_hidden_state}{{3.17}{33}{Theoretical background}{equation.3.17}{}}
-\newlabel{eq:gru_new_hidden_state}{{3.18}{33}{Theoretical background}{equation.3.18}{}}
-\newlabel{eq:gru_output}{{3.19}{33}{Theoretical background}{equation.3.19}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Implementation and results}{33}{equation.3.19}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.3}Temporal Convolutional Networks - TCN}{33}{section.3.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Theoretical background}{33}{section.3.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.9}{\ignorespaces Dilated causal convolution}}{34}{figure.caption.29}\protected@file@percent }
-\newlabel{fig:tcn_dilated_conv}{{3.9}{34}{Dilated causal convolution}{figure.caption.29}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.10}{\ignorespaces TCN residual block with two dilated causal convolutional layers}}{35}{figure.caption.30}\protected@file@percent }
-\newlabel{fig:tcn_residual_block}{{3.10}{35}{TCN residual block with two dilated causal convolutional layers}{figure.caption.30}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Implementation and results}{36}{figure.caption.30}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.4}Transformer}{36}{section.3.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Theoretical background}{36}{section.3.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.11}{\ignorespaces a) Transfomer encoder block with regression head b) Multi-head self-attention mechanism}}{39}{figure.caption.31}\protected@file@percent }
-\newlabel{fig:transformer_encoder_block}{{3.11}{39}{a) Transfomer encoder block with regression head b) Multi-head self-attention mechanism}{figure.caption.31}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Implementation and results}{39}{figure.caption.31}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.5}Summary and comparison of the sequential models}{39}{section.3.5}\protected@file@percent }
-\newlabel{sec:ai_summary}{{3.5}{39}{Summary and comparison of the sequential models}{section.3.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.3}{\ignorespaces Results of the best performing RNN architecture on the test dataset}}{28}{table.caption.25}\protected@file@percent }
+\newlabel{tab:rnn_best_models_1}{{3.3}{28}{Results of the best performing RNN architecture on the test dataset}{table.caption.25}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.4}{\ignorespaces Performance metrics of the best performing RNN architectures on the test dataset}}{29}{table.caption.26}\protected@file@percent }
+\newlabel{tab:rnn_best_models_1_metrics}{{3.4}{29}{Performance metrics of the best performing RNN architectures on the test dataset}{table.caption.26}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.5}{\ignorespaces Batch 2: Hyperparameter ranges for RNN architecture search}}{29}{table.caption.27}\protected@file@percent }
+\newlabel{tab:rnn_hyperparams_2}{{3.5}{29}{Batch 2: Hyperparameter ranges for RNN architecture search}{table.caption.27}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.6}{\ignorespaces Results of the best performing RNN architecture on the test dataset after finetuning}}{29}{table.caption.28}\protected@file@percent }
+\newlabel{tab:rnn_best_models_2}{{3.6}{29}{Results of the best performing RNN architecture on the test dataset after finetuning}{table.caption.28}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.7}{\ignorespaces Performance metrics of the best performing RNN architecture< on the test dataset after finetuning}}{30}{table.caption.29}\protected@file@percent }
+\newlabel{tab:rnn_best_models_2_metrics}{{3.7}{30}{Performance metrics of the best performing RNN architecture< on the test dataset after finetuning}{table.caption.29}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Long Short-Term Memory - LSTM}{30}{subsection.3.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Theoretical background}{30}{subsection.3.2.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces LSTM sequence unfolded in time}}{30}{figure.caption.30}\protected@file@percent }
+\newlabel{fig:lstm_sequence}{{3.5}{30}{LSTM sequence unfolded in time}{figure.caption.30}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces LSTM unit with the gating mechanisms}}{31}{figure.caption.31}\protected@file@percent }
+\newlabel{fig:lstm_unit}{{3.6}{31}{LSTM unit with the gating mechanisms}{figure.caption.31}{}}
+\newlabel{eq:lstm_forget_gate}{{3.9}{31}{Theoretical background}{equation.3.9}{}}
+\newlabel{eq:lstm_input_gate}{{3.10}{32}{Theoretical background}{equation.3.10}{}}
+\newlabel{eq:lstm_can_cell_state}{{3.11}{32}{Theoretical background}{equation.3.11}{}}
+\newlabel{eq:lstm_new_cell_state}{{3.12}{32}{Theoretical background}{equation.3.12}{}}
+\newlabel{eq:lstm_output_gate}{{3.13}{32}{Theoretical background}{equation.3.13}{}}
+\newlabel{eq:lstm_new_hidden_state}{{3.14}{32}{Theoretical background}{equation.3.14}{}}
+\newlabel{eq:lstm_output}{{3.15}{32}{Theoretical background}{equation.3.15}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Implementation and results}{33}{equation.3.15}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3.8}{\ignorespaces Results of the best performing LSTM architecture on the test dataset}}{33}{table.caption.32}\protected@file@percent }
+\newlabel{tab:lstm_best_models_1}{{3.8}{33}{Results of the best performing LSTM architecture on the test dataset}{table.caption.32}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.9}{\ignorespaces Performance metrics of the best performing LSTM architectures on the test dataset}}{33}{table.caption.33}\protected@file@percent }
+\newlabel{tab:lstm_best_models_1_metrics}{{3.9}{33}{Performance metrics of the best performing LSTM architectures on the test dataset}{table.caption.33}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.10}{\ignorespaces Batch 2: Hyperparameter ranges for LSTM architecture search}}{34}{table.caption.34}\protected@file@percent }
+\newlabel{tab:lstm_hyperparams_2}{{3.10}{34}{Batch 2: Hyperparameter ranges for LSTM architecture search}{table.caption.34}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.11}{\ignorespaces Performance metrics of the best performing LSTM architecture from the second batch on the test dataset}}{34}{table.caption.35}\protected@file@percent }
+\newlabel{tab:lstm_best_model_2_metrics}{{3.11}{34}{Performance metrics of the best performing LSTM architecture from the second batch on the test dataset}{table.caption.35}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Gated Recurrent Unit - GRU}{34}{subsection.3.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Theoretical background}{34}{subsection.3.2.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces GRU sequence unfolded in time}}{35}{figure.caption.36}\protected@file@percent }
+\newlabel{fig:gru_sequence}{{3.7}{35}{GRU sequence unfolded in time}{figure.caption.36}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces GRU unit with the gating mechanisms}}{36}{figure.caption.37}\protected@file@percent }
+\newlabel{fig:gru_unit}{{3.8}{36}{GRU unit with the gating mechanisms}{figure.caption.37}{}}
+\newlabel{eq:gru_reset_gate}{{3.16}{36}{Theoretical background}{equation.3.16}{}}
+\newlabel{eq:gru_update_gate}{{3.17}{36}{Theoretical background}{equation.3.17}{}}
+\newlabel{eq:gru_can_hidden_state}{{3.18}{36}{Theoretical background}{equation.3.18}{}}
+\newlabel{eq:gru_new_hidden_state}{{3.19}{37}{Theoretical background}{equation.3.19}{}}
+\newlabel{eq:gru_output}{{3.20}{37}{Theoretical background}{equation.3.20}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Implementation and results}{37}{equation.3.20}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3.12}{\ignorespaces Results of the best performing GRU architecture on the test dataset}}{37}{table.caption.38}\protected@file@percent }
+\newlabel{tab:gru_best_models_1}{{3.12}{37}{Results of the best performing GRU architecture on the test dataset}{table.caption.38}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.13}{\ignorespaces Performance metrics of the best performing GRU architectures on the test dataset}}{37}{table.caption.39}\protected@file@percent }
+\newlabel{tab:gru_best_models_1_metrics}{{3.13}{37}{Performance metrics of the best performing GRU architectures on the test dataset}{table.caption.39}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.14}{\ignorespaces Batch 2: Hyperparameter ranges for GRU architecture search}}{38}{table.caption.40}\protected@file@percent }
+\newlabel{tab:gru_hyperparams_2}{{3.14}{38}{Batch 2: Hyperparameter ranges for GRU architecture search}{table.caption.40}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.15}{\ignorespaces Performance metrics of the best performing GRU architecture from the second batch on the test dataset}}{38}{table.caption.41}\protected@file@percent }
+\newlabel{tab:gru_best_model_2_metrics}{{3.15}{38}{Performance metrics of the best performing GRU architecture from the second batch on the test dataset}{table.caption.41}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Temporal Convolutional Networks - TCN}{38}{section.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Theoretical background}{38}{section.3.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.9}{\ignorespaces Dilated causal convolution}}{39}{figure.caption.42}\protected@file@percent }
+\newlabel{fig:tcn_dilated_conv}{{3.9}{39}{Dilated causal convolution}{figure.caption.42}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.10}{\ignorespaces TCN residual block with two dilated causal convolutional layers}}{41}{figure.caption.43}\protected@file@percent }
+\newlabel{fig:tcn_residual_block}{{3.10}{41}{TCN residual block with two dilated causal convolutional layers}{figure.caption.43}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Implementation and results}{41}{figure.caption.43}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3.16}{\ignorespaces Batch 1: Hyperparameter ranges for TCN architecture search}}{41}{table.caption.44}\protected@file@percent }
+\newlabel{tab:tcn_hyperparams_1}{{3.16}{41}{Batch 1: Hyperparameter ranges for TCN architecture search}{table.caption.44}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.17}{\ignorespaces Results of the best performing TCN architecture on the test dataset}}{42}{table.caption.45}\protected@file@percent }
+\newlabel{tab:tcn_best_models_1}{{3.17}{42}{Results of the best performing TCN architecture on the test dataset}{table.caption.45}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.18}{\ignorespaces Performance metrics of the best performing TCN architectures from the first batch on the test dataset}}{42}{table.caption.46}\protected@file@percent }
+\newlabel{tab:tcn_best_model_1_metrics}{{3.18}{42}{Performance metrics of the best performing TCN architectures from the first batch on the test dataset}{table.caption.46}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.19}{\ignorespaces Batch 2: Hyperparameter ranges for TCN architecture search}}{42}{table.caption.47}\protected@file@percent }
+\newlabel{tab:tcn_hyperparams_2}{{3.19}{42}{Batch 2: Hyperparameter ranges for TCN architecture search}{table.caption.47}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.20}{\ignorespaces Performance metrics of the best performing TCN architecture from the second batch on the test dataset}}{43}{table.caption.48}\protected@file@percent }
+\newlabel{tab:tcn_best_model_2_metrics}{{3.20}{43}{Performance metrics of the best performing TCN architecture from the second batch on the test dataset}{table.caption.48}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Transformer}{43}{section.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Theoretical background}{43}{section.3.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.11}{\ignorespaces a) Transfomer encoder block with regression head b) Multi-head self-attention mechanism}}{46}{figure.caption.49}\protected@file@percent }
+\newlabel{fig:transformer_encoder_block}{{3.11}{46}{a) Transfomer encoder block with regression head b) Multi-head self-attention mechanism}{figure.caption.49}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Implementation and results}{46}{figure.caption.49}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3.21}{\ignorespaces Batch 1: Hyperparameter ranges for transformer architecture search}}{46}{table.caption.50}\protected@file@percent }
+\newlabel{tab:transformer_hyperparams_1}{{3.21}{46}{Batch 1: Hyperparameter ranges for transformer architecture search}{table.caption.50}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.22}{\ignorespaces Results of the best performing transformer architecture on the test dataset}}{47}{table.caption.51}\protected@file@percent }
+\newlabel{tab:transformer_best_models_1}{{3.22}{47}{Results of the best performing transformer architecture on the test dataset}{table.caption.51}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.23}{\ignorespaces Performance metrics of the best performing transformer architectures from the first batch on the test dataset}}{47}{table.caption.52}\protected@file@percent }
+\newlabel{tab:transformer_best_model_1_metrics}{{3.23}{47}{Performance metrics of the best performing transformer architectures from the first batch on the test dataset}{table.caption.52}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.24}{\ignorespaces Batch 2: Hyperparameter ranges for transformer architecture search}}{47}{table.caption.53}\protected@file@percent }
+\newlabel{tab:transformer_hyperparams_2}{{3.24}{47}{Batch 2: Hyperparameter ranges for transformer architecture search}{table.caption.53}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.25}{\ignorespaces Performance metrics of the best performing transformer architecture from the second batch on the test dataset}}{48}{table.caption.54}\protected@file@percent }
+\newlabel{tab:transformer_best_model_2_metrics}{{3.25}{48}{Performance metrics of the best performing transformer architecture from the second batch on the test dataset}{table.caption.54}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.5}Summary and comparison of the sequential models}{48}{section.3.5}\protected@file@percent }
+\newlabel{sec:ai_summary}{{3.5}{48}{Summary and comparison of the sequential models}{section.3.5}{}}
 \@setckpt{Chapters/3_direct_estimation}{
-\setcounter{page}{40}
-\setcounter{equation}{34}
+\setcounter{page}{49}
+\setcounter{equation}{35}
 \setcounter{enumi}{8}
 \setcounter{enumii}{0}
 \setcounter{enumiii}{0}
@@ -80,7 +126,7 @@
 \setcounter{paragraph}{0}
 \setcounter{subparagraph}{0}
 \setcounter{figure}{11}
-\setcounter{table}{2}
+\setcounter{table}{25}
 \setcounter{tabx@nest}{0}
 \setcounter{listtotal}{0}
 \setcounter{listcount}{0}
@@ -90,7 +136,7 @@
 \setcounter{citetotal}{0}
 \setcounter{multicitecount}{0}
 \setcounter{multicitetotal}{0}
-\setcounter{instcount}{40}
+\setcounter{instcount}{0}
 \setcounter{maxnames}{3}
 \setcounter{minnames}{1}
 \setcounter{maxitems}{3}

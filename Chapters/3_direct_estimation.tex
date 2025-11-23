@@ -135,7 +135,7 @@ The objective is to find the best performing RNN architecture for estimating the
 \end{figure}
 \FloatBarrier
 
-The initial values for the mentioned hyperparameters can be seen in table in \ref{tab:rnn_hyperparameters}. The values were chosen based on common practices in literature and previous experience with RNN-s. A grid search was performed over the hyperparameter space to find the best combination of values that yield the lowest validation loss. The training was done using the Adam optimizer with a learning rate of 0.001 and a batch size of 128. The models were trained for 100 epochs, and early stopping was implemented to prevent overfitting.
+The initial values for the mentioned hyperparameters can be seen in table in \ref{tab:rnn_hyperparams_1}. The values were chosen based on common practices in literature and previous experience with RNN-s. A grid search was performed over the hyperparameter space to find the best combination of values that yield the lowest validation loss. The training was done using the Adam optimizer with a learning rate of 0.001 and a batch size of 128. The models were trained for 100 epochs, and early stopping was implemented to prevent overfitting.
 \begin{table}[h]
     \centering
     \begin{tabular}{|l|l|}
@@ -152,7 +152,7 @@ The initial values for the mentioned hyperparameters can be seen in table in \re
         \hline
     \end{tabular}
     \caption{Hyperparameter ranges for RNN architecture search}
-    \label{tab:rnn_hyperparameters}
+    \label{tab:rnn_hyperparams_1}
 \end{table}
 
 First, the effect of the number of inputs was examined with the intent of reducing the complexity of the model. The available sensor measurements at each time step can be found in table \ref{tab:sensor_table}. When considering all the available sensor measurements the input vector has a dimension of 23. However, the number of inputs can be reduced to a subset of all the available values when considering only the most relevant ones. Table \ref{tab:reduced_sensor_table} contains the subset of the inputs that was used. Within the table x marks the inputs that were used and - marks the ones that were omitted in the subset.
@@ -206,7 +206,7 @@ First, the effect of the number of inputs was examined with the intent of reduci
         \hline
         Road wheel angle - $rwa_{FM}$ & x & x & - \\
         \hline
-        Road wheel angle - $rwa_{FL}$ & x & - & Rear wheel steering was switched off during the measurement \\
+        Road wheel angle - $rwa_{FL}$ & x & - & Rear wheel steering was switched off during the measurements \\
         \hline
     \end{tabular}
     \caption{The set of sensor measurements used as inputs}
@@ -214,7 +214,124 @@ First, the effect of the number of inputs was examined with the intent of reduci
 \end{table}
 \FloatBarrier
 
-The hidden sizes, the number of layers and the sequence lengths were varied and a permutation of the possible values was tested. The trained models can be seen in table \ref{tab:rnn_created_models_it_1} in the appendix.
+The hidden sizes, the number of layers and the sequence lengths were varied and a permutation of the possible values was tested. Two different input sets were used: one with all the available sensor measurements (23 inputs) and one with the reduced set of sensor measurements (12 inputs). This way the effect of the number of inputs on the performance of the model could be examined.
+
+The chosen performance metrics for evaluating the models and the estimators were the root mean squared error (RMSE) and the mean absolute error (MAE). Apart from that, and absolute maximum error (AMaxE) metric was also calculated to see the worst case performance of the models. Furthermore a percentage within threshold (PWT) metric was also defined to see how many of the estimations were within a certain error threshold. The PWT metric is defined as follows:
+\begin{equation}
+    TBM = \frac{1}{N} \sum_{i=1}^{N} \mathbb{I}(|y_i^d - y_i| < \epsilon) \times 100\%,
+\end{equation}
+where $N$ is the total number of estimations, $y_i$ is the estimated value, ${y}_i^d$ is the desired value, $\epsilon$ is the error threshold (e.g., 1 km/h), and $\mathbb{I}$ is the indicator function that returns 1 if the condition is true and 0 otherwise. Throughout the development two different thresholds were considered: 0.3 km/h and 0.4 km/h. These will be denoted as PWT 0.3 and PWT 0.4 in the following tables. 
+
+After the training and validation procedure all the models were tested on the unseen test dataset. The code using for training and validating can be found at \path{AI_training/3_code/training_RNN.py}. The 2-2 best performing architectures were chosen based on the root mean squared error (RMSE) metric. The 2 best performing architectures with the two input sets can be seen in table \ref{tab:rnn_best_models_1}. The results that can be found in table \ref{tab:rnn_best_models_1_metrics} show that the model with 12 inputs performs slightly better than the one with 23 inputs, indicating that the reduced input set was sufficient for accurate vehicle speed estimation.
+\FloatBarrier
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+          & \textbf{Input ID} & \textbf{Sequence Length} & \textbf{Hidden size} & \textbf{Number of layers} \\
+        \hline \hline
+        1 & 1 & TBD & TBD & TBD \\
+        \hline
+        2 & 1 & TBD & TBD & TBD \\
+        \hline \hline
+        1 & 2 & TBD & TBD & TBD \\
+        \hline
+        2 & 2 & TBD & TBD & TBD \\
+        \hline
+    \end{tabular}
+    \caption{Results of the best performing RNN architecture on the test dataset}
+    \label{tab:rnn_best_models_1}
+\end{table}
+\FloatBarrier
+\FloatBarrier
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+          & \textbf{RMSE [$\frac{km}{h}$]} & \textbf{MAE [$\frac{km}{h}$]} & \textbf{AMaxE [$\frac{km}{h}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
+        \hline \hline
+        1 & TBD & TBD & TBD & TBD & TBD \\
+        \hline
+        2 & TBD & TBD & TBD & TBD & TBD \\
+        \hline \hline
+        1 & TBD & TBD & TBD & TBD & TBD \\
+        \hline
+        2 & TBD & TBD & TBD & TBD & TBD \\
+        \hline
+    \end{tabular}
+    \caption{Performance metrics of the best performing RNN architectures on the test dataset}
+    \label{tab:rnn_best_models_1_metrics}
+\end{table}
+\FloatBarrier
+A design decision from this point on was to continue the development with the reduced input set (12 inputs) as it yielded similar results while having a lower complexity.
+
+After obtaining these results another grid search was performed around the 2 best performing architectures to see if further improvements could be achieved by finetuning the hyperparameters. The hyperparameter ranges for the finetuning can be seen in table \ref{tab:rnn_hyperparams_2}. 
+
+\FloatBarrier
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|c|}
+        \hline
+        \multicolumn{2}{|c|}{\textbf{Around 1st best}} \\
+        \hline
+        \textbf{Hyperparameters} & \textbf{Possible values} \\
+        \hline
+        Number of inputs ($d_x$) & 12 \\
+        \hline
+        Hidden size ($d_h$) &  \\
+        \hline
+        Number of layers &  \\
+        \hline
+        Sequence length &  \\
+        \hline \hline
+        \multicolumn{2}{|c|}{\textbf{Around 2nd best}} \\
+        \hline
+        \textbf{Hyperparameters} & \textbf{Possible values} \\
+        \hline
+        Number of inputs ($d_x$) & 12 \\
+        \hline
+        Hidden size ($d_h$) &  \\
+        \hline
+        Number of layers &  \\
+        \hline
+        Sequence length &  \\
+        \hline
+    \end{tabular}
+    \caption{Batch 2: Hyperparameter ranges for RNN architecture search}
+    \label{tab:rnn_hyperparams_2}
+\end{table}
+\FloatBarrier
+
+Following the new training and validation procedure the best performing architectures were again tested on the unseen test dataset. The results of the best performing architecture can be seen in table \ref{tab:rnn_best_models_2} and \ref{tab:rnn_best_models_2_metrics}. It can be seen that the finetuning of the hyperparameters led to a slight improvement in the performance of the models.
+\FloatBarrier
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+          & \textbf{Input ID} & \textbf{Sequence Length} & \textbf{Hidden size} & \textbf{Number of layers} \\
+        \hline \hline
+        1 & 2 & TBD & TBD & TBD \\
+        \hline
+    \end{tabular}
+    \caption{Results of the best performing RNN architecture on the test dataset after finetuning}
+    \label{tab:rnn_best_models_2}
+\end{table}
+\FloatBarrier
+
+\FloatBarrier
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+          & \textbf{RMSE [$\frac{km}{h}$]} & \textbf{MAE [$\frac{km}{h}$]} & \textbf{AMaxE [$\frac{km}{h}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
+        \hline \hline
+        1 & TBD & TBD & TBD & TBD & TBD \\
+        \hline
+    \end{tabular}
+    \caption{Performance metrics of the best performing RNN architecture< on the test dataset after finetuning}
+    \label{tab:rnn_best_models_2_metrics}
+\end{table}
+\FloatBarrier
 
 \subsection{Long Short-Term Memory - LSTM}
 
@@ -306,6 +423,94 @@ When multiple layers are stacked on top of each other to create a deep LSTM netw
 
 \subsubsection{Implementation and results}
 
+The implementation and training procedure of the LSTM network is similar to the one used for the RNN-s. The same reduced input set (12 inputs) was used here as well. A grid search was performed over the hyperparameter space to find the best combination of values that yield the lowest validation loss. The training was done in a similar manner as with the RNN-s. For the first batch of grid search the hyperparameter ranges are the as in table \ref{tab:rnn_hyperparams_1}.
+
+The results obtained after testing the created models on the same unseen test dataset . The code using for training and validating can be found at \path{AI_training/3_code/training_LSTM.py}. The 2 best performing architectures can be seen in table \ref{tab:lstm_best_models_1}. The results that can be found in table \ref{tab:lstm_best_models_1_metrics} show that the LSTM models outperformed the RNN models, indicating that the LSTM architecture is better suited for capturing the temporal dependencies in the vehicle speed estimation task.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+          & \textbf{Input ID} & \textbf{Sequence Length} & \textbf{Hidden size} & \textbf{Number of layers} \\
+        \hline \hline
+        1 & 2 & TBD & TBD & TBD \\
+        \hline
+        2 & 2 & TBD & TBD & TBD \\
+        \hline
+    \end{tabular}
+    \caption{Results of the best performing LSTM architecture on the test dataset}
+    \label{tab:lstm_best_models_1}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+          & \textbf{RMSE [$\frac{km}{h}$]} & \textbf{MAE [$\frac{km}{h}$]} & \textbf{AMaxE [$\frac{km}{h}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
+        \hline \hline
+        1 & TBD & TBD & TBD & TBD & TBD \\
+        \hline
+        2 & TBD & TBD & TBD & TBD & TBD \\
+        \hline
+    \end{tabular}
+    \caption{Performance metrics of the best performing LSTM architectures on the test dataset}
+    \label{tab:lstm_best_models_1_metrics}
+\end{table}
+
+After evaluating these results another grid search was performed around the 2 best performing architectures to see if further improvements could be achieved by finetuning the hyperparameters. The hyperparameter ranges for the finetuning can be seen in table \ref{tab:lstm_hyperparams_2}.
+
+\FloatBarrier
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|c|}
+        \hline
+        \multicolumn{2}{|c|}{\textbf{Around 1st best}} \\
+        \hline
+        \textbf{Hyperparameters} & \textbf{Possible values} \\
+        \hline
+        Number of inputs ($d_x$) & 12 \\
+        \hline
+        Hidden size ($d_h$) &  \\
+        \hline
+        Number of layers &  \\
+        \hline
+        Sequence length &  \\
+        \hline \hline
+        \multicolumn{2}{|c|}{\textbf{Around 2nd best}} \\
+        \hline
+        \textbf{Hyperparameters} & \textbf{Possible values} \\
+        \hline
+        Number of inputs ($d_x$) & 12 \\
+        \hline
+        Hidden size ($d_h$) &  \\
+        \hline
+        Number of layers &  \\
+        \hline
+        Sequence length &  \\
+        \hline
+    \end{tabular}
+    \caption{Batch 2: Hyperparameter ranges for LSTM architecture search}
+    \label{tab:lstm_hyperparams_2}
+\end{table}
+\FloatBarrier
+
+Following the training and evaluation of the models from the second batch of grid search, the best performing architecture was selected based on the RMSE metric on the test dataset. The results of this best model can be seen in table \ref{tab:lstm_best_model_2_metrics}.
+
+\FloatBarrier
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        \textbf{RMSE [$\frac{km}{h}$]} & \textbf{MAE [$\frac{km}{h}$]} & \textbf{AMaxE [$\frac{km}{h}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
+        \hline \hline
+        TBD & TBD & TBD & TBD & TBD \\
+        \hline
+    \end{tabular}
+    \caption{Performance metrics of the best performing LSTM architecture from the second batch on the test dataset}
+    \label{tab:lstm_best_model_2_metrics}
+\end{table}
+\FloatBarrier
+
 \subsection{Gated Recurrent Unit - GRU}
 
 \subsubsection{Theoretical background}
@@ -380,6 +585,98 @@ The training process of the GRU network is similar to that of the LSTM network, 
 
 \subsubsection{Implementation and results}
 
+The implementation and training procedure of the described GRU network is identical to the one used for the RNN-s and LSTM-s. The same reduced input set (12 inputs) was used. A grid search was performed over the hyperparameters to find the best combination of parameters that yield the best architecture. The training was done in a similar manner as with the RNN-s and LSTM-s. For the first batch of grid search the hyperparameter ranges are the as in table \ref{tab:rnn_hyperparams_1}.
+
+The results obtained after testing the created models on the same unseen test dataset. The code using for training and validating can be found at \path{AI_training/3_code/training_GRU.py}. The 2 best performing architectures can be seen in table \ref{tab:gru_best_models_1}. The results that can be found in table \ref{tab:gru_best_models_1_metrics} show that the GRU models outperformed the RNN models, but were slightly worse than the LSTM models, indicating that the GRU architecture is better suited for capturing the temporal dependencies in the vehicle speed estimation task than RNN-s, but not as good as LSTM-s.
+
+\FloatBarrier
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+          & \textbf{Input ID} & \textbf{Sequence Length} & \textbf{Hidden size} & \textbf{Number of layers} \\
+        \hline \hline
+        1 & 2 & TBD & TBD & TBD \\
+        \hline
+        2 & 2 & TBD & TBD & TBD \\
+        \hline
+    \end{tabular}
+    \caption{Results of the best performing GRU architecture on the test dataset}
+    \label{tab:gru_best_models_1}
+\end{table}
+\FloatBarrier
+
+\FloatBarrier
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+          & \textbf{RMSE [$\frac{km}{h}$]} & \textbf{MAE [$\frac{km}{h}$]} & \textbf{AMaxE [$\frac{km}{h}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
+        \hline \hline
+        1 & TBD & TBD & TBD & TBD & TBD \\
+        \hline
+        2 & TBD & TBD & TBD & TBD & TBD \\
+        \hline
+    \end{tabular}
+    \caption{Performance metrics of the best performing GRU architectures on the test dataset}
+    \label{tab:gru_best_models_1_metrics}
+\end{table}
+\FloatBarrier
+
+After evaluating these results another grid search was performed around the 2 best performing architectures to see if further improvements could be achieved by finetuning the hyperparameters. The hyperparameter ranges for the finetuning can be seen in table \ref{tab:gru_hyperparams_2}.
+
+\FloatBarrier
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|c|}
+        \hline
+        \multicolumn{2}{|c|}{\textbf{Around 1st best}} \\
+        \hline
+        \textbf{Hyperparameters} & \textbf{Possible values} \\
+        \hline
+        Number of inputs ($d_x$) & 12 \\
+        \hline
+        Hidden size ($d_h$) &  \\
+        \hline
+        Number of layers &  \\
+        \hline
+        Sequence length &  \\
+        \hline \hline
+        \multicolumn{2}{|c|}{\textbf{Around 2nd best}} \\
+        \hline
+        \textbf{Hyperparameters} & \textbf{Possible values} \\
+        \hline
+        Number of inputs ($d_x$) & 12 \\
+        \hline
+        Hidden size ($d_h$) &  \\
+        \hline
+        Number of layers &  \\
+        \hline
+        Sequence length &  \\
+        \hline
+    \end{tabular}
+    \caption{Batch 2: Hyperparameter ranges for GRU architecture search}
+    \label{tab:gru_hyperparams_2}
+\end{table}
+\FloatBarrier
+
+The best model obtained from the second batch of grid search was evaluated on the unseen test dataset. The results of this best model can be seen in table \ref{tab:gru_best_model_2_metrics}.
+
+\FloatBarrier
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        \textbf{RMSE [$\frac{km}{h}$]} & \textbf{MAE [$\frac{km}{h}$]} & \textbf{AMaxE [$\frac{km}{h}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
+        \hline \hline
+        TBD & TBD & TBD & TBD & TBD \\
+        \hline
+    \end{tabular}
+    \caption{Performance metrics of the best performing GRU architecture from the second batch on the test dataset}
+    \label{tab:gru_best_model_2_metrics}
+\end{table}
+\FloatBarrier
+
 \section{Temporal Convolutional Networks - TCN}
 
 \subsubsection{Theoretical background}
@@ -447,6 +744,134 @@ These steps build up a single TCN residual block that can be seen on figure \ref
 During the training process, the objective is the same as with the RNN models - to optimize the weight matrices and bias vectors to minimize the defined loss ($\mathcal{L}$) over a dedicated training dataset. The training is porformed just as with a FNN, using backpropagation to calculate the gradients of the loss with respect to the weights and biases, and updating them using an optimizer such as Adam or SGD.
 
 \subsubsection{Implementation and results}
+
+The implementation and training procedure of the TCN network is similar to the on used in the RNN based models. The same reduced input set was used which consists of 12 inputs. A grid search was performed over the parameter space. The parameters that were varied during the grid search are the following: kernel size ($k$), dilation schedule between the layers ($d_1, d_2,...d_n$), channels per layer ($d_h$), number of residual blocks ($L$) sequence length ($L_{seq}$) and convolutions per residual block ($B$). The value ranges for the first batch of the grid search can be seen in table \ref{tab:tcn_hyperparams_1}.
+
+\FloatBarrier
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|c|}
+        \hline
+        \textbf{Hyperparameters} & \textbf{Possible values} \\
+        \hline \hline
+        Number of inputs ($d_x$) & 12 \\
+        \hline
+        Kernel size ($k$) & 3, 4, 5 \\
+        \hline
+        Dilation schedule ($d_{sched}$) & [1, 2, 4, 8], [1, 2, 4, 8, 16], [1, 2, 4, 8, 16, 32] \\
+        \hline
+        Channels per layer ($d_h$) & 64 \\
+        \hline
+        Number of residual blocks ($L$) & 4, 5, 6 \\
+        \hline
+        Convolutions per residual block ($B$) & 2 \\
+        \hline
+        Sequence length ($L_{seq}$) & 50, 100, 150, 200 \\
+        \hline
+    \end{tabular}
+    \caption{Batch 1: Hyperparameter ranges for TCN architecture search}
+    \label{tab:tcn_hyperparams_1}
+\end{table}
+
+After the training and evaluation of the models from the first batch of grid search, the 2 best performing architecture was selected based on the same principle as before. The results of these best models can be seen in table \ref{tab:tcn_best_model_1_metrics}. The code using for training and validating can be found at \path{AI_training/3_code/training_TCN.py}.
+
+\FloatBarrier
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+          & \textbf{$k$} & \textbf{$d_{sched}$} & \textbf{$d_h$} & \textbf{$L$} & \textbf{$L_{seq}$} \\
+        \hline \hline
+        1 & TBD & TBD & TBD & TBD & TBD \\
+        \hline
+        2 & TBD & TBD & TBD & TBD & TBD \\
+        \hline
+    \end{tabular}
+    \caption{Results of the best performing TCN architecture on the test dataset}
+    \label{tab:tcn_best_models_1}
+\end{table}
+\FloatBarrier
+
+\FloatBarrier
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        \textbf{RMSE [$\frac{km}{h}$]} & \textbf{MAE [$\frac{km}{h}$]} & \textbf{AMaxE [$\frac{km}{h}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
+        \hline \hline
+        TBD & TBD & TBD & TBD & TBD \\
+        \hline
+        TBD & TBD & TBD & TBD & TBD \\
+        \hline
+    \end{tabular}
+    \caption{Performance metrics of the best performing TCN architectures from the first batch on the test dataset}
+    \label{tab:tcn_best_model_1_metrics}
+\end{table}
+\FloatBarrier
+
+After evaluating these results another grid search was performed around the 2 best performing architectures to see if further improvements could be achieved by finetuning the hyperparameters. The hyperparameter ranges for the finetuning can be seen in table \ref{tab:tcn_hyperparams_2}.
+
+\FloatBarrier
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|c|}
+        \hline
+        \multicolumn{2}{|c|}{\textbf{Around 1st best}} \\
+        \hline
+        \textbf{Hyperparameters} & \textbf{Possible values} \\
+        \hline
+        Number of inputs ($d_x$) & 12 \\
+        \hline
+        Kernel size ($k$) &  \\
+        \hline
+        Dilation schedule ($d_{sched}$) &  \\
+        \hline
+        Channels per layer ($d_h$) &  \\
+        \hline
+        Number of residual blocks ($L$) &  \\
+        \hline
+        Sequence length ($L_{seq}$) &  \\
+        \hline \hline
+        \multicolumn{2}{|c|}{\textbf{Around 2nd best}} \\
+        \hline
+        \textbf{Hyperparameters} & \textbf{Possible values} \\
+        \hline
+        Number of inputs ($d_x$) & 12 \\
+        \hline
+        Kernel size ($k$) &  \\
+        \hline
+        Dilation schedule ($d_{sched}$) &  \\
+        \hline
+        Channels per layer ($d_h$) &  \\
+        \hline
+        Number of residual blocks ($L$) &  \\
+        \hline
+        Sequence length ($L_{seq}$) &  \\
+        \hline
+    \end{tabular}
+    \caption{Batch 2: Hyperparameter ranges for TCN architecture search}
+    \label{tab:tcn_hyperparams_2}
+\end{table}
+\FloatBarrier
+
+The best model obtained from the second batch of grid search was evaluated on the unseen test dataset. The results of this best model can be seen in table \ref{tab:tcn_best_model_2_metrics}.
+
+\FloatBarrier
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        \textbf{RMSE [$\frac{km}{h}$]} & \textbf{MAE [$\frac{km}{h}$]} & \textbf{AMaxE [$\frac{km}{h}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
+        \hline \hline
+        TBD & TBD & TBD & TBD & TBD \\
+        \hline
+    \end{tabular}
+    \caption{Performance metrics of the best performing TCN architecture from the second batch on the test dataset}
+    \label{tab:tcn_best_model_2_metrics}
+\end{table}
+\FloatBarrier
+
+!! Here I could write that the TCN models performed much better than the rnn based ones !!
 
 \section{Transformer}
 
@@ -521,5 +946,132 @@ The steps of the transformer encoder can be seen on \ref{fig:transformer_encoder
 
 \subsubsection{Implementation and results}
 
+The implementation and training procedure of the transformer encoder is similar to the one used in the previous models. The same reduced input set was used which consists of 12 inputs. A grid search was performed over the parameter space. The parameters that were varied during the grid search are the following: model dimension ($d_m$), feed-forward dimension ($d_{ff}$), number of layers ($L$), number of attention heads ($n_{head}$) and sequence length ($L_{seq}$). The value ranges for the first batch of the grid search can be seen in table \ref{tab:transformer_hyperparams_1}.
+
+\FloatBarrier
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|c|}
+        \hline
+        \textbf{Hyperparameters} & \textbf{Possible values} \\
+        \hline \hline
+        Number of inputs ($d_x$) & 12 \\
+        \hline
+        Model dimension ($d_m$) & 32, 64 \\
+        \hline
+        Feed-forward dimension ($d_{ff}$) & 64, 128, 96 \\
+        \hline
+        Number of layers ($L$) & 2, 3 \\
+        \hline
+        Number of attention heads ($n_{head}$) & 2, 4 \\
+        \hline
+        Sequence length ($L_{seq}$) & 50, 100, 150, 200 \\
+        \hline
+    \end{tabular}
+    \caption{Batch 1: Hyperparameter ranges for transformer architecture search}
+    \label{tab:transformer_hyperparams_1}
+\end{table}
+\FloatBarrier
+
+The results of the best 2 models obtained from the first batch (\ref{tab:transformer_best_models_1}) of grid search can be seen in table \ref{tab:transformer_best_model_1_metrics}. The code using for training and validating can be found at \path{AI_training/3_code/training_transformer.py}.
+
+\FloatBarrier
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+          & \textbf{$d_m$} & \textbf{$d_{ff}$} & \textbf{$L$} & \textbf{$n_{head}$} & \textbf{$L_{seq}$} \\
+        \hline \hline
+        1 & TBD & TBD & TBD & TBD & TBD \\
+        \hline
+        2 & TBD & TBD & TBD & TBD & TBD \\
+        \hline
+    \end{tabular}
+    \caption{Results of the best performing transformer architecture on the test dataset}
+    \label{tab:transformer_best_models_1}
+\end{table}
+\FloatBarrier
+
+\FloatBarrier
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        \textbf{RMSE [$\frac{km}{h}$]} & \textbf{MAE [$\frac{km}{h}$]} & \textbf{AMaxE [$\frac{km}{h}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
+        \hline \hline
+        TBD & TBD & TBD & TBD & TBD \\
+        \hline
+        TBD & TBD & TBD & TBD & TBD \\
+        \hline
+    \end{tabular}
+    \caption{Performance metrics of the best performing transformer architectures from the first batch on the test dataset}
+    \label{tab:transformer_best_model_1_metrics}
+\end{table}
+\FloatBarrier
+
+After evaluating these results another grid search was performed around the 2 best performing architectures to see if further improvements could be achieved by finetuning the hyperparameters. The hyperparameter ranges for the finetuning can be seen in table \ref{tab:transformer_hyperparams_2}.
+
+\FloatBarrier
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|c|}
+        \hline
+        \multicolumn{2}{|c|}{\textbf{Around 1st best}} \\
+        \hline
+        \textbf{Hyperparameters} & \textbf{Possible values} \\
+        \hline
+        Number of inputs ($d_x$) & 12 \\
+        \hline
+        Model dimension ($d_m$) &  \\
+        \hline
+        Feed-forward dimension ($d_{ff}$) &  \\
+        \hline
+        Number of layers ($L$) &  \\
+        \hline
+        Number of attention heads ($n_{head}$) &  \\
+        \hline
+        Sequence length ($L_{seq}$) &  \\
+        \hline \hline
+        \multicolumn{2}{|c|}{\textbf{Around 2nd best}} \\
+        \hline
+        \textbf{Hyperparameters} & \textbf{Possible values} \\
+        \hline
+        Number of inputs ($d_x$) & 12 \\
+        \hline
+        Model dimension ($d_m$) &  \\
+        \hline
+        Feed-forward dimension ($d_{ff}$) &  \\
+        \hline
+        Number of layers ($L$) &  \\
+        \hline
+        Number of attention heads ($n_{head}$) &  \\
+        \hline
+        Sequence length ($L_{seq}$) &  \\
+        \hline
+    \end{tabular}
+    \caption{Batch 2: Hyperparameter ranges for transformer architecture search}
+    \label{tab:transformer_hyperparams_2}
+\end{table}
+\FloatBarrier
+
+The best model obtained from the second batch of grid search was evaluated on the unseen test dataset. The results of this best model can be seen in table \ref{tab:transformer_best_model_2_metrics}.
+
+\FloatBarrier
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        \textbf{RMSE [$\frac{km}{h}$]} & \textbf{MAE [$\frac{km}{h}$]} & \textbf{AMaxE [$\frac{km}{h}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
+        \hline \hline
+        TBD & TBD & TBD & TBD & TBD \\
+        \hline
+    \end{tabular}
+    \caption{Performance metrics of the best performing transformer architecture from the second batch on the test dataset}
+    \label{tab:transformer_best_model_2_metrics}
+\end{table}
+\FloatBarrier  
+
 \section{Summary and comparison of the sequential models}
 \label{sec:ai_summary}
+
+In this section the results of the best performing sequential models are summarized and compared against each other. The results of the best RNN, LSTM, GRU, TCN and transformer models can be seen in table \ref{tab:sequential_models_comparison}.
