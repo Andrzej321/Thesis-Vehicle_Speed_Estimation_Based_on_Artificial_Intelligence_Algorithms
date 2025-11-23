@@ -20,13 +20,13 @@
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Unfolding the architecture of a RNN in time}}{23}{figure.caption.20}%
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Recurrent Unit in the RNN}}{23}{figure.caption.21}%
 \contentsline {figure}{\numberline {3.4}{\ignorespaces 2-layer RNN architecture}}{26}{figure.caption.22}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces LSTM sequence unfolded in time}}{30}{figure.caption.30}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces LSTM unit with the gating mechanisms}}{31}{figure.caption.31}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces GRU sequence unfolded in time}}{35}{figure.caption.36}%
-\contentsline {figure}{\numberline {3.8}{\ignorespaces GRU unit with the gating mechanisms}}{36}{figure.caption.37}%
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Dilated causal convolution}}{39}{figure.caption.42}%
-\contentsline {figure}{\numberline {3.10}{\ignorespaces TCN residual block with two dilated causal convolutional layers}}{41}{figure.caption.43}%
-\contentsline {figure}{\numberline {3.11}{\ignorespaces a) Transfomer encoder block with regression head b) Multi-head self-attention mechanism}}{46}{figure.caption.49}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces LSTM sequence unfolded in time}}{31}{figure.caption.30}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces LSTM unit with the gating mechanisms}}{32}{figure.caption.31}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces GRU sequence unfolded in time}}{36}{figure.caption.36}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces GRU unit with the gating mechanisms}}{37}{figure.caption.37}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Dilated causal convolution}}{40}{figure.caption.43}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces TCN residual block with two dilated causal convolutional layers}}{42}{figure.caption.44}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces a) Transfomer encoder block with regression head b) Multi-head self-attention mechanism}}{47}{figure.caption.50}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
