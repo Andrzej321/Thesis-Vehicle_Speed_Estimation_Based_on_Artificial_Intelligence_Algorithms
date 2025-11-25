@@ -58,13 +58,32 @@ The parameters of the vehicle that were used for the estimation are the followin
         \hline
         \textbf{RMSE [$\frac{km}{h}$]} & \textbf{MAE [$\frac{km}{h}$]} & \textbf{AMaxE [$\frac{km}{h}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
         \hline \hline
-        TBD & TBD & TBD & TBD & TBD \\
+        0.69604	& 0.36960 & 6.41560 & 69.24063 & 73.63348 \\
         \hline
     \end{tabular}
     \caption{Performance metrics of the best wheel based speed estimator on the test dataset}
     \label{tab:best_wheel_estimator_results}
 \end{table}
 \FloatBarrier  
+
+It can be seen that the best wheel based speed estimator provides a decent performance on the test dataset. It is important to note that this esimation method works well under straight line driving conditions with low longitudinal and lateral slip. However, during maneuvering scenarios where the steering wheel angle is not zero or braking is apllied the accuracy falls behind drastically due to the simplifications made in the calculation of the wheel velocities. This can be observed in figure \ref{fig:best_wheel_estimator_example}, where the estimator performs well during straight line driving but shows significant errors during cornering maneuvers.
+
+\FloatBarrier
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/results/best_wheel/best_wheel_i7_31.png}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.49\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/results/best_wheel/best_wheel_i7_8.png}
+  \end{subfigure}
+  \caption{Low longitudinal and lateral slip in straight line driving (left) and high lateral slip during cornering (right)}
+  \label{fig:best_wheel_estimator_example}
+\end{figure}
+\FloatBarrier
 
 \section{Model based speed estimation}
 \label{sec:model_based_estimator}
@@ -162,7 +181,7 @@ The model parameters that were used for the estimation can be seen in table \ref
         \hline
         \textbf{RMSE [$\frac{km}{h}$]} & \textbf{MAE [$\frac{km}{h}$]} & \textbf{AMaxE [$\frac{km}{h}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
         \hline \hline
-        TBD & TBD & TBD & TBD & TBD \\
+        0.30949 & 0.19039 & 2.18090 & 74.22867 & 76.07354 \\
         \hline
     \end{tabular}
     \caption{Performance metrics of the model based speed estimator on the test dataset}
@@ -170,6 +189,26 @@ The model parameters that were used for the estimation can be seen in table \ref
 \end{table}
 \FloatBarrier
 
+The model based speed estimator shows a significant improvement in performance compared to the best wheel based speed estimator. This indicates that the developed vehicle model is able to capture the dynamics of the vehicle more accurately, leading to better speed estimation. However the performance still falls behind the AI based direct estimators from the previous chapter. 
+
+The major downside of this estimation method is that in low speed scenarios (below 5 km/h) the estimated values tend to be less accurate and unable to estimate correctly in near zero situations. This is due to the fact that at low speeds the tire forces are small and the linear tire model used in the estimator does not accurately represent the tire behavior. This can be observed in figure \ref{fig:model_based_estimator_example}, where the estimator shows larger errors during low speeds. However, during higher speed driving scenarios (above 5 km/h) the estimator performs significantly better even being able to estimate much better in situations of steering. It is important to note that this estimation method relies on the linear tire model, which is not accurate under high slip conditions. 
+
+\FloatBarrier
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/results/model_based/model_based_i7_16.png}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.49\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/results/model_based/model_based_i7_48.png}
+  \end{subfigure}
+  \caption{Steer until $a_y$ is reached (left) and sine wave like steering (right)}
+  \label{fig:model_based_estimator_example}
+\end{figure}
+\FloatBarrier
 
 \section{Extended Kalman Filter based estimation}
 
@@ -204,12 +243,52 @@ where $H_k$ is the Jacobian of the measurement function evaluated at the predict
 
 \subsection{EKF implementation}
 
-As mentioned in the prevous section, there are two main components that need to be defined in order to implement the EKF based estimator: the state transition function and the measurement function. The state transition function will be the previously developed model in section \ref{sec:model_based_estimator}, that calculates the vehicle speed derivatives based on the vehicle model and the sensor measurements. The measurement function will be first the best wheel based speed estimator presented in section \ref{sec:best_wheel_estimator}, that provides an estimate of the vehicle speed based on the wheel speeds. Later the best performing AI based direct vehicle speed estimator from section \ref{sec:ai_summary} will be used as the measurement function. 
-
 \subsubsection{EKF with best wheel based speed estimation}
 
+As mentioned in the prevous section, there are two main components that need to be defined in order to implement the EKF based estimator: the state transition function and the measurement function. The state transition function will be the previously developed model in section \ref{sec:model_based_estimator}, that calculates the vehicle speed derivatives based on the vehicle model and the sensor measurements. The measurement function will be first the best wheel based speed estimator presented in section \ref{sec:best_wheel_estimator}, that provides an estimate of the vehicle speed based on the wheel speeds. Later the best performing AI based direct vehicle speed estimator from section \ref{sec:ai_summary} will be used as the measurement function. 
 
+To be able to use the best features of the model based estimator and the best wheel based estimator, the EKF will be set in a way that in low speed scenarion (below 5 km/h) the covariance of the process noise ($Q$) will be set to lower and the covariance of the observation noise to higher values, indicating to trust the measurements more. After passing that limit the covariance value $R$ will be set to lower and $Q$ to higher values in order to trust the model based estimator more. This way the EKF can provide a more accurate estimate in both low speed and high speed scenarios. 
+
+The implemented EKF based estimator achieved a significant improvement in performance compared to both the previously presented best wheel based and model based speed estimators. The results of the evaluation can be seen in table \ref{tab:ekf_best_wheel_results}.
+
+\FloatBarrier
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        \textbf{RMSE [$\frac{m}{s}$]} & \textbf{MAE [$\frac{m}{s}$]} & \textbf{AMaxE [$\frac{m}{s}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
+        \hline \hline
+        0.16694 & 0.07886 & 3.35581 & 94.23076 & 96.01073 \\
+        \hline
+    \end{tabular}
+    \caption{Performance metrics of the EKF based speed estimator with best wheel based measurement function on the test dataset}
+    \label{tab:ekf_best_wheel_results}
+\end{table}
+\FloatBarrier
+
+In order to see the performance improvement of the EKF based estimator compared to the individual estimators, figure \ref{fig:ekf_best_wheel_example} shows an example of the estimation results during a cornering maneuver. It can be seen that the EKF based estimator is able to provide a more accurate estimate by combining the strengths of both the model based and the best wheel based estimators.
+
+\FloatBarrier
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/results/ekf_bw/ekf_bw_i7_16.png}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.49\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/results/ekf_bw/ekf_bw_i7_43.png}
+  \end{subfigure}
+  \caption{Steer until $a_y$ is reached (left) and brake until $a_x$ is reached (right)}
+  \label{fig:model_based_estimator_example}
+\end{figure}
+\FloatBarrier
+
+It can be seen on the second figure that during braking maneuvers the model based state update transition function tends to be less accurate due to the linear tire model. 
 
 \subsubsection{EKF with AI based speed estimation}
+
+
 
 \section{Real-time application}
