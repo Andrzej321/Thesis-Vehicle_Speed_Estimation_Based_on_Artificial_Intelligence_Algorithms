@@ -15,7 +15,7 @@ This thesis explores the development and validation of AI-based models for real-
 
 \section{Defining Vehicle Speed}
 
-The speed of an arbitrary point in space is defined as the magnitude of the velocity vector of that point, that is considered in the inertial reference frame ($\mathcal{R}_{[x_0, y_0, z_0]}$, later denoted as $\mathcal{R}_0$ for simplicity). The velocity vector can be written as the time derivative of the position vector, where the position vector points from the origin of the inertial reference frame to the chosen moving point in space. However, when considering a moving vehicle in the same space, a relatively constrained set of points has to be considered instead of one moving point. In order to use the previously mentioned formula for determining the speed of the vehicle, one point has to be chosen on the vehicle that will represent the whole. This will be the center of gravity (CoG) that is the average location of the weight of the vehicle. With this in mind the vehicle speed can be determined as follows:
+The speed of an arbitrary point in space is defined as the magnitude of the velocity vector of that point, that is considered in the inertial reference frame ($\mathcal{R}_{[x_0, y_0, z_0]}$, later denoted as $\mathcal{R}_0$ for simplicity). The velocity vector can be written as the time derivative of the position vector, where the position vector points from the origin of the inertial reference frame to the chosen moving point in space. However, when considering a moving vehicle in the same space, a relatively constrained set of points, i.e. a body, has to be considered instead of one moving point. In order to use the previously mentioned formula for determining the speed of the vehicle, one point has to be chosen on the vehicle that will represent the whole. This will be the center of gravity (CoG) that is the average location of the weight of the vehicle. With this in mind the vehicle speed can be determined as follows:
 \begin{equation}
     v_{CoG} = \left\| [\textbf{v}_{CoG}]_{\mathcal{R}_0} \right\| = \left\| \frac{d [\textbf{r}_{CoG}]_{\mathcal{R}_0}}{dt} \right\|, 
 \end{equation}
@@ -25,12 +25,12 @@ where $v_{CoG}$ is the vehicle speed, $[\textbf{v}_{CoG}]_{\mathcal{R}_v}$ is th
     \item velocity vector: $[\textbf{v}_{CoG}]_{\mathcal{R}_0} = \begin{bmatrix} v_x \\ v_y \\ v_z \end{bmatrix}_{\mathcal{R}_0}$
 \end{itemize}
 
-As the moving vehicle in space is considered as a 3 dimensional body, the orientation of it can be described with a body-fixed reference frame denoted by $\mathcal{R}_{[x_v, y_v, z_v]}$ (later denoted by $\mathcal{R}_v$ for simplicity), where $x_v$ points forward along the vehicle frame's longitudinal axis, $y_v$ points sideways to the left along the lateral axis and $z_v$ points upwards to complete the right-handed coordinate system. Let this coordinate system be placed in the CoG of the vehicle. With the help of this body-fixed coordinate system the previously determined velocity vector ($[\textbf{v}_{CoG}]_{\mathcal{R}_0}$) can be expressed in the body-fixed reference frame with the help of the rotational transformation matrix $T_{\mathcal{R}_0 \rightarrow{} \mathcal{R}_v}$ between the two reference frames. The rotational transformation matrix can be obtained from the rotational matrices around the three axes, namely $x_0$, $y_0$ and $z_0$.
+As the moving vehicle in space is considered as a 3 dimensional body, the orientation of it can be described with a body-fixed reference frame denoted by $\mathcal{R}_{[x_v, y_v, z_v]}$ (later denoted by $\mathcal{R}_v$ for simplicity), where $x_v$ points forward along the longitudinal axis of the vehicle frame, $y_v$ points sideways to the left along the lateral axis and $z_v$ points upwards to complete the right-handed coordinate system. Let this coordinate system be placed in the CoG of the vehicle. With the help of this body-fixed coordinate system the previously determined velocity vector ($[\textbf{v}_{CoG}]_{\mathcal{R}_0}$) can be expressed in the body-fixed reference frame with the help of the transformation matrix $T_{\mathcal{R}_0 \rightarrow{} \mathcal{R}_v}$ between the two reference frames. The transformation matrix can be obtained from the rotational matrices around the three axes, namely $x_0$, $y_0$ and $z_0$.
 The angles of rotation around the axes are the following:
 \begin{itemize}
-    \item angle of rotation around axis $x_0$: roll - $\phi$
-    \item angle of rotation around axis $y_z$: pitch - $\theta$
-    \item angle of rotation around axis $z_0$: yaw - $\psi$
+    \item angle of rotation around axis $x_0$: roll - $\alpha$
+    \item angle of rotation around axis $y_z$: pitch - $\beta$
+    \item angle of rotation around axis $z_0$: yaw - $\gamma$
 \end{itemize}
 From here the transformation matrix is as follows:
 \begin{equation}
@@ -40,11 +40,20 @@ From here the transformation matrix is as follows:
 \FloatBarrier
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.9\textwidth]{images/vehicle_speed.pdf}
+    \includegraphics[width=0.7\textwidth]{images/vehicle_speed.pdf}
     \caption{Vehicle speeds}
     \label{fig:geom_veh_speed}
 \end{figure}
 \FloatBarrier
+
+With the help of the transformation matrix the velocity vector in the body-fixed reference frame can be determined as:
+\begin{equation}
+    [\textbf{v}_{CoG}]_{\mathcal{R}_v} = T_{\mathcal{R}_0 \rightarrow{} \mathcal{R}_v} \cdot [\textbf{v}_{CoG}]_{\mathcal{R}_0} = \begin{bmatrix} v_x \\ v_y \\ v_z \end{bmatrix}_{\mathcal{R}_v},
+\end{equation}
+where the longitudinal velocity $v_x$ is the component of the velocity vector along the $x_v$ axis, the lateral velocity $v_y$ is the component of the velocity vector along the $y_v$ axis and the vertical velocity $v_z$ is the component of the velocity vector along the $z_v$ axis. From now on the longitudinal speed will refer to the magnitude of the longitudinal velocity component, that is:
+\begin{equation}
+    v_{long} = v_x.
+\end{equation}
 
 \section{Measurements for determining vehicle speed}
 \label{sec:Measurements}

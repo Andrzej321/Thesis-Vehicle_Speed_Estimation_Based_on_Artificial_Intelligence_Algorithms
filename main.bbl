@@ -509,6 +509,51 @@
       \verb https://arxiv.org/abs/2105.00250
       \endverb
     \endentry
+    \entry{DBLP:journals/corr/abs-1803-01271}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=46866596e404b7745d45fdb1cbff0a01}{%
+           family={Bai},
+           familyi={B\bibinitperiod},
+           given={Shaojie},
+           giveni={S\bibinitperiod}}}%
+        {{hash=0288715a83a3349e44f9292c5c2149f7}{%
+           family={Kolter},
+           familyi={K\bibinitperiod},
+           given={J.\bibnamedelimi Zico},
+           giveni={J\bibinitperiod\bibinitdelim Z\bibinitperiod}}}%
+        {{hash=9025300f43a193cfed8e10e924f2a117}{%
+           family={Koltun},
+           familyi={K\bibinitperiod},
+           given={Vladlen},
+           giveni={V\bibinitperiod}}}%
+      }
+      \strng{namehash}{3a3778cabb3cde60fd94e137dc83c5a8}
+      \strng{fullhash}{3a3778cabb3cde60fd94e137dc83c5a8}
+      \strng{fullhashraw}{3a3778cabb3cde60fd94e137dc83c5a8}
+      \strng{bibnamehash}{3a3778cabb3cde60fd94e137dc83c5a8}
+      \strng{authorbibnamehash}{3a3778cabb3cde60fd94e137dc83c5a8}
+      \strng{authornamehash}{3a3778cabb3cde60fd94e137dc83c5a8}
+      \strng{authorfullhash}{3a3778cabb3cde60fd94e137dc83c5a8}
+      \strng{authorfullhashraw}{3a3778cabb3cde60fd94e137dc83c5a8}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{CoRR}
+      \field{title}{An Empirical Evaluation of Generic Convolutional and Recurrent Networks for Sequence Modeling}
+      \field{volume}{abs/1803.01271}
+      \field{year}{2018}
+      \verb{eprint}
+      \verb 1803.01271
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1803.01271
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1803.01271
+      \endverb
+    \endentry
     \entry{Vaswani2017AttentionIA}{inproceedings}{}{}
       \name{author}{8}{}{%
         {{hash=7f28e84700536646dd6620a0db07ad09}{%

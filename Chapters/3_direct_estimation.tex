@@ -1,4 +1,5 @@
 \chapter{Direct estimation with AI algorithms}
+\label{ch:direct_estimation}
 
 In this chapter the chosen AI models that are suitable for vehicle speed estimation will be discussed. First, three different versions of the recurrent neural network (RNN) will be presented including the vanilla recurrent neural network (RNN), the long short-term memory network (LSTM) and the gated recurrent unit network (GRU). Then the temporal neural network (TCN) will be introduced as a convolutional alternative to the recurrent networks. Finally, transformer based models for time series will be discussed as another possible solution for vehicle speed estimation.
 
@@ -206,7 +207,7 @@ First, the effect of the number of inputs was examined with the intent of reduci
         \hline
         Road wheel angle - $rwa_{FM}$ & x & x & - \\
         \hline
-        Road wheel angle - $rwa_{FL}$ & x & - & Rear wheel steering was switched off during the measurements \\
+        Road wheel angle - $rwa_{FL}$ & x & x &  \\
         \hline
     \end{tabular}
     \caption{The set of sensor measurements used as inputs}
@@ -252,7 +253,7 @@ After the training and validation procedure all the models were tested on the un
     \centering
     \begin{tabular}{|c|c|c|c|c|c|}
         \hline
-          & \textbf{RMSE [$\frac{km}{h}$]} & \textbf{MAE [$\frac{km}{h}$]} & \textbf{AMaxE [$\frac{km}{h}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
+          & \textbf{RMSE [$\frac{m}{s}$]} & \textbf{MAE [$\frac{m}{s}$]} & \textbf{AMaxE [$\frac{m}{s}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
         \hline \hline
         1 & 0.14356 & 0.08236 & 1.42788 & 96.13440 & 97.35484 \\
         \hline
@@ -322,7 +323,7 @@ After obtaining these results another grid search was performed around the 3 bes
 \end{table}
 \FloatBarrier
 
-Following the new training and validation procedure, that conducted 54 new models, the best performing architectures were again tested on the unseen test dataset. The results of the best performing architecture can be seen in table \ref{tab:rnn_best_models_2} and \ref{tab:rnn_best_models_2_metrics}. It can be seen that the finetuning of the hyperparameters led to a slight improvement in the performance of the models.
+Following the new training and validation procedure, that conducted 54 new models, the best performing architectures were again tested on the unseen test dataset. The results of the best performing architecture can be seen in table \ref{tab:rnn_best_models_2} and \ref{tab:rnn_best_models_2_metrics}. It can be seen that the finetuning of the hyperparameters led to a slight improvement in the performance of the models. The estimates of the best performing RNN architecture for the validation dataset can be seen on figure \ref{fig:rnn_best_model_2_predictions}. On the figure on the left indicates the valiadation where the RNN performed the worst while the figure on the right indicates the validation where the RNN performed the best.
 \FloatBarrier
 \begin{table}[h]
     \centering
@@ -343,14 +344,24 @@ Following the new training and validation procedure, that conducted 54 new model
     \centering
     \begin{tabular}{|c|c|c|c|c|c|}
         \hline
-          & \textbf{RMSE [$\frac{km}{h}$]} & \textbf{MAE [$\frac{km}{h}$]} & \textbf{AMaxE [$\frac{km}{h}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
+          & \textbf{RMSE [$\frac{m}{s}$]} & \textbf{MAE [$\frac{m}{s}$]} & \textbf{AMaxE [$\frac{m}{s}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
         \hline \hline
-        1 & 0.13196 & 0.07490 & 1.49070 & 96.47397 & 97.35425 \\
+        1 & 0.12640 & 0.06590 & 1.49319 & 96.91017 & 97.52393 \\
         \hline
     \end{tabular}
     \caption{Performance metrics of the best performing RNN architectures on the test dataset after finetuning}
     \label{tab:rnn_best_models_2_metrics}
 \end{table}
+\FloatBarrier
+
+\FloatBarrier
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.49\textwidth]{images/results/rnn/rnn_31.png}
+    \includegraphics[width=0.49\textwidth]{images/results/rnn/rnn_16.png}
+    \caption{Predictions of the best performing RNN architecture on the validation dataset after finetuning (left: worst case, right: best case)}
+    \label{fig:rnn_best_model_2_predictions}
+\end{figure}
 \FloatBarrier
 
 It can be seen that the after the finetuning the performance metrics have improved. This indicates that the finetuning of the hyperparameters was successful and led to an improvement in the performance of the model. 
@@ -448,7 +459,7 @@ When multiple layers are stacked on top of each other to create a deep LSTM netw
 The implementation and training procedure of the LSTM network is similar to the one used for the RNN-s. The same reduced input set (12 inputs) was used here as well. A grid search was performed over the hyperparameter space to find the best combination of values that yield the lowest validation loss. The training was done in a similar manner as with the RNN-s. For the first batch of grid search the hyperparameter ranges are the as in table \ref{tab:rnn_hyperparams_1}.
 
 The results obtained after testing the created models on the same unseen test dataset . The code using for training and validating can be found at \path{AI_training/3_code/training_LSTM.py}. The 3 best performing architectures can be seen in table \ref{tab:lstm_best_models_1}. The results that can be found in table \ref{tab:lstm_best_models_1_metrics} show that the LSTM models outperformed the RNN models, indicating that the LSTM architecture is better suited for capturing the temporal dependencies in the vehicle speed estimation task.
-
+\FloatBarrier
 \begin{table}[h]
     \centering
     \begin{tabular}{|c|c|c|c|c|}
@@ -465,14 +476,15 @@ The results obtained after testing the created models on the same unseen test da
     \caption{Results of the best performing LSTM architecture on the test dataset}
     \label{tab:lstm_best_models_1}
 \end{table}
-
+\FloatBarrier
+\FloatBarrier
 \begin{table}[h]
     \centering
     \begin{tabular}{|c|c|c|c|c|c|}
         \hline
-          & \textbf{RMSE [$\frac{km}{h}$]} & \textbf{MAE [$\frac{km}{h}$]} & \textbf{AMaxE [$\frac{km}{h}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
+          & \textbf{RMSE [$\frac{m}{s}$]} & \textbf{MAE [$\frac{m}{s}$]} & \textbf{AMaxE [$\frac{m}{s}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
         \hline \hline
-        1 & 0.10992 & 0.07358 & 1.17910 & 96.89911 & 98.31862 \\
+        1 & 0.09454 & 0.05488 & 1.22441 & 97.65842 & 98.51403 \\
         \hline
         2 & 0.12917 & 0.08065 & 1.23678 & 96.36799 & 97.55895 \\
         \hline
@@ -482,6 +494,7 @@ The results obtained after testing the created models on the same unseen test da
     \caption{Performance metrics of the best performing LSTM architectures on the test dataset}
     \label{tab:lstm_best_models_1_metrics}
 \end{table}
+\FloatBarrier
 
 After evaluating the results from the first batch it can already be seen that the LSTM models could capture the patterns in the training sequences. Following the evaluation another grid search was performed around the 3 best performing architectures to see if further improvements could be achieved by finetuning the hyperparameters. The hyperparameter ranges for the finetuning can be seen in table \ref{tab:lstm_hyperparams_2}.
 
@@ -515,7 +528,7 @@ After evaluating the results from the first batch it can already be seen that th
         Sequence length & 90, 100, 110 \\
         \hline
         \multicolumn{2}{|c|}{\textbf{Around 3d best}} \\
-        \hline
+        \hline \hline
         \textbf{Hyperparameters} & \textbf{Possible values} \\
         \hline
         Number of inputs ($d_x$) & 12 \\
@@ -532,16 +545,30 @@ After evaluating the results from the first batch it can already be seen that th
 \end{table}
 \FloatBarrier
 
-Following the training and evaluation of the models from the second batch of grid search, the best performing architecture was selected based on the RMSE metric on the test dataset. The results of this best model can be seen in table \ref{tab:lstm_best_model_2_metrics}.
+Following the training and evaluation of the models from the second batch of grid search, the best performing architecture (\ref{tab:lstm_best_model_2}) was selected based on the RMSE metric on the test dataset. The results of this best model can be seen in table \ref{tab:lstm_best_model_2_metrics}. The best model's estimates for the validation dataset can be seen on figure \ref{fig:lstm_best_model_2_predictions}.
 
 \FloatBarrier
 \begin{table}[h]
     \centering
     \begin{tabular}{|c|c|c|c|c|}
         \hline
-        \textbf{RMSE [$\frac{km}{h}$]} & \textbf{MAE [$\frac{km}{h}$]} & \textbf{AMaxE [$\frac{km}{h}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
+          & \textbf{Input ID} & \textbf{Sequence Length} & \textbf{Hidden size} & \textbf{Number of layers} \\
         \hline \hline
-        0.10992 & 0.07358 & 1.17910 & 96.89911 & 98.31862 \\
+        1 & 2 & 50 & 192 & 2 \\
+        \hline
+    \end{tabular}
+    \caption{Results of the best performing LSTM architecture on the test dataset after finetuning}
+    \label{tab:lstm_best_model_2}
+\end{table}
+
+\FloatBarrier
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        \textbf{RMSE [$\frac{m}{s}$]} & \textbf{MAE [$\frac{m}{s}$]} & \textbf{AMaxE [$\frac{m}{s}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
+        \hline \hline
+        0.09454 & 0.05488 & 1.22441 & 97.65842 & 98.51403 \\
         \hline
     \end{tabular}
     \caption{Performance metrics of the best performing LSTM architecture from the second batch on the test dataset}
@@ -549,7 +576,17 @@ Following the training and evaluation of the models from the second batch of gri
 \end{table}
 \FloatBarrier
 
-It is interesting to note that the best performing architecture after the finetuning was the same as the best performing architecture from the first batch. This indicates that the initial hyperparameter ranges were well chosen and that the model was already close to optimal performance. The performance metrics remained unchanged, with an RMSE of 0.11949 km/h, MAE of 0.07529 km/h, and PWT 0.3 of 96.60422 \%. 
+\FloatBarrier
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.49\textwidth]{images/results/lstm/lstm_31.png}
+    \includegraphics[width=0.49\textwidth]{images/results/lstm/lstm_8.png}
+    \caption{Predictions of the best performing LSTM architecture on the validation dataset after finetuning (left: worst case, right: best case)}
+    \label{fig:lstm_best_model_2_predictions}
+\end{figure}
+\FloatBarrier
+
+It is interesting to note that the best performing architecture after the finetuning was the same as the best performing architecture from the first batch. This indicates that the initial hyperparameter ranges were well chosen and that the model was already close to optimal performance. The performance metrics remained unchanged, with an RMSE of 0.11949 m/s, MAE of 0.07529 m/s, and PWT 0.3 of 96.60422 \%. 
 
 \subsection{Gated Recurrent Unit - GRU}
 
@@ -653,7 +690,7 @@ The results obtained after testing the created models on the same unseen test da
     \centering
     \begin{tabular}{|c|c|c|c|c|c|}
         \hline
-          & \textbf{RMSE [$\frac{km}{h}$]} & \textbf{MAE [$\frac{km}{h}$]} & \textbf{AMaxE [$\frac{km}{h}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
+          & \textbf{RMSE [$\frac{m}{s}$]} & \textbf{MAE [$\frac{m}{s}$]} & \textbf{AMaxE [$\frac{m}{s}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
         \hline \hline
         1. & 0.13113 & 0.07793 & 1.16016 & 95.79582 & 97.22842 \\
         \hline
@@ -716,7 +753,7 @@ It can be seen that the GRU has performed better than the best RNN model, but sl
 \end{table}
 \FloatBarrier
 
-The best model obtained (\ref{tab:gru_hyperparams_2}) from the second batch of grid search was evaluated on the unseen test dataset. The results of this best model can be seen in table \ref{tab:gru_best_model_2_metrics}.
+The best model obtained (\ref{tab:gru_hyperparams_2}) from the second batch of grid search was evaluated on the unseen test dataset. The results of this best model can be seen in table \ref{tab:gru_best_model_2_metrics}. The best model's estimates for the validation dataset can be seen on figure \ref{fig:gru_best_model_2_predictions}.
 
 \FloatBarrier
 \begin{table}[h]
@@ -738,9 +775,9 @@ The best model obtained (\ref{tab:gru_hyperparams_2}) from the second batch of g
     \centering
     \begin{tabular}{|c|c|c|c|c|}
         \hline
-        \textbf{RMSE [$\frac{km}{h}$]} & \textbf{MAE [$\frac{km}{h}$]} & \textbf{AMaxE [$\frac{km}{h}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
+        \textbf{RMSE [$\frac{m}{s}$]} & \textbf{MAE [$\frac{m}{s}$]} & \textbf{AMaxE [$\frac{m}{s}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
         \hline \hline
-        0.11191 & 0.06766 & 1.32567 & 96.80683 & 97.73280 \\
+        0.09454 & 0.05488 & 1.22441 & 97.65842 & 98.51403 \\
         \hline
     \end{tabular}
     \caption{Performance metrics of the best performing GRU architecture from the second batch on the test dataset}
@@ -748,13 +785,23 @@ The best model obtained (\ref{tab:gru_hyperparams_2}) from the second batch of g
 \end{table}
 \FloatBarrier
 
-The best performing GRU architecture from the second batch achieved an RMSE of 0.11191 km/h, MAE of 0.06766 km/h, and PWT 0.3 of 96.80683 \%. These results indicate the GRU network's capability falls between that of the RNN and LSTM networks for the vehicle speed estimation task.
+\FloatBarrier
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.49\textwidth]{images/results/gru/gru_31.png}
+    \includegraphics[width=0.49\textwidth]{images/results/gru/gru_8.png}
+    \caption{Predictions of the best performing GRU architecture on the validation dataset after finetuning (left: worst case, right: best case)}
+    \label{fig:gru_best_model_2_predictions}
+\end{figure}
+\FloatBarrier
+
+The best performing GRU architecture from the second batch achieved an RMSE of 0.09454 m/s, MAE of 0.05488 m/s, and PWT 0.3 of 97.65842 \%. These results indicate the GRU network's capability falls between that of the RNN and LSTM networks for the vehicle speed estimation task.
 
 \section{Temporal Convolutional Networks - TCN}
 
 \subsubsection{Theoretical background}
 
-The Temporal Convolutional Network (TCN) is a type of convolutional neural network (CNN) that is specifically designed for handling sequential data. Unlike RNN-s and their variants, TCN-s utilize convolutional layers to capture temporal dependencies in the data. The key features of TCN-s include causal convolutions, dilated convolutions, and residual connections. 
+The Temporal Convolutional Network (TCN) is a type of convolutional neural network (CNN) that is specifically designed for handling sequential data. Unlike RNN-s and their variants, TCN-s utilize convolutional layers to capture temporal dependencies in the data. The key features of TCN-s include causal convolutions, dilated convolutions, and residual connections. The described TCN architecture is based on the work of article \cite{DBLP:journals/corr/abs-1803-01271}.
 
 The TCN produces the output sequence that has the same length as the input sequence. This is due to using a 1D fully convolutional network (FCN) architecture, meaning that each hidden layer is the same length as the input sequence. This property is fulfilled by using zero-padding at the beginning of the input sequence.
 
@@ -876,7 +923,7 @@ After the training and evaluation of the models from the first batch of grid sea
         \hline
         \textbf{RMSE [$\frac{km}{h}$]} & \textbf{MAE [$\frac{km}{h}$]} & \textbf{AMaxE [$\frac{km}{h}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
         \hline \hline
-        0.09299 & 0.06033 & 1.14385 & 98.93965 & 99.45609 \\
+        0.10200 & 0.06605 & 1.16851 & 98.30497 & 99.17077 \\
         \hline
         0.11550 & 0.07546 & 1.16850 & 97.56255 & 99.05121 \\
         \hline
@@ -955,16 +1002,16 @@ After evaluating these results another grid search was performed around the 3 be
 \end{table}
 \FloatBarrier
 
-The best model obtained after evaluating the second batch was still the same model as before (\ref{tab:tcn_hyperparams_2}). The results of this best model can be seen in table \ref{tab:tcn_best_model_2_metrics}.
+The best model obtained after evaluating the second batch was still the same model as before (\ref{tab:tcn_hyperparams_2}). The results of this best model can be seen in table \ref{tab:tcn_best_model_2_metrics}. The best model's estimates for the validation dataset can be seen on figure \ref{fig:tcn_best_model_2_predictions}.
 
 \FloatBarrier
 \begin{table}[h]
     \centering
     \begin{tabular}{|c|c|c|c|c|}
         \hline
-        \textbf{RMSE [$\frac{km}{h}$]} & \textbf{MAE [$\frac{km}{h}$]} & \textbf{AMaxE [$\frac{km}{h}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
+        \textbf{RMSE [$\frac{m}{s}$]} & \textbf{MAE [$\frac{m}{s}$]} & \textbf{AMaxE [$\frac{m}{s}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
         \hline \hline
-        0.09299 & 0.06033 & 1.14385 & 98.93965 & 99.45609 \\
+        0.07513 & 0.04274 & 1.19855 & 99.01150 & 99.38940 \\
         \hline
     \end{tabular}
     \caption{Performance metrics of the best performing TCN architecture from the second batch on the test dataset}
@@ -972,7 +1019,17 @@ The best model obtained after evaluating the second batch was still the same mod
 \end{table}
 \FloatBarrier
 
-It can be seen that the TCN architecture outperforms all the previously discussed RNN based architectures, achieving an RMSE of 0.09299 km/h, MAE of 0.06033 km/h, and PWT 0.3 of 98.93965 \%. These results highlight the effectiveness of TCN-s in capturing temporal dependencies in sequential data for the vehicle speed estimation task.
+\FloatBarrier
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.49\textwidth]{images/results/tcn/tcn_37.png}
+    \includegraphics[width=0.49\textwidth]{images/results/tcn/tcn_8.png}
+    \caption{Predictions of the best performing TCN architecture on the validation dataset after finetuning (left: worst case, right: best case)}
+    \label{fig:tcn_best_model_2_predictions}
+\end{figure}
+\FloatBarrier
+
+It can be seen that the TCN architecture outperforms all the previously discussed RNN based architectures, achieving an RMSE of 0.07513 m/h, MAE of 0.04274 km/s, and PWT 0.3 of 99.01150 \%. These results highlight the effectiveness of TCN-s in capturing temporal dependencies in sequential data for the vehicle speed estimation task.
 
 \section{Transformer}
 
@@ -1098,7 +1155,7 @@ To note, only the first two best models will be investigated onwards, as the tra
     \centering
     \begin{tabular}{|c|c|c|c|c|}
         \hline
-        \textbf{RMSE [$\frac{km}{h}$]} & \textbf{MAE [$\frac{km}{h}$]} & \textbf{AMaxE [$\frac{km}{h}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
+        \textbf{RMSE [$\frac{m}{s}$]} & \textbf{MAE [$\frac{m}{s}$]} & \textbf{AMaxE [$\frac{m}{s}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
         \hline \hline
         0.23937 & 0.16788 & 2.46572 & 83.88168 & 93.43833 \\
         \hline
@@ -1155,7 +1212,7 @@ It can be seen that the results obtained from the trained transfromer models fal
 \end{table}
 \FloatBarrier
 
-During the second batch overall 1214 new models were created and trained. The best model obtained from the second batch of grid search was evaluated on the unseen test dataset. The parameters and the results of this best model can be seen in table \ref{tab:transformer_hyperparams_2} and \ref{tab:transformer_best_model_2_metrics}.
+During the second batch overall 1214 new models were created and trained. The best model obtained from the second batch of grid search was evaluated on the unseen test dataset. The parameters and the results of this best model can be seen in table \ref{tab:transformer_hyperparams_2} and \ref{tab:transformer_best_model_2_metrics}. The best model's estimates for the validation dataset can be seen on figure \ref{fig:transformer_best_model_2_predictions}.
 
 \FloatBarrier
 \begin{table}[h]
@@ -1177,9 +1234,9 @@ During the second batch overall 1214 new models were created and trained. The be
     \centering
     \begin{tabular}{|c|c|c|c|c|}
         \hline
-        \textbf{RMSE [$\frac{km}{h}$]} & \textbf{MAE [$\frac{km}{h}$]} & \textbf{AMaxE [$\frac{km}{h}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
+        \textbf{RMSE [$\frac{m}{s}$]} & \textbf{MAE [$\frac{m}{s}$]} & \textbf{AMaxE [$\frac{m}{s}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
         \hline \hline
-        0.19018 & 0.14434 & 1.58037 & 89.27755 & 96.75121 \\
+        0.17445 & 0.12758 & 1.58004 & 92.12807 & 96.93576 \\
         \hline
     \end{tabular}
     \caption{Performance metrics of the best performing transformer architecture from the second batch on the test dataset}
@@ -1187,7 +1244,17 @@ During the second batch overall 1214 new models were created and trained. The be
 \end{table}
 \FloatBarrier  
 
-The best obtained transformer model achieved an RMSE of 0.19018 km/h, MAE of 0.14434 km/h, and PWT 0.3 of 89.27755 \%. These results indicate that the transformer architecture, in this case, does not perform as well as the previously discussed RNN and TCN based architectures for the vehicle speed estimation task. This could be due to the fact that transformers are typically more effective in handling long-range dependencies in sequences and are used extensively in NLP tasks. However, for the specific task of vehicle speed estimation, other architectures like TCN proved to be more suitable.
+\FloatBarrier
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.49\textwidth]{images/results/transformer/transformer_31.png}
+    \includegraphics[width=0.49\textwidth]{images/results/transformer/transformer_48.png}
+    \caption{Predictions of the best performing transformer architecture on the validation dataset after finetuning (left: worst case, right: best case)}
+    \label{fig:transformer_best_model_2_predictions}
+\end{figure}
+\FloatBarrier
+
+The best obtained transformer model achieved an RMSE of 0.17445 m/s, MAE of 0.12758 m/s, and PWT 0.3 of 92.12807 \%. These results indicate that the transformer architecture, in this case, does not perform as well as the previously discussed RNN and TCN based architectures for the vehicle speed estimation task. This could be due to the fact that transformers are typically more effective in handling long-range dependencies in sequences and are used extensively in NLP tasks. However, for the specific task of vehicle speed estimation, other architectures like TCN proved to be more suitable.
 
 \section{Summary and comparison of the sequential models}
 \label{sec:ai_summary}
@@ -1201,15 +1268,15 @@ Throughout the chapter 5 different AI architectures were presented. These includ
         \hline
         \textbf{Model} & \textbf{RMSE} & \textbf{MAE} & \textbf{AMaxE} & \textbf{PWT 0.3} & \textbf{PWT 0.4} \\
         \hline \hline
-        Vanilla RNN & 0.13196 & 0.07490 & 1.49070 & 96.47397 & 97.35425 \\
+        Vanilla RNN & 0.12640 & 0.06590 & 1.49319 & 96.91017 & 97.52393 \\
         \hline
-        LSTM & 0.10992 & 0.07358 & 1.17910 & 96.89911 & 98.31862 \\
+        LSTM & 0.09454 & 0.05488 & 1.22441 & 97.65842 & 98.51403 \\
         \hline
-        GRU & 0.11191 & 0.06766 & 1.32567 & 96.80683 & 97.73280 \\
+        GRU & 0.10588 & 0.05547 & 1.32567 & 96.78761 & 97.78252 \\
         \hline
-        \textbf{TCN} & \textbf{0.09299} & \textbf{0.06033} & \textbf{1.14385} & \textbf{98.93965} & \textbf{99.45609} \\
+        \textbf{TCN} & \textbf{0.07513} & \textbf{0.04274} & \textbf{1.19855} & \textbf{99.01150} & \textbf{99.38940} \\
         \hline
-        Transformer & 0.19018 & 0.14434 & 1.58037 & 89.27755 & 96.75121 \\
+        Transformer & 0.17445 & 0.12758 & 1.58004 & 92.12807 & 96.93576 \\
         \hline
     \end{tabular}
     \caption{Comparison of the best performing AI models on the test dataset}

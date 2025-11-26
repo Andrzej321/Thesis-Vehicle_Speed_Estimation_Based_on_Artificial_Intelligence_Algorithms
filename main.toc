@@ -5,54 +5,56 @@
 \contentsline {section}{\numberline {1.2}Measurements for determining vehicle speed}{4}{section.1.2}%
 \contentsline {subsection}{\numberline {1.2.1}Engine speed}{4}{subsection.1.2.1}%
 \contentsline {subsection}{\numberline {1.2.2}Wheel speed}{5}{subsection.1.2.2}%
-\contentsline {subsection}{\numberline {1.2.3}Inertial Measurement Unit}{6}{subsection.1.2.3}%
-\contentsline {subsection}{\numberline {1.2.4}Global Navigation Satellite System}{7}{subsection.1.2.4}%
-\contentsline {section}{\numberline {1.3}Estimating vehicle speed}{8}{section.1.3}%
-\contentsline {subsection}{\numberline {1.3.1}Accelerometer and speedometer}{8}{subsection.1.3.1}%
-\contentsline {subsection}{\numberline {1.3.2}Kalman filter}{9}{subsection.1.3.2}%
-\contentsline {subsection}{\numberline {1.3.3}Fuzzy logic}{10}{subsection.1.3.3}%
-\contentsline {subsection}{\numberline {1.3.4}GNSS}{11}{subsection.1.3.4}%
-\contentsline {subsection}{\numberline {1.3.5}Artificial Intelligence}{12}{subsection.1.3.5}%
-\contentsline {section}{\numberline {1.4}Conclusions}{14}{section.1.4}%
-\contentsline {chapter}{\numberline {2}Development environment}{15}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Available sensor data}{15}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Acquiring measurement data for development and testing}{17}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Ways to use AI to estimate vehicle speed}{18}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Direct estimation}{18}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Combination of existing estimators with AI model}{19}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Advantages and disadvantages of AI application}{20}{subsection.2.3.3}%
-\contentsline {chapter}{\numberline {3}Direct estimation with AI algorithms}{21}{chapter.3}%
-\contentsline {section}{\numberline {3.1}General development}{21}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Recurrent Neural Network - RNN}{22}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Vanilla RNN}{22}{subsection.3.2.1}%
-\contentsline {subsubsection}{Theoretical background}{22}{subsection.3.2.1}%
-\contentsline {subsubsection}{Implementation and results}{25}{equation.3.7}%
-\contentsline {subsection}{\numberline {3.2.2}Long Short-Term Memory - LSTM}{30}{subsection.3.2.2}%
-\contentsline {subsubsection}{Theoretical background}{30}{subsection.3.2.2}%
-\contentsline {subsubsection}{Implementation and results}{33}{equation.3.15}%
-\contentsline {subsection}{\numberline {3.2.3}Gated Recurrent Unit - GRU}{35}{subsection.3.2.3}%
-\contentsline {subsubsection}{Theoretical background}{35}{subsection.3.2.3}%
-\contentsline {subsubsection}{Implementation and results}{38}{equation.3.20}%
-\contentsline {section}{\numberline {3.3}Temporal Convolutional Networks - TCN}{40}{section.3.3}%
-\contentsline {subsubsection}{Theoretical background}{40}{section.3.3}%
-\contentsline {subsubsection}{Implementation and results}{42}{figure.caption.44}%
-\contentsline {section}{\numberline {3.4}Transformer}{45}{section.3.4}%
-\contentsline {subsubsection}{Theoretical background}{45}{section.3.4}%
-\contentsline {subsubsection}{Implementation and results}{47}{figure.caption.50}%
-\contentsline {section}{\numberline {3.5}Summary and comparison of the sequential models}{50}{section.3.5}%
-\contentsline {chapter}{\numberline {4}AI aided estimation}{51}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Best wheel based speed estimation}{51}{section.4.1}%
-\contentsline {subsubsection}{Governing equations}{51}{section.4.1}%
-\contentsline {subsubsection}{Implementation and results}{53}{equation.4.5}%
-\contentsline {section}{\numberline {4.2}Model based speed estimation}{54}{section.4.2}%
-\contentsline {subsubsection}{Governing equations}{54}{section.4.2}%
-\contentsline {subsubsection}{Implementation and results}{55}{equation.4.19}%
-\contentsline {section}{\numberline {4.3}Extended Kalman Filter based estimation}{57}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}EKF theory}{57}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}EKF implementation}{58}{subsection.4.3.2}%
-\contentsline {subsubsection}{EKF with best wheel based speed estimation}{58}{subsection.4.3.2}%
-\contentsline {subsubsection}{EKF with AI based speed estimation}{59}{figure.caption.64}%
-\contentsline {section}{\numberline {4.4}Real-time application}{59}{section.4.4}%
-\contentsline {chapter}{Summary}{60}{chapter*.65}%
-\contentsline {chapter}{\numberline {A}Appendix Title}{68}{appendix.A}%
-\contentsline {chapter}{\numberline {B}Appendix Title}{69}{appendix.B}%
+\contentsline {subsection}{\numberline {1.2.3}Inertial Measurement Unit}{7}{subsection.1.2.3}%
+\contentsline {subsection}{\numberline {1.2.4}Global Navigation Satellite System}{8}{subsection.1.2.4}%
+\contentsline {section}{\numberline {1.3}Estimating vehicle speed}{9}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Accelerometer and speedometer}{9}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}Kalman filter}{10}{subsection.1.3.2}%
+\contentsline {subsection}{\numberline {1.3.3}Fuzzy logic}{11}{subsection.1.3.3}%
+\contentsline {subsection}{\numberline {1.3.4}GNSS}{12}{subsection.1.3.4}%
+\contentsline {subsection}{\numberline {1.3.5}Artificial Intelligence}{13}{subsection.1.3.5}%
+\contentsline {section}{\numberline {1.4}Conclusions}{15}{section.1.4}%
+\contentsline {chapter}{\numberline {2}Development environment}{16}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Available sensor data}{16}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Acquiring measurement data for development and testing}{18}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Ways to use AI to estimate vehicle speed}{19}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Direct estimation}{20}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Combination of existing estimators with AI model}{21}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Advantages and disadvantages of AI application}{21}{subsection.2.3.3}%
+\contentsline {chapter}{\numberline {3}Direct estimation with AI algorithms}{23}{chapter.3}%
+\contentsline {section}{\numberline {3.1}General development}{23}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Recurrent Neural Network - RNN}{24}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Vanilla RNN}{24}{subsection.3.2.1}%
+\contentsline {subsubsection}{Theoretical background}{24}{subsection.3.2.1}%
+\contentsline {subsubsection}{Implementation and results}{27}{equation.3.7}%
+\contentsline {subsection}{\numberline {3.2.2}Long Short-Term Memory - LSTM}{32}{subsection.3.2.2}%
+\contentsline {subsubsection}{Theoretical background}{32}{subsection.3.2.2}%
+\contentsline {subsubsection}{Implementation and results}{36}{equation.3.15}%
+\contentsline {subsection}{\numberline {3.2.3}Gated Recurrent Unit - GRU}{38}{subsection.3.2.3}%
+\contentsline {subsubsection}{Theoretical background}{38}{subsection.3.2.3}%
+\contentsline {subsubsection}{Implementation and results}{40}{equation.3.20}%
+\contentsline {section}{\numberline {3.3}Temporal Convolutional Networks - TCN}{43}{section.3.3}%
+\contentsline {subsubsection}{Theoretical background}{43}{section.3.3}%
+\contentsline {subsubsection}{Implementation and results}{46}{figure.caption.50}%
+\contentsline {section}{\numberline {3.4}Transformer}{49}{section.3.4}%
+\contentsline {subsubsection}{Theoretical background}{49}{section.3.4}%
+\contentsline {subsubsection}{Implementation and results}{52}{figure.caption.57}%
+\contentsline {section}{\numberline {3.5}Summary and comparison of the sequential models}{54}{section.3.5}%
+\contentsline {chapter}{\numberline {4}AI aided estimation}{56}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Best wheel based speed estimation}{56}{section.4.1}%
+\contentsline {subsubsection}{Governing equations}{56}{section.4.1}%
+\contentsline {subsubsection}{Implementation and results}{58}{equation.4.5}%
+\contentsline {section}{\numberline {4.2}Model based speed estimation}{59}{section.4.2}%
+\contentsline {subsubsection}{Governing equations}{59}{section.4.2}%
+\contentsline {subsubsection}{Implementation and results}{60}{equation.4.19}%
+\contentsline {section}{\numberline {4.3}Extended Kalman Filter based estimation}{62}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}EKF theory}{62}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}EKF implementation}{63}{subsection.4.3.2}%
+\contentsline {subsubsection}{EKF with best wheel based speed estimation}{63}{subsection.4.3.2}%
+\contentsline {subsubsection}{EKF with AI based speed estimation}{64}{figure.caption.72}%
+\contentsline {chapter}{\numberline {5}Real Time Impelementation}{67}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Development Environment}{67}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Results}{68}{section.5.2}%
+\contentsline {chapter}{Summary}{70}{chapter*.78}%
+\contentsline {chapter}{\numberline {A}Appendix Title}{77}{appendix.A}%
+\contentsline {chapter}{\numberline {B}Appendix Title}{78}{appendix.B}%

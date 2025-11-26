@@ -34,8 +34,6 @@ It is important to note here that a the road wheels on one axle assign the same 
 
 GNSS receivers can be also considered as precise sensors that are available during the development phase but not on the vehicles from the production line in order to keep the wider availability. Therefore the calculated longitudinal and lateral speeds from the GNSS measurements will only serve for reference, validation, testing and training purposes. The mentioned sensor units can be seen on figure \ref{fig:sensors}. 
 
-!! write about the normalization of the data !!
-
 \FloatBarrier
 \begin{figure}[ht]
     \centering
@@ -83,6 +81,70 @@ All together 43 measurements were recorded, where each measurement file contains
 In order to be able to train, validate and test the developed estimators, the recorded measurement data was split into three different sets. The training set contains 31 measeurement files, the validation set and the test set contain 6-6 measurement files. The splitting was done in a way that all the different maneuvers are represented in each set.
 
 Besides the sensor data from the vehicle and the high precision GNSS receivers, the speed estimates from the vehicle's built in ECU were also recorded. These speed values will also serve as a reference for the performance of the developed estimators.
+
+Furthermore the recorded measurement data was normalized before using it for training and testing. This was done to ensure that all the input variables are in the same range, which helps the training process of the AI models in way that no input variable dominates the learning process due to its larger scale. The normalization was done using min-max scaling, where the minimum and maximum values for each variable were determined from the dataset. The minimal and maximal values used for normalization can be seen in table \ref{tab:normalization_values} for all the variables. This is important due to the limitations of the models as it will only be able to provide accurate estimates within the range of the training data. 
+
+\FloatBarrier
+\begin{table}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{6pt}
+
+\begin{minipage}{0.48\textwidth}
+\centering
+\begin{tabular}{lrr}
+\toprule
+\textbf{Variable} & \textbf{Min.} & \textbf{Max.} \\
+\midrule
+$a_x$        & 0 [m/s$^2$] & 10.6703 [m/s$^2$] \\
+$a_y$        & 0 [m/s$^2$] & 11.5285 [m/s$^2$] \\
+$a_z$        & 0 [m/s$^2$] & 0.2543 [m/s$^2$] \\
+$\omega_{FL}$& 0 [$^\circ$/s] & 87.4844 [$^\circ$/s] \\
+$\omega_{FR}$& 0 [$^\circ$/s] & 87.4063 [$^\circ$/s] \\
+$\omega_{RL}$& 0 [$^\circ$/s] & 87.5459 [$^\circ$/s] \\
+$\omega_{RR}$& 0 [$^\circ$/s] & 87.6406 [$^\circ$/s] \\
+$M_{FL}$     & 0 [Nm] & 184.1236 [Nm] \\
+$M_{FR}$     & 0 [Nm] & 184.1236 [Nm] \\
+$M_{RL}$     & 0 [Nm] & 324.8717 [Nm] \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\textwidth}
+\centering
+\begin{tabular}{lrr}
+\toprule
+\textbf{Variable} & \textbf{Min.} & \textbf{Max.} \\
+\midrule
+$M_{RR}$     & 0 [Nm] & 324.8717 [Nm] \\
+$\dot\alpha$ & 0 [$^\circ$/s] & 0.1504 [$^\circ$/s] \\
+$\dot\beta$  & 0 [$^\circ$/s] & 0.3755 [$^\circ$/s] \\
+$\dot\gamma$ & 0 [$^\circ$/s] & 1.2396 [$^\circ$/s] \\
+$\text{rwa}_{FM}$ & -0.5865 [$^\circ$] & 0.5979 [$^\circ$] \\
+$\text{rwa}_{RM}$ & -0.0545 [rad] & 0.0615 [$^\circ$] \\
+$P_{FL}$     & 0 [bar] & 220.3667 [bar] \\
+$P_{FR}$     & 0 [bar] & 217.8333 [bar] \\
+$P_{RL}$     & 0 [bar] & 184.6842 [bar] \\
+$P_{RR}$     & 0 [bar] & 180.2632 [bar] \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+
+\caption{Min and max values used for normalizatiion of the sensore data}
+\label{tab:normalization_values}
+\end{table}
+\FloatBarrier
+
+The validation measurements for estimating vehicle speed can be seen in figure \ref{fig:validation_measurements} where different driving scenarios are represented. The numbers correspond to the different driving maneuvers that were described earlier in this section. 
+
+\FloatBarrier
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{images/validation_meas.png}
+    \caption{Recorded validation measurements for vehicle speed estimation}
+    \label{fig:validation_measurements}
+\end{figure}
+\FloatBarrier
 
 \section{Ways to use AI to estimate vehicle speed}
 

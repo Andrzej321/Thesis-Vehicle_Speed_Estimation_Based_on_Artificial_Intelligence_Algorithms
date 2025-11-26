@@ -2412,7 +2412,8 @@
     <bcf:citekey order="37" intorder="1">lit_trans_lstm</bcf:citekey>
     <bcf:citekey order="38" intorder="1">lit_trans_lstm</bcf:citekey>
     <bcf:citekey order="39" intorder="1">lit_trans_lstm</bcf:citekey>
-    <bcf:citekey order="40" intorder="1">Vaswani2017AttentionIA</bcf:citekey>
+    <bcf:citekey order="40" intorder="1">DBLP:journals/corr/abs-1803-01271</bcf:citekey>
+    <bcf:citekey order="41" intorder="1">Vaswani2017AttentionIA</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

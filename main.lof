@@ -2,34 +2,44 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {1.1}{\ignorespaces Vehicle speeds}}{3}{figure.caption.3}%
 \contentsline {figure}{\numberline {1.2}{\ignorespaces Calculating vehicle speed from engine speed \blx@tocontentsinit {0}\cite {engine_speed}}}{4}{figure.caption.4}%
-\contentsline {figure}{\numberline {1.3}{\ignorespaces Speedometer patented by Joseph W Jones in 1904 \blx@tocontentsinit {0}\cite {speedometer_patent_Joseph}}}{5}{figure.caption.5}%
-\contentsline {figure}{\numberline {1.4}{\ignorespaces Passive (left) and active (right) wheel speed sensors from \blx@tocontentsinit {0}\cite {wheel_speed_sensors}}}{6}{figure.caption.6}%
-\contentsline {figure}{\numberline {1.5}{\ignorespaces Trilateration (left) from \blx@tocontentsinit {0}\cite {gps-satellites-trilateration} and ECEF coordinate system (right) from \blx@tocontentsinit {0}\cite {ECEF_coordinate_sys}}}{8}{figure.caption.7}%
-\contentsline {figure}{\numberline {1.6}{\ignorespaces Simple algorithm for estimating vehicle speed form \blx@tocontentsinit {0}\cite {lit_simple_veh_speed}}}{9}{figure.caption.8}%
-\contentsline {figure}{\numberline {1.7}{\ignorespaces Vehicle speed estimation with Kalman filter from \blx@tocontentsinit {0}\cite {lit_for_Kalman_fuzzy}}}{10}{figure.caption.9}%
-\contentsline {figure}{\numberline {1.8}{\ignorespaces Extended Kalman filter for vehicle speed estimation from \blx@tocontentsinit {0}\cite {lit_model_based_est}}}{10}{figure.caption.10}%
-\contentsline {figure}{\numberline {1.9}{\ignorespaces Vehicle speed estimation with Fuzzy logic from \blx@tocontentsinit {0}\cite {lit_for_Kalman_fuzzy}}}{11}{figure.caption.11}%
-\contentsline {figure}{\numberline {1.10}{\ignorespaces Physics constrained neural network from \blx@tocontentsinit {0}\cite {lit_deep_dynamics}}}{13}{figure.caption.12}%
-\contentsline {figure}{\numberline {1.11}{\ignorespaces Physics embedded neural network for state estimation from \blx@tocontentsinit {0}\cite {lit_ai_physiscs_embedded_neural_network}}}{13}{figure.caption.13}%
-\contentsline {figure}{\numberline {1.12}{\ignorespaces TS-KF model from \blx@tocontentsinit {0}\cite {lit_trans_lstm}}}{14}{figure.caption.14}%
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Speedometer patented by Joseph W Jones in 1904 \blx@tocontentsinit {0}\cite {speedometer_patent_Joseph}}}{6}{figure.caption.5}%
+\contentsline {figure}{\numberline {1.4}{\ignorespaces Passive (left) and active (right) wheel speed sensors from \blx@tocontentsinit {0}\cite {wheel_speed_sensors}}}{7}{figure.caption.6}%
+\contentsline {figure}{\numberline {1.5}{\ignorespaces Trilateration (left) from \blx@tocontentsinit {0}\cite {gps-satellites-trilateration} and ECEF coordinate system (right) from \blx@tocontentsinit {0}\cite {ECEF_coordinate_sys}}}{9}{figure.caption.7}%
+\contentsline {figure}{\numberline {1.6}{\ignorespaces Simple algorithm for estimating vehicle speed form \blx@tocontentsinit {0}\cite {lit_simple_veh_speed}}}{10}{figure.caption.8}%
+\contentsline {figure}{\numberline {1.7}{\ignorespaces Vehicle speed estimation with Kalman filter from \blx@tocontentsinit {0}\cite {lit_for_Kalman_fuzzy}}}{11}{figure.caption.9}%
+\contentsline {figure}{\numberline {1.8}{\ignorespaces Extended Kalman filter for vehicle speed estimation from \blx@tocontentsinit {0}\cite {lit_model_based_est}}}{11}{figure.caption.10}%
+\contentsline {figure}{\numberline {1.9}{\ignorespaces Vehicle speed estimation with Fuzzy logic from \blx@tocontentsinit {0}\cite {lit_for_Kalman_fuzzy}}}{12}{figure.caption.11}%
+\contentsline {figure}{\numberline {1.10}{\ignorespaces Physics constrained neural network from \blx@tocontentsinit {0}\cite {lit_deep_dynamics}}}{14}{figure.caption.12}%
+\contentsline {figure}{\numberline {1.11}{\ignorespaces Physics embedded neural network for state estimation from \blx@tocontentsinit {0}\cite {lit_ai_physiscs_embedded_neural_network}}}{14}{figure.caption.13}%
+\contentsline {figure}{\numberline {1.12}{\ignorespaces TS-KF model from \blx@tocontentsinit {0}\cite {lit_trans_lstm}}}{15}{figure.caption.14}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Available sensor data for speed estimation}}{16}{figure.caption.16}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Vehicle speed estimation in the simplified control}}{18}{figure.caption.18}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Available sensor data for speed estimation}}{17}{figure.caption.16}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Recorded validation measurements for vehicle speed estimation}}{19}{figure.caption.19}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Vehicle speed estimation in the simplified control}}{20}{figure.caption.20}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Feedforward nn (left) compared to recurrent nn (right)}}{22}{figure.caption.19}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Unfolding the architecture of a RNN in time}}{23}{figure.caption.20}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Recurrent Unit in the RNN}}{23}{figure.caption.21}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces 2-layer RNN architecture}}{26}{figure.caption.22}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces LSTM sequence unfolded in time}}{30}{figure.caption.30}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces LSTM unit with the gating mechanisms}}{31}{figure.caption.31}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces GRU sequence unfolded in time}}{36}{figure.caption.36}%
-\contentsline {figure}{\numberline {3.8}{\ignorespaces GRU unit with the gating mechanisms}}{37}{figure.caption.37}%
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Dilated causal convolution}}{40}{figure.caption.43}%
-\contentsline {figure}{\numberline {3.10}{\ignorespaces TCN residual block with two dilated causal convolutional layers}}{42}{figure.caption.44}%
-\contentsline {figure}{\numberline {3.11}{\ignorespaces a) Transfomer encoder block with regression head b) Multi-head self-attention mechanism}}{47}{figure.caption.50}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Feedforward nn (left) compared to recurrent nn (right)}}{24}{figure.caption.21}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Unfolding the architecture of a RNN in time}}{25}{figure.caption.22}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Recurrent Unit in the RNN}}{25}{figure.caption.23}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces 2-layer RNN architecture}}{28}{figure.caption.24}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Predictions of the best performing RNN architecture on the validation dataset after finetuning (left: worst case, right: best case)}}{32}{figure.caption.32}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces LSTM sequence unfolded in time}}{33}{figure.caption.33}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces LSTM unit with the gating mechanisms}}{34}{figure.caption.34}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Predictions of the best performing LSTM architecture on the validation dataset after finetuning (left: worst case, right: best case)}}{38}{figure.caption.40}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces GRU sequence unfolded in time}}{38}{figure.caption.41}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces GRU unit with the gating mechanisms}}{39}{figure.caption.42}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Predictions of the best performing GRU architecture on the validation dataset after finetuning (left: worst case, right: best case)}}{43}{figure.caption.48}%
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Dilated causal convolution}}{44}{figure.caption.49}%
+\contentsline {figure}{\numberline {3.13}{\ignorespaces TCN residual block with two dilated causal convolutional layers}}{45}{figure.caption.50}%
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Predictions of the best performing TCN architecture on the validation dataset after finetuning (left: worst case, right: best case)}}{49}{figure.caption.56}%
+\contentsline {figure}{\numberline {3.15}{\ignorespaces a) Transfomer encoder block with regression head b) Multi-head self-attention mechanism}}{52}{figure.caption.57}%
+\contentsline {figure}{\numberline {3.16}{\ignorespaces Predictions of the best performing transformer architecture on the validation dataset after finetuning (left: worst case, right: best case)}}{54}{figure.caption.64}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Low longitudinal and lateral slip in straight line driving (left) and high lateral slip during cornering (right)}}{53}{figure.caption.59}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Steer until $a_y$ is reached (left) and sine wave like steering (right)}}{57}{figure.caption.62}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Steer until $a_y$ is reached (left) and brake until $a_x$ is reached (right)}}{59}{figure.caption.64}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Low longitudinal and lateral slip in straight line driving (left) and high lateral slip during cornering (right)}}{58}{figure.caption.67}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Steer until $a_y$ is reached (left) and sine wave like steering (right)}}{62}{figure.caption.70}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Steer until $a_y$ is reached (left) and brake until $a_x$ is reached (right)}}{64}{figure.caption.72}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Low longitudinal and lateral slip in straight line driving (left) and high lateral slip during cornering (right)}}{65}{figure.caption.74}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Real time implementation concept}}{67}{figure.caption.75}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Toolchain of the real time implementation}}{68}{figure.caption.76}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

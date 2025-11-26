@@ -1,8 +1,11 @@
 \chapter{AI aided estimation}
 
+
 In the previous chapter the direct estimation of the vehicle speed with different AI models was discussed. In this chapter the focus will be shifted towards combining conventional estimation methods with AI algorithms to improve the overall performance of the estimator. First a simple wheel speed based vehicle speed estimation method will be presented. Then a model based estimator will be discussed that utilizes the linear tire model to estimate the vehicle speed from the tire forces. Furthermore an Extended Kalman Filter (EKF) based estimator will be developed that fuses the previously derived model based estimator as the state transition function and the wheel speed based estimator as the measurement function. Finally, the best performing AI models from the previous chapter will be combined with the EKF based estimator to improve its performance.
 
 An important notice is that all the newly presented estimation methods are based on the simplification that the vehicle is a 2D rigid body moving on a flat surface. Therefore the vertical dynamics of the vehicle are neglected and the roll and pitch anlges are considered to be zero. 
+
+Furthermore 
 
 \section{Best wheel based speed estimation}
 \label{sec:best_wheel_estimator}
@@ -281,7 +284,7 @@ In order to see the performance improvement of the EKF based estimator compared 
     \includegraphics[width=\linewidth]{images/results/ekf_bw/ekf_bw_i7_43.png}
   \end{subfigure}
   \caption{Steer until $a_y$ is reached (left) and brake until $a_x$ is reached (right)}
-  \label{fig:model_based_estimator_example}
+  \label{fig:ekf_best_wheel_example}
 \end{figure}
 \FloatBarrier
 
@@ -289,6 +292,59 @@ It can be seen on the second figure that during braking maneuvers the model base
 
 \subsubsection{EKF with AI based speed estimation}
 
+In this section the best performing AI based direct vehicle speed estimator from section \ref{sec:ai_summary} will be used as the measurement function in the EKF based estimator. The state transition function will remain the same as in the previous section, which is the model based speed estimator presented in section \ref{sec:model_based_estimator}. The goal is to see if the combination fo the two methods can provide a better performance compared to the individual estimators. 
 
+The covariance tuning strategy will be the following: in low speed scenarios (below 5 km/h) the covariance of the process niose ($Q$) will be set to higher value, indicating to trust the measurements more, as the model based estimator tends to be less accurate as it was seen before. After passing that limit the diagonal elements of the covariance matrix $Q$ will be set to the same value as the covariance of the observation noise ($R$), indicating to trust both the model based and AI based estimators equally.
 
-\section{Real-time application}
+The values of the covariance matrices used in the EKF implementation can be seen in the following equations:
+\begin{equation}
+    Q = \begin{bmatrix}
+    100 & 0 & 0 \\
+    0 & 0.01 & 0 \\
+    0 & 0 & 0.01
+    \end{bmatrix} \text{ if } v_u < 5, \quad
+    Q = \begin{bmatrix}
+    0.01 & 0 & 0 \\
+    0 & 0.01 & 0 \\
+    0 & 0 & 0.01
+    \end{bmatrix} \text{ if } v_u \geq 5,
+\end{equation}
+
+\begin{equation}
+    R = 0.01.
+\end{equation}
+
+Prioir to the results, it has to be noted that the TCN based direct AI estimator was performing better in each individual validation test compared to the model based estimator, which serves as the state transition function in the EKF. Therefore it is expected that the EKF based estimator will not be able to outperform the AI based estimator, only if the estimator would omit the model based state update function and rely solely on the AI based measurement function. However, the advantage of this setup is that it could provide more robust estimates in scenarios where the AI model might fail, such as in out-of-distribution situations, that were not present in the training data.
+
+The performance indices of the implemented EKF based estimator with AI based measurement can be seen in table \ref{tab:ekf_ai_results}. On figure \ref{fig:ekf_ai_example} two examples of the estimation can be seen, where on the left the estimator is the most accurate and on the right where the estimator shows larger errors due to high lateral slip during cornering.
+\FloatBarrier
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        \textbf{RMSE [$\frac{m}{s}$]} & \textbf{MAE [$\frac{m}{s}$]} & \textbf{AMaxE [$\frac{m}{s}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
+        \hline \hline
+        0.0843 & 0.0433 & 1.8623 & 98.4661 & 98.9649 \\
+        \hline
+    \end{tabular}
+    \caption{Performance metrics of the EKF based speed estimator with AI based measurement function on the test dataset}
+    \label{tab:ekf_ai_results}
+\end{table}
+\FloatBarrier
+\FloatBarrier
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}{0.49\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/results/ekf_ai/ekf_ai_16.png}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.49\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/results/ekf_ai/ekf_ai_37.png}
+  \end{subfigure}
+  \caption{Low longitudinal and lateral slip in straight line driving (left) and high lateral slip during cornering (right)}
+  \label{fig:ekf_ai_example}
+\end{figure}
+It can be seen that the results reflect the expactations mentioned before. The estimator did not outperform the individual AI based direct estimator, however is more likely to provide robust estimates in situations that was not seen before by the AI model during the training phase. 
+
