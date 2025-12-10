@@ -509,6 +509,41 @@
       \verb https://arxiv.org/abs/2105.00250
       \endverb
     \endentry
+    \entry{rnn_reference}{inproceedings}{}{}
+      \name{author}{2}{}{%
+        {{hash=61e61a4ba16dbae239c77cfdfda66c1b}{%
+           family={Yadaiah},
+           familyi={Y\bibinitperiod},
+           given={N.},
+           giveni={N\bibinitperiod}}}%
+        {{hash=ac5d8ce4f41b26a461ef2fcd89c7b02b}{%
+           family={Sowmya},
+           familyi={S\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{b73ad37a294e90cfecff5c38a76cd05d}
+      \strng{fullhash}{b73ad37a294e90cfecff5c38a76cd05d}
+      \strng{fullhashraw}{b73ad37a294e90cfecff5c38a76cd05d}
+      \strng{bibnamehash}{b73ad37a294e90cfecff5c38a76cd05d}
+      \strng{authorbibnamehash}{b73ad37a294e90cfecff5c38a76cd05d}
+      \strng{authornamehash}{b73ad37a294e90cfecff5c38a76cd05d}
+      \strng{authorfullhash}{b73ad37a294e90cfecff5c38a76cd05d}
+      \strng{authorfullhashraw}{b73ad37a294e90cfecff5c38a76cd05d}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{The 2006 IEEE International Joint Conference on Neural Network Proceedings}
+      \field{title}{Neural Network Based State Estimation of Dynamical Systems}
+      \field{year}{2006}
+      \field{pages}{1042\bibrangedash 1049}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1109/IJCNN.2006.246803
+      \endverb
+      \keyw{Neural networks;State estimation;Recurrent neural networks;Nonlinear systems;Kalman filters;Nonlinear dynamical systems;Feedforward neural networks;Adaptive control;Control systems;Predictive models}
+    \endentry
     \entry{DBLP:journals/corr/abs-1803-01271}{article}{}{}
       \name{author}{3}{}{%
         {{hash=46866596e404b7745d45fdb1cbff0a01}{%
@@ -554,7 +589,7 @@
       \verb http://arxiv.org/abs/1803.01271
       \endverb
     \endentry
-    \entry{Vaswani2017AttentionIA}{inproceedings}{}{}
+    \entry{transformer_google}{inproceedings}{}{}
       \name{author}{8}{}{%
         {{hash=7f28e84700536646dd6620a0db07ad09}{%
            family={Vaswani},
@@ -617,6 +652,32 @@
       \verb{url}
       \verb https://arxiv.org/pdf/1706.03762.pdf
       \endverb
+    \endentry
+    \entry{Rajesh_Vehicle_Dynamics}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=0ad4ed3736a98c0eb274c45ed9f3ac6f}{%
+           family={Rajamani},
+           familyi={R\bibinitperiod},
+           given={Rajesh},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{0ad4ed3736a98c0eb274c45ed9f3ac6f}
+      \strng{fullhash}{0ad4ed3736a98c0eb274c45ed9f3ac6f}
+      \strng{fullhashraw}{0ad4ed3736a98c0eb274c45ed9f3ac6f}
+      \strng{bibnamehash}{0ad4ed3736a98c0eb274c45ed9f3ac6f}
+      \strng{authorbibnamehash}{0ad4ed3736a98c0eb274c45ed9f3ac6f}
+      \strng{authornamehash}{0ad4ed3736a98c0eb274c45ed9f3ac6f}
+      \strng{authorfullhash}{0ad4ed3736a98c0eb274c45ed9f3ac6f}
+      \strng{authorfullhashraw}{0ad4ed3736a98c0eb274c45ed9f3ac6f}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Vehicle Dynamics and Control}
+      \field{year}{2012}
     \endentry
   \enddatalist
 \endrefsection

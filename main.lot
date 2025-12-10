@@ -1,47 +1,49 @@
 \babel@toc {english}{}\relax 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces Overview of sensor types, variables, and units}}{16}{table.caption.15}%
-\contentsline {table}{\numberline {2.2}{\ignorespaces Example of available data structure with 2[$ms$] sampling time}}{17}{table.caption.17}%
-\contentsline {table}{\numberline {2.3}{\ignorespaces Min and max values used for normalizatiion of the sensore data}}{19}{table.caption.18}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Hyperparameter ranges for RNN architecture search}}{28}{table.caption.25}%
-\contentsline {table}{\numberline {3.2}{\ignorespaces The set of sensor measurements used as inputs}}{29}{table.caption.26}%
-\contentsline {table}{\numberline {3.3}{\ignorespaces Results of the best performing RNN architecture on the test dataset}}{30}{table.caption.27}%
-\contentsline {table}{\numberline {3.4}{\ignorespaces Performance metrics of the best performing RNN architectures on the test dataset}}{31}{table.caption.28}%
-\contentsline {table}{\numberline {3.5}{\ignorespaces Batch 2: Hyperparameter ranges for RNN architecture search}}{31}{table.caption.29}%
-\contentsline {table}{\numberline {3.6}{\ignorespaces Results of the best performing RNN architecture on the test dataset after finetuning}}{32}{table.caption.30}%
-\contentsline {table}{\numberline {3.7}{\ignorespaces Performance metrics of the best performing RNN architectures on the test dataset after finetuning}}{32}{table.caption.31}%
-\contentsline {table}{\numberline {3.8}{\ignorespaces Results of the best performing LSTM architecture on the test dataset}}{36}{table.caption.35}%
-\contentsline {table}{\numberline {3.9}{\ignorespaces Performance metrics of the best performing LSTM architectures on the test dataset}}{36}{table.caption.36}%
-\contentsline {table}{\numberline {3.10}{\ignorespaces Batch 2: Hyperparameter ranges for LSTM architecture search}}{37}{table.caption.37}%
-\contentsline {table}{\numberline {3.11}{\ignorespaces Results of the best performing LSTM architecture on the test dataset after finetuning}}{37}{table.caption.38}%
-\contentsline {table}{\numberline {3.12}{\ignorespaces Performance metrics of the best performing LSTM architecture from the second batch on the test dataset}}{37}{table.caption.39}%
-\contentsline {table}{\numberline {3.13}{\ignorespaces Results of the best performing GRU architecture on the test dataset}}{41}{table.caption.43}%
-\contentsline {table}{\numberline {3.14}{\ignorespaces Performance metrics of the best performing GRU architectures on the test dataset}}{41}{table.caption.44}%
-\contentsline {table}{\numberline {3.15}{\ignorespaces Batch 2: Hyperparameter ranges for GRU architecture search}}{42}{table.caption.45}%
-\contentsline {table}{\numberline {3.16}{\ignorespaces Results of the best performing GRU architecture on the test dataset}}{42}{table.caption.46}%
-\contentsline {table}{\numberline {3.17}{\ignorespaces Performance metrics of the best performing GRU architecture from the second batch on the test dataset}}{42}{table.caption.47}%
-\contentsline {table}{\numberline {3.18}{\ignorespaces Batch 1: Hyperparameter ranges for TCN architecture search}}{46}{table.caption.51}%
-\contentsline {table}{\numberline {3.19}{\ignorespaces Results of the best performing TCN architecture on the test dataset}}{46}{table.caption.52}%
-\contentsline {table}{\numberline {3.20}{\ignorespaces Performance metrics of the best performing TCN architectures from the first batch on the test dataset}}{47}{table.caption.53}%
-\contentsline {table}{\numberline {3.21}{\ignorespaces Batch 2: Hyperparameter ranges for TCN architecture search}}{48}{table.caption.54}%
-\contentsline {table}{\numberline {3.22}{\ignorespaces Performance metrics of the best performing TCN architecture from the second batch on the test dataset}}{48}{table.caption.55}%
-\contentsline {table}{\numberline {3.23}{\ignorespaces Batch 1: Hyperparameter ranges for transformer architecture search}}{52}{table.caption.58}%
-\contentsline {table}{\numberline {3.24}{\ignorespaces Batch 1: Results of the best performing transformer architecture on the test dataset}}{53}{table.caption.59}%
-\contentsline {table}{\numberline {3.25}{\ignorespaces Batch 1: Performance metrics of the best performing transformer architectures from the first batch on the test dataset}}{53}{table.caption.60}%
-\contentsline {table}{\numberline {3.26}{\ignorespaces Batch 2: Hyperparameter ranges for transformer architecture search}}{53}{table.caption.61}%
-\contentsline {table}{\numberline {3.27}{\ignorespaces Batch 2: Results of the best performing transformer architecture on the test dataset}}{54}{table.caption.62}%
-\contentsline {table}{\numberline {3.28}{\ignorespaces Performance metrics of the best performing transformer architecture from the second batch on the test dataset}}{54}{table.caption.63}%
-\contentsline {table}{\numberline {3.29}{\ignorespaces Comparison of the best performing AI models on the test dataset}}{55}{table.caption.65}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces Overview of sensor types, variables, and units}}{16}{table.caption.14}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Example of available data structure with 2[$ms$] sampling time}}{17}{table.caption.16}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces Min and max values used for normalization of the sensore data}}{19}{table.caption.17}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Performance metrics of the best wheel based speed estimator on the test dataset}}{58}{table.caption.66}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces Model parameters used for the model based speed estimator}}{61}{table.caption.68}%
-\contentsline {table}{\numberline {4.3}{\ignorespaces Performance metrics of the model based speed estimator on the test dataset}}{61}{table.caption.69}%
-\contentsline {table}{\numberline {4.4}{\ignorespaces Performance metrics of the EKF based speed estimator with best wheel based measurement function on the test dataset}}{64}{table.caption.71}%
-\contentsline {table}{\numberline {4.5}{\ignorespaces Performance metrics of the EKF based speed estimator with AI based measurement function on the test dataset}}{65}{table.caption.73}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Hyperparameter ranges for RNN architecture search}}{28}{table.caption.24}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces The set of sensor measurements used as inputs}}{29}{table.caption.25}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Results of the best performing RNN architecture on the test dataset}}{30}{table.caption.26}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Performance metrics of the best performing RNN architectures on the test dataset}}{31}{table.caption.27}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces Batch 2: Hyperparameter ranges for RNN architecture search}}{31}{table.caption.28}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces Results of the best performing RNN architecture on the test dataset after finetuning}}{32}{table.caption.29}%
+\contentsline {table}{\numberline {4.7}{\ignorespaces Performance metrics of the best performing RNN architectures on the test dataset after finetuning}}{32}{table.caption.30}%
+\contentsline {table}{\numberline {4.8}{\ignorespaces Results of the best performing LSTM architecture on the test dataset}}{36}{table.caption.34}%
+\contentsline {table}{\numberline {4.9}{\ignorespaces Performance metrics of the best performing LSTM architectures on the test dataset}}{36}{table.caption.35}%
+\contentsline {table}{\numberline {4.10}{\ignorespaces Batch 2: Hyperparameter ranges for LSTM architecture search}}{37}{table.caption.36}%
+\contentsline {table}{\numberline {4.11}{\ignorespaces Results of the best performing LSTM architecture on the test dataset after finetuning}}{37}{table.caption.37}%
+\contentsline {table}{\numberline {4.12}{\ignorespaces Performance metrics of the best performing LSTM architecture from the second batch on the test dataset}}{37}{table.caption.38}%
+\contentsline {table}{\numberline {4.13}{\ignorespaces Results of the best performing GRU architecture on the test dataset}}{41}{table.caption.42}%
+\contentsline {table}{\numberline {4.14}{\ignorespaces Performance metrics of the best performing GRU architectures on the test dataset}}{41}{table.caption.43}%
+\contentsline {table}{\numberline {4.15}{\ignorespaces Batch 2: Hyperparameter ranges for GRU architecture search}}{42}{table.caption.44}%
+\contentsline {table}{\numberline {4.16}{\ignorespaces Results of the best performing GRU architecture on the test dataset}}{42}{table.caption.45}%
+\contentsline {table}{\numberline {4.17}{\ignorespaces Performance metrics of the best performing GRU architecture from the second batch on the test dataset}}{42}{table.caption.46}%
+\contentsline {table}{\numberline {4.18}{\ignorespaces Batch 1: Hyperparameter ranges for TCN architecture search}}{46}{table.caption.50}%
+\contentsline {table}{\numberline {4.19}{\ignorespaces Results of the best performing TCN architecture on the test dataset}}{47}{table.caption.51}%
+\contentsline {table}{\numberline {4.20}{\ignorespaces Performance metrics of the best performing TCN architectures from the first batch on the test dataset}}{47}{table.caption.52}%
+\contentsline {table}{\numberline {4.21}{\ignorespaces Batch 2: Hyperparameter ranges for TCN architecture search}}{48}{table.caption.53}%
+\contentsline {table}{\numberline {4.22}{\ignorespaces Performance metrics of the best performing TCN architecture from the second batch on the test dataset}}{48}{table.caption.54}%
+\contentsline {table}{\numberline {4.23}{\ignorespaces Batch 1: Hyperparameter ranges for transformer architecture search}}{52}{table.caption.57}%
+\contentsline {table}{\numberline {4.24}{\ignorespaces Batch 1: Results of the best performing transformer architecture on the test dataset}}{53}{table.caption.58}%
+\contentsline {table}{\numberline {4.25}{\ignorespaces Batch 1: Performance metrics of the best performing transformer architectures from the first batch on the test dataset}}{53}{table.caption.59}%
+\contentsline {table}{\numberline {4.26}{\ignorespaces Batch 2: Hyperparameter ranges for transformer architecture search}}{53}{table.caption.60}%
+\contentsline {table}{\numberline {4.27}{\ignorespaces Batch 2: Results of the best performing transformer architecture on the test dataset}}{54}{table.caption.61}%
+\contentsline {table}{\numberline {4.28}{\ignorespaces Performance metrics of the best performing transformer architecture from the second batch on the test dataset}}{54}{table.caption.62}%
+\contentsline {table}{\numberline {4.29}{\ignorespaces Comparison of the best performing AI models on the test dataset}}{55}{table.caption.64}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Real time implementation results on dSpace MicroAutoBox}}{69}{table.caption.77}%
+\contentsline {table}{\numberline {5.1}{\ignorespaces Performance metrics of the best wheel based speed estimator on the test dataset}}{58}{table.caption.65}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces Model parameters used for the model based speed estimator}}{61}{table.caption.67}%
+\contentsline {table}{\numberline {5.3}{\ignorespaces Performance metrics of the model based speed estimator on the test dataset}}{61}{table.caption.68}%
+\contentsline {table}{\numberline {5.4}{\ignorespaces Performance metrics of the EKF based speed estimator with best wheel based measurement function on the test dataset}}{64}{table.caption.70}%
+\contentsline {table}{\numberline {5.5}{\ignorespaces Performance metrics of the EKF based speed estimator with AI based measurement function on the test dataset}}{65}{table.caption.72}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {6.1}{\ignorespaces Real time implementation results on dSpace MicroAutoBox}}{69}{table.caption.76}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {B.1}{\ignorespaces Hyperparameter ranges for RNN architecture search}}{79}{table.caption.82}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {B.1}{\ignorespaces Hyperparameter ranges for RNN architecture search}}{79}{table.caption.80}%

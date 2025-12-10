@@ -302,13 +302,12 @@ INPUT .\images\vehicle_speed.pdf
 INPUT .\images\vehicle_speed.pdf
 INPUT .\images\vehicle_speed.pdf
 INPUT .\images\vehicle_speed.pdf
-INPUT .\images\Vehicle-longitudinal-powertrain-diagram-speed-calculation.png
-INPUT .\images\Vehicle-longitudinal-powertrain-diagram-speed-calculation.png
-INPUT .\images\Vehicle-longitudinal-powertrain-diagram-speed-calculation.png
-INPUT .\images\Vehicle-longitudinal-powertrain-diagram-speed-calculation.png
-INPUT .\images\Vehicle-longitudinal-powertrain-diagram-speed-calculation.png
-INPUT .\images\Vehicle-longitudinal-powertrain-diagram-speed-calculation.png
-INPUT .\images\Vehicle-longitudinal-powertrain-diagram-speed-calculation.png
+INPUT .\images\Vehicle-longitudinal-powertrain-schematic-speed-calculation.pdf
+INPUT .\images\Vehicle-longitudinal-powertrain-schematic-speed-calculation.pdf
+INPUT .\images\Vehicle-longitudinal-powertrain-schematic-speed-calculation.pdf
+INPUT .\images\Vehicle-longitudinal-powertrain-schematic-speed-calculation.pdf
+INPUT .\images\Vehicle-longitudinal-powertrain-schematic-speed-calculation.pdf
+INPUT .\images\Vehicle-longitudinal-powertrain-schematic-speed-calculation.pdf
 INPUT .\images\speedometer_patent.png
 INPUT .\images\speedometer_patent.png
 INPUT .\images\speedometer_patent.png
@@ -352,26 +351,24 @@ INPUT .\images\ecef.jpg
 INPUT .\images\ecef.jpg
 INPUT .\images\ecef.jpg
 INPUT .\images\ecef.jpg
-INPUT .\images\simple_estimator.png
-INPUT .\images\simple_estimator.png
-INPUT .\images\simple_estimator.png
-INPUT .\images\simple_estimator.png
-INPUT .\images\simple_estimator.png
-INPUT .\images\simple_estimator.png
-INPUT .\images\simple_estimator.png
-INPUT .\images\kalman_filter.png
-INPUT .\images\kalman_filter.png
-INPUT .\images\kalman_filter.png
-INPUT .\images\kalman_filter.png
-INPUT .\images\kalman_filter.png
-INPUT .\images\kalman_filter.png
-INPUT .\images\kalman_filter.png
-INPUT .\images\Extended Kalman Filter Estimator (vehicle model).pdf
-INPUT .\images\Extended Kalman Filter Estimator (vehicle model).pdf
-INPUT .\images\Extended Kalman Filter Estimator (vehicle model).pdf
-INPUT .\images\Extended Kalman Filter Estimator (vehicle model).pdf
-INPUT .\images\Extended Kalman Filter Estimator (vehicle model).pdf
-INPUT .\images\Extended Kalman Filter Estimator (vehicle model).pdf
+INPUT .\images\simple_estimator.pdf
+INPUT .\images\simple_estimator.pdf
+INPUT .\images\simple_estimator.pdf
+INPUT .\images\simple_estimator.pdf
+INPUT .\images\simple_estimator.pdf
+INPUT .\images\simple_estimator.pdf
+INPUT .\images\kalman_filter.pdf
+INPUT .\images\kalman_filter.pdf
+INPUT .\images\kalman_filter.pdf
+INPUT .\images\kalman_filter.pdf
+INPUT .\images\kalman_filter.pdf
+INPUT .\images\kalman_filter.pdf
+INPUT .\images\EKF_vehicle_model.pdf
+INPUT .\images\EKF_vehicle_model.pdf
+INPUT .\images\EKF_vehicle_model.pdf
+INPUT .\images\EKF_vehicle_model.pdf
+INPUT .\images\EKF_vehicle_model.pdf
+INPUT .\images\EKF_vehicle_model.pdf
 INPUT .\images\fuzzy_logic.png
 INPUT .\images\fuzzy_logic.png
 INPUT .\images\fuzzy_logic.png
@@ -724,6 +721,10 @@ INPUT C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec
 INPUT C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1200.pk
 INPUT C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2074.pk
 INPUT C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2074.pk
+INPUT C:\Users\andrzej.skrodzki\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx12.pfb
+INPUT C:\Users\andrzej.skrodzki\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx12.pfb
+INPUT C:\Users\andrzej.skrodzki\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx8.pfb
+INPUT C:\Users\andrzej.skrodzki\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx8.pfb
 INPUT C:\Users\andrzej.skrodzki\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmex10.pfb
 INPUT C:\Users\andrzej.skrodzki\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmex10.pfb
 INPUT C:\Users\andrzej.skrodzki\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb

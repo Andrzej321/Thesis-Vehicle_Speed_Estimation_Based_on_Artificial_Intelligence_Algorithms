@@ -1,15 +1,14 @@
 \pagenumbering{arabic}
 
-\chapter*{Introduction}
-\addcontentsline{toc}{chapter}{Introduction}
+\chapter{Introduction}
 
-Accurate vehicle speed estimation plays a critical role in modern automotive systems, contributing to various functionalities such as tire slip calculation, advanced driver-assistance systems (ADAS), intelligent transportation systems (ITS), and autonomous driving technologies. Conventionally, the measurement of vehicle speed has been accomplished through two primary methods: direct measurement via wheel speed sensors or indirect derivation using GPS data. However, it must be acknowledged that these methodologies are not without their limitations. The functionality of wheel speed sensors can be compromised by factors such as wheel slip or defects in the sensor itself. Concurrently, the reliability of GPS signals is often compromised in specific environments, including tunnels, urban canyons, and dense forests.
+Accurate vehicle speed estimation plays a critical role in modern automotive systems, contributing to various functionalities such as tire slip calculation, advanced driver-assistance systems (ADAS), intelligent transportation systems (ITS), and autonomous driving technologies. Conventionally, the measurement of vehicle speed has been accomplished through sensors that measure the motion of the vehicle. These common methods mainly measure the position, velocity or acceleration of the vehicle via wheel speed sensors, inertial measurement unit (IMU) or the data received from the GNNS signals. However, it must be acknowledged that these methodologies are not without their limitations. The measurements ontained from any sensors are affected by noise, biases and potential failures that lead to inaccuracies and bad precision in the estimated vehicle speed.
 
-In this context, the Controller Area Network (CAN) bus, which facilitates communication between electronic control units (ECUs) in vehicles, offers a promising alternative source of information for estimating vehicle speed. The CAN bus transmits various sensor readings and control signals continuously, with many of these signals being correlated with vehicle dynamics. The utilization of these signals for speed estimation has the potential to enhance system robustness, particularly in scenarios where traditional methods are rendered ineffective.
+The measurements obtained from the sensors are processed through various estimation algorithms to derive the vehicle speed. Traditional non-linear estimation techniques include simple averaging methods, model-based estimators, and Kalman filtering approaches. While these methods have been proven effective in many scenarios, they often rely on predefined models and assumptions that may not fully capture the complex dynamics of vehicle motion, especially under varying road conditions and driving behaviors.
 
-The advent of artificial intelligence (AI) has led to a surge in the utilization of data-driven methodologies for addressing intricate estimation challenges. Artificial intelligence (AI) models, particularly those designed for time-series data, such as recurrent neural networks (RNNs), are well-suited to capture the temporal dependencies and nonlinear relationships inherent in CAN signals. When trained effectively, these models can provide real-time, accurate estimations of vehicle speed based solely on CAN data.
+As the sequential data received from the communication bus (CAN) of the vehicle, the approach of using artificial intelligence (AI) has gained interest in recent years. These methods allow to describe the highly non-linear relationships between the input sensor signals and the vehicle speed without the need for explicit modeling. Various AI architectures have been explored for their ability to learn temporal dependencies and patterns in sequential data. 
 
-This thesis explores the development and validation of AI-based models for real-time vehicle speed estimation using CAN signal data from a passenger car. The estimation performance is evaluated against GPS measurements, which serve as ground truth. Moreover, the study explores hybrid approaches that integrate artificial intelligence (AI) with conventional filtering methods, with the objective of combining the strengths of both paradigms. The enhancement of the reliability and accuracy of speed estimation contributes to the development of safer and more intelligent vehicle systems.
+This thesis explores the development and validation of AI-based models for real-time vehicle speed estimation using CAN signal data from a passenger car. The estimation performance is evaluated against GPS measurements, which serve as ground truth. Moreover, the study explores hybrid approaches that integrate artificial intelligence (AI) with conventional filtering methods, with the objective of combining the strengths of both approaches.
 
 \chapter{Vehicle speed}
 
@@ -25,23 +24,29 @@ where $v_{CoG}$ is the vehicle speed, $[\textbf{v}_{CoG}]_{\mathcal{R}_v}$ is th
     \item velocity vector: $[\textbf{v}_{CoG}]_{\mathcal{R}_0} = \begin{bmatrix} v_x \\ v_y \\ v_z \end{bmatrix}_{\mathcal{R}_0}$
 \end{itemize}
 
-As the moving vehicle in space is considered as a 3 dimensional body, the orientation of it can be described with a body-fixed reference frame denoted by $\mathcal{R}_{[x_v, y_v, z_v]}$ (later denoted by $\mathcal{R}_v$ for simplicity), where $x_v$ points forward along the longitudinal axis of the vehicle frame, $y_v$ points sideways to the left along the lateral axis and $z_v$ points upwards to complete the right-handed coordinate system. Let this coordinate system be placed in the CoG of the vehicle. With the help of this body-fixed coordinate system the previously determined velocity vector ($[\textbf{v}_{CoG}]_{\mathcal{R}_0}$) can be expressed in the body-fixed reference frame with the help of the transformation matrix $T_{\mathcal{R}_0 \rightarrow{} \mathcal{R}_v}$ between the two reference frames. The transformation matrix can be obtained from the rotational matrices around the three axes, namely $x_0$, $y_0$ and $z_0$.
-The angles of rotation around the axes are the following:
+As the moving vehicle in space is considered as a 3 dimensional body, the orientation of it can be described with a body-fixed reference frame denoted by $\mathcal{R}_{[x_v, y_v, z_v]}$ (later denoted by $\mathcal{R}_v$ for simplicity), where $x_v$ points forward along the longitudinal axis of the vehicle frame, $y_v$ points sideways to the left along the lateral axis and $z_v$ points upwards to complete the right-handed coordinate system. Let this coordinate system be placed in the CoG of the vehicle. In order to describe the velocity vector in this body-fixed reference frame, the angles between the two reference frames have to be defined. These angles are the following:
 \begin{itemize}
-    \item angle of rotation around axis $x_0$: roll - $\alpha$
-    \item angle of rotation around axis $y_z$: pitch - $\beta$
-    \item angle of rotation around axis $z_0$: yaw - $\gamma$
+    \item angle of rotation around axis $x_v$: $\delta_{x_v}$,
+    \item angle of rotation around axis $y_v$: $\delta_{y_v}$,
+    \item angle of rotation around axis $z_v$: $\delta_{z_v}$.
 \end{itemize}
-From here the transformation matrix is as follows:
+With the help of these three angles, the velocity vector can be expressed in the body-fixed reference frame with the help of the transformation matrix $T_{\mathcal{R}_0 \rightarrow{} \mathcal{R}_v}$ between the two reference frames. From this the transformation matrix is as follows:
 \begin{equation}
-    T_{\mathcal{R}_0 \rightarrow{} \mathcal{R}_v} = R_z(\psi) \cdot R_y(\theta) \cdot R_x(\phi) 
+    T_{\mathcal{R}_0 \rightarrow{} \mathcal{R}_v} = R_z(\delta_{x_v}) \cdot R_y(\delta_{y_v}) \cdot R_x(\delta_{z_v}), 
 \end{equation}
+where $R_x$, $R_y$ and $R_z$ are the rotation matrices around the respective axes.
+
+It is important to note that throughout this thesis, the vehicle is assumed to be moving on a flat surface. This means that the angles of rotation around the $x_v$ and $y_v$ axes are considered negligible, i.e., $\delta_{x_v} \approx 0$ and $\delta_{y_v} \approx 0$. Consequently, the transformation matrix simplifies to a rotation around the $z_v$ axis only:
+\begin{equation}
+    T_{\mathcal{R}_0 \rightarrow{} \mathcal{R}_v} = R_z(\delta_{z_v}).
+\end{equation}
+This simplified 2D representation of the vehicle speed in the body-fixed reference frame is illustrated in Figure \ref{fig:geom_veh_speed}.
 
 \FloatBarrier
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.7\textwidth]{images/vehicle_speed.pdf}
-    \caption{Vehicle speeds}
+    \caption{Vehicle speed in body-fixed reference frame in 2D space}
     \label{fig:geom_veh_speed}
 \end{figure}
 \FloatBarrier
@@ -50,10 +55,7 @@ With the help of the transformation matrix the velocity vector in the body-fixed
 \begin{equation}
     [\textbf{v}_{CoG}]_{\mathcal{R}_v} = T_{\mathcal{R}_0 \rightarrow{} \mathcal{R}_v} \cdot [\textbf{v}_{CoG}]_{\mathcal{R}_0} = \begin{bmatrix} v_x \\ v_y \\ v_z \end{bmatrix}_{\mathcal{R}_v},
 \end{equation}
-where the longitudinal velocity $v_x$ is the component of the velocity vector along the $x_v$ axis, the lateral velocity $v_y$ is the component of the velocity vector along the $y_v$ axis and the vertical velocity $v_z$ is the component of the velocity vector along the $z_v$ axis. From now on the longitudinal speed will refer to the magnitude of the longitudinal velocity component, that is:
-\begin{equation}
-    v_{long} = v_x.
-\end{equation}
+where the longitudinal speed $v_x$ is the component of the velocity vector along the $x_v$ axis, the lateral speed $v_y$ is the component of the velocity vector along the $y_v$ axis and the vertical speed $v_z$ is the component of the velocity vector along the $z_v$ axis.
 
 \section{Measurements for determining vehicle speed}
 \label{sec:Measurements}
@@ -62,11 +64,11 @@ There are various ways to determine the speed of the vehicle. In this section th
 
 \subsection{Engine speed}
 
-The first way is calculating the wheel and vehicle speed from the rotational speed of the engine \cite{engine_speed}. It is a rather theoretical calculation but it gives a simplified overview how the engine is connected to the wheels through the gearbox and the differential. The setup can be seen on Figure \ref{fig:egine_speed}.
+The first way is calculating the wheel and vehicle speed from the rotational speed of the engine \cite{engine_speed}. It is a rather theoretical approach but it gives an example of a simplified overview how an engine is connected to the wheels through the gearbox and the differential. The setup can be seen on Figure \ref{fig:egine_speed}.
 \FloatBarrier
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.9\textwidth]{images/Vehicle-longitudinal-powertrain-diagram-speed-calculation.png}
+    \includegraphics[width=0.8\textwidth]{images/Vehicle-longitudinal-powertrain-schematic-speed-calculation.pdf}
     \caption{Calculating vehicle speed from engine speed \cite{engine_speed}}
     \label{fig:egine_speed}
 \end{figure}
@@ -77,7 +79,7 @@ The formula for determining the vehicle speed is the following:
 \end{equation}
 where $N_e$ [rpm] is the engine speed, $r_{\omega}$ [m] is the wheel radius, $i_x$ [-] is the gear ratio of the engaged gear and $i_0$ [-] is the gear ratio of the differential. 
 
-The main advantage of this method comes from its simplicity. Based on a one measured data, that is the engine shaft's rotational speed ($N_e$), the longitudinal vehicle speed can be determined. Contrary to this it can only give a estimate due to the simplifications it considers. It doesn't take in account the slip in the clutch between the gearbox and the engine shaft, the longitudinal and lateral slip of the tires, the difference in speed of the left and right wheels in case of traveling in a curve, the case when the gearbox and the engine are detached while the vehicle is being in neutral (gear 0) and when the wheels are locked but the vehicle is still motion. Considering the points mentioned above, this method could be used in highway driving where the vehicle travels with constant high speed on a straight path with little curvature. 
+The main advantage of this method comes from its simplicity. Based on a one measured data, that is the engine shaft's rotational speed ($N_e$), the longitudinal vehicle speed can be determined. Contrary to this it can only give an estimate due to the simplifications it considers. It doesn't take in account the slip in the clutch between the gearbox and the engine shaft, the longitudinal and lateral slip of the tires, the difference in speed of the left and right wheels in case of traveling in a curve, the case when the gearbox and the engine are detached while the vehicle is being in neutral (gear 0) and when the wheels are locked but the vehicle is still motion. Considering the points mentioned above, this method could be used in highway driving where the vehicle travels with constant high speed on a straight path with little curvature. 
 
 \subsection{Wheel speed}
 
@@ -112,18 +114,17 @@ The principle of the passive wheel speed sensor is the following. A toothed relu
 
 In the case of these wheel speed sensors, the output is a rotational speed. From this rotational speed the ground speed of the specific wheel can be determined with the help of the diameter of the wheel. This measurement can be done for all the wheels, which will serve as an input for later discussed estimator algorithms.
 
-
 \subsection{Inertial Measurement Unit}
 
-The inertial measurement unit (IMU) can also provide relevant measurement data to determine the vehicle speed. An IMU consist of a set of linear accelerometers and gyroscopes to determine the acceleration along and the rotational rate around the longitudinal, lateral and vertical axes. This gives two vectors: acceleration $\textbf{a}$ and angular velocity vector $\boldsymbol{\omega}$ in the body fixes coordinate system:
+The inertial measurement unit (IMU) can also provide relevant measurement data to determine the vehicle speed. An IMU consist of a set of accelerometers and gyroscopes to determine the acceleration along and the rotational rate around the longitudinal, lateral and vertical axes. This gives two vectors: acceleration $\textbf{a}$ and angular velocity vector $\boldsymbol{\dot \eta}$ in the body fixes coordinate system:
 \begin{equation}
     \textbf{a} = \begin{bmatrix}
         a_x \\ a_y \\ a_z 
     \end{bmatrix}
     \text{ and }
-    \boldsymbol{\omega} = 
+    \boldsymbol{\dot \eta} = 
     \begin{bmatrix}
-        \omega_x \\ \omega_y \\ \omega_z
+        \dot \varphi \\ \dot \theta  \\ \dot \psi
     \end{bmatrix}
 \end{equation}
 Before calculating the velocity, the gravitational vector has to be deducted from the measured acceleration vector that can be done with the help of the angular velocity vector. From here, as the velocity vector's time derivative equals the acceleration vector, the velocity can be derived by an integral:
@@ -135,62 +136,83 @@ It is important to mention here that this measurement method is not robust by it
 \subsection{Global Navigation Satellite System}
 \label{subsec:GNSS}
 
-Global Navigation Satellite System (GNSS) refers to any constellation that provides global positioning, navigation and timing services. The currently available GNSS systems in Europe are GPS, Galileo, Glonass and BeiDou \cite{GNSS}. 
+Global Navigation Satellite System (GNSS) refers to any constellation that provides global positioning, navigation and timing services. The currently available GNSS systems in Europe are GPS, Galileo, Glonass and BeiDou \cite{GNSS}. The velocity of the vehicle can be obtained by exploiting the raw Doppler, the carrier phase or the pseudorange measurements with a GNSS receiver.
 
-The velocity of the vehicle can be obtained by exploiting the raw Doppler, the carrier phase or the pseudorange measurements with a GNSS receiver. These measurements are the following: 
-\begin{itemize}
-    \item Raw Doppler (RD) measurement:
-    \begin{itemize}
-        \item The RD measurement captures how much does the frequency of the signal change between transmitting and receiving.
-        \begin{equation}
-            D = f_{transmitted} - f_{received}
-        \end{equation}
-        \item The Doppler shift $D$ is related to the change of the distance between the satellite and the receiver. From the Doppler shift the range rate $\dot\rho$ can be determined that is the radial velocity $v_r$ along the range between the satellite and the receiver.
-        \begin{equation}
-            \dot\rho = v_r = \lambda \cdot D = \dot\rho + c
-        \end{equation}
-    \end{itemize}
-    \item Carrier phase measurement:
-    \item Pseudorange differentiation:
-\end{itemize}
+The raw Doppler measurement utilizes the Doppler shift between the transmitted and received signal frequencies. The Doppler shift can be expressed as:
+\begin{equation}
+    D = \Delta f = f_{0} - f_{r},
+\end{equation}
+where $f_{0}$ is the transmitted frequency and $f_{r}$ is the received frequency.From this the radial velocity between the satellite and the receiver can be determined as:
+\begin{equation}
+    \dot\rho = v_r \approx -\frac{c}{f_{0}} \cdot D,
+\end{equation}
+where $c$ is the speed of light in vacuum. With the help of the radial velocities from multiple satellites, the velocity vector of the receiver can be determined in the Earth-Centered Earth-Fixed (ECEF) coordinate system (figure \ref{fig:GNSS}).
+
+Carrier phase measurement uses the phase difference between the transmitted and the received carrier signals to determine the radial velocity. This method provides higher accuracy compared to the Doppler method but requires resolving integer ambiguities associated with the carrier phase measurements. The range rate can expressed from:
+\begin{equation}
+  \frac{\Delta\bigl(\Phi \lambda\bigr)}{\Delta t}
+  \;\approx\;
+  \dot{\rho}
+  \;+\; c \bigl( \dot{\delta t}_r - \dot{\delta t}_s \bigr)
+  \;+\; \text{small residual terms},
+\end{equation}
+where $\Phi$ is the carrier phase measurement in cycles, $\lambda$ is the wavelength of the carrier signal, $\dot{\delta t}_r$ and $\dot{\delta t}_s$ are the receiver and satellite clock drifts respectively. With this the radial velocity can be approximated in discrete time as:
+\begin{equation}
+  \dot{\rho} \;\approx\;
+  \frac{ \Phi(t_{k+1})\lambda - \Phi(t_k)\lambda }{ t_{k+1} - t_k }  \;-\; c \bigl( \dot{\delta t}_r - \dot{\delta t}_s \bigr).
+\end{equation}
+
+
+Pseudorange differentiation method determines the radial velocity by differentiating the pseudorange measurements over time. The pseudorange is the estimated distance between the receiver and the satellite. This range can be expressed as:
+\begin{equation}
+    P = \rho + c(\delta t_r - \delta t_s) + \text{other error terms},
+\end{equation}
+where $P$ is the pseudorange, $\rho$ is the true range, $\delta t_r$ and $\delta t_s$ are the receiver and satellite clock biases respectively. By differentiating the pseudorange over time, the radial velocity can be approximated as:
+\begin{equation}
+    \frac{dP}{dt} \approx \dot{\rho} + c(\dot{\delta t}_r - \dot{\delta t}_s) + \text{small residual terms}.
+\end{equation}
+The radial velocity can be approximated in discrete time as:
+\begin{equation}
+    \dot{\rho} \approx \frac{P(t_{k+1}) - P(t_k)}{t_{k+1} - t_k} - c(\dot{\delta t}_r - \dot{\delta t}_s).
+\end{equation}
 
 \FloatBarrier
 \begin{figure}[htbp]
     \centering
-    \begin{minipage}{0.45\textwidth}
+    \begin{minipage}{0.3\textwidth}
         \centering
         \includegraphics[width=\linewidth]{images/trilateration.pdf}
     \end{minipage}
     \hfill
-    \begin{minipage}{0.45\textwidth}
+    \begin{minipage}{0.3\textwidth}
         \centering
         \includegraphics[width=\linewidth]{images/ecef.jpg}
     \end{minipage}
-    \label{fig:GNSS}
     \caption{Trilateration (left) from \cite{gps-satellites-trilateration} and ECEF coordinate system (right) from \cite{ECEF_coordinate_sys}}
+    \label{fig:GNSS}
 \end{figure}
 \FloatBarrier
 
 \section{Estimating vehicle speed}
 
 \subsection{Accelerometer and speedometer}
-The simplest method to estimate the vehicle speed is to take the measurements from the speedometers at all the wheels. The longitudinal speed of each wheel can be determined from the rotational speed data from the sensors. These values then can be transformed into the CoG of the vehicle. There the transformed longitudinal velocities can be compared and the largest one can be chosen.
+The simplest method to estimate the vehicle speed is to take the measurements from the speedometers at all the wheels. The longitudinal speed of each wheel can be determined from the rotational speed data from the sensors. These values then can be transformed into the CoG of the vehicle. There the transformed longitudinal velocities can be averaged to give an estimate of the vehicle speed at the CoG:
 \begin{equation}
-    v_{CoG} = max[v_{FR}; v_{FL}; v_{RR}; v_{RL}],
+    v_{est, CoG} = \frac{v_{cog}^{FR} + v_{cog}^{FL} + v_{cog}^{RR} + v_{cog}^{RL}}{4},
 \end{equation}
-where $v_{FR}$, $v_{FL}$, $v_{RR}$and $v_{RL}$ are the transformed velocity values from each wheel. 
+where $v_{cog}^{FR}$, $v_{cog}^{FL}$, $v_{cog}^{RR}$ and $v_{cog}^{RL}$ are the longitudinal speeds of the front right, front left, rear right and rear left wheels transformed to the CoG of the vehicle respectively.
 
-Another simple algorithm for vehicle speed estimation is presented in \cite{lit_simple_veh_speed}. Here the vehicle speed is determined by the measurements from the IMU's longitudinal accelerometer and the wheel speed sensors. The formula that estimates the speed is described as follows:
+Another simple algorithm for vehicle speed estimation is presented in \cite{lit_simple_veh_speed}, where the vehicle speed is determined by the measurements from the IMU's longitudinal accelerometer and the wheel speed sensors. The formula that estimates the speed is described as follows:
 \begin{equation}
-    v_{CoG}(k) = v_{simple}(k_{nobrake}) + \sum_{i=k_{nobrake}}^{k} a_{meas}(i)\cdot dt,
+    v_{est, CoG}(k) = v_{simple}(k_{nobrake}) + \sum_{i=k_{nobrake}}^{k} a_{meas}(i)\cdot dt,
 \end{equation}
-where the $k$ is the time step counter, $k_{nobrake}$ is the last time index where there was no braking, $a_{meas}$ is the acceleration value form the IMU's longitudinal accelerator and $dt$ is the time sample. This method works in a way that estimation is taken apart into two categories based on whether the vehicle is barking or not. 
-The simplicity comes at the price of inaccuracies. The estimator does not perform well when accelerometer offset is set and the dynamic change of the wheel radius is not implemented. An other difficulty comes from dealing with the noisy measurements from the wheel speed sensors and the IMU. 
+where the $k$ is the time step counter, $k_{nobrake}$ is the last time index where there was no braking, $a_{meas}$ is the acceleration value form the IMU's longitudinal accelerator and $dt$ is the sampling time. This method works in a way that estimation is taken apart into two categories based on whether the vehicle is barking or not. 
+The simplicity comes at the price of inaccuracies. The estimator does not perform well when accelerometer offset is set and the dynamic change of the wheel radius is not implemented. An other difficulty comes from dealing with the noisy measurements from the wheel speed sensors and the IMU. A similar algorithm to this one will be presented later in section \ref{sec:best_wheel_estimator}. The results of the simple algorithm can be seen on figure \ref{fig:simple_veh_speed_est}.
 \FloatBarrier
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/simple_estimator.png}
-    \caption{Simple algorithm for estimating vehicle speed form \cite{lit_simple_veh_speed}}
+    \includegraphics[width=0.6\textwidth]{images/simple_estimator.pdf}
+    \caption{Simple algorithm for estimating vehicle speed from \cite{lit_simple_veh_speed}}
     \label{fig:simple_veh_speed_est}
 \end{figure}
 \FloatBarrier
@@ -201,7 +223,7 @@ To elevate the performance of the previously described methods, a Kalman filter 
     \item Prediction
     \begin{itemize}
         \item The filter takes the last estimate and predicts the next state's longitudinal or lateral velocity based on the simple dynamic motion model.
-        \item The filter provides an estimate and a uncertainty measure for the prediction.
+        \item The filter provides an estimate and an uncertainty measure for the prediction.
     \end{itemize}
     \item Correction
     \begin{itemize}
@@ -213,17 +235,16 @@ Following this structure a Kalman filter is proposed in \cite{lit_for_Kalman_fuz
 \FloatBarrier
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/kalman_filter.png}
+    \includegraphics[width=0.6\textwidth]{images/kalman_filter.pdf}
     \caption{Vehicle speed estimation with Kalman filter from \cite{lit_for_Kalman_fuzzy}}
     \label{fig:kalman_filter}
 \end{figure}
 \FloatBarrier
 
-To elevate the usage of Kalman filter a more sophisticated and non-linear vehicle model can be used to predict the vehicle speed. In \cite{lit_model_based_est} an Extended Kalman filter is introduced with vehicle model that runs parallel with the system itself. The overview of the filtering approach can be seen on figure \ref{fig:model_based}
-
+To elevate the usage of Kalman filter a more sophisticated and non-linear vehicle model can be used to predict the vehicle speed. In \cite{lit_model_based_est} an Extended Kalman filter (EKF) is introduced with vehicle model that runs parallel with the system itself. The overview of the filtering approach can be seen on figure \ref{fig:model_based}. An EKF based estimator will be discussed later in section \ref{sec:EKF_estimator}.
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/Extended Kalman Filter Estimator (vehicle model).pdf}
+    \includegraphics[width=0.8\textwidth]{images/EKF_vehicle_model.pdf}
     \caption{Extended Kalman filter for vehicle speed estimation from \cite{lit_model_based_est}}
     \label{fig:model_based}
 \end{figure}
@@ -232,15 +253,15 @@ To elevate the usage of Kalman filter a more sophisticated and non-linear vehicl
 \subsection{Fuzzy logic}
 An other approach to estimate the vehicle speed is using fuzzy logic. Fuzzy logic offers heuristic approach to handle uncertainty and imprecision of the sensors. In \cite{lit_for_Kalman_fuzzy} a comprehensive method is described using the Fuzzy logic to determine the vehicle speed using different driving scenarios.
 
-The main motive behind the proposed estimator is determining the weights of the sensor signal values. All the speed values coming from the senors receive a weighting factor $k_i$. The weighted average is then  formulated as follows:
+The main motive behind the proposed estimator is determining the weights of the sensor signal values, that are the wheel speeds and the longitudinal acceleration. All these values coming from the senors receive a weighting factor $k_i$, where $i \in [1...5]$. The weighted average is then  formulated as follows:
 \begin{equation}
-    \hat v_{CoG}(k) = \frac{\sum_{i=4}^4 k_i \cdot v_{Ri,C}(k) + [\hat v_{CoG}(k-1) + T_S\cdot a_{X,C}(k)]}{\sum_{i=1}^5 k_i},
+    v_{est, CoG}(t) = \frac{\sum_{i=4}^4 k_i \cdot v_{Ri,C}(t) + k_5[v_{est, CoG}(t-1) + T_S\cdot a_{X,C}(t)]}{\sum_{i=1}^5 k_i},
 \end{equation}
-where the $k_i$ weights are determined with the rules of the fuzzy logic. The overall scheme of the algorithm can be seen on figure \ref{fig:fuzzy_system}.
+where the weights $k_1...k_4$ are for the wheel speed sensors and the weight $k_5$ is for the acceleration and all of them are determined with the rules of the fuzzy logic. The weights are determined based on the driving situation that are strong acceleration, acceleration, rolling, braking, strong braking. Based on these situations a set of weights are defined in advance. With this approach the estimator can adapt to different driving situations and provide a more accurate vehicle speed estimation. The structure of the fuzzy logic system can be seen on figure \ref{fig:fuzzy_system}.
 \FloatBarrier
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/fuzzy_logic.png}
+    \includegraphics[width=0.7\textwidth]{images/fuzzy_logic.png}
     \caption{Vehicle speed estimation with Fuzzy logic from \cite{lit_for_Kalman_fuzzy}}
     \label{fig:fuzzy_system}
 \end{figure}
@@ -255,7 +276,7 @@ The most accurate algorithm in dynamic environments is the RD method that utiliz
 \end{equation}
 where $\lambda$ is the wavelength, $D$ is the Doppler shift, $\dot\rho$ is the rate of the pseudorange, $c$ is the speed of light in vacuum, $d\dot t_R$ and $d\dot t_S$ are the satellite and receiver clock drifts, $\dot I_{\rho}$ and $\dot T_{\rho}$ are the rates of change in the ionospheric and tropospheric delays and $\dot \epsilon_{\rho}$ combines the unmodeled error and observation noise. From this model the velocity of the vehicle can be determined in the global ECEF frame. The tests with this method resulted a [cm/s] level accuracy that is precise and accurate enough for driver assistance features. 
 
-The significant advantage of this algorithm is definitely the precision that it provides and can be used to enhance the previously described estimators. The disadvantages are that the GNSS receivers are not standard in passenger and commercial vehicles leaving little space for wide-spread usage of the advantages, the 10 [Hz] sampling time is relatively low that requires some type of interpolation between the samples and that the determined velocity is not in the vehicle's body fixed frame. For determining the longitudinal and lateral velocities the heading angle is required that can be calculated if two receivers are applied to the vehicle. The last disadvantage comes from the situations when the signals from the satellites are not visible in case of driving in a tunnel or urban areas with tall buildings. 
+The significant advantage of this algorithm is definitely the precision that it provides and can be used to enhance the previously described estimators. The disadvantages are that the GNSS receivers are not standard in passenger and commercial vehicles leaving little space for wide-spread usage of the advantages, the 10 [Hz] sampling time is relatively low that requires some type of interpolation between the samples and that the determined velocity is not in the vehicle's body fixed frame. The last disadvantage comes from the situations when the signals from the satellites are not visible in case of driving in a tunnel or urban areas with tall buildings. 
 
 %\subsection{Computer vision}
 %Computer 
@@ -272,7 +293,7 @@ In article \cite{lit_deep_dynamics} a physics-constrained neural network (PCNN) 
 \FloatBarrier
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/deep_dynamics.png}
+    \includegraphics[width=0.7\textwidth]{images/deep_dynamics.png}
     \caption{Physics constrained neural network from \cite{lit_deep_dynamics}}
     \label{fig:deep_dynamics}
 \end{figure}
@@ -281,13 +302,13 @@ A similar approach was investigated in \cite{lit_ai_physiscs_embedded_neural_net
 \FloatBarrier
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/physiscs_embedded_neural_network.png}
+    \includegraphics[width=0.7\textwidth]{images/physiscs_embedded_neural_network.png}
     \caption{Physics embedded neural network for state estimation from \cite{lit_ai_physiscs_embedded_neural_network}}
     \label{fig:physics_embedded_neural_network}
 \end{figure}
 \FloatBarrier
 
-An other approach is to combine AI algorithms with Kalman filtering to enhance state estimation \cite{lit_trans_lstm}. Here a method for combining Long-Short Term Memory network (LSTM), Transformers and  Expectation-Maximization - Kalman Filter (EM-KF). This combined approach of TL-KF (Transformers, LSTM - Kalman filter) is capable of capturing long term dependencies and model time-series data. The structure of the developed model can be seen on figure \ref{fig:trans_lstm}
+An other approach is to combine AI algorithms with Kalman filtering to enhance state estimation \cite{lit_trans_lstm}, where a method for combining Long-Short Term Memory network (LSTM), Transformers and  Expectation-Maximization - Kalman Filter (EM-KF) is presented. This combined approach of TL-KF (Transformers, LSTM - Kalman filter) is capable of capturing long term dependencies and model time-series data. The structure of the developed model can be seen on figure \ref{fig:trans_lstm}
 \FloatBarrier
 \begin{figure}[ht]
     \centering
@@ -298,4 +319,4 @@ An other approach is to combine AI algorithms with Kalman filtering to enhance s
 \FloatBarrier   
 
 \section{Conclusions}
-During the literature review a comprehensive overview was presented about the used and developed vehicle speed estimators. It is visible that the well established estimators, like different model based estimators with Kalman filters have been there for longer time. In the meantime, the newly emerging field of AI has a promising future in state estimation aiding the already used estimator algortihms. 
+During the literature review a comprehensive overview was presented about the used and developed vehicle speed estimators. It is visible that the well established estimators, like different model based estimators with Kalman filters have been there for longer time. In the meantime, the newly emerging field of AI has a promising future in state estimation aiding the already well used estimator algortihms. 

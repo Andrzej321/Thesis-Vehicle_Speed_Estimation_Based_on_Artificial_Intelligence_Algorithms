@@ -28,7 +28,7 @@ The steps of the development procedure will be discussed in more detail in the s
 
 \subsubsection{Theoretical background}
 
-Contrary with regular the feedforward neural networks where the output is determined only by the current values of the inputs, the Recurrent Neural Network (RNN) is designed in a way that after each step the information is fed back to the network. This way the output will be dependent on the previous inputs as well and the model will have a memory like property giving the possibility of handling temporal data.
+Contrary with regular the feedforward neural networks where the output is determined only by the current values of the inputs, the Recurrent Neural Network (RNN) is designed in a way that after each step the information is fed back to the network. This can be seen in figure \ref{fig:NNvsRNN}. This way the output will be dependent on the previous inputs as well and the model will have a memory like property giving the possibility of handling temporal data.
 
 \FloatBarrier
 \begin{figure}[h]
@@ -52,12 +52,12 @@ The fundamental building blocks of a RNN are the recurrent units (RU) or RNN cel
 
 The dimensions of the vectors in the RNN are the following:
 \begin{itemize}
-    \item Input vector: $x_t \in \mathbb{R}^{d_x}$, where $d_x$ is the size of the input vector.
-    \item Hidden state: $h_t \in \mathbb{R}^{d_h}$, where $d_h$ is the number of hidden units in the RNN layer.
-    \item Output vector: $y_t \in \mathbb{R}^{d_y}$, where $d_y$ is the size of the output vector.
+    \item Input vector: $\mathbf{x}_t \in \mathbb{R}^{d_x}$, where $d_x$ is the size of the input vector.
+    \item Hidden state: $\mathbf{h}_t \in \mathbb{R}^{d_h}$, where $d_h$ is the number of hidden units in the RNN layer.
+    \item Output vector: $\mathbf{y}_t \in \mathbb{R}^{d_y}$, where $d_y$ is the size of the output vector.
 \end{itemize}
 
-It can be seen that at each time step the output vector ($y_t$) is determined by not only the input vector ($x_t$), but the state of the hidden layer in the previous time step ($h_{t-1}$) as well. The inner structure of the RNN cell can be seen on figure \ref{fig:rnn_unit}.
+It can be seen that at each time step the output vector ($\mathbf{y}_t$) is determined by not only the input vector ($\mathbf{x}_t$), but the state of the hidden layer in the previous time step ($\mathbf{h}_{t-1}$) as well. The inner structure of the RNN cell can be seen on figure \ref{fig:rnn_unit}.
 
 \FloatBarrier
 \begin{figure}[h]
@@ -70,23 +70,23 @@ It can be seen that at each time step the output vector ($y_t$) is determined by
 
 The dimensions of the weight matrices and bias vectors are the following:
 \begin{itemize}
-    \item Weight matrix for the input vector:  $W_{xh} \in \mathbb{R}^{d_x \times d_h}$
-    \item Weight matrix for the state vector: $W_{hh} \in \mathbb{R}^{d_h \times d_h}$
-    \item Weight matrix for the output vector: $W_{hy} \in \mathbb{R}^{d_h \times d_y}$
-    \item Bias vector for the hidden layer: $b_h \in \mathbb{R}^{d_h}$
-    \item Bias vector for the output layer: $b_y \in \mathbb{R}^{d_y}$
+    \item Weight matrix for the input vector:  $\mathbf{W}_{xh} \in \mathbb{R}^{d_x \times d_h}$
+    \item Weight matrix for the state vector: $\mathbf{W}_{hh} \in \mathbb{R}^{d_h \times d_h}$
+    \item Weight matrix for the output vector: $\mathbf{W}_{hy} \in \mathbb{R}^{d_h \times d_y}$
+    \item Bias vector for the hidden layer: $\mathbf{b}_h \in \mathbb{R}^{d_h}$
+    \item Bias vector for the output layer: $\mathbf{b}_y \in \mathbb{R}^{d_y}$
 \end{itemize}
 
 The governing equations for the RNN cell are the following:
 \begin{enumerate}
-    \item Hidden state update \ref{eq:rnn_hidden_state}: The hidden state at time step $t$ is computed using the current input vector ($x_t$) and the previous hidden state ($h_{t-1}$) through a weighted sum followed by an activation function (e.g., tanh or ReLU).
+    \item Hidden state update \ref{eq:rnn_hidden_state}: The hidden state at time step $t$ is computed using the current input vector ($\mathbf{x}_t$) and the previous hidden state ($\mathbf{h}_{t-1}$) through a weighted sum followed by an activation function (e.g., tanh or ReLU).
     \begin{equation}
-        h_t = f(W_{xh} \cdot x_t + W_{hh} \cdot h_{t-1} + b_h)
+        \mathbf{h}_t = f(\mathbf{W}_{xh} \cdot \mathbf{x}_t + \mathbf{W}_{hh} \cdot \mathbf{h}_{t-1} + \mathbf{b}_h)
         \label{eq:rnn_hidden_state}
     \end{equation}
-    \item Output computation \ref{eq:rnn_output}: The output vector at time step $t$ is determined from the current hidden state ($h_t$) using a linear transformation followed by an activation function (depending on the task, e.g., softmax for classification or identity for regression).
+    \item Output computation \ref{eq:rnn_output}: The output vector at time step $t$ is determined from the current hidden state ($\mathbf{h}_t$) using a linear transformation followed by an activation function (depending on the task, e.g., softmax for classification or identity for regression).
     \begin{equation}
-        y_t = g(W_{hy} \cdot h_t + b_y)
+        \mathbf{y}_t = g(\mathbf{W}_{hy} \cdot \mathbf{h}_t + \mathbf{b}_y)
         \label{eq:rnn_output}
     \end{equation}
 \end{enumerate}
@@ -97,36 +97,36 @@ To determine the weights and biases of the network, backpropagation through time
     \item Forward pass
     \begin{itemize}
         \item During the forward pass the sequence of inputs form $t=1$ to $t=n$ passes through the network, where $n$ is the length of the sequence.
-        \item The output vector $y_t$ is determined at every timestep with the use of the previously described formulas. 
-        \item The loss is determined at every timestep between the desired ($y_t^{d}$) and the estimated ($y_t$) output. 
-        \item The loss function is given by the mean squared error (MSELoss):
+        \item The output vector $\mathbf{y}_t$ is determined at every timestep with the use of the previously described formulas. 
+        \item The loss is determined at every timestep between the desired ($\mathbf{y}_t^{d}$) and the estimated ($\mathbf{y}_t$) output. 
+        \item The loss function is given by the mean squared error (e.g. MSELoss):
         \begin{equation}
-            L(y, y^d) = \frac{1}{t} \sum_{t=1}^{n} (y_t - y_t^d)^2
+            L(\mathbf{y}, \mathbf{y}^d) = \frac{1}{t} \sum_{t=1}^{n} (\mathbf{y}_t - \mathbf{y}_t^d)^2
         \end{equation}
     \end{itemize}
     \item Backward pass
         \begin{itemize}
-        \item During the backward pass the gradients of the loss function  $L(y, y^d)$ are calculated with respect of the weights of the network ($w_{xh}, W_{hh}, W_{hy}$). 
+        \item During the backward pass the gradients of the loss function  $L(\mathbf{y}, \mathbf{y}^d)$ are calculated with respect of the weights of the network ($\mathbf{w}_{xh}, \mathbf{W}_{hh}, \mathbf{W}_{hy}$). 
         \item W.r.t the weight matrices the derivatives of the loss functions can be determined as:
         \begin{equation}
-            \frac{\partial L}{\partial W_{xh}} = \sum_{t=1}^n \frac{\partial L}{\partial h_t} \cdot \frac{\partial h_t}{\partial W_{xh}}
+            \frac{\partial \mathbf{L}}{\partial \mathbf{W}_{xh}} = \sum_{t=1}^n \frac{\partial \mathbf{L}}{\partial \mathbf{h}_t} \cdot \frac{\partial \mathbf{h}_t}{\partial \mathbf{W}_{xh}}
         \end{equation}
         \begin{equation}
-            \frac{\partial L}{\partial W_{hh}} = \sum_{t=1}^n \frac{\partial L}{\partial h_t} \cdot \frac{\partial h_t}{\partial W_{hh}}
+            \frac{\partial \mathbf{L}}{\partial \mathbf{W}_{hh}} = \sum_{t=1}^n \frac{\partial \mathbf{L}}{\partial \mathbf{h}_t} \cdot \frac{\partial \mathbf{h}_t}{\partial \mathbf{W}_{hh}}
         \end{equation}
         \begin{equation}
-            \frac{\partial L}{\partial W_{hy}} = \sum_{t=1}^n \frac{\partial L}{\partial y_t^d} \cdot \frac{\partial y_t^d}{\partial W_{hy}}
+            \frac{\partial \mathbf{L}}{\partial \mathbf{W}_{hy}} = \sum_{t=1}^n \frac{\partial \mathbf{L}}{\partial \mathbf{y}_t^d} \cdot \frac{\partial \mathbf{y}_t^d}{\partial \mathbf{W}_{hy}}
         \end{equation}
         \item The gradient values inform about the direction (increase or decrease) and the magnitude of the change in the weight matrices. 
         \item These gradients can then be used for updating the values of each weight matrix with the help of the chosen optimizer (e.g. SGD, Adam).
     \end{itemize}
 \end{enumerate}
 
-Common issues when applying RNNs are exploding and vanishing gradients during the backward pass. Both of these refer to the magnitude of the calculated gradients: $\left\Vert \frac{\partial L}{\partial W} \right\Vert$. Exploding gradient problem stems from the gradient being too high which is a consequence of the learning rate being to big. On the other hand vanishing gradient refers to a gradient being near zero, which leads to slow learning. 
+Common issues when applying RNNs are exploding and vanishing gradients during the backward pass. Both of these refer to the magnitude of the calculated gradients: $\left\Vert \frac{\partial \mathbf{L}}{\partial \mathbf{W}} \right\Vert$. Exploding gradient problem stems from the gradient being too high which is a consequence of the learning rate being to big. On the other hand vanishing gradient refers to a gradient being near zero, which leads to slow learning. 
 
 \subsubsection{Implementation and results}
 
-The objective is to find the best performing RNN architecture for estimating the vehicle speed from the given input data. For this the following paramaters were taken into account: number of inputs, hidden size and number of layers. The number of inputs refers to the dimension fo the input vector ($d_x$) where every element of the vector corresponds to a different sensor measurement. The hidden size refers to the dimension o the hidden state vector ($d_h$) and it determines how much information the hidden state can store. Finally the number of layers refers to how many RNN layers are stacked on top of each other. An example for a 2-layer RNN can be seen on figure \ref{fig:rnn_2layer}. Another parameter that was considered, but is not part of the architecture was the sequence length. This parameter defines how many time steps the network will look back when estimating the current vehicle speed.
+The objective is to find the best performing RNN architecture for estimating the vehicle speed from the given input data. For this the following paramaters were taken into account: number of inputs, hidden size and number of layers. The number of inputs refers to the dimension of the input vector ($d_x$) where every element of the vector corresponds to a different sensor measurement. The hidden size refers to the dimension o the hidden state vector ($d_h$) and it determines how much information the hidden state can store. Finally the number of layers refers to how many RNN layers are stacked on top of each other. An example for a 2-layer RNN can be seen on figure \ref{fig:rnn_2layer}. Another parameter that was considered, but is not part of the architecture was the sequence length. This parameter defines how many time steps the network will look back when estimating the current vehicle speed.
 \FloatBarrier
 \begin{figure}[h]
     \centering
@@ -136,7 +136,7 @@ The objective is to find the best performing RNN architecture for estimating the
 \end{figure}
 \FloatBarrier
 
-The initial values for the mentioned hyperparameters can be seen in table in \ref{tab:rnn_hyperparams_1}. The overall number of trained models in the first batch was 32 $\cdot$ 2 = 64. The values were chosen based on common practices in literature and previous experience with RNN-s. A grid search was performed over the hyperparameter space to find the best combination of values that yield the lowest validation loss. The training was done using the Adam optimizer with a learning rate of 0.001 and a batch size of 128. The models were trained for 100 epochs, and early stopping was implemented to prevent overfitting.
+The initial values for the mentioned hyperparameters can be seen in table in \ref{tab:rnn_hyperparams_1}. The overall number of trained models in the first batch was 32 $\cdot$ 2 = 64. The values were chosen based on common practices in literature and previous experience with RNN-s \cite{rnn_reference}. A grid search was performed over the hyperparameter space to find the best combination of values that yield the lowest validation loss. The training was done using the Adam optimizer with a learning rate of 0.001 and a batch size of 128. The models were trained for 100 epochs, and early stopping was implemented to prevent overfitting.
 \begin{table}[h]
     \centering
     \begin{tabular}{|l|c|}
@@ -179,7 +179,7 @@ First, the effect of the number of inputs was examined with the intent of reduci
         \hline
         Drive torque FL - $M_{FL}$ & x & x & - \\
         \hline
-        Drive torque FR - $M_{FR}$ & x & - & The drive torques for the wheels on one axle is equivalent $\rightarrow$ no additional info compared to $M_{FL}$ \\
+        Drive torque FR - $M_{FR}$ & x & - & The drive torques for the wheels on one axle is equivalent due to open differential $\rightarrow$ no additional info compared to $M_{FL}$ \\
         \hline
         Drive torque RL - $M_{RL}$ & x & x & - \\
         \hline
@@ -191,23 +191,23 @@ First, the effect of the number of inputs was examined with the intent of reduci
         \hline
         Vert. acceleration - $a_z$ & x & - & Vertical acceleration is not significant as the vehicle measurements were made on a plane \\
         \hline
-        Roll rate - $\dot\alpha$ & x & x & Roll rate is significant in a planar measurement but was omitted to imitate a 2D vehicle \\
+        Roll rate - $\dot\varphi$ & x & x & Roll rate is significant in a planar measurement but was omitted to imitate a 2D vehicle \\
         \hline
-        Pitch rate - $\dot\beta$ & x & - & Pitch rate is not significant as the vehicle measurements were made on a plane surface \\
+        Pitch rate - $\dot\theta$ & x & - & Pitch rate is not significant as the vehicle measurements were made on a plane surface \\
         \hline
-        Yaw rate - $\dot\gamma$ & x & x & - \\
+        Yaw rate - $\dot\psi$ & x & x & - \\
         \hline
         Brake pressure FR - $P_{FR}$ & x & x & - \\
         \hline
-        Brake pressure FL - $P_{FL}$ & x & - & Brake pressures for the wheels on one axle is equivalent $\rightarrow$ no additional info compared to $P_{FR}$ \\
+        Brake pressure FL - $P_{FL}$ & x & - & Brake pressures for the wheels on one axle is equivalent throughout the measurements $\rightarrow$ no additional info compared to $P_{FR}$ \\
         \hline
         Brake pressure RR - $P_{RR}$ & x & x & - \\
         \hline
-        Brake pressure RL - $P_{RL}$ & x & - & Brake pressures for the wheels on one axle is equivalent $\rightarrow$ no additional info compared to $P_{RR}$ \\
+        Brake pressure RL - $P_{RL}$ & x & - & Brake pressures for the wheels on one axle is equivalent throughout the measurements $\rightarrow$ no additional info compared to $P_{RR}$ \\
         \hline
         Road wheel angle - $rwa_{FM}$ & x & x & - \\
         \hline
-        Road wheel angle - $rwa_{FL}$ & x & x &  \\
+        Road wheel angle - $rwa_{RM}$ & x & x & - \\
         \hline
     \end{tabular}
     \caption{The set of sensor measurements used as inputs}
@@ -219,11 +219,11 @@ The hidden sizes, the number of layers and the sequence lengths were varied and 
 
 The chosen performance metrics for evaluating the models and the estimators were the root mean squared error (RMSE) and the mean absolute error (MAE). Apart from that, and absolute maximum error (AMaxE) metric was also calculated to see the worst case performance of the models. Furthermore a percentage within threshold (PWT) metric was also defined to see how many of the estimations were within a certain error threshold. The PWT metric is defined as follows:
 \begin{equation}
-    TBM = \frac{1}{N} \sum_{i=1}^{N} \mathbb{I}(|y_i^d - y_i| < \epsilon) \times 100\%,
+    PWT = \frac{1}{N} \sum_{i=1}^{N} \mathbb{I}(|y_i^d - y_i| < \epsilon) \times 100\%,
 \end{equation}
 where $N$ is the total number of estimations, $y_i$ is the estimated value, ${y}_i^d$ is the desired value, $\epsilon$ is the error threshold (e.g., 1 km/h), and $\mathbb{I}$ is the indicator function that returns 1 if the condition is true and 0 otherwise. Throughout the development two different thresholds were considered: 0.3 km/h and 0.4 km/h. These will be denoted as PWT 0.3 and PWT 0.4 in the following tables. 
 
-After the training and validation procedure all the models were tested on the unseen test dataset. The code using for training and validating can be found at \path{AI_training/3_code/training_RNN.py}. The 3-3 best performing architectures were chosen based on the root mean squared error (RMSE) metric. The 3 best performing architectures with the two input sets can be seen in table \ref{tab:rnn_best_models_1}. The results that can be found in table \ref{tab:rnn_best_models_1_metrics} show that the model with 12 inputs performs slightly better than the one with 23 inputs, indicating that the reduced input set was sufficient for accurate vehicle speed estimation.
+After the training and validation procedure all the models were tested on the unseen test dataset. The code using for training and validating can be found at \path{AI_training/3_code/training_RNN.py}. The 3-3 best performing architectures were chosen based on the root mean squared error (RMSE) metric. The 3 best performing architectures with the two input sets can be seen in table \ref{tab:rnn_best_models_1}. The results that can be found in table \ref{tab:rnn_best_models_1_metrics} show that the model with 23 inputs performs slightly better than the one with 12 inputs, but the difference is not significant, therefore the reduced input set can be used to lower the complexity of the model without sacrificing performance.
 \FloatBarrier
 \begin{table}[h]
     \centering
@@ -383,19 +383,19 @@ The Long Short-Term Memory (LSTM) networks build on the structure of the RNN-s b
 
 The dimensions of the previously mentioned vectors are the following:
 \begin{itemize}
-    \item Input vector: $x_t \in \mathbb{R}^{d_x}$, where $d_x$ is the size of the input vector.
-    \item Hidden state: $h_t \in \mathbb{R}^{d_h}$, where $d_h$ is the number of hidden units in the LSTM layer.
-    \item Cell state: $C_t \in \mathbb{R}^{d_h}$, that has the same dimension as the hidden state vector.
-    \item Output vector: $y_t \in \mathbb{R}^{d_y}$, where $d_y$ is the size of the output vector.
+    \item Input vector: $\mathbf{x}_t \in \mathbb{R}^{d_x}$, where $d_x$ is the size of the input vector.
+    \item Hidden state: $\mathbf{h}_t \in \mathbb{R}^{d_h}$, where $d_h$ is the number of hidden units in the LSTM layer.
+    \item Cell state: $\mathbf{C}_t \in \mathbb{R}^{d_h}$, that has the same dimension as the hidden state vector.
+    \item Output vector: $\mathbf{y}_t \in \mathbb{R}^{d_y}$, where $d_y$ is the size of the output vector.
 \end{itemize}
-I want to note here that I have not included the dimension of the batch size $B$ for simplicity. Here I only consider the inputs to be a single sequence, as it will be when using the netowork for estimating the vehicle speed. When considering trainging with batches of sequences, the dimensions would be: $x_t \in \mathbb{R}^{B \times d_x}$, $h_t \in \mathbb{R}^{B \times d_h}$, $C_t \in \mathbb{R}^{B \times d_h}$, $y_t \in \mathbb{R}^{B \times d_y}$.
+I want to note here that I have not included the dimension of the batch size $B$ for simplicity. Here I only consider the inputs to be a single sequence, as it will be when using the netowork for estimating the vehicle speed. When considering trainging with batches of sequences, the dimensions would be: $\mathbf{x}_t \in \mathbb{R}^{B \times d_x}$, $\mathbf{h}_t \in \mathbb{R}^{B \times d_h}$, $\mathbf{C}_t \in \mathbb{R}^{B \times d_h}$, $\mathbf{y}_t \in \mathbb{R}^{B \times d_y}$.
 
 The white-box represetation of the LSTM cell can be seen on figure \ref{fig:lstm_unit}, where the weight matrices and the bias vectors are also presented. The dimensions of these vectors are the following:
 \begin{itemize}
-    \item Weight matrices for the input vector:  $W_{xf}, W_{xi}, W_{xc}, W_{xo} \in \mathbb{R}^{d_x \times d_h}$
-    \item Weight matrices for the state vectors: $W_{hf}, W_{hi}, W_{hc}, W_{ho} \in \mathbb{R}^{d_h \times d_h}$
-    \item Weight matrix for the output vector: $W_{hy} \in \mathbb{R}^{d_h \times d_y}$
-    \item Bias vectors for the operation: $b_f, b_i, b_c, b_o \in \mathbb{R}^{d_h}, b_y \in \mathbb{R}^{d_y}$
+    \item Weight matrices for the input vector:  $\mathbf{W}_{xf}, \mathbf{W}_{xi}, \mathbf{W}_{xc}, \mathbf{W}_{xo} \in \mathbb{R}^{d_x \times d_h}$
+    \item Weight matrices for the state vectors: $\mathbf{W}_{hf}, \mathbf{W}_{hi}, \mathbf{W}_{hc}, \mathbf{W}_{ho} \in \mathbb{R}^{d_h \times d_h}$
+    \item Weight matrix for the output vector: $\mathbf{W}_{hy} \in \mathbb{R}^{d_h \times d_y}$
+    \item Bias vectors for the operation: $\mathbf{b}_f, \mathbf{b}_i, \mathbf{b}_c, \mathbf{b}_o \in \mathbb{R}^{d_h}, \mathbf{b}_y \in \mathbb{R}^{d_y}$
 \end{itemize}
 
 \FloatBarrier
@@ -407,52 +407,49 @@ The white-box represetation of the LSTM cell can be seen on figure \ref{fig:lstm
 \end{figure}
 \FloatBarrier
 
-Throughout the LSTM cell the so called gates control the outputs, that are namely the forget gate ($f_t$), input gate ($i_t$) and the output gate ($o_t$). These are mainly functions that use either sigmoid or tanh activation functions. Furthermore the cell contains operations to determine the candidate cell state ($\tilde C_t$), the new cell state ($C_t$), the new hidden state ($h_t$) and the output ($y_t$). All the gates and operations can be described with the following equations:
+Throughout the LSTM cell the so called gate vectors control the outputs, that are the forget gate ($\mathbf{f}_t$), input gate ($\mathbf{i}_t$) and the output gate ($\mathbf{o}_t$). These are mainly functions that use either sigmoid or tanh activation functions. Furthermore the cell contains operations to determine the candidate cell state ($\tilde{\mathbf{C}}_t$), the new cell state ($\mathbf{C}_t$), the new hidden state ($\mathbf{h}_t$) and the output ($\mathbf{y}_t$). All the gates and operations can be described with the following equations:
 
 \begin{enumerate}
-    \item Forget gate \ref{eq:lstm_forget_gate}: The goal of the forget gate is to determine what information from the previous cell state ($C_{t-1}$) shall be kept and what shall be discarded. This is done by using a sigmoid activation function that outputs values between 0 and 1, where 0 means "completely forget" and 1 means "completely keep".
+    \item Forget gate \ref{eq:lstm_forget_gate}: The goal of the forget gate is to determine what information from the previous cell state ($\mathbf{C}_{t-1}$) shall be kept and what shall be discarded. This is done by using a sigmoid activation function that outputs values between 0 and 1, where 0 means "completely forget" and 1 means "completely keep".
     \begin{equation}
-        f_t = \sigma(W_{xf} \cdot x_t + W_{hf} \cdot h_{t-1} + b_f)
+        \mathbf{f}_t = \sigma(\mathbf{W}_{xf} \cdot x\mathbf{x}_t + \mathbf{W}_{hf} \cdot \mathbf{h}_{t-1} + \mathbf{b}_f)
         \label{eq:lstm_forget_gate}
     \end{equation}
     \item Input gate \ref{eq:lstm_input_gate}: The input gate determines what new information shall be added to the cell state. Similar to the forget gate, it uses a sigmoid activation function to decide which values to update.
     \begin{equation}
-        i_t = \sigma(W_{xi} \cdot x_t + W_{hi} \cdot h_{t-1} + b_i)
+        \mathbf{i}_t = \sigma(\mathbf{W}_{xi} \cdot \mathbf{x}_t + \mathbf{W}_{hi} \cdot \mathbf{h}_{t-1} + \mathbf{b}_i)
         \label{eq:lstm_input_gate}
     \end{equation}
-    \item Candidate cell state \ref{eq:lstm_can_cell_state}: This operation creates a vector of new candidate values ($\tilde C_t$) that could be added to the cell state. It uses a tanh activation function to ensure the values are between -1 and 1.
+    \item Candidate cell state \ref{eq:lstm_can_cell_state}: This operation creates a vector of new candidate values ($\tilde{\mathbf{C}}_t$) that could be added to the cell state. It uses a tanh activation function to ensure the values are between -1 and 1.
     \begin{equation}
-        \tilde C_t = \tanh(W_{xc} \cdot x_t + W_{hc} \cdot h_{t-1} + b_c)
+        \tilde{\mathbf{C}}_t = \tanh(\mathbf{W}_{xc} \cdot \mathbf{x}_t + \mathbf{W}_{hc} \cdot \mathbf{h}_{t-1} + \mathbf{b}_c)
         \label{eq:lstm_can_cell_state}
     \end{equation}
-    \item New cell state \ref{eq:lstm_new_cell_state}: The new cell state ($C_t$) is computed by combining the previous cell state ($C_{t-1}$) modified by the forget gate and the candidate cell state ($\tilde C_t$) scaled by the input gate. ($\odot$ denotes element-wise multiplication).
+    \item New cell state \ref{eq:lstm_new_cell_state}: The new cell state ($\mathbf{C}_t$) is computed by combining the previous cell state ($\mathbf{C}_{t-1}$) modified by the forget gate and the candidate cell state ($\tilde{\mathbf{C}}_t$) scaled by the input gate. ($\odot$ denotes element-wise multiplication).
     \begin{equation}
-        C_t = f_t \odot C_{t-1} + i_t \odot \tilde C_t
+        \mathbf{C}_t = \mathbf{f}_t \odot \mathbf{C}_{t-1} + \mathbf{i}_t \odot \tilde{\mathbf{C}}_t
         \label{eq:lstm_new_cell_state}
     \end{equation}
     \item Output gate \ref{eq:lstm_output_gate}: The output gate determines what part of the cell state will be output as the new hidden state. It uses a sigmoid activation function to decide which parts of the cell state to output.
     \begin{equation}
-        o_t = \sigma(W_{xo} \cdot x_t + W_{ho} \cdot h_{t-1} + b_o)
+        \mathbf{o}_t = \sigma(\mathbf{W}_{xo} \cdot \mathbf{x}_t + \mathbf{W}_{ho} \cdot \mathbf{h}_{t-1} + \mathbf{b}_o)
         \label{eq:lstm_output_gate}
     \end{equation}
-    \item New hidden state \ref{eq:lstm_new_hidden_state}: The new hidden state ($h_t$) is computed by applying the output gate to the tanh of the new cell state.
+    \item New hidden state \ref{eq:lstm_new_hidden_state}: The new hidden state ($\mathbf{h}_t$) is computed by applying the output gate to the tanh of the new cell state.
     \begin{equation}
-        h_t = o_t \odot \tanh(C_t)
+        \mathbf{h}_t = \mathbf{o}_t \odot \tanh(\mathbf{C}_t)
         \label{eq:lstm_new_hidden_state}
     \end{equation}
-    \item Output \ref{eq:lstm_output}: The output vector ($y_t$) is determined from the new hidden state using a linear transformation followed by an activation function (depending on the task).
+    \item Output \ref{eq:lstm_output}: The output vector ($\mathbf{y}_t$) is determined from the new hidden state using a linear transformation followed by an activation function $g()$ (depending on the task).
     \begin{equation}
-        y_t = W_{hy} \cdot h_t + b_y
+        \mathbf{y}_t = g(\mathbf{W}_{hy} \cdot \mathbf{h}_t + \mathbf{b}_y)
         \label{eq:lstm_output}
     \end{equation}
 \end{enumerate}
 
-After defining the computational steps withing an LSTM cell, that are also the steps of the forward pass, the training process can be discussed. The objective of the training sequence is to optimize the weight matrices and the bias vectors to minimize the defined loss ($\mathcal{L}$) over a dedicated training dataset, just as at the RNN-s. The steps of the backpropagation through time (BPTT) for LSTM networks are the following:
+After defining the computational steps withing an LSTM cell, that are also the steps of the forward pass, the training process can be discussed. The objective of the training sequence is to optimize the weight matrices and the bias vectors to minimize the defined loss ($L$) over a dedicated training dataset, equivalent to the RNN training process.
 
-
-The question still arises why is this LSTM structure better at handling long term dependencies than the conventional RNN-s? The answer lies in the constant error carousel (CEC) property of the LSTM cell.
-
-When multiple layers are stacked on top of each other to create a deep LSTM network...TO BE CONTINUED
+The question still arises why is this LSTM structure better at handling long term dependencies than the conventional RNN-s? The answer lies in the constant error carousel (CEC) property of the LSTM cell. The CEC allows the error to flow unchanged through the cell state over time, which helps to mitigate the vanishing gradient problem that is common in traditional RNNs. The gating mechanisms also allow the LSTM to selectively remember or forget information, which helps to capture long-term dependencies more effectively.
 
 \subsubsection{Implementation and results}
 
@@ -592,7 +589,7 @@ It is interesting to note that the best performing architecture after the finetu
 
 \subsubsection{Theoretical background}
 
-The Gated Recurrent Unit (GRU) network also builds on the structure of the original RNN-s but introduces a simplified architecture compared to the LSTM network. The GRU uses similar gating mechanisms to control the flow of the input and the state information, but omits the separate cell state, therefore making it a lighter alternative. The structure of a GRU network unfolded in time can be seen on figure \ref{fig:gru_sequence}, where $x_t$ is the input vector, $h_t$ is the hidden state vector and $y_t$ is the output vector at time step $t$.
+The Gated Recurrent Unit (GRU) network also builds on the structure of the original RNN-s but introduces a simplified architecture compared to the LSTM network. The GRU uses similar gating mechanisms to control the flow of the input and the state information, but omits the separate cell state, therefore making it a lighter alternative. The structure of a GRU network unfolded in time can be seen on figure \ref{fig:gru_sequence}, where $\mathbf{x}_t$ is the input vector, $\mathbf{h}_t$ is the hidden state vector and $\mathbf{y}_t$ is the output vector at time step $t$.
 
 \FloatBarrier
 \begin{figure}[h]
@@ -605,18 +602,18 @@ The Gated Recurrent Unit (GRU) network also builds on the structure of the origi
 
 The dimensions of the previously mentioned vectors are the following:
 \begin{itemize}
-    \item Input vector: $x_t \in \mathbb{R}^{d_x}$, where $d_x$ is the size of the input vector.
-    \item Hidden state: $h_t \in \mathbb{R}^{d_h}$, where $d_h$ is the number of hidden units in the GRU layer.
-    \item Output vector: $y_t \in \mathbb{R}^{d_y}$, where $d_y$ is the size of the output vector. 
+    \item Input vector: $\mathbf{x}_t \in \mathbb{R}^{d_x}$, where $d_x$ is the size of the input vector.
+    \item Hidden state: $\mathbf{h}_t \in \mathbb{R}^{d_h}$, where $d_h$ is the number of hidden units in the GRU layer.
+    \item Output vector: $\mathbf{y}_t \in \mathbb{R}^{d_y}$, where $d_y$ is the size of the output vector. 
 \end{itemize}
-Batch size $B$ is not included here for simplicity the same way as before, but when considering training with batches of sequences, the dimensions would be: $x_t \in \mathbb{R}^{B \times d_x}$, $h_t \in \mathbb{R}^{B \times d_h}$, $y_t \in \mathbb{R}^{B \times d_y}$.
+Batch size $B$ is not included here for simplicity the same way as before, but when considering training with batches of sequences, the dimensions would be: $\mathbf{x}_t \in \mathbb{R}^{B \times d_x}$, $\mathbf{h}_t \in \mathbb{R}^{B \times d_h}$, $\mathbf{y}_t \in \mathbb{R}^{B \times d_y}$.
 
 The same way as with the LSTM cell, the white-box representation of the GRU cell can be seen on figure \ref{fig:gru_unit}, where the weight matrices and the bias vectors are also presented. The dimensions of these vectors are the following:
 \begin{itemize}
-    \item Weight matrices for the input vector:  $W_{xr}, W_{xz}, W_{xh} \in \mathbb{R}^{d_x \times d_h}$
-    \item Weight matrices for the state vectors: $W_{hr}, W_{hz}, W_{hh} \in \mathbb{R}^{d_h \times d_h}$
-    \item Weight matrix for the output vector: $W_{hy} \in \mathbb{R}^{d_h \times d_y}$
-    \item Bias vectors for the operation: $b_r, b_z, b_h, b_y \in \mathbb{R}^{d_h}, b_y \in \mathbb{R}^{d_y}$
+    \item Weight matrices for the input vector:  $\mathbf{W}_{xr}, \mathbf{W}_{xz}, \mathbf{W}_{xh} \in \mathbb{R}^{d_x \times d_h}$
+    \item Weight matrices for the state vectors: $\mathbf{W}_{hr}, \mathbf{W}_{hz}, \mathbf{W}_{hh} \in \mathbb{R}^{d_h \times d_h}$
+    \item Weight matrix for the output vector: $\mathbf{W}_{hy} \in \mathbb{R}^{d_h \times d_y}$
+    \item Bias vectors for the operation: $\mathbf{b}_r, \mathbf{b}_z, \mathbf{b}_h, \mathbf{b}_y \in \mathbb{R}^{d_h}, \mathbf{b}_y \in \mathbb{R}^{d_y}$
 \end{itemize}
 
 \FloatBarrier
@@ -628,37 +625,37 @@ The same way as with the LSTM cell, the white-box representation of the GRU cell
 \end{figure}
 \FloatBarrier
 
-The gates that are within the GRU cell are the reset gate ($r_t$) and the update gate ($z_t$). These are mainly functions that use either sigmoid or tanh activation functions. Furthermore the cell contains operations to determine the candidate hidden state ($\tilde h_t$), the new hidden state ($h_t$) and the output ($y_t$). All the gates and operations can be described with the following equations:
+The gate vectors that are within the GRU cell are the reset gate ($\mathbf{r}_t$) and the update gate ($\mathbf{z}_t$). These are mainly functions that use either sigmoid or tanh activation functions. Furthermore the cell contains operations to determine the candidate hidden state ($\tilde{\mathbf{h}}_t$), the new hidden state ($\mathbf{h}_t$) and the output ($\mathbf{y}_t$). All the gates and operations can be described with the following equations:
 
 \begin{enumerate}
-    \item Reset gate \ref{eq:gru_reset_gate}: The reset gate determines how much of the previous hidden state ($h_{t-1}$) shall be forgotten when calculating the candidate hidden state.
+    \item Reset gate \ref{eq:gru_reset_gate}: The reset gate determines how much of the previous hidden state ($\mathbf{h}_{t-1}$) shall be forgotten when calculating the candidate hidden state.
     \begin{equation}
-        r_t = \sigma(W_{xr} \cdot x_t + W_{hr} \cdot h_{t-1} + b_r)
+        \mathbf{r}_t = \sigma(\mathbf{W}_{xr} \cdot \mathbf{x}_t + \mathbf{W}_{hr} \cdot \mathbf{h}_{t-1} + \mathbf{b}_r)
         \label{eq:gru_reset_gate}
     \end{equation}
     \item Update gate \ref{eq:gru_update_gate}: The update gate decides how much of the previous hidden state shall be carried forward to the new hidden state.
     \begin{equation}
-        z_t = \sigma(W_{xz} \cdot x_t + W_{hz} \cdot h_{t-1} + b_z)
+        \mathbf{z}_t = \sigma(\mathbf{W}_{xz} \cdot \mathbf{x}_t + \mathbf{W}_{hz} \cdot \mathbf{h}_{t-1} + \mathbf{b}_z)
         \label{eq:gru_update_gate}
     \end{equation}
-    \item Candidate hidden state \ref{eq:gru_can_hidden_state}: This operation creates a vector of new candidate values ($\tilde h_t$) that could be added to the hidden state. It uses a tanh activation function to ensure the values are between -1 and 1.
+    \item Candidate hidden state \ref{eq:gru_can_hidden_state}: This operation creates a vector of new candidate values ($\tilde{\mathbf{h}}_t$) that could be added to the hidden state. It uses a tanh activation function to ensure the values are between -1 and 1.
     \begin{equation}
-        \tilde h_t = \tanh(W_{xh} \cdot x_t + W_{hh} \cdot (r_t \odot h_{t-1}) + b_h)
+        \tilde{\mathbf{h}}_t = \tanh(\mathbf{W}_{xh} \cdot \mathbf{x}_t + \mathbf{W}_{hh} \cdot (\mathbf{r}_t \odot \mathbf{h}_{t-1}) + \mathbf{b}_h)
         \label{eq:gru_can_hidden_state}
     \end{equation}
-    \item New hidden state \ref{eq:gru_new_hidden_state}: The new hidden state ($h_t$) is computed by combining the previous hidden state ($h_{t-1}$) scaled by the update gate and the candidate hidden state ($\tilde h_t$) scaled by one minus the update gate.
+    \item New hidden state \ref{eq:gru_new_hidden_state}: The new hidden state ($\mathbf{h}_t$) is computed by combining the previous hidden state ($\mathbf{h}_{t-1}$) scaled by the update gate and the candidate hidden state ($\tilde{\mathbf{h}}_t$) scaled by one minus the update gate.
     \begin{equation}
-        h_t = (1 - z_t) \odot h_{t-1} + z_t \odot \tilde h_t
+        \mathbf{h}_t = (1 - \mathbf{z}_t) \odot \mathbf{h}_{t-1} + \mathbf{z}_t \odot \tilde{\mathbf{h}}_t
         \label{eq:gru_new_hidden_state}
     \end{equation}
-    \item Output \ref{eq:gru_output}: The output vector ($y_t$) is determined from the new hidden state and the bias vector ($b_y$).
+    \item Output \ref{eq:gru_output}: The output vector ($\mathbf{y}_t$) is determined from the new hidden state and the bias vector ($\mathbf{b}_y$).
     \begin{equation}
-        y_t = W_{hy} \cdot h_t + b_y
+        \mathbf{y}_t = g(\mathbf{W}_{hy} \cdot \mathbf{h}_t + \mathbf{b}_y)
         \label{eq:gru_output}
     \end{equation}
 \end{enumerate}
 
-The training process of the GRU network is similar to that of the LSTM network, involving (BPTT) to optimize the weight matrices and bias vectors to minimize the defined loss ($\mathcal{L}$) over a dedicated training dataset.
+The training process of the GRU network is similar to that of the LSTM network, involving (BPTT) to optimize the weight matrices and bias vectors to minimize the defined loss ($L$) over a dedicated training dataset.
 
 \subsubsection{Implementation and results}
 
@@ -805,7 +802,7 @@ The Temporal Convolutional Network (TCN) is a type of convolutional neural netwo
 
 The TCN produces the output sequence that has the same length as the input sequence. This is due to using a 1D fully convolutional network (FCN) architecture, meaning that each hidden layer is the same length as the input sequence. This property is fulfilled by using zero-padding at the beginning of the input sequence.
 
-Causal convolutions ensure that the output at time step $y_t$ is only dependent on the inputs from time steps $t$ and earlier. Dilated convolutions allow the network to have a larger receptive field without increasing the number of parameters significantly. This is achieved by introducing gaps between the filter elements, enabling the network to capture long-term dependencies more effectively. The dilated causal convolutions, i.e the base of the TCN, can be seen on figure \ref{fig:tcn_dilated_conv}, where the dilation factor $d$ determines the spacing between the filter elements and the kernel size $k$ defines the size of the filter. 
+Causal convolutions ensure that the output at time step $\mathbf{y}_t$ is only dependent on the inputs from time steps $t$ and earlier. Dilated convolutions allow the network to have a larger receptive field without increasing the number of parameters significantly. This is achieved by introducing gaps between the filter elements, enabling the network to capture long-term dependencies more effectively. The dilated causal convolutions, i.e the base of the TCN, can be seen on figure \ref{fig:tcn_dilated_conv}, where the dilation factor $d$ determines the spacing between the filter elements and the kernel size $k$ defines the size of the filter. 
 
 \FloatBarrier
 \begin{figure}[h]
@@ -818,37 +815,46 @@ Causal convolutions ensure that the output at time step $y_t$ is only dependent 
 
 The dimensions of the vectors are the following:
 \begin{itemize}
-    \item Input vector at time step $t$: $x_t \in \mathbb{R}^{d_x}$, where $d_x$ is the channel size of the input vector. Channel size refers to the number of features in the input vector at each time step.
-    \item Output vector at time step $t$: $y_t \in \mathbb{R}^{d_y}$, where $d_y$ is the chanel size of the output vector.
+    \item Input vector at time step $t$: $\mathbf{x}_t \in \mathbb{R}^{d_x}$, where $d_x$ is the channel size of the input vector. Channel size refers to the number of features in the input vector at each time step.
+    \item Output vector at time step $t$: $\mathbf{y}_t \in \mathbb{R}^{d_y}$, where $d_y$ is the chanel size of the output vector.
     \item Sequence length: $L$, the total number of time steps in the input sequence.
-    \item Input tensor: $X_t = [x_0, x_1, ..., x_t]^T \in \mathbb{R}^{L \times d_x}$
-    \item Output tensor: $Y_t = [y_0, y_1, ..., y_t]^T \in \mathbb{R}^{L \times d_y}$
+    \item Bias vector: $\mathbf{b} \in \mathbb{R}^{d_y}$
+    \item Weight tensor: $\mathbf{W} \in \mathbb{R}^{d_y \times d_x \times k}$, where $k$ is the kernel size of the convolutional filter.
+    \item Input tensor: $\mathbf{X}_t = [\mathbf{x}_0, \mathbf{x}_1, ..., \mathbf{x}_t]^T \in \mathbb{R}^{L \times d_x}$
+    \item Output tensor: $\mathbf{Y}_t = [\mathbf{y}_0, \mathbf{y}_1, ..., \mathbf{y}_t]^T \in \mathbb{R}^{L \times d_y}$
 \end{itemize}
 
 Based on the dilation and the kernel size between two layers, the equation for determining the output can the formulated as (if there are no hidden layers):
 \begin{equation}
-    y_t = \sum_{i=0}^{k-1} w_i \cdot x_{t - d \cdot i} + b,
+    \mathbf{y}_t = \sum_{i=0}^{k-1} \mathbf{w}_i \cdot \mathbf{x}_{t - d \cdot i} + \mathbf{b},
 \end{equation}
-where $y_t$ is the output vector at time step $t$, $w_i$ are the weights of the filter, $b$ is the bias term, $k$ is the kernel size, and $d$ is the dilation factor between the two layers.
+where $\mathbf{y}_t$ is the output vector at time step $t$, $\mathbf{w}_i$ are the weights of the filter, $\mathbf{b}$ is the bias term, $k$ is the kernel size, and $d$ is the dilation factor between the two layers.
 
 The full equation considering the input and output tensors between two layers can be formulated as:
 \begin{equation}
-    Y_{j, t} = \sum_{i=1}^{d_x} \sum_{m=0}^{k-1} W_{j, i, m} \cdot X_{i, t - d \cdot m} + b_j,
+    \mathbf{Y}_{j, t} = \sum_{i=1}^{d_x} \sum_{m=0}^{k-1} \mathbf{W}_{j, i, m} \cdot \mathbf{X}_{i, t - d \cdot m} + \mathbf{b}_j,
 \end{equation}
-where $Y_{j, t}$ is the $j$th vector element of the output tensor at time step $t$, $W_{i, j, m}$ contains the weights of the filter connecting input channel $i$ to output channel $j$ at position $m$ (in the kernel), and $b_j$ is the bias term for output channel $j$. Iterating this equation all the vector elements of tensor $Y$ can be determined based on the elements of the input tensor $X$. 
+where $\mathbf{Y}_{j, t}$ is the $j$th vector element of the output tensor at time step $t$, $\mathbf{W}_{i, j, m}$ contains the weights of the filter connecting input channel $i$ to output channel $j$ at position $m$ (in the kernel), and $\mathbf{b}_j$ is the bias term for output channel $j$. Iterating this equation all the vector elements of tensor $\mathbf{Y}$ can be determined based on the elements of the input tensor $\mathbf{X}$. 
 
 This can be generalized for two arbitrary layers that are connected through a 1D dilated causal convolution as:
 \begin{equation}
-    H^{(l)}_{j, t} = \sum_{i=1}^{d_h^{(l-1)}} \sum_{m=0}^{k-1} W^{(l)}_{j, i, m} \cdot H^{(l-1)}_{i, t - d^{(l)} \cdot m} + b^{(l)}_j = \text{Conv1D}(H^{(l-1)}),
+    \mathbf{H}^{(l)}_{j, t} = \sum_{i=1}^{d_h^{(l-1)}} \sum_{m=0}^{k-1} \mathbf{W}^{(l)}_{j, i, m} \cdot \mathbf{H}^{(l-1)}_{i, t - d^{(l)} \cdot m} + \mathbf{b}^{(l)}_j = \text{Conv1D}(\mathbf{H}^{(l-1)}),
 \end{equation}
-where $H^{(l)}_{j,t}$ is the $j$th vector element in time step $t$ of the output tensor of layer $l$, $d_h^{(l-1)}$ is the number of channels in the tensor of layer $l-1$, $W^{(l)}_{j,i,m}$ contains the weights of the filter connecting input channel $i$ to output channel $j$ at position $m$ and $b^{(l)}_j$ is the $j$th bias for layer $l$.
+where $\mathbf{H}^{(l)}_{j,t}$ is the $j$th vector element in time step $t$ of the output tensor of layer $l$, $d_h^{(l-1)}$ is the number of channels in the tensor of layer $l-1$, $\mathbf{W}^{(l)}_{j,i,m}$ contains the weights of the filter connecting input channel $i$ to output channel $j$ at position $m$ and $\mathbf{b}^{(l)}_j$ is the $j$th bias for layer $l$.
 
-After each convolutional layer, a non-linear activation function is applied (e.g., ReLU or tanh) to introduce non-linearity into the model. Moreover, a dropout and a normalization layer is often added after the activation function to prevent overfitting by randomly setting a fraction of the input units to zero during training. Finally a residual connection is added to the output of the convolutional block. Here it is inportant to ensure that the input and the output have the same dimensions to ensure the element-wise addition. These steps can be summarized as:
+After each convolutional layer, a non-linear activation function is applied (e.g., ReLU or tanh) to introduce non-linearity into the model. Moreover, a dropout and a normalization layer is often added after the activation function to prevent overfitting by randomly setting a fraction of the input units to zero during training. Finally a residual connection is added to the output of the convolutional block. This set of operations can be called a TCN residual block. Here it is important to ensure that the input and the output have the same dimensions to ensure the element-wise addition. These steps can be summarized as:
 \begin{equation}
-    H^{(l)} = \text{Dropout}(\text{Activation}(\text{Conv1D}(H^{(l-1)}))) + \text{Conv1x1}(H^{(l-1)})
+    \mathbf{H}^{(l)} = \text{Dropout}(\text{Activation}(\text{Conv1D}(\mathbf{H}^{(l-1)}))) + \text{Conv1x1}(\mathbf{H}^{(l-1)})
 \end{equation}
 
 These steps build up a single TCN residual block that can be seen on figure \ref{fig:tcn_residual_block}. By stacking multiple such blocks on top of each other, a deep TCN architecture can be created that is capable of capturing complex temporal dependencies in the input data. 
+
+The amount of inputs that the TCN can consider when making a prediction is determined by the receptive field of the network. The receptive field ($R$) can be calculated based on the kernel size ($k$), the number of residual blocks ($L$), the number of convolutional layers per block ($B$) and the dilation schedule ($d_1, d_2,...d_n$) as:
+\begin{equation}
+    R = 1 + (k - 1) \cdot B \cdot \sum_{i=1}^{L} d_i
+\end{equation}
+
+During the training process, the objective is the same as with the RNN models - to optimize the weight matrices and bias vectors to minimize the defined loss ($L$) over a dedicated training dataset. The training is porformed just as with a FNN, using backpropagation to calculate the gradients of the loss with respect to the weights and biases, and updating them using an optimizer such as Adam or SGD.
 
 \FloatBarrier
 \begin{figure}[h]
@@ -858,10 +864,6 @@ These steps build up a single TCN residual block that can be seen on figure \ref
     \label{fig:tcn_residual_block}
 \end{figure}
 \FloatBarrier
-
-!! COULD TALK ABOUT THE RECEPTIVE FIELD HERE !!
-
-During the training process, the objective is the same as with the RNN models - to optimize the weight matrices and bias vectors to minimize the defined loss ($\mathcal{L}$) over a dedicated training dataset. The training is porformed just as with a FNN, using backpropagation to calculate the gradients of the loss with respect to the weights and biases, and updating them using an optimizer such as Adam or SGD.
 
 \subsubsection{Implementation and results}
 
@@ -921,7 +923,7 @@ After the training and evaluation of the models from the first batch of grid sea
     \centering
     \begin{tabular}{|c|c|c|c|c|}
         \hline
-        \textbf{RMSE [$\frac{km}{h}$]} & \textbf{MAE [$\frac{km}{h}$]} & \textbf{AMaxE [$\frac{km}{h}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
+        \textbf{RMSE [$\frac{m}{s}$]} & \textbf{MAE [$\frac{m}{s}$]} & \textbf{AMaxE [$\frac{m}{s}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
         \hline \hline
         0.10200 & 0.06605 & 1.16851 & 98.30497 & 99.17077 \\
         \hline
@@ -1029,7 +1031,7 @@ The best model obtained after evaluating the second batch was still the same mod
 \end{figure}
 \FloatBarrier
 
-It can be seen that the TCN architecture outperforms all the previously discussed RNN based architectures, achieving an RMSE of 0.07513 m/h, MAE of 0.04274 km/s, and PWT 0.3 of 99.01150 \%. These results highlight the effectiveness of TCN-s in capturing temporal dependencies in sequential data for the vehicle speed estimation task.
+It can be seen that the TCN architecture outperforms all the previously discussed RNN based architectures, achieving an RMSE of 0.07513 m/s, MAE of 0.04274 m/s, and PWT 0.3 of 99.01150 \%. These results highlight the effectiveness of TCN-s in capturing temporal dependencies in sequential data for the vehicle speed estimation task.
 
 \section{Transformer}
 
@@ -1037,17 +1039,16 @@ It can be seen that the TCN architecture outperforms all the previously discusse
 
 The Transformer architecture is a deep learning model that has revolutionized the field of natural language processing (NLP) and has also found applications in other sequential data tasks. Unlike traditional RNN-s and TCN-s where the models rely on recurrence or convolution, the transformer relies entirely on self-attention mechanisms to capture dependencies in the input data, allowing for parallel processing of sequences and improved handling of long-range dependencies. An other important aspect of the transformer architecture is that it does not take the sequence data in a step-by-step manner, but rather processes the entire sequence at once, making it different from the previously discussed models.
 
-The general architecture of the transformer model can be divided into two main components: the encoder and the decoder. The encoder is responsible for processing the input sequence and generating a set of continuous representations, while the decoder takes these representations and generates the output sequence. However, for tasks such as vehicle speed estimation, only the encoder part is enough, as there is no need to generate a sequence output.
+The general architecture of the transformer model can be divided into two main components: the encoder and the decoder. The encoder is responsible for processing the input sequence and generating a set of continuous representations, while the decoder takes these representations and generates the output sequence. The original article published by Google \cite{transformer_google} describes the working principle of the full transformer architecture including both the encoder and decoder parts. However, for tasks such as vehicle speed estimation, only the encoder part is enough, as there is no need to generate a sequence output.
 
 The steps of the transformer encoder can be seen on \ref{fig:transformer_encoder_block} and summarized as follows:
 \begin{enumerate}
-    \item The input sequence is 
-    \item Input embedding: The input sequence $X \in \mathbb{R}^{L \times d_x}$ at time step $t$, where $L$ is the sequence length and $d_x$ is the size of the input vector, is first converted into a continuous representation using an embedding layer. This layer maps each input to a high-dimensional vector space $d_m$. 
+    \item Input embedding: The input sequence $X_t \in \mathbb{R}^{L \times d_x}$ at time step $t$, where $L$ is the sequence length and $d_x$ is the size of the input vector, is first converted into a continuous representation using an embedding layer. This layer maps each input to a high-dimensional vector space $d_m$. 
     \begin{equation}
         E_t = \text{Embedding}(X_t) = W_e \cdot X_t + b_e,
     \end{equation}
     where $E_t\in \mathbb{R}^{L \times d_m}$ is the embedded input vector at time step $t$, $W_e \in \mathbb{R}^{d_m}$ is the embedding weight matrix, and $b_e \in \mathbb{R}^{d_m}$ is the bias term. 
-    \item Positional encoding: Since the transformer architecture does not rely on the order of the sequence, positional encodings are added to the embedded input vectors to provide information about the position of each element in the sequence. This can be done using sinusoidal functions or learned positional embeddings. The original transformer paper \cite{Vaswani2017AttentionIA} proposes the following sinusoidal positional encoding:
+    \item Positional encoding: Since the transformer architecture does not rely on the order of the sequence, positional encodings are added to the embedded input vectors to provide information about the position of each element in the sequence. This can be done using sinusoidal functions or learned positional embeddings. The original transformer paper \cite{transformer_google} proposes the following sinusoidal positional encoding:
     \begin{equation}
         \text{PE}_{(pos, 2i)} = \sin\left(\frac{pos}{10000^{2i/d_m}}\right),
     \end{equation}
@@ -1284,7 +1285,4 @@ Throughout the chapter 5 different AI architectures were presented. These includ
 \end{table}
 \FloatBarrier
 
-The results indicate that the TCN architecture outperforms all other models, achiev   ing the lowest RMSE and MAE values, as well as the highest PWT 0.3 and PWT 0.4 percentages. This suggests that TCN-s are particularly effective at capturing temporal dependencies in the input data for vehicle speed estimation tasks.
-
-In contrast, the transformer encoder model performed the worst among the evaluated architectures. This could be attributed to the fact that transformers are typically more effective in handling long-range dependencies in sequences and are used extensively in NLP tasks. However, for the specific task of vehicle speed estimation, the TCN architecture proved to be more suitable.
-
+The results indicate that the TCN architecture outperforms all the other models, achieving the lowest RMSE and MAE values, as well as the highest PWT 0.3 and PWT 0.4 percentages. This suggests that TCN-s are particularly effective at capturing temporal dependencies in the input data for vehicle speed estimation tasks.

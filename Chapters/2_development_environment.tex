@@ -1,8 +1,6 @@
 \chapter{Development environment}
 
-In this chapter the environment of the development will be described, where the structure of the vehicle and its sensors, and the requirements of the estimator will be discussed.
-
-!! ezt pontosítani kell !!
+In this chapter the environment of the development will be described, where the structure of the vehicle and its sensors, the available measurement data, the possible AI based approaches for vehicle speed estimation and the used software and hardware tools will be discussed.
 
 \section{Available sensor data}
 
@@ -13,13 +11,13 @@ A modern vehicle is equipped with multiple ECU-s, numerous sensors and actuators
 \hline 
 \textbf{Sensor Type} & \textbf{Variables} & \textbf{Unit of Measurement} \\
 \hline \hline
-Wheel speed sensor & $\omega_{FR}, \omega_{FL}, \omega_{RR}, \omega_{RL}$ & [$^\circ$/s] \\
+Wheel speed sensor & $\omega_{FL}, \omega_{FR}, \omega_{RL}, \omega_{RR}$ & [$^\circ$/s] \\
 \hline
-Drive torque sensor & $M_{FR}, M_{FL}, M_{RR}, M_{RL}$ & [Nm] \\
+Drive torque sensor & $M_{FL}, M_{FR}, M_{RL}, M_{RR}$ & [Nm] \\
 \hline
 Acceleration from IMU & $a_x$, $a_y$, $a_z$ & [m/s$^2$] \\
 \hline
-Angular rates from IMU & $\dot{\alpha}$, $\dot{\beta}$, $\dot{\gamma}$ & [$^\circ$/s] \\
+Angular rates from IMU & $\dot{\varphi}$, $\dot{\theta}$, $\dot{\psi}$ & [$^\circ$/s] \\
 \hline
 Brake pressure sensor & $P_{FR}, P_{FL}, P_{RR}, P_{RL}$ & [bar] \\
 \hline
@@ -30,7 +28,7 @@ Road wheel angles & $\delta_{FR}, \delta_{FL}, \delta_{RR}, \delta_{RL}$ & [$^\c
 \label{tab:sensor_table}
 \end{table}
 
-It is important to note here that a the road wheels on one axle assign the same angle during normal driving conditions. Therefore the a road wheel angles ($\delta_{FR}, \delta_{FL}, \delta_{RR}, \delta_{RL}$) will be simplified to a two distinct values, where the front wheels will have the same angle ($\delta_{FR} =  \delta_{FM}$ and $\delta_{FL} = \delta_{FM}$) and the rear wheels will have the same angle ($\delta_{RR} =  \delta_{RM}$ and $\delta_{RL} = \delta_{RM}$). From this point the front and rear wheel angles will be represented as $\text{rwa}_{FM}$ and $\text{rwa}_{FM}$ respectively.
+It is important to note here that the it is assumed that the road wheels on one axle will be assigned same angle. Therefore the a road wheel angles ($\delta_{FR}, \delta_{FL}, \delta_{RR}, \delta_{RL}$) will be simplified to a two distinct values, where the front wheels will have the same angle ($\delta_{FR} =  \delta_{FM}$ and $\delta_{FL} = \delta_{FM}$) and the rear wheels will have the same angle ($\delta_{RR} =  \delta_{RM}$ and $\delta_{RL} = \delta_{RM}$). From this point the front and rear wheel angles will be represented as $\text{rwa}_{FM}$ and $\text{rwa}_{RM}$ respectively.
 
 GNSS receivers can be also considered as precise sensors that are available during the development phase but not on the vehicles from the production line in order to keep the wider availability. Therefore the calculated longitudinal and lateral speeds from the GNSS measurements will only serve for reference, validation, testing and training purposes. The mentioned sensor units can be seen on figure \ref{fig:sensors}. 
 
@@ -43,15 +41,15 @@ GNSS receivers can be also considered as precise sensors that are available duri
 \end{figure}
 \FloatBarrier
 
-The structure of the available sensor on the CAN bus data that was used in the further development is the following. Sampling time is 2 [$ms$] for all the sensors except the speed values provided by the GNSS receivers, that is 100 [$ms$]. Above this, the sensor data is collected in a large enough buffer to provide all the values at the same time. This way at every 2 [$ms$] all the inputs will arrive at the same time to the estimator. The speeds from the GNSS receivers will be handled separately from base structure. The structure can be seen in table \ref{tab:data_structure}:
+The structure of the available sensor on the CAN bus data that was used in the further development is the following. Sampling time is 10 [$ms$] for all the sensors except the speed values provided by the GNSS receivers, that is 100 [$ms$]. Above this, the sensor data is collected in a large enough buffer to provide all the values at the same time. This way at every 10 [$ms$] all the inputs will arrive at the same time to the estimator. The speeds from the GNSS receivers will be handled separately from base structure. The structure can be seen in table \ref{tab:data_structure}:
 
 \FloatBarrier
 \begin{table}[htbp]
-\centering
+\centering{}
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
-\textbf{time} & $a_x$ & $\omega_{FR}$ & $\omega_{FL}$ & $\omega_{RR}$ & $\omega_{RL}$ & $M_{FR}$ & $M_{FL}$ & $M_{RR}$ & $M_{RL}$ &  $a_y$ & $a_z$ & $\dot\alpha$ & $\dot\beta$ & $\dot\gamma$ & ...\\ \hline \hline
+\textbf{time} & $a_x$ & $\omega_{FR}$ & $\omega_{FL}$ & $\omega_{RR}$ & $\omega_{RL}$ & $M_{FR}$ & $M_{FL}$ & $M_{RR}$ & $M_{RL}$ &  $a_y$ & $a_z$ & $\dot\varphi$ & $\dot\theta$ & $\dot\psi$ & ...\\ \hline \hline
 $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & ...\\ \hline
 6.220&0.2819&31.3643&31.3791&31.5755&31.5894&0&0&19.087&19.087&0&0&0&0&0.2329&...\\ \hline
 6.222&0.2819&31.3643&31.3791&31.5755&31.5894&0&0&19.087&19.087&0&0&0&0&0.2349&...\\ \hline
@@ -82,7 +80,11 @@ In order to be able to train, validate and test the developed estimators, the re
 
 Besides the sensor data from the vehicle and the high precision GNSS receivers, the speed estimates from the vehicle's built in ECU were also recorded. These speed values will also serve as a reference for the performance of the developed estimators.
 
-Furthermore the recorded measurement data was normalized before using it for training and testing. This was done to ensure that all the input variables are in the same range, which helps the training process of the AI models in way that no input variable dominates the learning process due to its larger scale. The normalization was done using min-max scaling, where the minimum and maximum values for each variable were determined from the dataset. The minimal and maximal values used for normalization can be seen in table \ref{tab:normalization_values} for all the variables. This is important due to the limitations of the models as it will only be able to provide accurate estimates within the range of the training data. 
+Furthermore the recorded measurement data was normalized before using it for training and testing. The normalization was done with the following formula:
+\begin{equation}
+    x_{norm} = \frac{x - x_{min}}{x_{max} - x_{min}},
+\end{equation}
+where $x$ is the original variable, $x_{norm}$ is the normalized variable, $x_{min}$ is the minimum value of the variable in the dataset and $x_{max}$ is the maximum value of the variable in the dataset. This was done to ensure that all the input variables are in the range of [0...1], which helps the training process of the AI models in way that no input variable dominates the learning process due to its larger scale. The normalization was done using min-max scaling, where the minimum and maximum values for each variable were determined from the dataset. The minimal and maximal values used for normalization can be seen in table \ref{tab:normalization_values} for all the variables. This is important due to the limitations of the models as it will only be able to provide accurate estimates within the range of the training data. 
 
 \FloatBarrier
 \begin{table}[htbp]
@@ -117,9 +119,9 @@ $M_{RL}$     & 0 [Nm] & 324.8717 [Nm] \\
 \textbf{Variable} & \textbf{Min.} & \textbf{Max.} \\
 \midrule
 $M_{RR}$     & 0 [Nm] & 324.8717 [Nm] \\
-$\dot\alpha$ & 0 [$^\circ$/s] & 0.1504 [$^\circ$/s] \\
-$\dot\beta$  & 0 [$^\circ$/s] & 0.3755 [$^\circ$/s] \\
-$\dot\gamma$ & 0 [$^\circ$/s] & 1.2396 [$^\circ$/s] \\
+$\dot\varphi$ & 0 [$^\circ$/s] & 0.1504 [$^\circ$/s] \\
+$\dot\theta$  & 0 [$^\circ$/s] & 0.3755 [$^\circ$/s] \\
+$\dot\psi$ & 0 [$^\circ$/s] & 1.2396 [$^\circ$/s] \\
 $\text{rwa}_{FM}$ & -0.5865 [$^\circ$] & 0.5979 [$^\circ$] \\
 $\text{rwa}_{RM}$ & -0.0545 [rad] & 0.0615 [$^\circ$] \\
 $P_{FL}$     & 0 [bar] & 220.3667 [bar] \\
@@ -130,12 +132,12 @@ $P_{RR}$     & 0 [bar] & 180.2632 [bar] \\
 \end{tabular}
 \end{minipage}
 
-\caption{Min and max values used for normalizatiion of the sensore data}
+\caption{Min and max values used for normalization of the sensore data}
 \label{tab:normalization_values}
 \end{table}
 \FloatBarrier
 
-The validation measurements for estimating vehicle speed can be seen in figure \ref{fig:validation_measurements} where different driving scenarios are represented. The numbers correspond to the different driving maneuvers that were described earlier in this section. 
+The validation measurements for estimating vehicle speed can be seen in figure \ref{fig:validation_measurements} where different driving scenarios are represented. The numbers correspond to the different driving maneuvers that were described earlier in this section. It needs to be mentioned that the term "Snow mode" refers to a driving mode where the rear wheel steering is deactivated.
 
 \FloatBarrier
 \begin{figure}[h]
@@ -158,20 +160,22 @@ Before advancing to the possible algorithms for vehicle speed estimation using A
 
 With these requirements in mind the possible solutions can be discussed. The algorithms can be categorized into two groups. Solutions where the vehicle speeds are directly estimated by the AI algorithm from the sensor input data (1) and where the AI algorithm is combined with an already existing estimator (2). Both of these solutions offer great potential in estimating vehicle speed. 
 
+The general structure of a vehicle speed estimator in a vehicle's control system can be seen in figure \ref{fig:vehicle speed estimation}. The estimator receives the sensor data from the CAN bus and provides the estimated vehicle speed to the control algorithm that uses it for further calculations.
+
 \FloatBarrier
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{images/Vehicle speed estimator.pdf}
-    \caption{Vehicle speed estimation in the simplified control}
+    \caption{Vehicle speed estimation in a control algorithm}
     \label{fig:vehicle speed estimation}
 \end{figure}
 \FloatBarrier
 
 \subsection{Direct estimation}
 
-When directly estimating any state of the vehicle, the structure is the following. The trained AI model receives the sensor data as inputs and outputs the state for which it was trained. In this thesis the state to estimate is the vehicle's longitudinal and lateral speed. 
+When directly estimating any state of the vehicle, the structure is the following. The trained AI model receives the sensor data as inputs and outputs the state for which it was trained. This thesis the focus is on estimating the longitudinal speed of the vehicle. 
 
-The question now arises what models are suitable for this application? The possible models to use in this scenario are models that can handle time series data well and can estimate an output based on the sequence it was provided with. The possible models are the following:
+The question now arises what models are suitable for this application? The possible models to use in this scenario are models that can handle time series data well and can estimate an output based on the sequence it was provided with. The investigated models that will be described in section \ref{ch:direct_estimation} are the following:
 \begin{itemize}
     \item Basic/simple Recurrent Neural Network (RNN)
     \item Long-short Term Memory (LSTM)
