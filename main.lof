@@ -15,8 +15,8 @@
 \contentsline {figure}{\numberline {2.12}{\ignorespaces TS-KF model from \blx@tocontentsinit {0}\cite {lit_trans_lstm}}}{15}{figure.caption.13}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Available sensor data for speed estimation}}{17}{figure.caption.15}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Recorded validation measurements for vehicle speed estimation}}{19}{figure.caption.18}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Vehicle speed estimation in a control algorithm}}{20}{figure.caption.19}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Recorded validation measurements for vehicle speed estimation}}{20}{figure.caption.18}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Vehicle speed estimation in a control algorithm}}{21}{figure.caption.19}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Feedforward nn (left) compared to recurrent nn (right)}}{24}{figure.caption.20}%
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Unfolding the architecture of a RNN in time}}{25}{figure.caption.21}%
@@ -41,7 +41,4 @@
 \contentsline {figure}{\numberline {5.4}{\ignorespaces Low longitudinal and lateral slip in straight line driving (left) and high lateral slip during cornering (right)}}{65}{figure.caption.73}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {6.1}{\ignorespaces Real time implementation concept}}{67}{figure.caption.74}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Toolchain of the real time implementation}}{68}{figure.caption.75}%
-\addvspace {10\p@ }
-\addvspace {10\p@ }
 \addvspace {10\p@ }

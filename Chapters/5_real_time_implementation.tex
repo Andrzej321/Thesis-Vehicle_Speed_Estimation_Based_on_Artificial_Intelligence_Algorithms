@@ -4,7 +4,9 @@ In this chapter the real time implementation of the trained networks will be des
 
 \section{Development Environment}
 
-Before describing the development environment, the meaning behind real time implementation should be clarified. In this context, real time means that the model is able to process incoming data and provide estimations within a fixed time frame, which is determined by the system. Within every defined time step, the computational unit (eg. microcontroller) receives new input data at the beginning of the time step, processes it using the implemented model, and outputs the estimation before the next time step begins. This setup can be seen on figure \ref{fig:rt}
+Before describing the development environment, the meaning behind real time implementation should be clarified. In this context, real time means that the model is able to process incoming data and provide estimations within a fixed time frame, which is determined by the system. Within every defined time step, the computational unit (eg. microcontroller) receives new input data at the beginning of the time step, processes it using the implemented model, and outputs the estimation before the next time step begins. It needs to be mentioned that the measurement data is not necessarily processed in the upcoming time step, there can be a delay of multiple time steps depending on the computational requirements of the model and the capabilities of the hardware.
+
+This setup can be seen on figure \ref{fig:rt}
 
 \FloatBarrier
 \begin{figure}[h]
@@ -15,47 +17,36 @@ Before describing the development environment, the meaning behind real time impl
 \end{figure}
 \FloatBarrier
 
-A possible development environment for implementing an arbitrary control or estimation algorithm for vehicle application can be a toolchain offered by dSpace. This toolchain allows the user to create models in MATLAB Simulink, generate C code from these models and utilize the generated code on the hardware developed by dSace, where it can be tested in real time. The hardware can be connected to a real vehicle via the CAN bus, or to a simulator for cost efficiency reasons. In this thesis the latter application was chosen, using the BeamNG.drive simulator. The main steps of the real time implementations are the following:
+A possible development environment for implementing an arbitrary control or estimation algorithm for vehicle application is the toolchain offered by dSpace \cite{dspace_tutorial} \cite{dspace_matlab} \cite{dspace_rt}. This toolchain allows the user to create models in MATLAB Simulink, generate C code from these models and utilize the generated code on the hardware developed by dSace, where it can be tested in real time. The hardware can be connected to a real vehicle via the CAN bus, or to a simulator for cost efficiency reasons. Even though the training of the AI models was done on real vehicle measurement data, for the real time implementation the latter option was chosen using the BeamNG.drive simulator \cite{beamng}. The main steps of the real time implementations are the following:
 \begin{enumerate}
-    \item Prepare the trained models in MATLAB using the Deep Learning Toolbox (DLT).
+    \item Prepare the trained models in MATLAB using the Deep Learning Toolbox (DLT) \cite{matlab_dlt}.
     \item Integrate the trained models into MATLAB Simulink using DLT.
-    \item Generating C code from the Simulink model using dSpace's ConfigurationDesk software.
-    \item Deploying the generated code on dSpace's MicroAutoBox hardware using ControlDesk software.
+    \item Generating C code from the Simulink model using dSpace's ConfigurationDesk software \cite{dspace_configdesk}.
+    \item Deploying the generated code on dSpace's MicroAutoBox \cite{dspace_microautobox} hardware using ControlDesk software.
     \item Connecting the MicroAutoBox to computer that runs BeamNG.drive via CAN bus.
     \item Testing the real time performance of the models with different step sizes.
 \end{enumerate}
-The toolchain of the real time implementation is illustrated in Figure \ref{fig:rt_toolchain}.
-\FloatBarrier
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.9\textwidth]{images/rt_toolchain.pdf}
-    \caption{Toolchain of the real time implementation}
-    \label{fig:rt_toolchain}
-\end{figure}
-\FloatBarrier
-The main question to answer is what is the smallest step size that the MicroAutoBox requires to be able to run the model. In other words, how much time does the MicroAutoBox need to process the inserted model and provide and estimation. This is crucial question since the smaller the step size, the more accurate and responsive the estimation will be, which can result better overall performance in a control application. 
+
+The main question to answer is what is the smallest step size that the MicroAutoBox requires to be able to run the model. In other words, how much time does the MicroAutoBox need to process the inserted model and provide estimation. This is crucial question since the smaller the step size, the more accurate and responsive the estimation will be, which can result better overall performance in a control application.  
 
 \section{Results}
 
-The chosen models for real time implementation were the best performing LSTM, GRU and the TCN architectures described in Chapter \ref{ch:direct_estimation}. Before starting the tests, a short calculation was made to estimate the FLOPS (floating point operations per second) required by each model. This gives a rough idea about the computational requirements of the models, which can be compared to the capabilities of the MicroAutoBox hardware. The calculated FLOPS are the following:
-\begin{itemize}
-    \item GRU:
-\end{itemize}
-\begin{equation}
-    \text{seq len} \times \text{hidden size}^2 \times \text{layers}\times \text{gate factor} = 90 \times 208^2 \times 3 \times 6 \simeq 70.088 \text{ MFLOPS}
-\end{equation}
+The chosen models for real time implementation were the best performing LSTM, GRU and the TCN architectures described in Chapter \ref{ch:direct_estimation}. Before starting the tests, a short calculation was made to estimate the MACs (Multiply-Accumulate operation) required by each model. This gives a rough idea about the computational requirements of the models, which can be compared to the capabilities of the MicroAutoBox hardware. The calculated MACs are the following \cite{mac_calculation}:
+
 \begin{itemize}
     \item LSTM:
-\end{itemize}
-\begin{equation}
-    \text{seq len} \times \text{hidden size}^2 \times \text{layers}\times \text{gate factor} = 50 \times 192^2 \times 2 \times 8 \simeq 29.491 \text{ MFLOPS}
-\end{equation}
-\begin{itemize}
+    \begin{equation}
+        MAC_{LSTM} \approx L_{seq} \times  4(d_x \times d_h + d_h^2) \times {num of layers} = 15.667 \text{ M}
+    \end{equation}
+    \item GRU:
+    \begin{equation}
+        MAC_{GRU} \approx L_{seq} \times  3(d_x \times d_h + d_h^2) \times {num of layers} = 37.066 \text{ M}
+    \end{equation}
     \item TCN:
+    \begin{equation}
+        MAC_{TCN} \approx L_{seq} \times \sum_{l=1}^{L} (k_l \times C_{in_l} \times C_{out_l}) \times B  = 5.888 \text{ M}
+    \end{equation}
 \end{itemize}
-\begin{equation}
-    \text{seq len} \times \text{channels} \times \text{kernel}\times \text{layers} \times \text{conv per block} = 50 \times 64 \times 4 \times 4 \times 2 \simeq 0.012 \text{ MFLOPS}
-\end{equation}
 
 The results indicate that the TCN model has significantly lower computational cost compared to the recurrenet models which makes it even more desirable for real time applications.
 
@@ -79,3 +70,5 @@ In table \ref{tab:rt_comparison} the highest task turnaround times that were rea
 \end{table}
 
 After measuring these step sizes, it is clear that the TCN model is the most suitable for real time application due to its low computational cost and high accuracy. The main difference between the RNN based models is the sequence lenght which greatly affects computational costs. The LSTM model has a sequence length of 50 while the GRU model has a length of 90, which results in almost double the computational cost for the GRU model despite having only one layer more than the LSTM model.
+
+A possible way to achieve smaller step sizes is to utilize the benefits of the created EKF based estimator, where the AI based direct estimator is used as a measurement function. This case offers a way to measurement update does not necessarily have to be performed at every time step, this the AI model can be run at lower frequencies while the prediction step of the EKF can be executed at every time step. This way the computational cost can be reduced while still having the benefits of the AI based model.

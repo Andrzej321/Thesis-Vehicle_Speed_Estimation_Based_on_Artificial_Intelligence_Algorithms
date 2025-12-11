@@ -56,5 +56,3 @@
 \contentsline {section}{\numberline {6.1}Development Environment}{67}{section.6.1}%
 \contentsline {section}{\numberline {6.2}Results}{68}{section.6.2}%
 \contentsline {chapter}{\numberline {7}Summary}{70}{chapter.7}%
-\contentsline {chapter}{\numberline {A}Appendix Title}{77}{appendix.A}%
-\contentsline {chapter}{\numberline {B}Appendix Title}{78}{appendix.B}%
