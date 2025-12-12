@@ -702,7 +702,7 @@
       \field{title}{dSPACE and Real-Time Interface in Simulink}
       \field{year}{2012-12-20}
     \endentry
-    \entry{dspace_matlab}{website}{}{}
+    \entry{dspace_matlab}{online}{}{}
       \field{sortinit}{4}
       \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{title}
@@ -718,7 +718,7 @@
       \verb https://www.dspace.com/en/pub/home/products/systems/mbd/matlabsimulinkstateflow.cfm
       \endverb
     \endentry
-    \entry{dspace_rt}{website}{}{}
+    \entry{dspace_rt}{online}{}{}
       \field{sortinit}{4}
       \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{title}
@@ -734,7 +734,7 @@
       \verb https://www.dspace.com/en/pub/home/products/sw/impsw/real-time-interface.cfm
       \endverb
     \endentry
-    \entry{beamng}{website}{}{}
+    \entry{beamng}{online}{}{}
       \field{sortinit}{4}
       \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{title}
@@ -750,7 +750,7 @@
       \verb https://www.beamng.com/game/
       \endverb
     \endentry
-    \entry{matlab_dlt}{website}{}{}
+    \entry{matlab_dlt}{online}{}{}
       \field{sortinit}{5}
       \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labeltitlesource}{title}
@@ -766,7 +766,7 @@
       \verb https://www.mathworks.com/products/deep-learning.html
       \endverb
     \endentry
-    \entry{dspace_configdesk}{website}{}{}
+    \entry{dspace_configdesk}{online}{}{}
       \field{sortinit}{5}
       \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labeltitlesource}{title}
@@ -782,7 +782,7 @@
       \verb https://www.dspace.com/en/pub/home/products/sw/impsw/configurationdesk.cfm
       \endverb
     \endentry
-    \entry{dspace_microautobox}{website}{}{}
+    \entry{dspace_microautobox}{online}{}{}
       \field{sortinit}{5}
       \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labeltitlesource}{title}
