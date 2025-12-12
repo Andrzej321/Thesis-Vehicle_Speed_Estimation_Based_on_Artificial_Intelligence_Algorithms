@@ -180,7 +180,7 @@ The model parameters that were used for the estimation can be seen in table \ref
     \centering
     \begin{tabular}{|c|c|c|c|c|}
         \hline
-        \textbf{RMSE [$\frac{km}{h}$]} & \textbf{MAE [$\frac{km}{h}$]} & \textbf{AMaxE [$\frac{km}{h}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
+        \textbf{RMSE [$\frac{m}{s}$]} & \textbf{MAE [$\frac{m}{s}$]} & \textbf{AMaxE [$\frac{m}{s}$]} & \textbf{PWT 0.3 [\%]} & \textbf{PWT 0.4 [\%]} \\
         \hline \hline
         0.30949 & 0.19039 & 2.18090 & 74.22867 & 76.07354 \\
         \hline
@@ -301,12 +301,12 @@ The values of the covariance matrices used in the EKF implementation can be seen
     100 & 0 & 0 \\
     0 & 0.01 & 0 \\
     0 & 0 & 0.01
-    \end{bmatrix} \text{ if } v_u < 5 [\frac{km}{h}], \quad
+    \end{bmatrix} \text{ if } v_u < 5 \left[\frac{km}{h}\right], \quad
     Q = \begin{bmatrix}
     0.01 & 0 & 0 \\
     0 & 0.01 & 0 \\
     0 & 0 & 0.01
-    \end{bmatrix} \text{ if } v_u \geq 5 [\frac{km}{h}],
+    \end{bmatrix} \text{ if } v_u \geq 5 \left[\frac{km}{h}\right],
 \end{equation}
 
 \begin{equation}

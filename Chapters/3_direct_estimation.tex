@@ -221,7 +221,7 @@ The chosen performance metrics for evaluating the models and the estimators were
 \begin{equation}
     PWT = \frac{1}{N} \sum_{i=1}^{N} \mathbb{I}(|y_i^d - y_i| < \epsilon) \times 100\%,
 \end{equation}
-where $N$ is the total number of estimations, $y_i$ is the estimated value, ${y}_i^d$ is the desired value, $\epsilon$ is the error threshold (e.g., 1 km/h), and $\mathbb{I}$ is the indicator function that returns 1 if the condition is true and 0 otherwise. Throughout the development two different thresholds were considered: 0.3 km/h and 0.4 km/h. These will be denoted as PWT 0.3 and PWT 0.4 in the following tables. 
+where $N$ is the total number of estimations, $y_i$ is the estimated value, ${y}_i^d$ is the desired value, $\epsilon$ is the error threshold (e.g., 1 km/h), and $\mathbb{I}$ is the indicator function that returns 1 if the condition is true and 0 otherwise. Throughout the development two different thresholds were considered: 0.3 m/s and 0.4 m/s. These will be denoted as PWT 0.3 and PWT 0.4 in the following tables. 
 
 After the training and validation procedure all the models were tested on the unseen test dataset. The 3-3 best performing architectures were chosen based on the root mean squared error (RMSE) metric. The 3 best performing architectures with the two input sets can be seen in table \ref{tab:rnn_best_models_1}. The results that can be found in table \ref{tab:rnn_best_models_1_metrics} show that the model with 23 inputs performs slightly better than the one with 12 inputs, but the difference is not significant, therefore the reduced input set can be used to lower the complexity of the model without sacrificing performance.
 \FloatBarrier
