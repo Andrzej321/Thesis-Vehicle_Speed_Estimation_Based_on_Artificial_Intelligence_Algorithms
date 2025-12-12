@@ -1,17 +1,17 @@
 [0] Config.pm:328> INFO - This is Biber 2.21
 [0] Config.pm:331> INFO - Logfile is 'main.blg'
-[173] biber-MSWIN64:342> INFO - === 
-[227] Biber.pm:421> INFO - Reading 'main.bcf'
-[371] Biber.pm:1002> INFO - Found 28 citekeys in bib section 0
-[388] Biber.pm:4487> INFO - Processing section 0
-[402] Biber.pm:4678> INFO - Looking for bibtex file 'sample.bib' for section 0
-[476] bibtex.pm:1713> INFO - LaTeX decoding ...
-[532] bibtex.pm:1519> INFO - Found BibTeX data source 'sample.bib'
-[671] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[671] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[671] Biber.pm:4307> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'en-US'
-[672] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
-[694] bbl.pm:676> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[706] bbl.pm:779> INFO - Output to main.bbl
-[706] Biber.pm:132> WARN - legacy year field '2012-12-20' in entry 'dspace_tutorial' is not an integer - this will probably not sort properly.
-[706] Biber.pm:134> INFO - WARNINGS: 1
+[293] biber-MSWIN64:342> INFO - === 
+[457] Biber.pm:421> INFO - Reading 'main.bcf'
+[595] Biber.pm:1002> INFO - Found 28 citekeys in bib section 0
+[615] Biber.pm:4487> INFO - Processing section 0
+[649] Biber.pm:4678> INFO - Looking for bibtex file 'sample.bib' for section 0
+[751] bibtex.pm:1713> INFO - LaTeX decoding ...
+[805] bibtex.pm:1519> INFO - Found BibTeX data source 'sample.bib'
+[1008] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1008] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1009] Biber.pm:4307> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'en-US'
+[1009] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
+[1120] bbl.pm:676> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[1135] bbl.pm:779> INFO - Output to main.bbl
+[1136] Biber.pm:132> WARN - legacy year field '2012-12-20' in entry 'dspace_tutorial' is not an integer - this will probably not sort properly.
+[1136] Biber.pm:134> INFO - WARNINGS: 1

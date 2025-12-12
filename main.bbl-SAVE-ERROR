@@ -509,7 +509,87 @@
       \verb https://arxiv.org/abs/2105.00250
       \endverb
     \endentry
-    \entry{Vaswani2017AttentionIA}{inproceedings}{}{}
+    \entry{rnn_reference}{inproceedings}{}{}
+      \name{author}{2}{}{%
+        {{hash=61e61a4ba16dbae239c77cfdfda66c1b}{%
+           family={Yadaiah},
+           familyi={Y\bibinitperiod},
+           given={N.},
+           giveni={N\bibinitperiod}}}%
+        {{hash=ac5d8ce4f41b26a461ef2fcd89c7b02b}{%
+           family={Sowmya},
+           familyi={S\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{b73ad37a294e90cfecff5c38a76cd05d}
+      \strng{fullhash}{b73ad37a294e90cfecff5c38a76cd05d}
+      \strng{fullhashraw}{b73ad37a294e90cfecff5c38a76cd05d}
+      \strng{bibnamehash}{b73ad37a294e90cfecff5c38a76cd05d}
+      \strng{authorbibnamehash}{b73ad37a294e90cfecff5c38a76cd05d}
+      \strng{authornamehash}{b73ad37a294e90cfecff5c38a76cd05d}
+      \strng{authorfullhash}{b73ad37a294e90cfecff5c38a76cd05d}
+      \strng{authorfullhashraw}{b73ad37a294e90cfecff5c38a76cd05d}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{The 2006 IEEE International Joint Conference on Neural Network Proceedings}
+      \field{title}{Neural Network Based State Estimation of Dynamical Systems}
+      \field{year}{2006}
+      \field{pages}{1042\bibrangedash 1049}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1109/IJCNN.2006.246803
+      \endverb
+      \keyw{Neural networks;State estimation;Recurrent neural networks;Nonlinear systems;Kalman filters;Nonlinear dynamical systems;Feedforward neural networks;Adaptive control;Control systems;Predictive models}
+    \endentry
+    \entry{DBLP:journals/corr/abs-1803-01271}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=46866596e404b7745d45fdb1cbff0a01}{%
+           family={Bai},
+           familyi={B\bibinitperiod},
+           given={Shaojie},
+           giveni={S\bibinitperiod}}}%
+        {{hash=0288715a83a3349e44f9292c5c2149f7}{%
+           family={Kolter},
+           familyi={K\bibinitperiod},
+           given={J.\bibnamedelimi Zico},
+           giveni={J\bibinitperiod\bibinitdelim Z\bibinitperiod}}}%
+        {{hash=9025300f43a193cfed8e10e924f2a117}{%
+           family={Koltun},
+           familyi={K\bibinitperiod},
+           given={Vladlen},
+           giveni={V\bibinitperiod}}}%
+      }
+      \strng{namehash}{3a3778cabb3cde60fd94e137dc83c5a8}
+      \strng{fullhash}{3a3778cabb3cde60fd94e137dc83c5a8}
+      \strng{fullhashraw}{3a3778cabb3cde60fd94e137dc83c5a8}
+      \strng{bibnamehash}{3a3778cabb3cde60fd94e137dc83c5a8}
+      \strng{authorbibnamehash}{3a3778cabb3cde60fd94e137dc83c5a8}
+      \strng{authornamehash}{3a3778cabb3cde60fd94e137dc83c5a8}
+      \strng{authorfullhash}{3a3778cabb3cde60fd94e137dc83c5a8}
+      \strng{authorfullhashraw}{3a3778cabb3cde60fd94e137dc83c5a8}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{CoRR}
+      \field{title}{An Empirical Evaluation of Generic Convolutional and Recurrent Networks for Sequence Modeling}
+      \field{volume}{abs/1803.01271}
+      \field{year}{2018}
+      \verb{eprint}
+      \verb 1803.01271
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/1803.01271
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/1803.01271
+      \endverb
+    \endentry
+    \entry{transformer_google}{inproceedings}{}{}
       \name{author}{8}{}{%
         {{hash=7f28e84700536646dd6620a0db07ad09}{%
            family={Vaswani},
@@ -571,6 +651,167 @@
       \endverb
       \verb{url}
       \verb https://arxiv.org/pdf/1706.03762.pdf
+      \endverb
+    \endentry
+    \entry{Rajesh_Vehicle_Dynamics}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=0ad4ed3736a98c0eb274c45ed9f3ac6f}{%
+           family={Rajamani},
+           familyi={R\bibinitperiod},
+           given={Rajesh},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{0ad4ed3736a98c0eb274c45ed9f3ac6f}
+      \strng{fullhash}{0ad4ed3736a98c0eb274c45ed9f3ac6f}
+      \strng{fullhashraw}{0ad4ed3736a98c0eb274c45ed9f3ac6f}
+      \strng{bibnamehash}{0ad4ed3736a98c0eb274c45ed9f3ac6f}
+      \strng{authorbibnamehash}{0ad4ed3736a98c0eb274c45ed9f3ac6f}
+      \strng{authornamehash}{0ad4ed3736a98c0eb274c45ed9f3ac6f}
+      \strng{authorfullhash}{0ad4ed3736a98c0eb274c45ed9f3ac6f}
+      \strng{authorfullhashraw}{0ad4ed3736a98c0eb274c45ed9f3ac6f}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Vehicle Dynamics and Control}
+      \field{year}{2012}
+    \endentry
+    \entry{dspace_tutorial}{inproceedings}{}{}
+      \name{author}{1}{}{%
+        {{hash=392e591a4080ad42d6f8efba54627386}{%
+           family={Ghaffari},
+           familyi={G\bibinitperiod},
+           given={Azad},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{392e591a4080ad42d6f8efba54627386}
+      \strng{fullhash}{392e591a4080ad42d6f8efba54627386}
+      \strng{fullhashraw}{392e591a4080ad42d6f8efba54627386}
+      \strng{bibnamehash}{392e591a4080ad42d6f8efba54627386}
+      \strng{authorbibnamehash}{392e591a4080ad42d6f8efba54627386}
+      \strng{authornamehash}{392e591a4080ad42d6f8efba54627386}
+      \strng{authorfullhash}{392e591a4080ad42d6f8efba54627386}
+      \strng{authorfullhashraw}{392e591a4080ad42d6f8efba54627386}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{dSPACE and Real-Time Interface in Simulink}
+      \field{year}{2012-12-20}
+    \endentry
+    \entry{dspace_matlab}{website}{}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{title}{Relevant MathWorks® and dSPACE Tools}
+      \field{urlday}{11}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.dspace.com/en/pub/home/products/systems/mbd/matlabsimulinkstateflow.cfm
+      \endverb
+      \verb{url}
+      \verb https://www.dspace.com/en/pub/home/products/systems/mbd/matlabsimulinkstateflow.cfm
+      \endverb
+    \endentry
+    \entry{dspace_rt}{website}{}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{title}{Real-Time Interface (RTI)1)}
+      \field{urlday}{11}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.dspace.com/en/pub/home/products/sw/impsw/real-time-interface.cfm
+      \endverb
+      \verb{url}
+      \verb https://www.dspace.com/en/pub/home/products/sw/impsw/real-time-interface.cfm
+      \endverb
+    \endentry
+    \entry{beamng}{website}{}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{title}{BeamNG.drive}
+      \field{urlday}{11}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.beamng.com/game/
+      \endverb
+      \verb{url}
+      \verb https://www.beamng.com/game/
+      \endverb
+    \endentry
+    \entry{matlab_dlt}{website}{}{}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labeltitlesource}{title}
+      \field{title}{Deep Learning Toolbox}
+      \field{urlday}{11}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.mathworks.com/products/deep-learning.html
+      \endverb
+      \verb{url}
+      \verb https://www.mathworks.com/products/deep-learning.html
+      \endverb
+    \endentry
+    \entry{dspace_configdesk}{website}{}{}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labeltitlesource}{title}
+      \field{title}{ConfigurationDesk}
+      \field{urlday}{11}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.dspace.com/en/pub/home/products/sw/impsw/configurationdesk.cfm
+      \endverb
+      \verb{url}
+      \verb https://www.dspace.com/en/pub/home/products/sw/impsw/configurationdesk.cfm
+      \endverb
+    \endentry
+    \entry{dspace_microautobox}{website}{}{}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labeltitlesource}{title}
+      \field{title}{MicroAutoBox III}
+      \field{urlday}{11}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.dspace.com/en/pub/home/products/hw/micautob/microautobox3.cfm
+      \endverb
+      \verb{url}
+      \verb https://www.dspace.com/en/pub/home/products/hw/micautob/microautobox3.cfm
+      \endverb
+    \endentry
+    \entry{mac_calculation}{online}{}{}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labeltitlesource}{title}
+      \field{title}{A Guide to Hand-Calculating FLOPs and MACs}
+      \field{urlday}{11}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://medium.com/@pashashaik/a-guide-to-hand-calculating-flops-and-macs-fa5221ce5ccc
+      \endverb
+      \verb{url}
+      \verb https://medium.com/@pashashaik/a-guide-to-hand-calculating-flops-and-macs-fa5221ce5ccc
       \endverb
     \endentry
   \enddatalist

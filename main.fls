@@ -211,9 +211,6 @@ INPUT Chapters\5_real_time_implementation.aux
 INPUT .\Chapters\6_summary.aux
 INPUT .\Chapters\6_summary.aux
 INPUT Chapters\6_summary.aux
-INPUT .\Chapter\appendix.aux
-INPUT .\Chapter\appendix.aux
-INPUT Chapter\appendix.aux
 OUTPUT main.aux
 INPUT C:\Users\andrzej.skrodzki\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\lbx\english.lbx
 INPUT C:\Users\andrzej.skrodzki\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\lbx\english.lbx
@@ -653,7 +650,6 @@ OUTPUT Chapters\6_summary.aux
 INPUT .\Chapters\6_summary.tex
 INPUT .\Chapters\6_summary.tex
 INPUT Chapters\6_summary.tex
-OUTPUT Chapter\appendix.aux
 INPUT C:\Users\andrzej.skrodzki\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\eccc1200.tfm
 INPUT C:\Users\andrzej.skrodzki\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\tcti1200.tfm
 INPUT .\main.lof
@@ -683,9 +679,6 @@ INPUT Chapters\5_real_time_implementation.aux
 INPUT .\Chapters\6_summary.aux
 INPUT .\Chapters\6_summary.aux
 INPUT Chapters\6_summary.aux
-INPUT .\Chapter\appendix.aux
-INPUT .\Chapter\appendix.aux
-INPUT Chapter\appendix.aux
 INPUT .\main.out
 INPUT .\main.out
 INPUT main.run.xml
