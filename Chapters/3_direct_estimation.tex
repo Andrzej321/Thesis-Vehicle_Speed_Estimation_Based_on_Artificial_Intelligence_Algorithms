@@ -223,7 +223,7 @@ The chosen performance metrics for evaluating the models and the estimators were
 \end{equation}
 where $N$ is the total number of estimations, $y_i$ is the estimated value, ${y}_i^d$ is the desired value, $\epsilon$ is the error threshold (e.g., 1 km/h), and $\mathbb{I}$ is the indicator function that returns 1 if the condition is true and 0 otherwise. Throughout the development two different thresholds were considered: 0.3 km/h and 0.4 km/h. These will be denoted as PWT 0.3 and PWT 0.4 in the following tables. 
 
-After the training and validation procedure all the models were tested on the unseen test dataset. The code using for training and validating can be found at \path{AI_training/3_code/training_RNN.py}. The 3-3 best performing architectures were chosen based on the root mean squared error (RMSE) metric. The 3 best performing architectures with the two input sets can be seen in table \ref{tab:rnn_best_models_1}. The results that can be found in table \ref{tab:rnn_best_models_1_metrics} show that the model with 23 inputs performs slightly better than the one with 12 inputs, but the difference is not significant, therefore the reduced input set can be used to lower the complexity of the model without sacrificing performance.
+After the training and validation procedure all the models were tested on the unseen test dataset. The 3-3 best performing architectures were chosen based on the root mean squared error (RMSE) metric. The 3 best performing architectures with the two input sets can be seen in table \ref{tab:rnn_best_models_1}. The results that can be found in table \ref{tab:rnn_best_models_1_metrics} show that the model with 23 inputs performs slightly better than the one with 12 inputs, but the difference is not significant, therefore the reduced input set can be used to lower the complexity of the model without sacrificing performance.
 \FloatBarrier
 \begin{table}[h]
     \centering
@@ -455,7 +455,7 @@ The question still arises why is this LSTM structure better at handling long ter
 
 The implementation and training procedure of the LSTM network is similar to the one used for the RNN-s. The same reduced input set (12 inputs) was used here as well. A grid search was performed over the hyperparameter space to find the best combination of values that yield the lowest validation loss. The training was done in a similar manner as with the RNN-s. For the first batch of grid search the hyperparameter ranges are the as in table \ref{tab:rnn_hyperparams_1}.
 
-The results obtained after testing the created models on the same unseen test dataset . The code using for training and validating can be found at \path{AI_training/3_code/training_LSTM.py}. The 3 best performing architectures can be seen in table \ref{tab:lstm_best_models_1}. The results that can be found in table \ref{tab:lstm_best_models_1_metrics} show that the LSTM models outperformed the RNN models, indicating that the LSTM architecture is better suited for capturing the temporal dependencies in the vehicle speed estimation task.
+The results obtained after testing the created models on the same unseen test dataset. The 3 best performing architectures can be seen in table \ref{tab:lstm_best_models_1}. The results that can be found in table \ref{tab:lstm_best_models_1_metrics} show that the LSTM models outperformed the RNN models, indicating that the LSTM architecture is better suited for capturing the temporal dependencies in the vehicle speed estimation task.
 \FloatBarrier
 \begin{table}[h]
     \centering
@@ -661,7 +661,7 @@ The training process of the GRU network is similar to that of the LSTM network, 
 
 The implementation and training procedure of the described GRU network is identical to the one used for the RNN-s and LSTM-s. The same reduced input set (12 inputs) was used. A grid search was performed over the hyperparameters to find the best combination of parameters that yield the best architecture. The training was done in a similar manner as with the RNN-s and LSTM-s. For the first batch of grid search the hyperparameter ranges are the as in table \ref{tab:rnn_hyperparams_1}.
 
-The results obtained after testing the created models on the same unseen test dataset. The code using for training and validating can be found at \path{AI_training/3_code/training_GRU.py}. The 3 best performing architectures can be seen in table \ref{tab:gru_best_models_1}. The results that can be found in table \ref{tab:gru_best_models_1_metrics} show that the GRU models outperformed the RNN models, but were slightly worse than the LSTM models, indicating that the GRU architecture is better suited for capturing the temporal dependencies in the vehicle speed estimation task than RNN-s, but not as good as LSTM-s.
+The results obtained after testing the created models on the same unseen test dataset. The 3 best performing architectures can be seen in table \ref{tab:gru_best_models_1}. The results that can be found in table \ref{tab:gru_best_models_1_metrics} show that the GRU models outperformed the RNN models, but were slightly worse than the LSTM models, indicating that the GRU architecture is better suited for capturing the temporal dependencies in the vehicle speed estimation task than RNN-s, but not as good as LSTM-s.
 
 \FloatBarrier
 \begin{table}[h]
@@ -897,7 +897,7 @@ The implementation and training procedure of the TCN network is similar to the o
     \label{tab:tcn_hyperparams_1}
 \end{table}
 
-After the training and evaluation of the models from the first batch of grid search, the 2 best performing architecture was selected based on the same principle as before. The results of these best models can be seen in table \ref{tab:tcn_best_model_1_metrics}. Alltogether 25 models were created and evaluated during the first batch of grid search. The code using for training can be found at \path{AI_training/3_code/training_TCN.py}. 
+After the training and evaluation of the models from the first batch of grid search, the 2 best performing architecture was selected based on the same principle as before. The results of these best models can be seen in table \ref{tab:tcn_best_model_1_metrics}. Alltogether 25 models were created and evaluated during the first batch of grid search. 
 
 \FloatBarrier
 \begin{table}[h]
@@ -1132,7 +1132,7 @@ The implementation and training procedure of the transformer encoder is similar 
 \end{table}
 \FloatBarrier
 
-To note, only the first two best models will be investigated onwards, as the training sequence is much more computationally intense as for the prevous models. The results of the best 2 models obtained from the first batch (\ref{tab:transformer_best_models_1}) of grid search can be seen in table \ref{tab:transformer_best_model_1_metrics}. The code using for training and validating can be found at \path{AI_training/3_code/training_transformer.py}.
+To note, only the first two best models will be investigated onwards, as the training sequence is much more computationally intense as for the prevous models. The results of the best 2 models obtained from the first batch (\ref{tab:transformer_best_models_1}) of grid search can be seen in table \ref{tab:transformer_best_model_1_metrics}.
 
 \FloatBarrier
 \begin{table}[h]
