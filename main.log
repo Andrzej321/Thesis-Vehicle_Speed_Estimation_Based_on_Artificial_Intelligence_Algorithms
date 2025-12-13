@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.8)  12 DEC 2025 14:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.8)  13 DEC 2025 13:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -806,7 +806,7 @@ Chapter 2.
 [2
 
 ]
-<images/vehicle_speed.pdf, id=260, 375.4025pt x 264.99pt>
+<images/vehicle_speed.pdf, id=259, 375.4025pt x 264.99pt>
 File: images/vehicle_speed.pdf Graphic file (type pdf)
 <use images/vehicle_speed.pdf>
 Package pdftex.def Info: images/vehicle_speed.pdf  used on input line 48.
@@ -855,67 +855,67 @@ Package pdftex.def Info: images/active_wheel_speed_sensor.png  used on input lin
 [7 <./images/passive_wheel_speed_sensor.png> <./images/active_wheel_speed_sensor.png>]
 
 [8]
-<images/trilateration.pdf, id=347, 390.45876pt x 412.54124pt>
+<images/trilateration.pdf, id=349, 390.45876pt x 412.54124pt>
 File: images/trilateration.pdf Graphic file (type pdf)
 <use images/trilateration.pdf>
-Package pdftex.def Info: images/trilateration.pdf  used on input line 184.
+Package pdftex.def Info: images/trilateration.pdf  used on input line 183.
 (pdftex.def)             Requested size: 159.33821pt x 168.34985pt.
-<images/ecef.jpg, id=348, 995.1579pt x 948.4233pt>
+<images/ecef.jpg, id=350, 995.1579pt x 948.4233pt>
 File: images/ecef.jpg Graphic file (type jpg)
 <use images/ecef.jpg>
-Package pdftex.def Info: images/ecef.jpg  used on input line 189.
+Package pdftex.def Info: images/ecef.jpg  used on input line 188.
 (pdftex.def)             Requested size: 159.33821pt x 151.85213pt.
 
 
 [9 <./images/trilateration.pdf> <./images/ecef.jpg>]
-<images/simple_estimator.pdf, id=403, 250.9375pt x 188.705pt>
+<images/simple_estimator.pdf, id=405, 250.9375pt x 188.705pt>
 File: images/simple_estimator.pdf Graphic file (type pdf)
 <use images/simple_estimator.pdf>
-Package pdftex.def Info: images/simple_estimator.pdf  used on input line 214.
+Package pdftex.def Info: images/simple_estimator.pdf  used on input line 213.
 (pdftex.def)             Requested size: 273.14923pt x 205.43097pt.
 
 
 [10 <./images/simple_estimator.pdf>]
-<images/kalman_filter.pdf, id=633, 760.2804pt x 329.0694pt>
+<images/kalman_filter.pdf, id=635, 760.2804pt x 329.0694pt>
 File: images/kalman_filter.pdf Graphic file (type pdf)
 <use images/kalman_filter.pdf>
-Package pdftex.def Info: images/kalman_filter.pdf  used on input line 238.
+Package pdftex.def Info: images/kalman_filter.pdf  used on input line 237.
 (pdftex.def)             Requested size: 273.14923pt x 118.22888pt.
-<images/EKF_vehicle_model.pdf, id=639, 444.94229pt x 238.0092pt>
+<images/EKF_vehicle_model.pdf, id=641, 444.94229pt x 238.0092pt>
 File: images/EKF_vehicle_model.pdf Graphic file (type pdf)
 <use images/EKF_vehicle_model.pdf>
-Package pdftex.def Info: images/EKF_vehicle_model.pdf  used on input line 247.
+Package pdftex.def Info: images/EKF_vehicle_model.pdf  used on input line 246.
 (pdftex.def)             Requested size: 364.19667pt x 194.81651pt.
 
 
 [11 <./images/kalman_filter.pdf>]
-<images/fuzzy_logic.png, id=656, 791.20593pt x 630.10406pt>
+<images/fuzzy_logic.png, id=658, 791.20593pt x 630.10406pt>
 File: images/fuzzy_logic.png Graphic file (type png)
 <use images/fuzzy_logic.png>
-Package pdftex.def Info: images/fuzzy_logic.png  used on input line 264.
+Package pdftex.def Info: images/fuzzy_logic.png  used on input line 263.
 (pdftex.def)             Requested size: 318.66948pt x 253.78702pt.
 
 
 [12 <./images/EKF_vehicle_model.pdf>]
 
 [13 <./images/fuzzy_logic.png>]
-<images/deep_dynamics.png, id=676, 1140.51094pt x 639.89063pt>
+<images/deep_dynamics.png, id=678, 1140.51094pt x 639.89063pt>
 File: images/deep_dynamics.png Graphic file (type png)
 <use images/deep_dynamics.png>
-Package pdftex.def Info: images/deep_dynamics.png  used on input line 296.
+Package pdftex.def Info: images/deep_dynamics.png  used on input line 295.
 (pdftex.def)             Requested size: 318.66948pt x 178.78735pt.
 
 
 [14 <./images/deep_dynamics.png>]
-<images/physiscs_embedded_neural_network.png, id=690, 1110.39844pt x 527.72156pt>
+<images/physiscs_embedded_neural_network.png, id=692, 1110.39844pt x 527.72156pt>
 File: images/physiscs_embedded_neural_network.png Graphic file (type png)
 <use images/physiscs_embedded_neural_network.png>
-Package pdftex.def Info: images/physiscs_embedded_neural_network.png  used on input line 305.
+Package pdftex.def Info: images/physiscs_embedded_neural_network.png  used on input line 304.
 (pdftex.def)             Requested size: 318.66948pt x 151.449pt.
-<images/Transformer Encoder.png, id=695, 756.57657pt x 56.46094pt>
+<images/Transformer Encoder.png, id=697, 756.57657pt x 56.46094pt>
 File: images/Transformer Encoder.png Graphic file (type png)
 <use images/Transformer Encoder.png>
-Package pdftex.def Info: images/Transformer Encoder.png  used on input line 315.
+Package pdftex.def Info: images/Transformer Encoder.png  used on input line 314.
 (pdftex.def)             Requested size: 455.24411pt x 33.9733pt.
 )
 
@@ -937,7 +937,7 @@ Overfull \hbox (38.63528pt too wide) in paragraph at lines 5--6
 
 
 ]
-<images/sensors.pdf, id=718, 524.96124pt x 358.33875pt>
+<images/sensors.pdf, id=720, 524.96124pt x 358.33875pt>
 File: images/sensors.pdf Graphic file (type pdf)
 <use images/sensors.pdf>
 Package pdftex.def Info: images/sensors.pdf  used on input line 40.
@@ -952,7 +952,7 @@ Overfull \hbox (2.98114pt too wide) in paragraph at lines 81--82
 
 
 [18]
-<images/validation_meas.png, id=754, 722.7pt x 361.35pt>
+<images/validation_meas.png, id=756, 722.7pt x 361.35pt>
 File: images/validation_meas.png Graphic file (type png)
 <use images/validation_meas.png>
 Package pdftex.def Info: images/validation_meas.png  used on input line 147.
@@ -964,7 +964,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 [19]
-<images/Vehicle speed estimator.pdf, id=767, 828.09375pt x 338.26375pt>
+<images/Vehicle speed estimator.pdf, id=769, 828.09375pt x 338.26375pt>
 File: images/Vehicle speed estimator.pdf Graphic file (type pdf)
 <use images/Vehicle speed estimator.pdf>
 Package pdftex.def Info: images/Vehicle speed estimator.pdf  used on input line 170.
@@ -988,12 +988,12 @@ Chapter 4.
 
 
 ]
-<images/feedforward vs recurrent.pdf, id=941, 556.0775pt x 238.8925pt>
+<images/feedforward vs recurrent.pdf, id=943, 556.0775pt x 238.8925pt>
 File: images/feedforward vs recurrent.pdf Graphic file (type pdf)
 <use images/feedforward vs recurrent.pdf>
 Package pdftex.def Info: images/feedforward vs recurrent.pdf  used on input line 36.
 (pdftex.def)             Requested size: 273.14923pt x 117.34631pt.
-<images/rnn_sequence.pdf, id=943, 1903.11pt x 624.17192pt>
+<images/rnn_sequence.pdf, id=945, 1903.11pt x 624.17192pt>
 File: images/rnn_sequence.pdf Graphic file (type pdf)
 <use images/rnn_sequence.pdf>
 Package pdftex.def Info: images/rnn_sequence.pdf  used on input line 47.
@@ -1005,7 +1005,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 [24 <./images/feedforward vs recurrent.pdf>]
-<images/rnn_unit.pdf, id=1037, 1090.0725pt x 612.8496pt>
+<images/rnn_unit.pdf, id=1039, 1090.0725pt x 612.8496pt>
 File: images/rnn_unit.pdf Graphic file (type pdf)
 <use images/rnn_unit.pdf>
 Package pdftex.def Info: images/rnn_unit.pdf  used on input line 65.
@@ -1015,7 +1015,7 @@ Package pdftex.def Info: images/rnn_unit.pdf  used on input line 65.
 [25 <./images/rnn_sequence.pdf> <./images/rnn_unit.pdf>]
 
 [26]
-<images/rnn_2layers.pdf, id=1063, 560.0925pt x 738.59943pt>
+<images/rnn_2layers.pdf, id=1065, 560.0925pt x 738.59943pt>
 File: images/rnn_2layers.pdf Graphic file (type pdf)
 <use images/rnn_2layers.pdf>
 Package pdftex.def Info: images/rnn_2layers.pdf  used on input line 133.
@@ -1049,12 +1049,12 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 ]
 
 [31]
-<images/results/rnn/rnn_31.png, id=1110, 505.89pt x 361.35pt>
+<images/results/rnn/rnn_31.png, id=1112, 505.89pt x 361.35pt>
 File: images/results/rnn/rnn_31.png Graphic file (type png)
 <use images/results/rnn/rnn_31.png>
 Package pdftex.def Info: images/results/rnn/rnn_31.png  used on input line 360.
 (pdftex.def)             Requested size: 223.07211pt x 159.33633pt.
-<images/results/rnn/rnn_16.png, id=1111, 505.89pt x 361.35pt>
+<images/results/rnn/rnn_16.png, id=1113, 505.89pt x 361.35pt>
 File: images/results/rnn/rnn_16.png Graphic file (type png)
 <use images/results/rnn/rnn_16.png>
 Package pdftex.def Info: images/results/rnn/rnn_16.png  used on input line 361.
@@ -1062,12 +1062,12 @@ Package pdftex.def Info: images/results/rnn/rnn_16.png  used on input line 361.
 
 
 [32 <./images/results/rnn/rnn_31.png> <./images/results/rnn/rnn_16.png>]
-<images/lstm_sequence.pdf, id=1121, 1903.11pt x 624.17192pt>
+<images/lstm_sequence.pdf, id=1123, 1903.11pt x 624.17192pt>
 File: images/lstm_sequence.pdf Graphic file (type pdf)
 <use images/lstm_sequence.pdf>
 Package pdftex.def Info: images/lstm_sequence.pdf  used on input line 378.
 (pdftex.def)             Requested size: 455.24411pt x 149.30907pt.
-<images/lstm_unit.pdf, id=1123, 1601.26233pt x 869.40807pt>
+<images/lstm_unit.pdf, id=1125, 1601.26233pt x 869.40807pt>
 File: images/lstm_unit.pdf Graphic file (type pdf)
 <use images/lstm_unit.pdf>
 Package pdftex.def Info: images/lstm_unit.pdf  used on input line 404.
@@ -1089,12 +1089,12 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 [36]
-<images/results/lstm/lstm_31.png, id=1177, 505.89pt x 361.35pt>
+<images/results/lstm/lstm_31.png, id=1179, 505.89pt x 361.35pt>
 File: images/results/lstm/lstm_31.png Graphic file (type png)
 <use images/results/lstm/lstm_31.png>
 Package pdftex.def Info: images/results/lstm/lstm_31.png  used on input line 579.
 (pdftex.def)             Requested size: 223.07211pt x 159.33633pt.
-<images/results/lstm/lstm_8.png, id=1178, 505.89pt x 361.35pt>
+<images/results/lstm/lstm_8.png, id=1180, 505.89pt x 361.35pt>
 File: images/results/lstm/lstm_8.png Graphic file (type png)
 <use images/results/lstm/lstm_8.png>
 Package pdftex.def Info: images/results/lstm/lstm_8.png  used on input line 580.
@@ -1106,7 +1106,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 [37]
-<images/gru_sequence.pdf, id=1187, 1903.11pt x 624.17192pt>
+<images/gru_sequence.pdf, id=1189, 1903.11pt x 624.17192pt>
 File: images/gru_sequence.pdf Graphic file (type pdf)
 <use images/gru_sequence.pdf>
 Package pdftex.def Info: images/gru_sequence.pdf  used on input line 597.
@@ -1114,7 +1114,7 @@ Package pdftex.def Info: images/gru_sequence.pdf  used on input line 597.
 
 
 [38 <./images/results/lstm/lstm_31.png> <./images/results/lstm/lstm_8.png> <./images/gru_sequence.pdf>]
-<images/gru_unit.pdf, id=1199, 1745.07967pt x 922.88791pt>
+<images/gru_unit.pdf, id=1201, 1745.07967pt x 922.88791pt>
 File: images/gru_unit.pdf Graphic file (type pdf)
 <use images/gru_unit.pdf>
 Package pdftex.def Info: images/gru_unit.pdf  used on input line 622.
@@ -1130,12 +1130,12 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 [41]
-<images/results/gru/gru_31.png, id=1240, 505.89pt x 361.35pt>
+<images/results/gru/gru_31.png, id=1242, 505.89pt x 361.35pt>
 File: images/results/gru/gru_31.png Graphic file (type png)
 <use images/results/gru/gru_31.png>
 Package pdftex.def Info: images/results/gru/gru_31.png  used on input line 788.
 (pdftex.def)             Requested size: 223.07211pt x 159.33633pt.
-<images/results/gru/gru_8.png, id=1241, 505.89pt x 361.35pt>
+<images/results/gru/gru_8.png, id=1243, 505.89pt x 361.35pt>
 File: images/results/gru/gru_8.png Graphic file (type png)
 <use images/results/gru/gru_8.png>
 Package pdftex.def Info: images/results/gru/gru_8.png  used on input line 789.
@@ -1147,7 +1147,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 [42]
-<images/tcn_dilated_conv.pdf, id=1251, 1157.04266pt x 581.2917pt>
+<images/tcn_dilated_conv.pdf, id=1253, 1157.04266pt x 581.2917pt>
 File: images/tcn_dilated_conv.pdf Graphic file (type pdf)
 <use images/tcn_dilated_conv.pdf>
 Package pdftex.def Info: images/tcn_dilated_conv.pdf  used on input line 810.
@@ -1161,7 +1161,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [43 <./images/results/gru/gru_31.png> <./images/results/gru/gru_8.png>]
 
 [44 <./images/tcn_dilated_conv.pdf>]
-<images/tcn_residual_block.pdf, id=1270, 579.60541pt x 669.22017pt>
+<images/tcn_residual_block.pdf, id=1272, 579.60541pt x 669.22017pt>
 File: images/tcn_residual_block.pdf Graphic file (type pdf)
 <use images/tcn_residual_block.pdf>
 Package pdftex.def Info: images/tcn_residual_block.pdf  used on input line 862.
@@ -1181,12 +1181,12 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 [47]
-<images/results/tcn/tcn_37.png, id=1300, 505.89pt x 361.35pt>
+<images/results/tcn/tcn_37.png, id=1302, 505.89pt x 361.35pt>
 File: images/results/tcn/tcn_37.png Graphic file (type png)
 <use images/results/tcn/tcn_37.png>
 Package pdftex.def Info: images/results/tcn/tcn_37.png  used on input line 1027.
 (pdftex.def)             Requested size: 223.07211pt x 159.33633pt.
-<images/results/tcn/tcn_8.png, id=1301, 505.89pt x 361.35pt>
+<images/results/tcn/tcn_8.png, id=1303, 505.89pt x 361.35pt>
 File: images/results/tcn/tcn_8.png Graphic file (type png)
 <use images/results/tcn/tcn_8.png>
 Package pdftex.def Info: images/results/tcn/tcn_8.png  used on input line 1028.
@@ -1202,7 +1202,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [49 <./images/results/tcn/tcn_37.png> <./images/results/tcn/tcn_8.png>]
 
 [50]
-<images/transformer_encoder_block.pdf, id=1333, 1300.86pt x 871.8171pt>
+<images/transformer_encoder_block.pdf, id=1335, 1300.86pt x 871.8171pt>
 File: images/transformer_encoder_block.pdf Graphic file (type pdf)
 <use images/transformer_encoder_block.pdf>
 Package pdftex.def Info: images/transformer_encoder_block.pdf  used on input line 1100.
@@ -1226,12 +1226,12 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 [53]
-<images/results/transformer/transformer_31.png, id=1370, 505.89pt x 361.35pt>
+<images/results/transformer/transformer_31.png, id=1372, 505.89pt x 361.35pt>
 File: images/results/transformer/transformer_31.png Graphic file (type png)
 <use images/results/transformer/transformer_31.png>
 Package pdftex.def Info: images/results/transformer/transformer_31.png  used on input line 1251.
 (pdftex.def)             Requested size: 223.07211pt x 159.33633pt.
-<images/results/transformer/transformer_48.png, id=1371, 505.89pt x 361.35pt>
+<images/results/transformer/transformer_48.png, id=1373, 505.89pt x 361.35pt>
 File: images/results/transformer/transformer_48.png Graphic file (type png)
 <use images/results/transformer/transformer_48.png>
 Package pdftex.def Info: images/results/transformer/transformer_48.png  used on input line 1252.
@@ -1259,12 +1259,12 @@ Chapter 5.
 ]
 
 [57]
-<images/results/best_wheel/best_wheel_i7_31.png, id=1402, 505.89pt x 361.35pt>
+<images/results/best_wheel/best_wheel_i7_31.png, id=1404, 505.89pt x 361.35pt>
 File: images/results/best_wheel/best_wheel_i7_31.png Graphic file (type png)
 <use images/results/best_wheel/best_wheel_i7_31.png>
 Package pdftex.def Info: images/results/best_wheel/best_wheel_i7_31.png  used on input line 77.
 (pdftex.def)             Requested size: 223.07211pt x 159.33633pt.
-<images/results/best_wheel/best_wheel_i7_8.png, id=1403, 505.89pt x 361.35pt>
+<images/results/best_wheel/best_wheel_i7_8.png, id=1405, 505.89pt x 361.35pt>
 File: images/results/best_wheel/best_wheel_i7_8.png Graphic file (type png)
 <use images/results/best_wheel/best_wheel_i7_8.png>
 Package pdftex.def Info: images/results/best_wheel/best_wheel_i7_8.png  used on input line 82.
@@ -1276,12 +1276,12 @@ Package pdftex.def Info: images/results/best_wheel/best_wheel_i7_8.png  used on 
 [59]
 
 [60]
-<images/results/model_based/model_based_i7_16.png, id=1442, 505.89pt x 361.35pt>
+<images/results/model_based/model_based_i7_16.png, id=1444, 505.89pt x 361.35pt>
 File: images/results/model_based/model_based_i7_16.png Graphic file (type png)
 <use images/results/model_based/model_based_i7_16.png>
 Package pdftex.def Info: images/results/model_based/model_based_i7_16.png  used on input line 202.
 (pdftex.def)             Requested size: 223.07211pt x 159.33633pt.
-<images/results/model_based/model_based_i7_48.png, id=1443, 505.89pt x 361.35pt>
+<images/results/model_based/model_based_i7_48.png, id=1445, 505.89pt x 361.35pt>
 File: images/results/model_based/model_based_i7_48.png Graphic file (type png)
 <use images/results/model_based/model_based_i7_48.png>
 Package pdftex.def Info: images/results/model_based/model_based_i7_48.png  used on input line 207.
@@ -1301,12 +1301,12 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 [63]
-<images/results/ekf_bw/ekf_bw_i7_16.png, id=1476, 505.89pt x 361.35pt>
+<images/results/ekf_bw/ekf_bw_i7_16.png, id=1478, 505.89pt x 361.35pt>
 File: images/results/ekf_bw/ekf_bw_i7_16.png Graphic file (type png)
 <use images/results/ekf_bw/ekf_bw_i7_16.png>
 Package pdftex.def Info: images/results/ekf_bw/ekf_bw_i7_16.png  used on input line 278.
 (pdftex.def)             Requested size: 223.07211pt x 159.33633pt.
-<images/results/ekf_bw/ekf_bw_i7_43.png, id=1477, 505.89pt x 361.35pt>
+<images/results/ekf_bw/ekf_bw_i7_43.png, id=1479, 505.89pt x 361.35pt>
 File: images/results/ekf_bw/ekf_bw_i7_43.png Graphic file (type png)
 <use images/results/ekf_bw/ekf_bw_i7_43.png>
 Package pdftex.def Info: images/results/ekf_bw/ekf_bw_i7_43.png  used on input line 283.
@@ -1314,12 +1314,12 @@ Package pdftex.def Info: images/results/ekf_bw/ekf_bw_i7_43.png  used on input l
 
 
 [64 <./images/results/ekf_bw/ekf_bw_i7_16.png> <./images/results/ekf_bw/ekf_bw_i7_43.png>]
-<images/results/ekf_ai/ekf_ai_16.png, id=1489, 505.89pt x 361.35pt>
+<images/results/ekf_ai/ekf_ai_16.png, id=1491, 505.89pt x 361.35pt>
 File: images/results/ekf_ai/ekf_ai_16.png Graphic file (type png)
 <use images/results/ekf_ai/ekf_ai_16.png>
 Package pdftex.def Info: images/results/ekf_ai/ekf_ai_16.png  used on input line 338.
 (pdftex.def)             Requested size: 223.07211pt x 159.33633pt.
-<images/results/ekf_ai/ekf_ai_37.png, id=1490, 505.89pt x 361.35pt>
+<images/results/ekf_ai/ekf_ai_37.png, id=1492, 505.89pt x 361.35pt>
 File: images/results/ekf_ai/ekf_ai_37.png Graphic file (type png)
 <use images/results/ekf_ai/ekf_ai_37.png>
 Package pdftex.def Info: images/results/ekf_ai/ekf_ai_37.png  used on input line 343.
@@ -1333,7 +1333,7 @@ Package pdftex.def Info: images/results/ekf_ai/ekf_ai_37.png  used on input line
 
  (Chapters/5_real_time_implementation.tex
 Chapter 6.
-<images/rt.pdf, id=1506, 1020.93419pt x 425.4294pt>
+<images/rt.pdf, id=1508, 1020.93419pt x 425.4294pt>
 File: images/rt.pdf Graphic file (type pdf)
 <use images/rt.pdf>
 Package pdftex.def Info: images/rt.pdf  used on input line 14.
@@ -1418,17 +1418,17 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 23215 strings out of 468130
- 423140 string characters out of 5425309
- 1281697 words of memory out of 5000000
- 51151 multiletter control sequences out of 15000+600000
+ 23219 strings out of 468130
+ 423288 string characters out of 5425309
+ 1281752 words of memory out of 5000000
+ 51154 multiletter control sequences out of 15000+600000
  650536 words of font info for 94 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  67i,14n,77p,1482b,2957s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcti1200.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\eccc1200.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\andrzej.skrodzki\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2074.pk><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/andrzej.skrodzki/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (82 pages, 9060251 bytes).
+Output written on main.pdf (82 pages, 9061949 bytes).
 PDF statistics:
- 2411 PDF objects out of 2487 (max. 8388607)
- 354 named destinations out of 1000 (max. 500000)
+ 2416 PDF objects out of 2487 (max. 8388607)
+ 355 named destinations out of 1000 (max. 500000)
  569 words of extra memory for PDF output out of 10000 (max. 10000000)
 

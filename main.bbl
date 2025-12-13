@@ -195,6 +195,36 @@
       \verb https://www.euspa.europa.eu/eu-space-programme/galileo/what-gnss
       \endverb
     \endentry
+    \entry{GNNS_book}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=0938a65440d59f1a6275c3f734edb60d}{%
+           family={Kaplan},
+           familyi={K\bibinitperiod},
+           given={Elliott},
+           giveni={E\bibinitperiod}}}%
+        {{hash=754d15e5efd2d9bb07c3b91ae5c8d886}{%
+           family={Hegarty},
+           familyi={H\bibinitperiod},
+           given={Chris},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{a677396d07da66c8dddbfe6ad169c763}
+      \strng{fullhash}{a677396d07da66c8dddbfe6ad169c763}
+      \strng{fullhashraw}{a677396d07da66c8dddbfe6ad169c763}
+      \strng{bibnamehash}{a677396d07da66c8dddbfe6ad169c763}
+      \strng{authorbibnamehash}{a677396d07da66c8dddbfe6ad169c763}
+      \strng{authornamehash}{a677396d07da66c8dddbfe6ad169c763}
+      \strng{authorfullhash}{a677396d07da66c8dddbfe6ad169c763}
+      \strng{authorfullhashraw}{a677396d07da66c8dddbfe6ad169c763}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{1580538940, 978-1580538947}
+      \field{month}{11}
+      \field{title}{Understanding GPS: Principles And Applications}
+      \field{year}{2005}
+    \endentry
     \entry{gps-satellites-trilateration}{online}{}{}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
@@ -735,8 +765,8 @@
       \endverb
     \endentry
     \entry{beamng}{online}{}{}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labeltitlesource}{title}
       \field{title}{BeamNG.drive}
       \field{urlday}{11}

@@ -18,7 +18,7 @@ The speed of an arbitrary point in space is defined as the magnitude of the velo
 \begin{equation}
     v_{CoG} = \left\| [\textbf{v}_{CoG}]_{\mathcal{R}_0} \right\| = \left\| \frac{d [\textbf{r}_{CoG}]_{\mathcal{R}_0}}{dt} \right\|, 
 \end{equation}
-where $v_{CoG}$ is the vehicle speed, $[\textbf{v}_{CoG}]_{\mathcal{R}_v}$ is the velocity vector of the CoG in the inertial reference frame and $[\textbf{r}_{CoG}]_{\mathcal{R}_0}$ is the position vector of the CoG in the inertial reference frame. This way the velocity and the position vectors can be expressed in a 3 dimensional space as:
+where $v_{CoG}$ is the vehicle speed, $[\textbf{v}_{CoG}]_{\mathcal{R}_0}$ is the velocity vector of the CoG in the inertial reference frame and $[\textbf{r}_{CoG}]_{\mathcal{R}_0}$ is the position vector of the CoG in the inertial reference frame. This way the velocity and the position vectors can be expressed in a 3 dimensional space as:
 \begin{itemize}
     \item position vector: $[\textbf{r}_{CoG}]_{\mathcal{R}_0} = \begin{bmatrix} r_x \\ r_y \\ r_z \end{bmatrix}_{\mathcal{R}_0}$
     \item velocity vector: $[\textbf{v}_{CoG}]_{\mathcal{R}_0} = \begin{bmatrix} v_x \\ v_y \\ v_z \end{bmatrix}_{\mathcal{R}_0}$
@@ -26,19 +26,19 @@ where $v_{CoG}$ is the vehicle speed, $[\textbf{v}_{CoG}]_{\mathcal{R}_v}$ is th
 
 As the moving vehicle in space is considered as a 3 dimensional body, the orientation of it can be described with a body-fixed reference frame denoted by $\mathcal{R}_{[x_v, y_v, z_v]}$ (later denoted by $\mathcal{R}_v$ for simplicity), where $x_v$ points forward along the longitudinal axis of the vehicle frame, $y_v$ points sideways to the left along the lateral axis and $z_v$ points upwards to complete the right-handed coordinate system. Let this coordinate system be placed in the CoG of the vehicle. In order to describe the velocity vector in this body-fixed reference frame, the angles between the two reference frames have to be defined. These angles are the following:
 \begin{itemize}
-    \item angle of rotation around axis $x_v$: $\delta_{x_v}$,
-    \item angle of rotation around axis $y_v$: $\delta_{y_v}$,
-    \item angle of rotation around axis $z_v$: $\delta_{z_v}$.
+    \item angle of rotation between axis $x_0$ and $x_v$: $\delta_{x}$,
+    \item angle of rotation between axis $y_0$ and $y_v$: $\delta_{y}$,
+    \item angle of rotation between axis $z_0$ and $z_v$: $\delta_{z}$.
 \end{itemize}
-With the help of these three angles, the velocity vector can be expressed in the body-fixed reference frame with the help of the transformation matrix $T_{\mathcal{R}_0 \rightarrow{} \mathcal{R}_v}$ between the two reference frames. From this the transformation matrix is as follows:
+With the help of these three angles, the velocity vector can be expressed in the body-fixed reference frame with the help of the transformation matrix $T_{\mathcal{R}_0 \rightarrow{} \mathcal{R}_v}$ between the two reference frames. This way the velocity vector is mapped from the inertial reference frame to the body-fixed reference frame (passive change of basis). From this the transformation matrix is as follows:
 \begin{equation}
-    T_{\mathcal{R}_0 \rightarrow{} \mathcal{R}_v} = R_z(\delta_{x_v}) \cdot R_y(\delta_{y_v}) \cdot R_x(\delta_{z_v}), 
+    T_{\mathcal{R}_0 \rightarrow{} \mathcal{R}_v} = R_z(\delta_{z}) \cdot R_y(\delta_{y}) \cdot R_x(\delta_{x}), 
 \end{equation}
 where $R_x$, $R_y$ and $R_z$ are the rotation matrices around the respective axes.
 
-It is important to note that throughout this thesis, the vehicle is assumed to be moving on a flat surface. This means that the angles of rotation around the $x_v$ and $y_v$ axes are considered negligible, i.e., $\delta_{x_v} \approx 0$ and $\delta_{y_v} \approx 0$. Consequently, the transformation matrix simplifies to a rotation around the $z_v$ axis only:
+It is important to note that throughout this thesis, the vehicle is assumed to be moving on a flat surface. This means that the angles of rotation around the $x_0$ and $y_0$ axes are considered negligible, i.e., $\delta_{x} \approx 0$ and $\delta_{y} \approx 0$. Consequently, the transformation matrix simplifies to a rotation around the $z_v$ axis only:
 \begin{equation}
-    T_{\mathcal{R}_0 \rightarrow{} \mathcal{R}_v} = R_z(\delta_{z_v}).
+    T_{\mathcal{R}_0 \rightarrow{} \mathcal{R}_v} = R_z(\delta_{z}).
 \end{equation}
 This simplified 2D representation of the vehicle speed in the body-fixed reference frame is illustrated in Figure \ref{fig:geom_veh_speed}.
 
@@ -136,7 +136,7 @@ It is important to mention here that this measurement method is not robust by it
 \subsection{Global Navigation Satellite System}
 \label{subsec:GNSS}
 
-Global Navigation Satellite System (GNSS) refers to any constellation that provides global positioning, navigation and timing services. The currently available GNSS systems in Europe are GPS, Galileo, Glonass and BeiDou \cite{GNSS}. The velocity of the vehicle can be obtained by exploiting the raw Doppler, the carrier phase or the pseudorange measurements with a GNSS receiver.
+Global Navigation Satellite System (GNSS) refers to any constellation that provides global positioning, navigation and timing services. The currently available GNSS systems in Europe are GPS, Galileo, Glonass and BeiDou \cite{GNSS}. The velocity of the vehicle can be obtained by exploiting the raw Doppler, the carrier phase or the pseudorange measurements with a GNSS receiver. The briefly described methods can be found in detail in \cite{GNNS_book}.
 
 The raw Doppler measurement utilizes the Doppler shift between the transmitted and received signal frequencies. The Doppler shift can be expressed as:
 \begin{equation}
@@ -161,7 +161,6 @@ where $\Phi$ is the carrier phase measurement in cycles, $\lambda$ is the wavele
   \dot{\rho} \;\approx\;
   \frac{ \Phi(t_{k+1})\lambda - \Phi(t_k)\lambda }{ t_{k+1} - t_k }  \;-\; c \bigl( \dot{\delta t}_r - \dot{\delta t}_s \bigr).
 \end{equation}
-
 
 Pseudorange differentiation method determines the radial velocity by differentiating the pseudorange measurements over time. The pseudorange is the estimated distance between the receiver and the satellite. This range can be expressed as:
 \begin{equation}
@@ -202,11 +201,11 @@ The simplest method to estimate the vehicle speed is to take the measurements fr
 \end{equation}
 where $v_{cog}^{FR}$, $v_{cog}^{FL}$, $v_{cog}^{RR}$ and $v_{cog}^{RL}$ are the longitudinal speeds of the front right, front left, rear right and rear left wheels transformed to the CoG of the vehicle respectively.
 
-Another simple algorithm for vehicle speed estimation is presented in \cite{lit_simple_veh_speed}, where the vehicle speed is determined by the measurements from the IMU's longitudinal accelerometer and the wheel speed sensors. The formula that estimates the speed is described as follows:
+Another algorithm for vehicle speed estimation is presented in \cite{lit_simple_veh_speed}, where the vehicle speed is determined by the measurements from the IMU's longitudinal accelerometer and the wheel speed sensors. The formula that estimates the speed is described as follows:
 \begin{equation}
     v_{est, CoG}(k) = v_{simple}(k_{nobrake}) + \sum_{i=k_{nobrake}}^{k} a_{meas}(i)\cdot dt,
 \end{equation}
-where the $k$ is the time step counter, $k_{nobrake}$ is the last time index where there was no braking, $a_{meas}$ is the acceleration value form the IMU's longitudinal accelerator and $dt$ is the sampling time. This method works in a way that estimation is taken apart into two categories based on whether the vehicle is barking or not. 
+where $v_{simple}(k) = r_{est} \omega(k)$, $r_{est}$ is the estimated wheel radius, $\omega(k)$ is the average rotational speed of the wheels at time step $k$, $k_{nobrake}$ is the last time index where there was no braking, $a_{meas}$ is the acceleration value form the IMU's longitudinal accelerator and $dt$ is the sampling time. This method works in a way that estimation is taken apart into two categories based on whether the vehicle is barking or not. 
 The simplicity comes at the price of inaccuracies. The estimator does not perform well when accelerometer offset is set and the dynamic change of the wheel radius is not implemented. An other difficulty comes from dealing with the noisy measurements from the wheel speed sensors and the IMU. A similar algorithm to this one will be presented later in section \ref{sec:best_wheel_estimator}. The results of the simple algorithm can be seen on figure \ref{fig:simple_veh_speed_est}.
 \FloatBarrier
 \begin{figure}[ht]
